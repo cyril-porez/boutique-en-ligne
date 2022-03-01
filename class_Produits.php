@@ -50,7 +50,7 @@ class Produits{
     }
 
     public function creation_sous_categorie($nom, $id_categorie){
-        $creation = "INSERT INTO `sous-categories`(`nom`, `id_categories`) VALUES (:nom,:id_categorie)";
+        $creation = "INSERT INTO `sous_categories`(`nom`, `id_categories`) VALUES (:nom,:id_categorie)";
         $result = $this->bdd->prepare($creation);
         $result->bindValue(':nom', $nom, PDO::PARAM_STR);
         $result->bindValue(':id_categorie', $id_categorie, PDO::PARAM_STR);
@@ -58,7 +58,7 @@ class Produits{
     }
 
     public function selection_sous_categorie(){
-        $selection = "SELECT * FROM souscategories";
+        $selection = "SELECT * FROM sous_categories";
         $result = $this->bdd->prepare($selection);
         $result->execute();
         $fetch2 = $result->fetchAll();
