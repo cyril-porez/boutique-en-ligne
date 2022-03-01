@@ -1,14 +1,16 @@
 <html>
 <?php
 require_once('class_Produits.php');
-
-    if(!empty($_POST['nom']) && !empty($_POST["reference"]) && !empty($_POST["classe"]) && !empty($_POST["description"]) && !empty($_POST["id_utilisateur"]) && isset($_POST["id_categorie"]) && isset($_POST["id_sous-categorie"])){
-        $produits = new Produits;
-        $produits->inserer_produit($_POST['nom'], $_POST["reference"], $_POST["classe"], $_POST["description"], $_POST["id_utilisateur"], $_POST["id_categorie"], $_POST["id_sous-categorie"]);
+$produits = new Produits;
+$fetch = $produits->selection_categorie();
+$fetch2 = $produits->selection_sous_categorie();
+    if(!empty($_POST['nom']) && !empty($_POST["reference"]) && !empty($_POST["classe"]) && !empty($_POST["description"]) && !empty($_POST["id_utilisateur"]) && isset($_POST["categorie"]) && isset($_POST["sous-categorie"]) && isset($_POST['prix'])){
+        $produits->inserer_produit($_POST['nom'], $_POST["reference"], $_POST["classe"], $_POST["description"], $_POST["id_utilisateur"], $_POST["categorie"], $_POST["sous-categorie"], $_POST['prix']);
     }
-    else {
-        echo "vide";
-    }
+    else if(isset($_POST['nom'], $_POST["reference"], $_POST["classe"], $_POST["description"], $_POST["id_utilisateur"], $_POST["categorie"], $_POST["sous-categorie"], $_POST['prix']) &&
+            empty($_POST['nom']) && empty($_POST["reference"]) && empty($_POST["classe"]) && empty($_POST["description"]) && empty($_POST["id_utilisateur"]) && empty($_POST["categorie"]) && empty($_POST["sous-categorie"]) && empty($_POST['prix'])){
+                echo 'champ vide';
+            }
 ?>
 
 
@@ -35,11 +37,26 @@ require_once('class_Produits.php');
     <label for="id_utilisateur">id_utilisateur</label>
     <input type="number" name="id_utilisateur">
 
-    <label for="id_categorie">id_categorie</label>
-    <input type="number" name="id_categorie">
+    <select name="categorie">
+        <option value="choose" name="choose">Choisir une catégorie d'article</option>
+        <?php
+            foreach($fetch as $value) {
+                echo "<option value=".$value["id"].">" .$value["nom"]. "</option>";
+            }
+        ?>
+    </select>
 
-    <label for="id_sous-categorie">id_sous-categorie</label>
-    <input type="number" name="id_sous-categorie">
+    <select name="sous-categorie">
+        <option value="choose" name="choose">Choisir une catégorie d'article</option>
+        <?php
+            foreach($fetch2 as $value) {
+                echo "<option value=".$value["id"].">" .$value["nom"]. "</option>";
+            }
+        ?>
+    </select>
+
+    <label for="prix">prix</label>
+    <input type="number" name="prix">
 
     <input type="submit" value="creer">
 </form>
