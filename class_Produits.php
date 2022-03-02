@@ -64,5 +64,20 @@ class Produits{
         $fetch2 = $result->fetchAll();
         return $fetch2;
     }
+    public function selection_produits(){
+        $selection = "SELECT * FROM produits";
+        $result = $this->bdd->prepare($selection);
+        $result->execute();
+        $fetch3 = $result->fetchAll();
+        return $fetch3;
+    }
+    public function selection_un_produits($id){
+        $selection = "SELECT * FROM produits WHERE id = :id";
+        $result = $this->bdd->prepare($selection);
+        $result->bindValue(':id', $id, PDO::PARAM_INT);
+        $result->execute();
+        $fetch3 = $result->fetchAll();
+        return $fetch3;
+    }
 }
 ?>
