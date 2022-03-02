@@ -1,7 +1,7 @@
 <?php
-require_once('class_Produits.php');
+require_once('modelCategorie.php');
 
-$categorie = new Produits;
+$categorie = new Categorie;
 
 if(!empty($_POST['nom'])){
     $categorie->creer_categorie($_POST['nom']);
