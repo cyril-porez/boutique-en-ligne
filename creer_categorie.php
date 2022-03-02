@@ -2,11 +2,11 @@
 require_once('class_Produits.php');
 
 $categorie = new Produits;
-
-if(!empty($_POST['nom'])){
-    $categorie->creer_categorie($_POST['nom']);
+$nom = htmlspecialchars(isset($_POST['nom'])) ;
+if(!empty($nom)){
+    $categorie->creer_categorie($nom);
 }
-elseif(isset($_POST['nom']) && empty($_POST['nom'])){
+elseif(isset($nom) && empty($nom)){
     echo 'champ vide';
 }
 ?>

@@ -27,9 +27,9 @@ class Produits{
         $result->bindValue(':reference', $reference, PDO::PARAM_STR);
         $result->bindValue(':classe', $classe, PDO::PARAM_STR);
         $result->bindValue(':description', $description, PDO::PARAM_STR);
-        $result->bindValue(':id_utilisateur', $id_utilisateur, PDO::PARAM_STR);
-        $result->bindValue(':id_categorie', $id_categorie, PDO::PARAM_STR);
-        $result->bindValue(':id_sous_categorie', $id_sous_categorie, PDO::PARAM_STR);
+        $result->bindValue(':id_utilisateur', $id_utilisateur, PDO::PARAM_INT);
+        $result->bindValue(':id_categorie', $id_categorie, PDO::PARAM_INT);
+        $result->bindValue(':id_sous_categorie', $id_sous_categorie, PDO::PARAM_INT);
         $result->bindValue(':prix', $prix, PDO::PARAM_STR);
         $result->execute();
     }
@@ -53,7 +53,7 @@ class Produits{
         $creation = "INSERT INTO `sous_categories`(`nom`, `id_categories`) VALUES (:nom,:id_categorie)";
         $result = $this->bdd->prepare($creation);
         $result->bindValue(':nom', $nom, PDO::PARAM_STR);
-        $result->bindValue(':id_categorie', $id_categorie, PDO::PARAM_STR);
+        $result->bindValue(':id_categorie', $id_categorie, PDO::PARAM_INT);
         $result->execute();
     }
 

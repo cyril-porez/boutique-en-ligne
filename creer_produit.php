@@ -2,13 +2,17 @@
 <?php
 require_once('class_Produits.php');
 $produits = new Produits;
+$nom = htmlspecialchars(isset($_POST['nom']));
+$reference = htmlspecialchars(isset($_POST['reference']));
+$description = htmlspecialchars(isset($_POST['description']));
+$prix = htmlspecialchars(isset($_POST['prix']));
 $fetch = $produits->selection_categorie();
 $fetch2 = $produits->selection_sous_categorie();
-    if(!empty($_POST['nom']) && !empty($_POST["reference"]) && !empty($_POST["classe"]) && !empty($_POST["description"]) && !empty($_POST["id_utilisateur"]) && isset($_POST["categorie"]) && isset($_POST["sous-categorie"]) && isset($_POST['prix'])){
-        $produits->inserer_produit($_POST['nom'], $_POST["reference"], $_POST["classe"], $_POST["description"], $_POST["id_utilisateur"], $_POST["categorie"], $_POST["sous-categorie"], $_POST['prix']);
+    if(!empty($nom) && !empty($reference) && !empty($_POST["classe"]) && !empty($description) && !empty($_POST["id_utilisateur"]) && !empty($_POST["categorie"]) && !empty($_POST["sous-categorie"]) && !empty($prix)){
+        $produits->inserer_produit($nom, $reference, $_POST["classe"], $description, $_POST["id_utilisateur"], $_POST["categorie"], $_POST["sous-categorie"], $prix);
     }
-    else if(isset($_POST['nom'], $_POST["reference"], $_POST["classe"], $_POST["description"], $_POST["id_utilisateur"], $_POST["categorie"], $_POST["sous-categorie"], $_POST['prix']) &&
-            empty($_POST['nom']) && empty($_POST["reference"]) && empty($_POST["classe"]) && empty($_POST["description"]) && empty($_POST["id_utilisateur"]) && empty($_POST["categorie"]) && empty($_POST["sous-categorie"]) && empty($_POST['prix'])){
+    else if(isset($nom, $reference, $_POST["classe"], $description, $_POST["id_utilisateur"], $_POST["categorie"], $_POST["sous-categorie"], $prix) &&
+            empty($nom) && empty($reference) && empty($_POST["classe"]) && empty($description) && empty($_POST["id_utilisateur"]) && empty($_POST["categorie"]) && empty($_POST["sous-categorie"]) && empty($prix)){
                 echo 'champ vide';
             }
 ?>
@@ -56,7 +60,7 @@ $fetch2 = $produits->selection_sous_categorie();
     </select>
 
     <label for="prix">prix</label>
-    <input type="number" name="prix">
+    <input type="text" name="prix">
 
     <input type="submit" value="creer">
 </form>

@@ -4,13 +4,15 @@ require_once('class_Produits.php');
 $sous_categorie = new Produits;
 
 $fetch = $sous_categorie->selection_categorie();
+$nom = htmlspecialchars(isset($_POST['nom']));
 
-if(!empty($_POST['nom']) && !empty($_POST['categorie'])){
+if(!empty($nom) && !empty($_POST['categorie'])){
     $sous_categorie->creation_sous_categorie($_POST['nom'], $_POST['categorie']);
 }
-elseif(isset($_POST['nom'], $_POST['categorie']) && empty($_POST['nom']) && empty($_POST['categorie'])){
+elseif(isset($nom, $_POST['categorie']) && empty($nom) && empty($_POST['categorie'])){
     echo 'champ vide';
 }
+
 ?>
 <html>
     <form action="creer_sous-categorie.php" method="post">
