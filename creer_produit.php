@@ -1,14 +1,30 @@
 <html>
 <?php
-require_once('class_Produits.php');
-$produits = new Produits;
-$fetch = $produits->selection_categorie();
-$fetch2 = $produits->selection_sous_categorie();
-    if(!empty($_POST['nom']) && !empty($_POST["reference"]) && !empty($_POST["classe"]) && !empty($_POST["description"]) && isset($_POST["categorie"]) && isset($_POST["sous-categorie"]) && isset($_POST['prix']) && !empty($_POST["image"])){
-        $produits->inserer_produit($_POST['nom'], $_POST["reference"], $_POST["classe"], $_POST["description"], $_POST["categorie"], $_POST["sous-categorie"], $_POST['prix'], $_POST["image"],);
+    
+    require_once('class_Produits.php');
+    require_once('modelCategorie.php');
+    require_once('modelSousCategorie.php');
+    
+    $produits = new Produits;
+    $categorie = new Categorie;
+    $sousCategorie = new SousCategorie;
+    //$produits->inserer_produit('Short muay thai carnage destructor', 'car-45698-789', 'Sport', 'qfetsrydtuf', '2', '3', '54.99', 'images/shortmauythaicar1.jpg');
+
+    
+    $fetchCategories = $categorie->selection_categorie();
+    $fetchSousCategories = $sousCategorie->selection_sous_categorie();
+    
+    if(!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['classe']) && !empty($_POST['description']) && !empty($_POST['categorie']) && !empty($_POST['sous-categorie']) && !empty($_POST['prix']) && !empty($_POST['image'])){
+        $nom = htmlspecialchars($_POST['nom']);
+        $reference = htmlspecialchars($_POST['reference']);
+        $description = htmlspecialchars($_POST['description']);
+        $prix = htmlspecialchars($_POST['prix']);
+        $image = htmlspecialchars($_POST['image']);
+        
+        $produits->inserer_produit($nom, $reference, $_POST["classe"], $description, $_POST['categorie'], $_POST['sous-categorie'], $prix, $image);
     }
-    else if(isset($_POST['nom'], $_POST["reference"], $_POST["classe"], $_POST["description"], $_POST["image"], $_POST["categorie"], $_POST["sous-categorie"], $_POST['prix']) &&
-            empty($_POST['nom']) && empty($_POST["reference"]) && empty($_POST["classe"]) && empty($_POST["description"]) && empty($_POST["image"]) && empty($_POST["categorie"]) && empty($_POST["sous-categorie"]) && empty($_POST['prix'])){
+    else if(isset($nom, $reference, $_POST["classe"], $description, $_POST["categorie"], $_POST["sous-categorie"], $prix, $image) &&
+            empty($nom) && empty($reference) && empty($_POST["classe"]) && empty($description) && empty($_POST["id_utilisateur"]) && empty($_POST["categorie"]) && empty($_POST["sous-categorie"]) && empty($prix) && empty($image)){
                 echo 'champ vide';
             }
 ?>
@@ -41,7 +57,7 @@ $fetch2 = $produits->selection_sous_categorie();
     <select name="categorie">
         <option value="choose" name="choose">Choisir une catégorie d'article</option>
         <?php
-            foreach($fetch as $value) {
+            foreach($fetchCategories as $value) {
                 echo "<option value=".$value["id"].">" .$value["nom"]. "</option>";
             }
         ?>
@@ -50,7 +66,7 @@ $fetch2 = $produits->selection_sous_categorie();
     <select name="sous-categorie">
         <option value="choose" name="choose">Choisir une sous-catégorie d'article</option>
         <?php
-            foreach($fetch2 as $value) {
+            foreach($fetchSousCategories as $value) {
                 echo "<option value=".$value["id"].">" .$value["nom"]. "</option>";
             }
         ?>
@@ -60,7 +76,7 @@ $fetch2 = $produits->selection_sous_categorie();
     <input type="text" name="image">
 
     <label for="prix">prix</label>
-    <input  name="prix">
+    <input type="text" name="prix">
 
     <input type="submit" value="creer">
 </form>

@@ -5,12 +5,15 @@
 
     $fetch = $sous_categorie->selection_categorie();
 
-    if(!empty($_POST['nom']) && !empty($_POST['categorie'])) {
-        $sous_categorie->creation_sous_categorie($_POST['nom'], $_POST['categorie']);
-    }
-    elseif(isset($_POST['nom'], $_POST['categorie']) && empty($_POST['nom']) && empty($_POST['categorie'])) {
-        echo 'champ vide';
-    }
+
+if(!empty($_POST['nom']) && !empty($_POST['categorie'])){
+    $nom = htmlspecialchars($_POST['nom']);
+    $sous_categorie->creation_sous_categorie($nom, $_POST['categorie']);
+}
+elseif(isset($nom, $_POST['categorie']) && empty($nom) && empty($_POST['categorie'])){
+    echo 'champ vide';
+}
+
 ?>
 <html>
     <form action="creer_sous-categorie.php" method="post">
