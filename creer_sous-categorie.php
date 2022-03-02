@@ -1,13 +1,14 @@
 <?php
-require_once('class_Produits.php');
+    require_once('modelSousCategorie.php');
 
-$sous_categorie = new Produits;
+    $sous_categorie = new SousCategorie;
 
-$fetch = $sous_categorie->selection_categorie();
-$nom = htmlspecialchars(isset($_POST['nom']));
+    $fetch = $sous_categorie->selection_categorie();
 
-if(!empty($nom) && !empty($_POST['categorie'])){
-    $sous_categorie->creation_sous_categorie($_POST['nom'], $_POST['categorie']);
+
+if(!empty($_POST['nom']) && !empty($_POST['categorie'])){
+    $nom = htmlspecialchars($_POST['nom']);
+    $sous_categorie->creation_sous_categorie($nom, $_POST['categorie']);
 }
 elseif(isset($nom, $_POST['categorie']) && empty($nom) && empty($_POST['categorie'])){
     echo 'champ vide';
@@ -19,7 +20,7 @@ elseif(isset($nom, $_POST['categorie']) && empty($nom) && empty($_POST['categori
         <label for="nom">nom</label>
         <input type="text"  name="nom">
         <select name="categorie">
-                    <option value="choose" name="choose">Choisir une catégorie d'article</option>
+                    <option value="choisir" name="choose">Choisir une catégorie d'article</option>
                     <?php
                         foreach($fetch as $value) {
                             echo "<option value=".$value["id"].">" .$value["nom"]. "</option>";

@@ -1,10 +1,12 @@
 <?php
-require_once('class_Produits.php');
+require_once('modelCategorie.php');
 
-$categorie = new Produits;
-// $nom = isset($_POST['nom']) ;
+$categorie = new Categorie;
+
+
 if(!empty($_POST['nom'])){
-    $categorie->creer_categorie($_POST['nom']);
+    $nom =  htmlspecialchars($_POST['nom']);
+    $categorie->creer_categorie($nom);
 }
 elseif(isset($_POST['nom']) && empty($_POST['nom'])){
     echo 'champ vide';
