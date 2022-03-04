@@ -8,7 +8,14 @@
 
 if(!empty($_POST['nom']) && !empty($_POST['categorie'])){
     $nom = htmlspecialchars($_POST['nom']);
-    $sous_categorie->creation_sous_categorie($nom, $_POST['categorie']);
+    $recupere = $sous_categorie->verif_nom_sous_categories($nom);
+    if(count($recupere) == 0){
+        $sous_categorie->creation_sous_categorie($nom, $_POST['categorie']);
+      }
+      else{
+          echo 'sous_categorie déja existante';
+      }
+
 }
 elseif(isset($nom, $_POST['categorie']) && empty($nom) && empty($_POST['categorie'])){
     echo 'champ vide';

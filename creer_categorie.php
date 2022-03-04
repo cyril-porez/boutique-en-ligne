@@ -6,9 +6,16 @@ $categorie = new Categorie;
 
 if(!empty($_POST['nom'])){
     $nom =  htmlspecialchars($_POST['nom']);
-    $categorie->creer_categorie($nom);
+    $recupere = $categorie->verif_nom_categories($nom);
+    if(count($recupere) == 0){
+        $categorie->creer_categorie($nom);
+      }
+      else{
+          echo 'categorie déja existante';
+      }
+
 }
-elseif(isset($nom) && empty($nom)){
+elseif(isset($_POST['nom']) && empty($_POST['nom'])){
     echo 'champ vide';
 }
 ?>

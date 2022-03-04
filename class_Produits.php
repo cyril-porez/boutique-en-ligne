@@ -20,8 +20,7 @@ class Produits{
     }
 
     public function inserer_produit($nom, $reference, $classe, $description, $id_categorie, $id_sous_categorie, $prix, $image){
-     
-     
+
         try {
             // $id_categorie = intval($id_categorie);
             $insertion = "INSERT INTO produits
@@ -42,6 +41,30 @@ class Produits{
         // Note The Typecast To An Integer!
             var_dump($Exception);
         }
+    }
+    public function selection_produits(){
+        $selection = "SELECT * FROM produits";
+        $result = $this->bdd->prepare($selection);
+        $result->execute();
+        $fetch3 = $result->fetchAll();
+        return $fetch3;
+    }
+    public function selection_un_produits($id){
+        $selection = "SELECT * FROM produits WHERE id = :id";
+        $result = $this->bdd->prepare($selection);
+        $result->bindValue(':id', $id, PDO::PARAM_INT);
+        $result->execute();
+        $fetch3 = $result->fetchAll();
+        return $fetch3;
+    }
+
+    public function verif_nom_produit($nom){
+        $selection = "SELECT nom FROM produits WHERE nom = :nom";
+        $result = $this->bdd->prepare($selection);
+        $result->bindValue(':nom', $nom, PDO::PARAM_STR);
+        $result->execute();
+        $recupere = $result->fetchAll();
+        return $recupere;
     }
 }
 ?>
