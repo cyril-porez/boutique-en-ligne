@@ -6,13 +6,15 @@
     
     if (isset($_GET['recherche'])) {
         $recherche = $_GET['recherche'];
-        $produits = $bdd->prepare('SELECT nom from produits where nom like "%'.$recherche.'%" order by id desc');
+        $produits = $bdd->prepare('SELECT nom, prix, image1 from produits where nom like "%'.$recherche.'%" order by id desc');
         $produits->execute();
         $produit = $produits->fetchall(PDO::FETCH_ASSOC);
-        //var_dump($produit);
+        var_dump($produit);
         
         foreach($produit as $value) {
+            
             echo $value['nom']. '<br>';
+            echo $value['prix'];
         }
     }
 
@@ -27,9 +29,12 @@
     <title>barre de recherche</title>
 </head>
 <body>
-    <form action="" method="get">
-        <input type="search" name="recherche" placeholder="rechercher article">
-        <input type="submit" value="rechercher">
-    </form>
+    <main>
+        <form action="" method="get">
+            <input type="search" name="recherche" placeholder="rechercher article">
+            <input type="submit" value="rechercher">
+        </form>
+        <img src="images/carnage1.jpg" alt=""> 
+    </main>
 </body>
 </html>
