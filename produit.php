@@ -4,7 +4,7 @@ $recup_produit = $_GET['produit'];
 
 $produit = new Produits;
 
-$fetch4 = $produit->selection_un_produits($recup_produit);
+$fetch4 = $produit->recuperation_par_id($recup_produit);
 ?>
 
 <html>

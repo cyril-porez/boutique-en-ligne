@@ -2,17 +2,15 @@
 <?php
 
     require_once('class_Produits.php');
-    require_once('modelCategorie.php');
-    require_once('modelSousCategorie.php');
+    // require_once('modelCategorie.php');
+    // require_once('modelSousCategorie.php');
 
     $produits = new Produits;
-    $categorie = new Categorie;
-    $sousCategorie = new SousCategorie;
     //$produits->inserer_produit('Short muay thai carnage destructor', 'car-45698-789', 'Sport', 'qfetsrydtuf', '2', '3', '54.99', 'images/shortmauythaicar1.jpg');
 
 
-    $fetchCategories = $categorie->selection_categorie();
-    $fetchSousCategories = $sousCategorie->selection_sous_categorie();
+    $fetchCategories = $produits->recuperation_de_donnee();
+    $fetchSousCategories = $produits->recuperation_de_donnee2();
 
     if(!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['classe']) && !empty($_POST['description']) && !empty($_POST['categorie']) && !empty($_POST['sous-categorie']) && !empty($_POST['prix']) && !empty($_POST['image'])){
         $nom = htmlspecialchars($_POST['nom']);
@@ -20,7 +18,7 @@
         $description = htmlspecialchars($_POST['description']);
         $prix = htmlspecialchars($_POST['prix']);
         $image = htmlspecialchars($_POST['image']);
-      $recupere = $produits->verif_nom_produit($nom);
+      $recupere = $produits->verif_si_existe_deja($nom);
       if(count($recupere) == 0){
         $produits->inserer_produit($nom, $reference, $_POST["classe"], $description, $_POST['categorie'], $_POST['sous-categorie'], $prix, $image);
         }

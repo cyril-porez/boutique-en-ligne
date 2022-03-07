@@ -6,7 +6,7 @@ $categorie = new Categorie;
 
 if(!empty($_POST['nom'])){
     $nom =  htmlspecialchars($_POST['nom']);
-    $recupere = $categorie->verif_nom_categories($nom);
+    $recupere = $categorie->verif_si_existe_deja($nom);
     if(count($recupere) == 0){
         $categorie->creer_categorie($nom);
       }

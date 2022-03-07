@@ -1,8 +1,8 @@
 <?php
-// nom	reference	classe	description	id_utilisateur	id_categorie	id_sous-categorie
-class Produits{
+require_once('class_Model.php');
+class Produits extends Model{
 
-    private $id;
+    public $id;
     public $nom;
     public $reference;
     public $classe;
@@ -11,13 +11,11 @@ class Produits{
     public $id_sous_categorie;
     public $prix;
     public $image;
+    protected $table = 'categories';
+    protected $table_deux = 'sous_categories';
+    protected $table_par_id = 'produits';
+    protected $table_verif = 'produits';
 
-    public function __construct(){
-        $bdd = new PDO("mysql:host=localhost;dbname=carnage",'root','');
-        $bdd->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
-        $this->bdd = $bdd;
-        return $bdd;
-    }
 
     public function inserer_produit($nom, $reference, $classe, $description, $id_categorie, $id_sous_categorie, $prix, $image){
 
@@ -48,23 +46,6 @@ class Produits{
         $result->execute();
         $fetch3 = $result->fetchAll();
         return $fetch3;
-    }
-    public function selection_un_produits($id){
-        $selection = "SELECT * FROM produits WHERE id = :id";
-        $result = $this->bdd->prepare($selection);
-        $result->bindValue(':id', $id, PDO::PARAM_INT);
-        $result->execute();
-        $fetch3 = $result->fetchAll();
-        return $fetch3;
-    }
-
-    public function verif_nom_produit($nom){
-        $selection = "SELECT nom FROM produits WHERE nom = :nom";
-        $result = $this->bdd->prepare($selection);
-        $result->bindValue(':nom', $nom, PDO::PARAM_STR);
-        $result->execute();
-        $recupere = $result->fetchAll();
-        return $recupere;
     }
 }
 ?>

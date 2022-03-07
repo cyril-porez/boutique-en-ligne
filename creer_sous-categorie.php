@@ -3,12 +3,12 @@
 
     $sous_categorie = new SousCategorie;
 
-    $fetch = $sous_categorie->selection_categorie();
+    $fetch = $sous_categorie->recuperation_de_donnee();
 
 
 if(!empty($_POST['nom']) && !empty($_POST['categorie'])){
     $nom = htmlspecialchars($_POST['nom']);
-    $recupere = $sous_categorie->verif_nom_sous_categories($nom);
+    $recupere = $sous_categorie->verif_si_existe_deja($nom);
     if(count($recupere) == 0){
         $sous_categorie->creation_sous_categorie($nom, $_POST['categorie']);
       }
