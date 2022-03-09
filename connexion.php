@@ -1,12 +1,16 @@
 <?php
 
-require_once("Controller/userController.php");
+require_once("Controller/c_connexion.php");
 
 
 session_start();
 
 
+var_dump($_SESSION);
 
+if (isset($_POST['deconnexion'])){
+    session_destroy();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,7 +25,7 @@ session_start();
     <body>
         <?php //require('header.php');?>
         <main>
-            <form action="" method="post">
+            <form action="connexion.php" method="post">
                 <fieldset>
                     <legend>Connectez-vous juste ici</legend>
                     <label>EMAIL :</label>
@@ -31,7 +35,8 @@ session_start();
                    
                 </fieldset>
                 <button type="submit" name="connection">Connexion</button>
-                <p>Vous n'avez pas de compte? <br><a href="register.php">Creez un compte</a></p>
+                <button type="submit" name="deconnexion">deConnexion</button>
+                <p>Vous n'avez pas de compte? <br><a href="inscription.php">Creez un compte</a></p>
             </form>
         </main>
         <?php //require('footer.php');?>

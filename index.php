@@ -7,7 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+
     <a href="FormRegister.php">FORM REGISTER AAAAAAAH</a>
+    
     
 </body>
 </html>

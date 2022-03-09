@@ -54,8 +54,36 @@ class Utilisateur extends Bdd {
     //connecter utilisateur
     public function connexion($email, $mot_de_passe){
 
-        $requette2 = $this->bdd->prepare("SELECT * FROM utilisateurs WHERE login = '$email' AND password = '$mot_de_passe'");
+        $requete2 = $this->bdd->prepare("SELECT * FROM utilisateurs WHERE email = ?");
+        
+        $requete2 ->execute(array($email));
+
+        $recuperer = $requete2->fetch();
+        
+        var_dump($recuperer);
+
+        if(count($recuperer) > 0){
+            
+            if(password_verify($mot_de_passe,$recuperer['mot_de_passe']) || $mot_de_passe == $recuperer['mot_de_passe']){
+                
+                $_SESSION['utilisateurs'] = [
+                    'id'=>$recuperer['id'],
+                    'eamil'=>$recuperer['eamil'],
+                    'mot_de_passe'=>$recuperer['mot_de_passe'],
+                ];
+                
+                header('Location: index.php');
+            }
+
+        }
+
+                    else{
+
+                        echo 'utilisateurs inconnu';
+                    }
     }
+
+
 
 }
 
