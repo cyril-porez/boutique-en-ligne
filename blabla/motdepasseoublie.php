@@ -18,7 +18,8 @@
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
     if (!empty($_POST['recupEmail'])) {
-        
+        $token = uniqid();
+        $url = "http://localhost/boutique-en-ligne/blabla/nouveauMotdepasse?token=$token";
         $email = $_POST['recupEmail'];
         $recupEmail = $bdd->prepare("SELECT email from utilisateurs WHERE email = '$email'");
         $recupEmail->execute();
@@ -50,7 +51,7 @@
                 $mail->setFrom('cyrilporez@gmail.com');
             
                 $mail->Subject = 'Mot de passe oublié';
-                $mail->Body = "http://localhost/boutique-en-ligne/blabla/nouveauMotdepasse.php";
+                $mail->Body = "Bonjour, Voici votre lien pour la réinitialisation du mot de passe : $url";
         
                 //envoie du mail
                 $mail->send();
@@ -61,7 +62,7 @@
             }
         }
         else {
-            echo "Ce mail nfdjk,";
+            echo "Ce mail erreur";
         }
     }
     else if (isset($_POST["recupEmail"])) {
