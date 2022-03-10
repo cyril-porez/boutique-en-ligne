@@ -1,3 +1,31 @@
+<?php
+    var_dump($_GET);
+    $token = $_GET['token'];
+    
+    $bdd = new PDO("mysql:host=localhost;dbname=carnage", "root", "");
+    // set the PDO error mode to exception
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    if (!empty($_POST["nouveauMotdepasse"]) && !empty($_POST["confirmeNouveauMotdepasse"])) {
+        $motDepasse = $_POST["nouveauMotdepasse"];
+        $confimeMotdepasse = $_POST["confirmeNouveauMotdepasse"];
+        $motDepasseHash = password_hash($motDepasse, PASSWORD_DEFAULT);
+        if ($motDepasse == $confimeMotdepasse) {
+            $sql = "UPDATE utilisateurs SET mot_de_passe = '$motDepasse' WHERE token = '$token'";
+            $nouvPasse = $bdd->prepare($sql);
+            $nouvPasse->execute();
+        }
+        else {
+            echo "les valeurs rentrées ne correspondent pas!";
+        }
+    }
+    else if (isset($_POST["nouveauMotdepasse"]) && isset($_POST["confirmeNouveauMotdepasse"])) {
+        echo "champ vide";
+    }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
