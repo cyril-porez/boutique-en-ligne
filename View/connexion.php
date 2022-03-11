@@ -1,12 +1,10 @@
 <?php
-
-require_once("Controller/c_connexion.php");
-
-
 session_start();
+require_once("../Controller/c_connexion.php");
 
 
-var_dump($_SESSION);
+
+// echo $recuperer[0]['mot_de_passe'];
 
 if (isset($_POST['deconnexion'])){
     session_destroy();

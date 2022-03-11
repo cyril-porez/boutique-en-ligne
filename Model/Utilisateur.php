@@ -43,30 +43,13 @@ class Utilisateur extends Bdd {
         return $recupere;
     }
     //connecter utilisateur
-    public function connexion($email, $mot_de_passe){
+    public function connexion($email){
 
-        $requete2 = $this->bdd->prepare("SELECT * FROM utilisateurs WHERE email = ?");
-        $requete2 ->execute(array($email));
-
-        $recuperer = $requete2->fetch();
-        var_dump($recuperer);
-
-        if(count($recuperer) > 0){
-            if(password_verify($mot_de_passe,$recuperer['mot_de_passe']) || $mot_de_passe == $recuperer['mot_de_passe']){
-                $_SESSION['utilisateurs'] = [
-                    'id'=>$recuperer['id'],
-                    'eamil'=>$recuperer['eamil'],
-                    'mot_de_passe'=>$recuperer['mot_de_passe'],
-                ];
-                header('Location: index.php');
-            }
-
-        }
-
-                    else{
-
-                        echo 'utilisateurs inconnu';
-                    }
+        $requete2 = $this->bdd->prepare("SELECT * FROM utilisateurs WHERE email = :email");
+        $requete2->bindValue(":email", $email, PDO::PARAM_STR);
+        $requete2 ->execute();
+        $recuperer = $requete2->fetchAll();
+        return $recuperer;
     }
 
 

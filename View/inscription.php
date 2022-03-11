@@ -43,7 +43,7 @@ require_once("../Controller/c_inscritpion.php");
                     <input id="conf-mdp" type="password" name="Cmdp" placeholder="Confirmez le mot de passe" />
                 </fieldset>
                 <button type="submit" name="register">Creer un compte</button>
-                <p>Vous avez déjà un compte ? <br><a href="connection.php">Connectez vous</a></p>
+                <p>Vous avez déjà un compte ? <br><a href="connexion.php">Connectez vous</a></p>
             </form>
         </main>
         <?php //require('footer.php') ?>

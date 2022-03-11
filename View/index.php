@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+var_dump($_SESSION);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +12,7 @@
     <title>Document</title>
 </head>
 <body>
-
-    <a href="FormRegister.php">FORM REGISTER AAAAAAAH</a>
-    
-    
+    <a href="FormRegister.php">Inscription</a><br>
+    <a href="connexion.php">connexion</a>
 </body>
 </html>
