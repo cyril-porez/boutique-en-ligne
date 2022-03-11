@@ -58,7 +58,7 @@ class Produits extends Model{
     }
 
     public function mise_a_jour_jaime($id_produit){
-        $mise_a_jour = "UPDATE `j_aime_deteste` SET `j_aime`= 0,`deteste`= 1,`id_utilisateur`= 1 WHERE `id_produit`= :id_produit";
+        $mise_a_jour = "UPDATE `j_aime_deteste` SET `j_aime`= 1,`deteste`= 0,`id_utilisateur`= 1 WHERE `id_produit`= :id_produit";
         $result = $this->bdd->prepare($mise_a_jour);
         // $result->bindvalue(':id_utilisateur', $id_utilisateur, PDO::PARAM_INT);
         $result->bindvalue(':id_produit', $id_produit, PDO::PARAM_INT);
@@ -95,7 +95,7 @@ class Produits extends Model{
     }
 
     public function mise_a_jour_deteste($id_produit){
-        $mise_a_jour = "UPDATE `j_aime_deteste` SET `j_aime`= 1,`deteste`= 0,`id_utilisateur`= 1 WHERE `id_produit`= :id_produit";
+        $mise_a_jour = "UPDATE `j_aime_deteste` SET `j_aime`= 0,`deteste`= 1,`id_utilisateur`= 1 WHERE `id_produit`= :id_produit";
         $result = $this->bdd->prepare($mise_a_jour);
         // $result->bindvalue(':id_utilisateur', $id_utilisateur, PDO::PARAM_INT);
         $result->bindvalue(':id_produit', $id_produit, PDO::PARAM_INT);
