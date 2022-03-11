@@ -1,16 +1,5 @@
 <?php
-require_once('class_Produits.php');
-require_once('modelSousCategorie.php');
-require_once('modelCategorie.php');
-$produits = new Produits;
-$sous_categorie = new SousCategorie;
-$categorie = new Categorie;
-$fetch = $produits->recuperation_de_donnee();
-$fetch2 = $produits->recuperation_de_donnee2();
-$fetch3 = $produits->selection_produits();
-
-
-
+require_once('../Controller/produits.php')
 ?>
 <html>
 
