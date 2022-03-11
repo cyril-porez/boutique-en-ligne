@@ -11,7 +11,6 @@
     //require 'PHPMailerAutoload.php';
     require 'vendor/autoload.php';
     $mail = new PHPMAILER();
-
     
         $bdd = new PDO("mysql:host=localhost;dbname=carnage", "root", "");
         // set the PDO error mode to exception
@@ -28,6 +27,10 @@
         if ($existe > 0) {
             
             try {
+
+                $modifToken = $bdd->prepare("UPDATE utilisateurs SET token = '$token' WHERE email = '$email'");
+                $modifToken->execute();
+
     
                 //Configuration
                 //$mail->SMTPDebug = SMTP::DEBUG_SERVER; // information de debug
@@ -67,7 +70,7 @@
     }
     else if (isset($_POST["recupEmail"])) {
         echo "le champ est vide !";
-    } 
+    }
 
 ?>
 
