@@ -1,13 +1,13 @@
-<?php 
+<?php
 
 abstract class Bdd
 {
     protected $bdd;
 
     public function __construct()
-    {   
-        $pdo = new PDO('mysql:host=localhost;dbname=carnage;charset=utf8', 'root', 'root' );
-        
+    {
+        $pdo = new PDO("mysql:host=localhost;dbname=carnage",'root','');
+
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // mode de fetch par défaut : FETCH_ASSOC / FETCH_OBJ / FETCH_BOTH
@@ -17,6 +17,6 @@ abstract class Bdd
 
         return $pdo;
 
-    } 
+    }
 
 }

@@ -1,6 +1,6 @@
 <?php 
 
-require_once("Controller/c_inscritpion.php");
+require_once("../Controller/c_inscritpion.php");
 
 ?>
 
