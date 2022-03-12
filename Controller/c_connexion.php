@@ -6,8 +6,8 @@ $utilisateur = new Utilisateur;
 
 if(isset($_POST['email']) && isset($_POST['mot_de_passe']) && !empty($_POST['email']) && !empty($_POST['mot_de_passe'])){
 
-    $email = $_POST['email'];
-    $mot_de_passe = $_POST['mot_de_passe'];
+    $email = htmlspecialchars($_POST['email']);
+    $mot_de_passe = htmlspecialchars($_POST['mot_de_passe']);
 
     $recuperer = $utilisateur->connexion($email);
     if(count($recuperer) > 0){

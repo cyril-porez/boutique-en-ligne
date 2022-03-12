@@ -51,8 +51,5 @@ class Utilisateur extends Bdd {
         $recuperer = $requete2->fetchAll();
         return $recuperer;
     }
-
-
-
 }
 
