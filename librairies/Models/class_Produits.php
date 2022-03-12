@@ -40,12 +40,25 @@ class Produits extends Model{
             var_dump($Exception);
         }
     }
-    public function selection_produits(){
-        $selection = "SELECT * FROM produits";
+    public function selection_produits( $premier, $produits_par_page){
+        $selection = "SELECT * FROM produits  limit :premier, :produits_par_page";
         $result = $this->bdd->prepare($selection);
+        $result->bindValue(':premier', $premier, PDO::PARAM_INT);
+        $result->bindValue(':produits_par_page', $produits_par_page, PDO::PARAM_INT);
         $result->execute();
         $fetch3 = $result->fetchAll();
         return $fetch3;
+    }
+
+    // determination du nombre totale de produits avec la fonction ci-dessous
+
+    public function determination_nombre_total_de_produits(){
+
+        $selection = "SELECT count(*) as nombre_produits from produits";
+        $result = $this->bdd->prepare($selection);
+        $result->execute();
+        $nombre_produits = $result->fetch();
+        return $nombre_produits;
     }
 }
 ?>

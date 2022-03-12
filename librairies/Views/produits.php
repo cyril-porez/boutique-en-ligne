@@ -4,6 +4,7 @@ require_once('../Controller/produits.php')
 <html>
 
 <?php
+echo $pages;
 if(isset($_GET['sous_categorie']))
 {
     $id_sous_categorie = htmlspecialchars($_GET['sous_categorie']);
@@ -47,7 +48,7 @@ else if(isset($_GET['categorie']))
     }
 }
 else{
-    $fetch3 = $produits->selection_produits();
+    $fetch3 = $produits->selection_produits($premier, $produits_par_page);
     foreach($fetch3 as $value) {?>
         <form action="produit.php" method="get">
             <?php echo $value["nom"];?>
@@ -82,4 +83,20 @@ else{
         </select>
     </form>
 
+    <nav>
+        <ul>
+            <li>
+                <a href="?page=<?= $pageCourante -1 ?>">Précédente</a>
+            </li>
+            <?php
+                for($page = 1; $page <= $pages; $page++):?>
+            <li>
+                <a href="?page=<?= $page ?>"><?= $page?></a>
+            </li>
+            <?php endfor ?>
+            <li>
+                <a href="?page=<?= $pageCourante +1 ?>">Suivante</a>
+            </li>
+        </ul>
+    </nav>
 </html>
