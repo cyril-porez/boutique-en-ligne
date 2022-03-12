@@ -1,8 +1,10 @@
 <?php
 
-    require_once('../Model/Utilisateur.php');
+    namespace Controllers;
+    
+    require_once('../Models/Utilisateur.php');
 
-    $utilisateur = new Utilisateur;
+    $utilisateur = new \Models\Utilisateur;
 
     if(isset($_POST['email']) && isset($_POST['mot_de_passe']) && !empty($_POST['email']) && !empty($_POST['mot_de_passe'])){
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("../Controller/c_connexion.php");
+require_once("../Controllers/c_connexion.php");
 
 
 

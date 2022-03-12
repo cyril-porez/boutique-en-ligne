@@ -1,9 +1,11 @@
 <?php
 
-require_once("../Model/Utilisateur.php");
+        namespace Controllers;
 
-$utilisateur = new Utilisateur();
-// if (isset($_POST['register'])){
+        require_once("../Models/Utilisateur.php");
+
+        $utilisateur = new \Models\Utilisateur();
+
         if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['mot_de_passe']) && !empty($_POST['adresse']) &&
         !empty($_POST['code_postale']) && !empty($_POST['pays']) && !empty($_POST['ville']) && !empty($_POST['numero'])){
 
@@ -36,14 +38,8 @@ $utilisateur = new Utilisateur();
                         echo "les mots de passe ne sont pas identique";
                 }
         }
-        elseif (isset($_POST['nom']) || isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['mot_de_passe']) && isset($_POST['adresse']) &&
+        elseif (isset($_POST['nom']) || isset($_POST['prenom']) || isset($_POST['email']) || isset($_POST['mot_de_passe']) || isset($_POST['adresse']) &&
         isset($_POST['code_postale']) || isset($_POST['pays']) || isset($_POST['ville']) || isset($_POST['numero'])){
                 echo "un ou plusieurs champs sont vides";
         }
-
-// }
-
-
-
-
-
+?>
