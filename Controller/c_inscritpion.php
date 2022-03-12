@@ -36,10 +36,9 @@ $utilisateur = new Utilisateur();
                         echo "les mot de passe ne sont pas identique";
                 }
         }
-        elseif ((isset($nom, $prenom, $email, $mot_de_passe, $adresse, $codePostale, $pays, $ville, $numero) &&
-        empty($nom) && empty($prenom) && empty($email) && empty($mot_de_passe) && empty($adresse) &&
-        empty($codePostale) &&empty($pays) && empty($ville) && empty($numero))){
-                echo "champs vide";
+        elseif (isset($_POST['nom']) || isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['mot_de_passe']) && isset($_POST['adresse']) &&
+        isset($_POST['code_postale']) || isset($_POST['pays']) || isset($_POST['ville']) || isset($_POST['numero'])){
+                echo "un ou plusieurs champs sont vides";
         }
 
 // }
