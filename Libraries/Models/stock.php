@@ -13,7 +13,9 @@
         public function verifReferenceProduit ($ref) {
             $sql = "SELECT reference from produits where reference = '$ref'";
             $refProduit = $this->bdd->prepare($sql);
-            return $refProduit->excute();
+            $refProduit->execute();
+            $recupRef = $refProduit->fetchall();
+            return $recupRef;
         }
 
         public function stockKimono($a0, $a1, $a2, $a3, $a4, $a5, $c0, $c00, $c1, $c2, $c3, $c4, $refProd) {
@@ -38,12 +40,29 @@
             return $stockKim->execute();
         }
 
-        public function stockVetements() {
-
+        public function stockVetements($s, $m, $l, $xl, $xxl, $refProd) {
+            $sql = "INSERT INTO stock_taille_vetements (quantite_s, quantite_m, quantite_l, quantite_xl, quantite_xxl, reference_produit) 
+            VALUES (:s, :m, :l, :xl, :xxl, :referenceProduit)";
+            $stockVet = $this->bdd->prepare($sql);
+            $stockVet->bindValue(':s', $s, \PDO::PARAM_INT);
+            $stockVet->bindValue(':m', $m, \PDO::PARAM_INT);
+            $stockVet->bindValue(':l', $l, \PDO::PARAM_INT);
+            $stockVet->bindValue(':xl', $xl, \PDO::PARAM_INT);
+            $stockVet->bindValue(':xxl', $xxl, \PDO::PARAM_INT);
+            $stockVet->bindValue(':referenceProduit', $refProd, \PDO::PARAM_STR);
+            return $stockVet->execute();
         }
 
-        public function stockGants() {
-
+        public function stockGants($dixOz, $douzeOz, $quatorzeOz, $seizeOz, $refProd) {
+            $sql = "INSERT INTO stock_taille_gants(quantité_10_oz, quantité_12_oz, quantité_14_oz, quantité_16_oz, reference_produit)
+            VALUES (:dix, :douze, :quatorze, :seize, :referenceProduit)";
+            $stockGants = $this->bdd->prepare($sql);
+            $stockGants->bindValue(':dix', $dixOz, \PDO::PARAM_INT);
+            $stockGants->bindValue(':douze', $douzeOz, \PDO::PARAM_INT);
+            $stockGants->bindValue(':quatorze', $quatorzeOz, \PDO::PARAM_INT);
+            $stockGants->bindValue(':seize', $seizeOz, \PDO::PARAM_INT);
+            $stockGants->bindValue(':referenceProduit', $refProd, \PDO::PARAM_STR);
+            return $stockGants->execute();
         }
     }
 ?>
