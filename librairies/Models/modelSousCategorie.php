@@ -1,5 +1,6 @@
 <?php
-require_once('class_Model.php');
+    
+    require_once('class_Model.php');
 
     class SousCategorie extends Model {
 

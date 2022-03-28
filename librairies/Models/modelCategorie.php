@@ -1,5 +1,7 @@
 <?php
-require_once('class_Model.php');
+    
+    require_once('class_Model.php');
+    
     class Categorie extends Model {
 
         public $id;
