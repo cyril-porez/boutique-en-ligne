@@ -6,7 +6,8 @@
 
         protected $table = 'categories';
         protected $table_par_id = 'sous_categories';
-        protected $table_verif = 'sous-categlories';
+        protected $table_verif = 'sous_categories';
+        protected $table_deux = 'sous_categories';
 
 
         public function creation_sous_categorie($nom, $id_categorie){

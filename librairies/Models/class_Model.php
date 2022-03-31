@@ -52,5 +52,5 @@
             $recupere = $result->fetchAll();
             return $recupere;
         }
-    }      
+    }
 ?>

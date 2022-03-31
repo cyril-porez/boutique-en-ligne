@@ -6,11 +6,11 @@
     $produits = new Produits;
     $sous_categorie = new SousCategorie;
     $categorie = new Categorie;
-    
+
     //  on determine sur quelle page on se trouve
 
     if(isset($_GET['page']) && !empty($_GET['page'])){
-        $pageCourante = (int) htmlspecialchars($_GET['page']);  
+        $pageCourante = (int) htmlspecialchars($_GET['page']); 
     }
     else{
         $pageCourante = 1;

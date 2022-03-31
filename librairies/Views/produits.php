@@ -5,11 +5,14 @@ require_once('../Controller/produits.php')
 
 <?php
 echo $pages;
+$recup_tout_categorie = $categorie->recuperation_de_donnee();
+$recup_tout_sous_categorie = $sous_categorie->recuperation_de_donnee2();
 if(isset($_GET['sous_categorie']))
 {
     $id_sous_categorie = htmlspecialchars($_GET['sous_categorie']);
     $fetch6 = $sous_categorie->recuperation_par_id($id_sous_categorie);
     $fetch5 = $sous_categorie->choix_produit_par_sous_categorie($fetch6[0]['nom']);
+    // var_dump($recup_tout_categorie);
     ?>
     <form action="produits.php" action="post">
         <button name='retour' value=''>retour</button>
@@ -39,7 +42,7 @@ else if(isset($_GET['categorie']))
     if(isset($_POST['retour'])){
         header("Refresh:0");
     }
-    foreach($fetch7 as $value){?>
+    foreach($fetch8 as $value){?>
         <form action="produit.php" method="get">
             <?php echo $value["nom"];?>
             <button name="produit" value='<?php echo $value['id']; ?>'>Voir le produits</button>
@@ -57,24 +60,27 @@ else{
 <?php }
 }
 
+
 ?>
     <form action="" method="get">
         <select class="connect" name="sous_categorie">
             <option>Choisir une sous-catégorie d'article</option>
             <?php
-                foreach($fetch2 as $value) { ?>
-                <option value="<?=$value['id']?>"> <?= $value['nom']?></option>;
-            <?php }
+                foreach($recup_tout_sous_categorie as $value) { ?>
+                <option value="<?php echo $value['id']; ?>"> <?= $value['nom']?></option>;
+            <?php
+                }
             ?>
             <input type="submit"  value="executer">
         </select>
     </form>
+    <?php  ?>
 
     <form action="" method="get">
         <select class="connect" name="categorie">
             <option>Choisir une catégorie d'article</option>
             <?php
-                foreach($fetch as $value) { ?>
+                foreach($recup_tout_categorie as $value) { ?>
                 <option value="<?=$value['id']?>"> <?= $value['nom']?></option>
             <?php }
             ?>
