@@ -37,7 +37,7 @@
                         }
                         elseif (isset($nom) || isset($prenom) || isset($email) || isset($mot_de_passe) || isset($adresse) ||
                         isset($codePostale) || isset($pays) || isset($ville) || isset($numero) ) {
-                                echo "champs vide";
+                                $erreur = "champs vide";
                         }
                         return $erreur;
                 }
