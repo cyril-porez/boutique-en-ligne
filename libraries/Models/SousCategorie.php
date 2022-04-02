@@ -5,6 +5,28 @@
     require_once('Model.php');
 
     class SousCategorie extends Model {
+        protected $table = 'categories';
+        protected $table_par_id = 'sous_categories';
+        protected $table_verif = 'sous_categories';
+
+
+        public function recuperation_de_donnee(){
+            $selection = "SELECT * FROM {$this->table}";
+            $result = $this->bdd->prepare($selection);
+            $result->execute();
+            $recuperer_tout = $result->fetchAll();
+            return $recuperer_tout;
+        }
+
+        public function verif_si_existe_deja($nom){
+            $selection = "SELECT nom FROM {$this->table_verif} WHERE nom = :nom";
+            $result = $this->bdd->prepare($selection);
+            $result->bindValue(':nom', $nom, \PDO::PARAM_STR);
+            $result->execute();
+            $recupere = $result->fetchAll();
+            return $recupere;
+        }
+
 
         public function creation_sous_categorie($nom, $id_categorie) {
             $creation = "INSERT INTO `sous_categories`(`nom`, `id_categorie`) VALUES (:nom, :id_categorie)";

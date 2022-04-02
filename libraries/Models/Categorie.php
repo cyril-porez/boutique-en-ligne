@@ -7,7 +7,9 @@
     class Categorie extends Model {
 
         public $id;
-            
+        protected $table = 'categories';
+        protected $table_par_id = 'categories';
+        protected $table_verif = 'categories';
 
         public function creer_categorie($nom){
             $creation = "INSERT INTO `categories`(`nom`) VALUES (:nom)";
@@ -24,5 +26,14 @@
             $fetch7 = $result->fetchAll();
             return $fetch7;
         }
+
+        public function verif_si_existe_deja($nom){
+            $selection = "SELECT nom FROM {$this->table_verif} WHERE nom = :nom";
+            $result = $this->bdd->prepare($selection);
+            $result->bindValue(':nom', $nom, \PDO::PARAM_STR);
+            $result->execute();
+            $recupere = $result->fetchAll();
+            return $recupere;
+        }   
     }
 ?>
