@@ -87,5 +87,15 @@
             $fetch3 = $result->fetchAll();
             return $fetch3;
         }
+
+         // determination du nombre totale de produits avec la fonction ci-dessous
+         public function determination_nombre_total_de_produits(){
+
+            $selection = "SELECT count(*) as nombre_produits from produits";
+            $result = $this->bdd->prepare($selection);
+            $result->execute();
+            $nombre_produits = $result->fetch();
+            return $nombre_produits;
+        }
     }
 ?>
