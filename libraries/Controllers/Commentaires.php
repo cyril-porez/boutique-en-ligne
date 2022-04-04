@@ -13,5 +13,12 @@
                 $commentaire->Commentaires($_POST['commentaire']);
             }
         }
+
+        public function AfficheCommentaire() {
+            echo "azerttyuio";
+            $commentaire = new \Models\Commentaires();
+            $affiche = $commentaire->selectCommentaires();
+            return $affiche;
+        }
     }
 ?>

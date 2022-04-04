@@ -9,28 +9,42 @@
 
     }
 
+    $commentaire = new \Controllers\Commentaires();
+    $affiches = $commentaire->AfficheCommentaire();
+
+    var_dump($affiches);
 
 
 ?>
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commentaire</title>
-</head>
 <body>
-    <h2>Commentaire:</h2>
+    <header>
 
-    <form action="" method="POST">
+    </header>
+    <main>
+        <h2>Commentaire:</h2>
+    
+        <form action="" method="POST">
+    
+            <textarea name="commentaire" placeholder="Votre commentaire"></textarea>
+            <input type="submit" value="poster mon commentaire">
+    
+        </form><?php
 
-        <textarea name="commentaire" placeholder="Votre commentaire"></textarea>
-        <input type="submit" value="poster mon commentaire">
+        foreach($affiches as $affiche) {?>
+            <div id="containercomment">
+                <div id="entête">
+                    <div class="login">
+                        <?php echo "<div id ='poster'>Posté le :"." ".date_format(date_create($affiche['date']), 'd/m/Y H:i:s').' '.'</div><div id="par">Posté par :'.' '.$affiche['nom'].'</div>';?>
+                    </div>
+                    <textarea name="" id="commentaire" cols="30" rows="10" readonly><?php echo $affiche['commentaire']?></textarea>
+                </div>
+            </div><?php
+        }
+        ?>
+    </main>
+    <footer>
 
-    </form>
-
+    </footer>
 </body>
 </html>
