@@ -5,7 +5,7 @@ require_once('../Controller/produits.php')
 
 <?php
 echo $pages;
-
+$recup_tout_categorie = $categorie->recuperation_de_donnee();
 $recup_tout_sous_categorie = $sous_categorie->recuperation_de_donnee2();
 if(isset($_GET['sous_categorie']))
 {
@@ -34,26 +34,10 @@ else if(isset($_GET['categorie']))
 {
     $id_categorie = htmlspecialchars($_GET['categorie']);
     $fetch8 = $categorie->recuperation_par_id($id_categorie);
-    $fetch7 = $categorie->choix_produit_par_categorie($fetch8[0]['nom'], $premier_categories, $produits_par_page_categories);?>
+    $fetch7 = $categorie->choix_produit_par_categorie($fetch8[0]['nom']);?>
     <form action="produits.php" action="post">
-        <button name='retour' value=''>retour</button>
-    </form>
-    <nav>
-        <ul>
-            <li>
-                <a href="?categorie=<?=$id_categorie?>&page=<?= $pageCourante -1 ?>">Précédente</a>
-            </li>
-            <?php
-                for($page = 1; $page <= $pages; $page++):?>
-            <li>
-                <a href="?categorie=<?=$id_categorie?>&page=<?= $page ?>"><?= $page?></a>
-            </li>
-            <?php endfor ?>
-            <li>
-                <a href="?page=<?= $pageCourante +1 ?>">Suivante</a>
-            </li>
-        </ul>
-    </nav>
+    <button name='retour' value=''>retour</button>
+</form>
 <?php
     if(isset($_POST['retour'])){
         header("Refresh:0");
@@ -107,18 +91,23 @@ else{
 
     <nav>
         <ul>
-            <li>
-                <a href="?page=<?= $pageCourante -1 ?>">Précédente</a>
-            </li>
+            <?php if($pageCourante != 1): ?>
+            <?="<li>
+                <a href=?page=".($pageCourante - 1).">Précédente</a>
+            </li>";?>
+            <?php endif ?>
             <?php
                 for($page = 1; $page <= $pages; $page++):?>
             <li>
                 <a href="?page=<?= $page ?>"><?= $page?></a>
             </li>
             <?php endfor ?>
-            <li>
-                <a href="?page=<?= $pageCourante +1 ?>">Suivante</a>
-            </li>
+
+            <?php if($pageCourante != $pages): ?>
+            <?="<li>
+                <a href=?page=".($pageCourante + 1).">Suivante</a>
+            </li>";?>
+            <?php endif ?>
         </ul>
     </nav>
 </html>

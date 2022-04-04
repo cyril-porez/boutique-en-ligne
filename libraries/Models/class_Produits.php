@@ -24,6 +24,7 @@
                 $insertion = "INSERT INTO produits
                 (nom, reference, classe, description, id_categorie, id_sous_categorie, prix, image1)
                 VALUES (:nom, :reference, :classe, :description, :id_categorie, :id_sous_categorie, :prix, :image)";
+                
                 $result = $this->bdd->prepare($insertion);
                 $result->bindValue(':nom', $nom, PDO::PARAM_STR);
                 $result->bindValue(':reference', $reference, PDO::PARAM_STR);
@@ -40,7 +41,8 @@
                 var_dump($Exception);
             }
         }
-
+    
+    
         public function selection_produits( $premier, $produits_par_page){
             $selection = "SELECT * FROM produits  limit :premier, :produits_par_page";
             $result = $this->bdd->prepare($selection);
