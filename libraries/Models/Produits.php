@@ -37,7 +37,7 @@
                 $result->bindValue(':image', $image, \PDO::PARAM_STR);
                 $result->execute();
             }
-            catch( PDOException $Exception ) {
+            catch( \PDOException $Exception ) {
                 // Note The Typecast To An Integer!
                 var_dump($Exception);
             }
@@ -50,6 +50,15 @@
             $result->execute();
             $fetch3 = $result->fetchAll();
             return $fetch3;
+        }
+
+        public function verif_si_existe_deja_ref($reference){
+            $selection = "SELECT nom FROM {$this->table_verif} WHERE nom = :reference";
+            $result = $this->bdd->prepare($selection);
+            $result->bindValue(':reference', $reference, \PDO::PARAM_STR);
+            $result->execute();
+            $recupere_ref = $result->fetchAll();
+            return $recupere_ref;
         }
     }
 ?>

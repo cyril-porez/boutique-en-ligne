@@ -1,20 +1,23 @@
 <?php
 
-    
-    
     namespace Controllers;
 
     require_once('../Models/Produits.php');
 
-    class Produits { 
-        
-        
+    class Produits {
+
         public function verifProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $image) {
             $verif = new \Models\Model();
+            $verif_ref = new \Models\Produits();
             $recupere = $verif->verif_si_existe_deja($nom);
+            $recupere_ref = $verif_ref->verif_si_existe_deja_ref($reference);
             $error ='';
-            
+
             if(count($recupere) == 0){
+                $produits = new \Models\Produits();
+                $produits->inserer_produit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $image);
+            }
+            elseif(count($recupere_ref) == 0){
                 $produits = new \Models\Produits();
                 $produits->inserer_produit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $image);
             }
@@ -36,7 +39,7 @@
 
             $produits = new Produits();
             $produit = $produits->verifProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $image);
-            
+
         }
     }
 ?>
