@@ -3,22 +3,42 @@
     namespace Controllers;
 
     require_once('../Models/Commentaires.php');
+    require_once('../Models/CommentaireDuCommentaire.php');
 
     class Commentaires {
 
         public function posterCommentaire() {
             
             if (!empty($_POST['commentaire'])) {
+                $commentaires = htmlspecialchars($_POST['commentaire']);
                 $commentaire = new \Models\Commentaires();
-                $commentaire->Commentaires($_POST['commentaire']);
+                $commentaire->Commentaires($commentaires);
             }
+            else if (isset($_POST['commentaire'])) {
+                $erreur = "* Champ vide";
+            }
+            return $erreur;
         }
 
         public function AfficheCommentaire() {
-            echo "azerttyuio";
+            
             $commentaire = new \Models\Commentaires();
             $affiche = $commentaire->selectCommentaires();
             return $affiche;
         }
+
+        public function reponseCommentaire() {
+            if (!empty($_POST['reponse'])) {
+                $reponses = htmlspecialchars($_POST['reponse']);
+                $reponse = new \Models\CommentaireDuCommentaire();
+                $reponse->insertCommentaireCommentaire($reponses);
+            }
+        }
+
+        public function affichReponse() {
+            $reponse = new \Models\CommentaireduCommentaire();
+            $reponseCom = $reponse->afficheReponse();
+            return $reponseCom;
+        } 
     }
 ?>
