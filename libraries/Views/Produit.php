@@ -12,10 +12,10 @@
         $produit = new Controllers\Produits();
         $produit->creerProduit($_POST['nom'], $_POST['reference'], $_POST['classe'], $_POST['description'], $_POST['categorie'], $_POST['sous-categorie'], $_POST['prix'], $_FILES['image']);
     }
-    else if(isset($nom) || isset($reference) || isset($_POST["classe"]) || isset($description) || isset($_POST["id_utilisateur"]) || isset($_POST["categorie"]) || isset($_POST["sous-categorie"]) || isset($prix) || isset($image)){
+    else if(isset($nom) || isset($reference) || isset($_POST["classe"]) || isset($description) || isset($_POST["id_utilisateur"]) || isset($_POST["categorie"]) || isset($_POST["sous-categorie"]) || isset($prix) || isset($_FILES['image'])){
         echo 'champ vide';
     }
-    var_dump(isset($_FILES));
+    var_dump($_FILES);
 ?>
 
 
@@ -64,7 +64,7 @@
             </select>
 
     <label for="image">image</label>
-    <input type="file" name="image">
+    <input type="file" name="telecharger_image">
 
     <label for="prix">prix</label>
     <input type="text" name="prix">

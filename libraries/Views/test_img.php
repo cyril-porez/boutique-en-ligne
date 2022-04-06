@@ -14,40 +14,42 @@
     </form>
 
     <?php
+        $bdd = mysqli_connect('localhost','root','','test_img');
+        mysqli_set_charset($bdd, 'utf8');
 
         if (isset($_POST['ibra'])){
 
             $maxsize = 50000;
-            // $validExt = array('.jpg', '.jpeg', '.png', '.gif');
+            $validExt = array('.jpg', '.jpeg', '.png', '.gif');
+            $image = $_FILES['uploaded_file'];
 
-            if($_FILES['uploaded_file']['error'] > 0){
+            if($image['error'] > 0){
                 echo "erreu lors du transfert";
-                die;
             }
 
-            $filesize = $_FILES['uploaded_file']['size'];
+            $filesize = $image['size'];
 
             if ($filesize > $maxsize){
                 echo "fichier trop lourd";
-                die;
             }
-            $filename = $_FILES['uploaded_file']['name'];
+            $filename = $image['name'];
             //  strtolower au cas ou si on a une extension 'PNG'
             $fileExt = '.'.strtolower(substr(strrchr($filename, '.'), 1));
 
             //  on verifie si notre extension et dans l'array
-            // if(in_array($fileExt, $validExt)){
-            //     echo "le fichier n'est pas une image";
-            //     die;
-            // }
+            if(!in_array($fileExt, $validExt)){
+                echo "le fichier n'est pas une image";
+            }
 
-            $tmpname = $_FILES['uploaded_file']['tmp_name'];
+            $tmpname = $image['tmp_name'];
             $uniquename = md5(uniqid(rand(), true));
-            $filename = "./upload".$uniquename.$fileExt;
+            $filename = "../upload/".$uniquename.$fileExt;
             $resultat = move_uploaded_file($tmpname, $filename);
             if($resultat){
                 echo "Uploaded successfully";
             }
+            echo $filename;
+            mysqli_query($bdd, "INSERT INTO `img`( `image`) VALUES ('$filename')");
         }
     ?>
 </body>
