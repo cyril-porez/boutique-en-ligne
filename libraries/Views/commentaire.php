@@ -2,6 +2,9 @@
 
     require_once('../Controllers/Commentaires.php');
 
+    $commentaire = new \Controllers\Commentaires();
+    $affiches = $commentaire->AfficheCommentaire();
+
     if (!empty($_POST['commentaire'])) {
         echo 'bob';
         $commentaire = new \Controllers\Commentaires();
@@ -9,14 +12,11 @@
 
     }
 
-    if (!empty($_POST['reponse'])) {
-        $reponseCom = new \Controllers\Commentaires();
-        $reponseCom->reponseCommentaire();
-    }
+    
 
-    $commentaire = new \Controllers\Commentaires();
-    $affiches = $commentaire->AfficheCommentaire();
-    $affichesReponses = $commentaire->affichReponse();
+    
+
+    
 
     //var_dump($affiches);
     //var_dump($affichesReponses);
@@ -33,6 +33,15 @@
 }*/
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="commentaire.css">
+    <title>Document</title>
+</head>
 <body>
     <header>
 
@@ -46,7 +55,7 @@
             <input type="submit" value="poster mon commentaire">
     
         </form><?php
-
+        $i = 1;
         foreach ($affiches as $affiche) {?>
             <div id="containercomment">
                 <div id="entête">
@@ -55,16 +64,31 @@
                     </div>
                     <textarea name="" id="commentaire" cols="30" rows="10" readonly><?php echo $affiche['commentaire']?></textarea>
                     <form action="" method="post">
-                        <input type="submit" name="repondre" value="Répondre">
+                        <!--<input type="submit" name="repondre" value="Répondre">-->
+                        <button name="repondre">Répondre</button>
                         <?php
-                            if (isset($_POST['repondre'])) {?>
+                            $idCom = $affiche['id'];
+                            
+
+                            $affichesReponses = $commentaire->affichReponse($idCom);
+                            
+                            if (!empty($_POST['reponse'])) {
+                                var_dump($idCom);
+                                echo "blabla";
+                                $reponseCom = new \Controllers\Commentaires();
+                                $reponseCom->reponseCommentaire($_POST['reponse'], $affiche['id']);
+                            }
+
+                            if (isset($_POST['repondre']) && $affiche['id']) {?>
                                 <input type="text" name='reponse'>
                                 <input type="submit" name='rep' value='Répondre'>
                                 <input type="submit" value="Annuler">
-                                <?php
+                                <?php                                    
                             }
+
+                            
                             foreach ($affichesReponses as $afficheReponse) {
-                                if ($afficheReponse['id_commentaire'] == $affiche['id']  ) {?>
+                                if ($afficheReponse['id_commentaire'] == $affiche['id']  ) { ?>
                                     <div id="containercomment">
                                         <div id="entête">
                                             <div class="login">
@@ -73,9 +97,9 @@
                                             <textarea name="" id="commentaire" cols="30" rows="10" readonly><?php echo $afficheReponse['reponse']?></textarea>
                                         </div>
                                     </div><?php
-
                                 }
                             }
+                            $i++;
                         ?>
                     </form>
                 </div>

@@ -27,17 +27,17 @@
             return $affiche;
         }
 
-        public function reponseCommentaire() {
+        public function reponseCommentaire($reponses, $idCommentaire) {
             if (!empty($_POST['reponse'])) {
                 $reponses = htmlspecialchars($_POST['reponse']);
                 $reponse = new \Models\CommentaireDuCommentaire();
-                $reponse->insertCommentaireCommentaire($reponses);
+                $reponse->insertCommentaireCommentaire($reponses, $idCommentaire);
             }
         }
 
-        public function affichReponse() {
+        public function affichReponse($idCommentaire) {
             $reponse = new \Models\CommentaireduCommentaire();
-            $reponseCom = $reponse->afficheReponse();
+            $reponseCom = $reponse->afficheReponse($idCommentaire);
             return $reponseCom;
         } 
     }
