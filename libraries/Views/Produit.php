@@ -8,20 +8,21 @@
     $fetchCategories = $produits->recuperation_de_donnee();
     $fetchSousCategories = $produits->recuperation_de_donnee2();
 
-    if(!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['classe']) && !empty($_POST['description']) && !empty($_POST['categorie']) && !empty($_POST['sous-categorie']) && !empty($_POST['prix']) && !empty($_POST['image'])){
+    if(!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['classe']) && !empty($_POST['description']) && !empty($_POST['categorie']) && !empty($_POST['sous-categorie']) && !empty($_POST['prix']) && !empty($_FILES['image'])){
         $produit = new Controllers\Produits();
-        $produit->creerProduit($_POST['nom'], $_POST['reference'], $_POST['classe'], $_POST['description'], $_POST['categorie'], $_POST['sous-categorie'], $_POST['prix'], $_POST['image']);
+        $produit->creerProduit($_POST['nom'], $_POST['reference'], $_POST['classe'], $_POST['description'], $_POST['categorie'], $_POST['sous-categorie'], $_POST['prix'], $_FILES['image']);
     }
     else if(isset($nom) || isset($reference) || isset($_POST["classe"]) || isset($description) || isset($_POST["id_utilisateur"]) || isset($_POST["categorie"]) || isset($_POST["sous-categorie"]) || isset($prix) || isset($image)){
         echo 'champ vide';
     }
+    var_dump(isset($_FILES));
 ?>
 
 
 <html>
     <main>
 
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <label for="nom">nom</label>
             <input type="text"  name="nom">
 
@@ -63,7 +64,7 @@
             </select>
 
     <label for="image">image</label>
-    <input type="text" name="image">
+    <input type="file" name="image">
 
     <label for="prix">prix</label>
     <input type="text" name="prix">

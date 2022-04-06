@@ -35,7 +35,7 @@
             $categorie = htmlspecialchars($_POST['categorie']);
             $sousCategorie = htmlspecialchars($_POST['sous-categorie']);
             $prix = htmlspecialchars($_POST['prix']);
-            $image = htmlspecialchars($_POST['image']);
+            // $image = htmlspecialchars($_FILES['image']);
 
             $produits = new Produits();
             $produit = $produits->verifProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $image);

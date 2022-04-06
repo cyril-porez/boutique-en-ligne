@@ -25,7 +25,7 @@
 
             try {
                 // $id_categorie = intval($id_categorie);
-                $insertion = "INSERT INTO produits (nom, reference, classe, description, id_categorie, id_sous_categorie, prix, image1) VALUES (:nom, :reference, :classe, :description, :id_categorie, :id_sous_categorie, :prix, :image)";
+                $insertion = "INSERT INTO produits (nom, reference, classe, description, id_categorie, id_sous_categorie, prix, images) VALUES (:nom, :reference, :classe, :description, :id_categorie, :id_sous_categorie, :prix, :image)";
                 $result = $this->bdd->prepare($insertion);
                 $result->bindValue(':nom', $nom, \PDO::PARAM_STR);
                 $result->bindValue(':reference', $reference, \PDO::PARAM_STR);
