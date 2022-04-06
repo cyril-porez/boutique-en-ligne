@@ -18,6 +18,15 @@
             return $recuperer_tout;
         }
 
+        public function selectSousCategorie($idCategorie) {
+            $sql = "SELECT sous_categories.nom, sous_categories.id from sous_categories inner join categories on id_categorie = categories.id where id_categorie = :idCategorie";
+            $categorie = $this->bdd->prepare($sql);
+            $categorie->bindValue(':idCategorie', $idCategorie, \PDO::PARAM_INT);
+            $categorie->execute();
+            $categorieHomme = $categorie->fetchall(\PDO::FETCH_ASSOC);
+            return $categorieHomme;
+        }
+
         public function verif_si_existe_deja($nom){
             $selection = "SELECT nom FROM {$this->table_verif} WHERE nom = :nom";
             $result = $this->bdd->prepare($selection);

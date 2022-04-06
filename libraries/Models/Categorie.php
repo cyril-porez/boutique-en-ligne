@@ -18,6 +18,40 @@
             $result->execute();
         }
 
+        public function selectCategorieH() {
+            $sql = "SELECT * from categories where genre = 'Homme'";
+            $categorie = $this->bdd->prepare($sql);
+            $categorie->execute();
+            $categorieHomme = $categorie->fetchall(\PDO::FETCH_ASSOC);
+            return $categorieHomme;
+        }
+
+
+        public function selectCategorieS() {
+            $sql = "SELECT * from categories where genre = 'Sport'";
+            $categorie = $this->bdd->prepare($sql);
+            $categorie->execute();
+            $categorieSport = $categorie->fetchall(\PDO::FETCH_ASSOC);
+            return $categorieSport;
+        }
+
+        public function selectCategorieF() {
+            $sql = "SELECT * from categories where genre = 'Femme'";
+            $categorie = $this->bdd->prepare($sql);
+            $categorie->execute();
+            $categorieFemme = $categorie->fetchall(\PDO::FETCH_ASSOC);
+            return $categorieFemme;
+        }
+
+        public function selectCategorieE() {
+            $sql = "SELECT * from categories where genre = 'Enfant'";
+            $categorie = $this->bdd->prepare($sql);
+            $categorie->execute();
+            $categorieEnfant = $categorie->fetchall(\PDO::FETCH_ASSOC);
+            return $categorieEnfant;
+        }
+
+
         public function choix_produit_par_categorie($nom){
             $selection = "SELECT produits.id, produits.nom, `id_categorie` from `produits` inner join `categories` on produits.id_categorie = categories.id where categories.nom = :nom";
             $result = $this->bdd->prepare($selection);
