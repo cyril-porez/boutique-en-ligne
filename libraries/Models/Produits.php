@@ -80,13 +80,17 @@
         }
 
 
-        public function selection_produits(){
-            $selection = "SELECT * FROM produits";
+        public function selection_produits($id){
+            $selection = "SELECT * FROM produits where id = :id";
             $result = $this->bdd->prepare($selection);
+            $result->bindValue(':id', $id, \PDO::PARAM_INT);
             $result->execute();
-            $fetch3 = $result->fetchAll();
+            $fetch3 = $result->fetchAll(\PDO::FETCH_ASSOC);
             return $fetch3;
         }
+
+
+        
 
          // determination du nombre totale de produits avec la fonction ci-dessous
          public function determination_nombre_total_de_produits(){

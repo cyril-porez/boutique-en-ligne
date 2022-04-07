@@ -4,10 +4,12 @@
 
     $recup_produit = $_GET['produit'];
 
-    $produit = new \Models\Produits;
+    $produits = new \Models\Produits;
     $jaimeDeteste = new \Controllers\Produits;
 
-    $fetch4 = $produit->recuperation_par_id($recup_produit);
+    $produit = $produits->selection_produits($recup_produit);
+
+    var_dump($produit);
 
     if(isset($_POST["jaime"])) {
         $jaimeDeteste->jaime($recup_produit);
@@ -18,7 +20,7 @@
 ?>
 
 <html>
-    <?php echo $fetch4[0]['nom']; ?>
+    <?php// echo $fetch4[0]['nom']; ?>
 
     <form action="" method="post">
         <button type="submit" name="jaime">j'aime</button>

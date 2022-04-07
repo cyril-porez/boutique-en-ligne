@@ -57,7 +57,7 @@
 
         
         public function choix_produit_sous_categorie($id) {            
-            $sql = "SELECT * from produits inner join sous_categories ON produits.id_sous_categorie = sous_categories.id where sous_categories.id = :id";
+            $sql = "SELECT produits.id, produits.nom, produits.reference, produits.classe, produits.description, produits.id_categorie, produits.id_sous_categorie, produits.prix, produits.image1 from produits inner join sous_categories ON produits.id_sous_categorie = sous_categories.id where sous_categories.id = :id";
             $produitSousCategorie = $this->bdd->prepare($sql);
             $produitSousCategorie->bindValue(':id', $id, \PDO::PARAM_INT);
             $produitSousCategorie->execute();

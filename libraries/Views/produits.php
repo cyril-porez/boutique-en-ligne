@@ -23,11 +23,14 @@
         </header>
         <main>
             <?php
-                foreach($affiche_sous_categories as $affiche_sous_categories) {?>
-                    <img src=<?= $affiche_sous_categories['image1']; ?> alt="image carnage"> <?php
-                    echo '<br>' . $affiche_sous_categories['nom']. '<br>';
-                    echo $affiche_sous_categories['prix'] . " €" . '<br>';?>
-                    <button>Voir Produit</button><br><?php
+                foreach($affiche_sous_categories as $affiche_sous_categorie) {?>
+                    <img src=<?= $affiche_sous_categorie['image1']; ?> alt="image carnage"> <?php
+                    echo '<br>' . $affiche_sous_categorie['nom']. '<br>';
+                    echo $affiche_sous_categorie['prix'] . " €" . '<br>';?>
+                    <form action="produit.php" method="get">
+                        <button name="produit" value=<?= $affiche_sous_categorie['id'] ?>>Voir Produit</button>
+                    </form><?php
+
                 }
                 ?>
         </main>
