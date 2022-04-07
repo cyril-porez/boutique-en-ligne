@@ -11,26 +11,6 @@
         $commentaire->posterCommentaire($_POST['commentaire']);
 
     }
-
-    
-
-    
-
-    
-
-    //var_dump($affiches);
-    //var_dump($affichesReponses);
-    /*$temp = '';
-    foreach($tableau as $tab){
-    if($tab['commentaire'] == $temp)    // suis encore dans le meme commentaire lorsque je veux imprimer les sous commentaire 
-    {
-
-    }
-    else{
-
-    }
-    $temp = $tab['commentaire']
-}*/
 ?>
 
 <!DOCTYPE html>
@@ -81,6 +61,7 @@
 
                             if (isset($_POST['repondre']) && $affiche['id']) {?>
                                 <input type="text" name='reponse'>
+                                <input type="hidden"  value=<?= $affiche['id'] ?>>
                                 <input type="submit" name='rep' value='Répondre'>
                                 <input type="submit" value="Annuler">
                                 <?php                                    

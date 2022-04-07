@@ -8,7 +8,7 @@
     class Commentaires {
 
         public function posterCommentaire() {
-            
+            $erreur = '';
             if (!empty($_POST['commentaire'])) {
                 $commentaires = htmlspecialchars($_POST['commentaire']);
                 $commentaire = new \Models\Commentaires();
