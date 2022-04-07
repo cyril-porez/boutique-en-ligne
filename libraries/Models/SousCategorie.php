@@ -54,5 +54,15 @@
             $fetch5 = $result->fetchAll();
             return $fetch5;
         }
+
+        
+        public function choix_produit_sous_categorie($id) {            
+            $sql = "SELECT * from produits inner join sous_categories ON produits.id_sous_categorie = sous_categories.id where sous_categories.id = :id";
+            $produitSousCategorie = $this->bdd->prepare($sql);
+            $produitSousCategorie->bindValue(':id', $id, \PDO::PARAM_INT);
+            $produitSousCategorie->execute();
+            $produits = $produitSousCategorie->fetchall(\PDO::FETCH_ASSOC);
+            return $produits;
+        }
     }
 ?>

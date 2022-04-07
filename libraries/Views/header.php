@@ -30,12 +30,14 @@
                     <ul>
                         <?php
                             foreach($afficheHs as $afficheH) {
-                                echo '<li><a href=produits.php?Homme/Categorie/id='. $afficheH['id'] . '>' . $afficheH['nom'] . '</a>';
+                                echo '<li><a href=produits.php?id='. $afficheH['id'] . '>' . $afficheH['nom'] . '</a>';
                                 $afficheSousCategorieHommes = $afficheSousCategorie->selectSousCategorie($afficheH['id']);?>
                                     <ul>
                                         <?php
-                                            foreach($afficheSousCategorieHommes as $afficheSousCategorieHomme) {?>
-                                                <li><a href=""><?= $afficheSousCategorieHomme['nom'] ?></a></li> <?php                                               
+                                            foreach($afficheSousCategorieHommes as $afficheSousCategorieHomme) {
+                                                echo '<li><a href=produits.php?id=' . $afficheSousCategorieHomme['id'] . '>' . $afficheSousCategorieHomme['nom'] . '</a>';?>                                                
+                                                </li> 
+                                                <?php                                           
                                             }
                                             ?>
                                     </ul>
@@ -49,8 +51,17 @@
                     <ul>
                         <?php
                             foreach($afficheFs as $afficheF) {
-                                echo '<li><a href=produits.php?Femme/Categorie/id='. $afficheF['id'] . '>' . $afficheF['nom'] . '</a></li>';
-                            
+                                echo '<li><a href=produits.php?id='. $afficheF['id'] . '>' . $afficheF['nom'] . '</a>';
+                                $afficheSousCategorieFemmes = $afficheSousCategorie->selectSousCategorie($afficheF['id']);?>
+                                    <ul>
+                                        <?php
+                                            foreach($afficheSousCategorieFemmes as $afficheSousCategorieFemme) {
+                                                echo '<li><a href=produits.php?id=' . $afficheSousCategorieFemme['id'] . '>' . $afficheSousCategorieFemme['nom'] . '</a></li>';
+                                            }
+                                        ?>
+                                    </ul>                                
+                                </li>
+                                <?php
                             }
                         ?>
                     </ul>
@@ -59,12 +70,12 @@
                     <ul>
                         <?php
                             foreach($afficheEs as $afficheE) {
-                                echo '<li><a href=produits.php?Enfants/Categorie/id=' . $afficheE['id'] . '>' . $afficheE['nom'] . '</a>';
+                                echo '<li><a href=produits.php?id=' . $afficheE['id'] . '>' . $afficheE['nom'] . '</a>';
                                 $afficheSousCategorieEnfants = $afficheSousCategorie->selectSousCategorie($afficheE['id']);?>
                                     <ul>
                                         <?php
                                             foreach($afficheSousCategorieEnfants as $afficheSousCategorieEnfant) {
-                                                echo '<li><a href=produits.php?Sport/id=' . $afficheSousCategorieEnfant['id'] . '>' . $afficheSousCategorieEnfant['nom'] . '</a></li>';                                              
+                                                echo '<li><a href=produits.php?id=' . $afficheSousCategorieEnfant['id'] . '>' . $afficheSousCategorieEnfant['nom'] . '</a></li>';                                              
                                             }
                                         ?>
                                     </ul>
@@ -78,12 +89,12 @@
                     <ul>
                         <?php
                             foreach($afficheSs as $afficheS) {
-                                echo '<li><a href=produits.php?Homme/Categorie/id='. $afficheS['id'] . '>' . $afficheS['nom'] . '</a>';
+                                echo '<li><a href=produits.php?id='. $afficheS['id'] . '>' . $afficheS['nom'] . '</a>';
                                 $afficheSousCategorieSports = $afficheSousCategorie->selectSousCategorie($afficheS['id']);?>
                                     <ul>
                                         <?php
                                             foreach($afficheSousCategorieSports as $afficheSousCategorieSport) {
-                                                echo '<li><a href=produits.php?Sport/id=' . $afficheSousCategorieSport['id'] . '>' . $afficheSousCategorieSport['nom'] . '</a></li>';                                              
+                                                echo '<li><a href=produits.php?id=' . $afficheSousCategorieSport['id'] . '>' . $afficheSousCategorieSport['nom'] . '</a></li>';                                              
                                             }
                                         ?>
                                     </ul>
