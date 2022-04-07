@@ -53,11 +53,11 @@
 
 
         public function choix_produit_par_categorie($id){
-            $selection = "SELECT * from `produits` inner join `categories` on produits.id_categorie = categories.id where categories.nom = :id";
+            $selection = "SELECT produits.id, produits.nom, produits.reference, produits.classe, produits.description, produits.id_categorie, produits.id_sous_categorie, produits.prix, produits.image1 from produits inner join categories on produits.id_categorie = categories.id where categories.id = :id";
             $result = $this->bdd->prepare($selection);
             $result->bindValue(':id', $id, \PDO::PARAM_INT);
             $result->execute();
-            $fetch7 = $result->fetchAll();
+            $fetch7 = $result->fetchAll(\PDO::FETCH_ASSOC);
             return $fetch7;
         }
 

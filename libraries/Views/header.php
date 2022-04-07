@@ -31,7 +31,7 @@
                     <ul>
                         <?php
                             foreach($afficheHs as $afficheH) {
-                                echo '<li><a href=produits.php?id='. $afficheH['id'] . '>' . $afficheH['nom'] . '</a>';
+                                echo '<li><a href=listeProduits.php?id='. $afficheH['id'] . '>' . $afficheH['nom'] . '</a>';
                                 $afficheSousCategorieHommes = $afficheSousCategorie->selectSousCategorie($afficheH['id']);?>
                                     <ul>
                                         <?php
@@ -52,7 +52,7 @@
                     <ul>
                         <?php
                             foreach($afficheFs as $afficheF) {
-                                echo '<li><a href=produits.php?id='. $afficheF['id'] . '>' . $afficheF['nom'] . '</a>';
+                                echo '<li><a href=listeProduits.php?id='. $afficheF['id'] . '>' . $afficheF['nom'] . '</a>';
                                 $afficheSousCategorieFemmes = $afficheSousCategorie->selectSousCategorie($afficheF['id']);?>
                                     <ul>
                                         <?php
@@ -71,7 +71,7 @@
                     <ul>
                         <?php
                             foreach($afficheEs as $afficheE) {
-                                echo '<li><a href=produits.php?id=' . $afficheE['id'] . '>' . $afficheE['nom'] . '</a>';
+                                echo '<li><a href=listeProduits.php?id=' . $afficheE['id'] . '>' . $afficheE['nom'] . '</a>';
                                 $afficheSousCategorieEnfants = $afficheSousCategorie->selectSousCategorie($afficheE['id']);?>
                                     <ul>
                                         <?php
@@ -90,7 +90,7 @@
                     <ul>
                         <?php
                             foreach($afficheSs as $afficheS) {
-                                echo '<li><a href=produits.php?id='. $afficheS['id'] . '>' . $afficheS['nom'] . '</a>';
+                                echo '<li><a href=listeProduits.php?id='. $afficheS['id'] . '>' . $afficheS['nom'] . '</a>';
                                 $afficheSousCategorieSports = $afficheSousCategorie->selectSousCategorie($afficheS['id']);?>
                                     <ul>
                                         <?php

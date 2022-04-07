@@ -9,8 +9,6 @@
 
     $produit = $produits->selection_produits($recup_produit);
 
-    var_dump($produit);
-
     if(isset($_POST["jaime"])) {
         $jaimeDeteste->jaime($recup_produit);
     }
@@ -20,7 +18,14 @@
 ?>
 
 <html>
-    <?php// echo $fetch4[0]['nom']; ?>
+    <?php
+        echo $produit[0]['nom'] . '<br>';
+        echo $produit[0]['reference'] . '<br>';
+        echo $produit[0]['description'] . '<br>';  
+        echo $produit[0]['prix'] . ' €' . '<br>';  
+    ?>
+    <img src=<?= $produit[0]['image1'] ?> alt="">
+    <button>AJOUTER AU PANNIER</button>
 
     <form action="" method="post">
         <button type="submit" name="jaime">j'aime</button>
