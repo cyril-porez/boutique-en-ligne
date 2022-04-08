@@ -4,12 +4,12 @@
     // require_once('modelCategorie.php');
     // require_once('modelSousCategorie.php');
 
-    $produits = new \Models\Produit;
+    $produits = new \Models\Produits;
     $fetchCategories = $produits->recuperation_de_donnee();
     $fetchSousCategories = $produits->recuperation_de_donnee2();
 
     if(!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['classe']) && !empty($_POST['description']) && !empty($_POST['categorie']) && !empty($_POST['sous-categorie']) && !empty($_POST['prix']) && !empty($_POST['image'])){
-        $creerProduit = new \Controllers\Produit();
+        $creerProduit = new \Controllers\Produits();
         $creerProduit->creerProduit($_POST['nom'], $_POST['reference'], $_POST['classe'], $_POST['description'], $_POST['categorie'], $_POST['sous-categorie'], $_POST['prix'], $_POST['image']);
     }
 
