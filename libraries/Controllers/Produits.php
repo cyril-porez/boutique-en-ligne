@@ -27,7 +27,7 @@
             return $error;
         }
 
-        public function creerProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $image) {
+        public function creerProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $filename) {
             $nom = htmlspecialchars($_POST['nom']);
             $reference = htmlspecialchars($_POST['reference']);
             $description = htmlspecialchars($_POST['description']);
@@ -36,10 +36,18 @@
             $sousCategorie = htmlspecialchars($_POST['sous-categorie']);
             $prix = htmlspecialchars($_POST['prix']);
             // $image = htmlspecialchars($_FILES['image']);
+            $produits = new Produits();
+            $produit = $produits->verifProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $filename);
+        }
+    }
 
-            $maxsize = 50000;
+    $maxsize = 50000;
             $validExt = array('.jpg', '.jpeg', '.png', '.gif');
-            $image = $_FILES['uploaded_file'];
+            if(isset($_FILES['telecharger_image']))
+            {
+                $image = $_FILES['telecharger_image'];
+
+            }
 
             if($image['error'] > 0){
                 echo "erreu lors du transfert";
@@ -66,11 +74,5 @@
             if($resultat){
                 echo "Uploaded successfully";
             }
-            $produits = new Produits();
-            $produit = $produits->verifProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $image);
 
-        }
-    }
-
-    
 ?>
