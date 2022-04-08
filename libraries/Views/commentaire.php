@@ -51,7 +51,7 @@
                             $idCom = $affiche['id'];                            
 
                             $affichesReponses = $commentaire->affichReponse($idCom);
-                            
+                                                        
                             if (!empty($_POST['reponse'])) {
                                 $reponseCom = new \Controllers\Commentaires();
                                 $reponseCom->reponseCommentaire($_POST['reponse'], $_POST['idReponse']);
