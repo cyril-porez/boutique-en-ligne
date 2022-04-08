@@ -4,13 +4,11 @@
 
     $commentaire = new \Controllers\Commentaires();
     $affiches = $commentaire->AfficheCommentaire();
-    //var_dump($affiches);
 
     if (!empty($_POST['commentaire'])) {
-        echo 'bob';
         $commentaire = new \Controllers\Commentaires();
         $commentaire->posterCommentaire($_POST['commentaire']);
-
+        header("Refresh: 0");
     }
 ?>
 
@@ -36,7 +34,7 @@
             <input type="submit" value="poster mon commentaire">
     
         </form><?php
-        $i = 1;
+
         $j = 0;
         foreach ($affiches as $affiche) {?>
             <div id="containercomment">
@@ -46,34 +44,32 @@
                     </div>
                     <textarea name="" id="commentaire" cols="30" rows="10" readonly><?php echo $affiche['commentaire']?></textarea>
                     <form action="" method="post">
-                        <!--<input type="submit" name="repondre" value="Répondre">-->
-                        <button name="repondre<?=$j?>" >Répondre</button>
-                        <input type="hidden" name="idReponse" value=<?= $affiche['id']?>>
+                        <button name="repondre<?=$j?>" >Répondre</button>   
                     </form>
                         <?php
-                            $idCom = $affiche['id'];
-                            
+            
+                            $idCom = $affiche['id'];                            
 
                             $affichesReponses = $commentaire->affichReponse($idCom);
                             
                             if (!empty($_POST['reponse'])) {
-                                var_dump($idCom);
-                                echo "blabla";
                                 $reponseCom = new \Controllers\Commentaires();
                                 $reponseCom->reponseCommentaire($_POST['reponse'], $_POST['idReponse']);
+                                header("Refresh: 0");
+                                break;
+                               
                             }
 
                             if (isset($_POST["repondre".$j])) {?>
-                                <form action="" method="get">
+                                <form action="" method="post">
                                     <input type="text" name='reponse'>
-                                    <!--<input type="hidden"  value=<?= $affiche['id'] ?>-->
                                     <input type="submit" name='rep' value='Envoyer'>
+                                    <input type="hidden" name="idReponse" value="<?= $affiche['id']; ?>">
                                     <input type="submit" value="Annuler">
                                 </form>
                                 <?php                                    
                             }
 
-                            
                             foreach ($affichesReponses as $afficheReponse) {
                                 if ($afficheReponse['id_commentaire'] == $affiche['id']  ) { ?>
                                     <div id="containercomment">

@@ -20,7 +20,6 @@
         }
 
         public function SelectCommentaires() {
-            echo "blablabaka";
             $sql = "SELECT commentaires.id, commentaire, utilisateurs.nom, utilisateurs.prenom, commentaires.date from commentaires inner join utilisateurs ON commentaires.id_utilisateur = utilisateurs.id inner join produits ON commentaires.id_produit = produits.id  where produits.id = 1";
             $commentaires = $this->bdd->prepare($sql);
             //$commentaires->bindValue(':id_produit', $idProduit, \PDO::PARAM_INT);
