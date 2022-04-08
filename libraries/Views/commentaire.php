@@ -4,6 +4,7 @@
 
     $commentaire = new \Controllers\Commentaires();
     $affiches = $commentaire->AfficheCommentaire();
+    //var_dump($affiches);
 
     if (!empty($_POST['commentaire'])) {
         echo 'bob';
@@ -36,6 +37,7 @@
     
         </form><?php
         $i = 1;
+        $j = 0;
         foreach ($affiches as $affiche) {?>
             <div id="containercomment">
                 <div id="entête">
@@ -45,7 +47,9 @@
                     <textarea name="" id="commentaire" cols="30" rows="10" readonly><?php echo $affiche['commentaire']?></textarea>
                     <form action="" method="post">
                         <!--<input type="submit" name="repondre" value="Répondre">-->
-                        <button name="repondre">Répondre</button>
+                        <button name="repondre<?=$j?>" >Répondre</button>
+                        <input type="hidden" name="idReponse" value=<?= $affiche['id']?>>
+                    </form>
                         <?php
                             $idCom = $affiche['id'];
                             
@@ -56,14 +60,16 @@
                                 var_dump($idCom);
                                 echo "blabla";
                                 $reponseCom = new \Controllers\Commentaires();
-                                $reponseCom->reponseCommentaire($_POST['reponse'], $affiche['id']);
+                                $reponseCom->reponseCommentaire($_POST['reponse'], $_POST['idReponse']);
                             }
 
-                            if (isset($_POST['repondre']) && $affiche['id']) {?>
-                                <input type="text" name='reponse'>
-                                <input type="hidden"  value=<?= $affiche['id'] ?>>
-                                <input type="submit" name='rep' value='Répondre'>
-                                <input type="submit" value="Annuler">
+                            if (isset($_POST["repondre".$j])) {?>
+                                <form action="" method="get">
+                                    <input type="text" name='reponse'>
+                                    <!--<input type="hidden"  value=<?= $affiche['id'] ?>-->
+                                    <input type="submit" name='rep' value='Envoyer'>
+                                    <input type="submit" value="Annuler">
+                                </form>
                                 <?php                                    
                             }
 
@@ -81,10 +87,11 @@
                                 }
                             }
                         ?>
-                    </form>
+                    
                 </div>
             </div><?php
-        }
+        $j++;    
+    }
         ?>
     </main>
     <footer>
