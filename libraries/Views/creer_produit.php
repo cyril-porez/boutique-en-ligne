@@ -5,7 +5,7 @@
     // require_once('modelCategorie.php');
     // require_once('modelSousCategorie.php');
 
-    $produits = new \Models\Produits();
+    $produits = new \Models\Produits;
     $fetchCategories = $produits->recuperation_de_donnee();
     $fetchSousCategories = $produits->recuperation_de_donnee2();
 
