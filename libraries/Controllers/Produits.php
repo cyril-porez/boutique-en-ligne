@@ -11,7 +11,7 @@
         private $etat_deteste;
 
 
-        public function creerProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $image, ) {
+        public function creerProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $image) {
             $produits = new \Models\Produits();
            
             $erreur = '';

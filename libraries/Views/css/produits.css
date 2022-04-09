@@ -1,0 +1,47 @@
+body{
+    overflow-x: hidden;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+img {
+    width: 200px;
+    height: 250px;
+}
+#container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+#container div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 5%;
+}
+button {
+	background-color:black;
+	display:inline-block;
+	cursor:pointer;
+	color:white;
+	font-family:Arial;
+	font-size:15px;
+	padding:6px 15px;
+	text-decoration:none;
+    border: none;
+}
+button:hover {
+	background-color:red;
+}
+.article_content{
+    width:200px;
+    height: 50px;
+
+}
+
+/* div button {
+    display: none;
+} */
+/* @media (hover: hover) {
+    div:hover {
+      background: yellow;
+    }
+  } */

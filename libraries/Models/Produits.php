@@ -73,7 +73,7 @@
                 $result->bindValue(':image', $image, \PDO::PARAM_STR);
                 $result->execute();
             }
-            catch( PDOException $Exception ) {
+            catch( \PDOException $Exception ) {
                 // Note The Typecast To An Integer!
                 var_dump($Exception);
             }
