@@ -63,5 +63,14 @@
             $requete = $this->bdd->prepare($sql);
             $requete->bindValue(":id", $id, \PDO::PARAM_INT);
         }
+
+
+        public function selectionneUtilisateurs() {
+            $sql = "SELECT * FROM utilisateurs";
+            $requete = $this->bdd->prepare($sql);
+            $requete->execute();
+            $infoUtilisateurs = $requete->fetchall(\PDO::FETCH_ASSOC);
+            return $infoUtilisateurs;
+        }
     }
 ?>
