@@ -14,24 +14,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="gestionUtilisateurs.css">
+    <link rel="stylesheet" href="modal.css">
     <title>Document</title>
 </head>
 <body>
     <header>
 
     </header>
-    <main>
-        
-               
-
+    <main>     
         <table>
             <thead>
                 <tr>
                     <th>id</th>
                     <th>article</th>
                     <th>nom</th>
-                    <th>date</th>
-                    <th>login</th>
+                    <th>Email</th>
+                    <th>Date d'inscription</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,19 +42,31 @@
                             <td><?= $afficheUtilisateur['email']; ?></td>
                             <td><?= $afficheUtilisateur['date']; ?></td>
                             <td>
-                                <form action="updateArticle.php" method="get">
-                                    <button type="submit" name="updateArticle" value=<?= $afficheUtilisateur['id']; ?>>Modifier</button>
-                                </form>                        
+                                <div class="box">
+                                    <button>Lire</button>
+                                    <div class="modal">
+                                        <h1>Je suis un Monstre</h1>
+                                        <span>ANNULER</span>
+                                    </div>
+                                </div>  
                             </td>
                             <td>
-                                <form action="updateArticle.php" method="get">
-                                    <button type="submit" name="updateArticle" value=<?= $afficheUtilisateur['id']; ?>>Modifier</button>
-                                </form>
+                                <div class="box">
+                                    <button>Modifier</button>
+                                    <div class="modal">
+                                        <h1>Je suis un Monstre</h1>
+                                        <span>ANNULER</span>
+                                    </div>
+                                </div>  
                             </td>
                             <td>
-                                <form action="updateArticle.php" method="get">
-                                    <button type="submit" name="updateArticle" value=<?= $afficheUtilisateur['id']; ?>>Supprimer</button>
-                                </form>
+                                <div class="box">
+                                    <button>supprimer</button>
+                                    <div class="modal">
+                                        <h1>Je suis un Monstre</h1>
+                                        <span>ANNULER</span>
+                                    </div>
+                                </div>  
                             </td>
                         </tr>
                         <?php
