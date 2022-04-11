@@ -2,63 +2,83 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-image: url(/images/IMG-1168.PNG); */
-}
-button{
-    background-color:black;
-	display:inline-block;
-	cursor:pointer;
-	color:white;
-	font-size:15px;
-	padding:6px 15px;
-	text-decoration:none;
-    border: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .modal{
-    width: 50%;
-    height: 70vh;
+    background-color: rgba(0, 0, 0, 0.75);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.2s;
 
+}
+
+.modal.show{
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-content{
+    background-color: white;
+    max-width: 50%;
+    height: 60%;
+    margin: auto;
+    flex: 1;
+    position: relative;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+}
 
-    background-color: whitesmoke;
-    border-radius: 3px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
-}
-span{
-    position: relative;
-    top: 150px;
-    left: 130px;
-    font-size: 20px;
+.modal-close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
-    font-weight: bold;
-    color: blue;
 }
-span:hover{
-    color: red;
+
+.modal-header{
+    padding-left: 10px;
+    border-bottom: 1px  #ddd;
 }
-.box{
+
+.modal-body{
+    padding: 10px;
+    height: 90%;
+    width: 90%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-     
+    justify-content: center;
 }
-.modal{
-    position: fixed;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.4s;
+.modal-body img{
+    height: 55px;
+    width: 200px;
 }
-button:focus + .modal{
-    opacity: 1;
-    visibility: visible;
+
+.modal-footer{
+    padding: 10px;
+    border-top: 1px;
+    text-align: right;
+    border-radius: 5px;
 }
-/* button + body {
-    -webkit-filter: blur(1px);
-    -moz-filter: blur(1px);
-    -o-filter: blur(1px);
-    -ms-filter: blur(1px);
-    filter: blur(1px);
-} */
+
+.btn{
+    padding: 5px;
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.btn-close{
+    background-color: red;
+    border-radius: 3px;
+}

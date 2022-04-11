@@ -10,7 +10,13 @@
             $sql = "UPDATE UPDATE `produits` SET `id`='[value-1]',`nom`='[value-2]',`reference`='[value-3]',`classe`='[value-4]',`description`='[value-5]',`id_categorie`='[value-6]',`id_sous_categorie`='[value-7]',`prix`='[value-8]',`image1`='[value-9]' WHERE 1";
         }
 
-
+        public function selectionneProduits() {
+            $sql = "SELECT * FROM produits";
+            $requete = $this->bdd->prepare($sql);
+            $requete->execute();
+            $infoUtilisateurs = $requete->fetchall(\PDO::FETCH_ASSOC);
+            return $infoUtilisateurs;
+        }
 
 
         public function creerUtilisateur($nom, $prenom, $email, $mot_de_passe, $adresse, $code_postale, $pays, $ville, $num) {
@@ -56,13 +62,6 @@
             $requete->bindValue(":id", $id, \PDO::PARAM_INT);
             $requete->execute();      
         } 
-
-
-        public function lireUtilisateur() {
-            $sql = "SELECT * FROM utilisateurs WHERE :id";
-            $requete = $this->bdd->prepare($sql);
-            $requete->bindValue(":id", $id, \PDO::PARAM_INT);
-        }
 
 
         public function selectionneUtilisateurs() {

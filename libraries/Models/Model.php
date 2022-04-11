@@ -11,7 +11,7 @@
         protected $table_verif = 'produits';
 
         public function __construct(){
-            $bdd = new \PDO("mysql:host=localhost;dbname=carnage",'root','');
+            $bdd = new \PDO("mysql:host=localhost;dbname=carnage;charset=utf8",'root','');
             $bdd->setAttribute(\PDO::ATTR_ERRMODE , \PDO::ERRMODE_EXCEPTION);
             $this->bdd = $bdd;
             return $bdd;
