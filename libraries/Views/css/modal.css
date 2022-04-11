@@ -83,43 +83,4 @@ body{
     border-radius: 3px;
 }
 
-input[type="checkbox"]{
-    margin-top: 4%;
-    border-color: var(--var-light-primary-color);
-}
-legend{
-    color: var(--var-light-primary-color);
-    font-size: 0.9em;
-}
-
-.modal input[type="text"]{
-    border: none;
-    width: 99%;
-    /* margin-top: 30%; */
-}
-.connex_inscription{
-    width: 60%;
-}
-
-fieldset{
-    border-radius: 10px;
-    border-color: var(--var-light-primary-color);
-    width: 100%;
-    height: 6vh;
-    border: 0.1px solid var(--var-light-primary-color);
-    margin-top: 10%;
-}
-input[type="submit"]{
-    box-shadow: 0 0 3px var(--var-primary-color);
-    font-weight: 100;
-    color: white;
-    background-color: var(--var-primary-color);
-    padding: 0.8em 2em;
-    border-radius: 10px;
-}
-form{
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+/*  */
