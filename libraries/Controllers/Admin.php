@@ -18,7 +18,9 @@
 
 
         public function supprimerUtilsateur($id) {
-
+            $supprimer = new \Models\Admin();
+            $supprimerUtilisateurs = $supprimer->supprimerUtilsateur($id);
+            return $supprimerUtilisateurs;
         }
 
         public function creerUtilisateur($nom, $prenom, $email, $mot_de_passe, $adresse, $code_postale, $pays, $ville, $num) {

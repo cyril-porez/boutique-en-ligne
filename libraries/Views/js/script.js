@@ -8,16 +8,24 @@ window.onload = () => {
             e.preventDefault();
             // On récupère le data-target
             let target = this.dataset.target
-            
+            console.log(target)
             // On récupère la bonne modale
             let modal = document.querySelector(target);
+            console.log(modal)
             // On affiche la modale
             modal.classList.add("show");
 
             // On récupère les boutons de fermeture
             const modalClose = modal.querySelectorAll("[data-dismiss=dialog]");
+            const annuler = modal.querySelector('modal-close')
             
-            for(let close of modalClose){
+            for(let close  of modalClose){
+                close.addEventListener("click", () => {
+                    modal.classList.remove("show");
+                });
+            }
+
+            for(let close  of annuler){
                 close.addEventListener("click", () => {
                     modal.classList.remove("show");
                 });
