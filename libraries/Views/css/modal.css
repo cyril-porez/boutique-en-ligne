@@ -2,63 +2,47 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-image: url(/images/IMG-1168.PNG); */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-button{
-    background-color:black;
-	display:inline-block;
-	cursor:pointer;
-	color:white;
-	font-size:15px;
-	padding:6px 15px;
-	text-decoration:none;
-    border: none;
-}
+/* ----------modal box-------- */
 .modal{
-    width: 50%;
-    height: 70vh;
-
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-
-    background-color: whitesmoke;
-    border-radius: 3px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
-}
-span{
-    position: relative;
-    top: 150px;
-    left: 130px;
-    font-size: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    color: blue;
-}
-span:hover{
-    color: red;
-}
-.box{
-    display: flex;
     justify-content: center;
-    align-items: center;
-     
-}
-.modal{
-    position: fixed;
-    opacity: 0;
+    background: rgba(77,77,77,0.7);
+    transition: all 0.4s;
     visibility: hidden;
-    transition: 0.4s;
+    opacity: 0;
 }
-button:focus + .modal{
-    opacity: 1;
+/* modal visible au click */
+.modal:target{
     visibility: visible;
+    opacity: 1;
 }
-/* button + body {
-    -webkit-filter: blur(1px);
-    -moz-filter: blur(1px);
-    -o-filter: blur(1px);
-    -ms-filter: blur(1px);
-    filter: blur(1px);
-} */
+/* modal contant */
+.modalcontent{
+    position: relative;
+    background: #fff;
+    width: 500px;
+    max-width: 90%;
+    padding: 1em 2em;
+    border-radius: 4px;
+}
+a{
+    font-size: 21px;
+    font-weight: 600;
+}
+/* fermeture du modale */
+.modalclose{
+    position: absolute;
+    top: 0;
+    right: 15px;
+    color: #585858;
+    text-decoration: none;
+    font-size: 36px;
+}
