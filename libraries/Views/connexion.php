@@ -27,7 +27,12 @@
         <main>
             <form action="connexion.php" method="post">
                 <fieldset>
-
+                    <legend>Connectez-vous juste ici</legend>
+                    <label>EMAIL :</label>
+                    <input type="text" name="email" placeholder="email" autocomplete="off">
+                    <label>Mot de passe :</label>
+                    <input type="mot" name="mot_de_passe" placeholder="Mot de passe" />
+                   
                 </fieldset>
                 <button type="submit" name="connection">Connexion</button>
                 <button type="submit" name="deconnexion">deConnexion</button>
@@ -37,15 +42,17 @@
                     <a href="#modalbox">ouvrir modal</a>
                 </div>
 
-                <div id="modalbox" class="modal">
-                    <div class="modalcontent">
-                        <h1>connexion</h1>
-                        <legend>Connectez-vous juste ici</legend>
-                        <label>EMAIL :</label>
-                            <input type="text" name="email" placeholder="email" autocomplete="off">
-                        <label>Mot de passe :</label>
-                        <input type="mot" name="mot_de_passe" placeholder="Mot de passe" />
-                        <a href="#" class="modal-close">&times;</a>
+                <button role='button' data-target='#modal' data-toggle='modal' id='connexion-link'>dcfvgbh</button>
+                <!-- <a href='#' role='button' data-target='#modal' data-toggle='modal' id='connexion-link'>Se connecter</a> -->
+                <div class="modal" id="modal" role="dialog">
+                    <div class="modal-content">
+                        <div class="modal-close" data-dismiss="dialog">X</div>
+                        <div class="modal-header">
+                            <p>Se connecter</p>
+                        </div>
+                        <div class="modal-body">
+                            <h1>ibrahim</h1>
+                        </div>
                     </div>
                 </div>
             </form>
