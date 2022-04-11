@@ -1,15 +1,17 @@
 <link rel="stylesheet" href="css/modal.css">
+<script src="js/script.js" defer></script>
 <body>
     <main>
-        <div class="wrapper">
-            <a href="#modalbox">ouvrir modal</a>
-        </div>
-
-        <div id="modalbox" class="modal">
-            <div class="modalcontent">
-                <h1>Je suis un Monstre</h1>
-                <p>by ibra</p>
-                <a href="#" class="modal-close">&times;</a>
+        <a href='#' role='button' data-target='#modal' data-toggle='modal' id='connexion-link'>Se connecter</a>
+        <div class="modal" id="modal" role="dialog">
+            <div class="modal-content">
+                <div class="modal-close" data-dismiss="dialog">X</div>
+                <div class="modal-header">
+                    <p>Se connecter</p>
+                </div>
+                <div class="modal-body">
+                    <h1>M.POREZ</h1>
+                </div>
             </div>
         </div>
     </main>

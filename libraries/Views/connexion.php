@@ -1,7 +1,6 @@
 <?php
     session_start();
     require_once("../Controllers/Connexion.php");
-    // echo $recuperer[0]['mot_de_passe'];
 
     if (isset($_POST['deconnexion'])){
         session_destroy();
@@ -28,17 +27,27 @@
         <main>
             <form action="connexion.php" method="post">
                 <fieldset>
-                    <legend>Connectez-vous juste ici</legend>
-                    <label>EMAIL :</label>
-                    <input type="text" name="email" placeholder="email" autocomplete="off">
-                    <label>Mot de passe :</label>
-                    <input type="mot" name="mot_de_passe" placeholder="Mot de passe" />
-                   
+
                 </fieldset>
                 <button type="submit" name="connection">Connexion</button>
                 <button type="submit" name="deconnexion">deConnexion</button>
                 <p>Vous n'avez pas de compte? <br><a href="inscription.php">Creez un compte</a></p>
                 <?= $erreur; ?>
+                <div class="wrapper">
+                    <a href="#modalbox">ouvrir modal</a>
+                </div>
+
+                <div id="modalbox" class="modal">
+                    <div class="modalcontent">
+                        <h1>connexion</h1>
+                        <legend>Connectez-vous juste ici</legend>
+                        <label>EMAIL :</label>
+                            <input type="text" name="email" placeholder="email" autocomplete="off">
+                        <label>Mot de passe :</label>
+                        <input type="mot" name="mot_de_passe" placeholder="Mot de passe" />
+                        <a href="#" class="modal-close">&times;</a>
+                    </div>
+                </div>
             </form>
         </main>
         <?php 
