@@ -12,7 +12,7 @@ var_dump($_SESSION);
     <title>Document</title>
 </head>
 <body>
-    <a href="FormRegister.php">Inscription</a><br>
+    <a href="insciption.php">Inscription</a><br>
     <a href="connexion.php">connexion</a>
 </body>
 </html>
