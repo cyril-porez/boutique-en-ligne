@@ -2,6 +2,10 @@
 session_start();
 
 var_dump($_SESSION);
+if (isset($_POST['deconnexion'])){
+    session_destroy();
+    header('Location:connexion.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,5 +18,6 @@ var_dump($_SESSION);
 <body>
     <a href="insciption.php">Inscription</a><br>
     <a href="connexion.php">connexion</a>
+    <button type="submit" name="deconnexion">deConnexion</button>
 </body>
 </html>

@@ -18,46 +18,37 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../public/css/form.css">
-        <link rel="stylesheet" href="../public/css/root&font.css">
+        <script src="js/script.js" defer></script>
+        <link rel="stylesheet" href="css/connexion.css">
         <title>Connexion</title>
     </head>
     <body>
         <?php //require('header.php');?>
         <main>
-            <form action="connexion.php" method="post">
-                <fieldset>
-                    <legend>Connectez-vous juste ici</legend>
-                    <label>EMAIL :</label>
-                    <input type="text" name="email" placeholder="email" autocomplete="off">
-                    <label>Mot de passe :</label>
-                    <input type="mot" name="mot_de_passe" placeholder="Mot de passe" />
-                   
-                </fieldset>
-                <button type="submit" name="connection">Connexion</button>
-                <button type="submit" name="deconnexion">deConnexion</button>
-                <p>Vous n'avez pas de compte? <br><a href="inscription.php">Creez un compte</a></p>
-                <?= $erreur; ?>
-                <div class="wrapper">
-                    <a href="#modalbox">ouvrir modal</a>
-                </div>
-
-                <button role='button' data-target='#modal' data-toggle='modal' id='connexion-link'>dcfvgbh</button>
-                <!-- <a href='#' role='button' data-target='#modal' data-toggle='modal' id='connexion-link'>Se connecter</a> -->
+                    <!-- Modal -->
+                <button role='button' data-target='#modal' data-toggle='modal' id='connexion-link'>connexion</button>
                 <div class="modal" id="modal" role="dialog">
                     <div class="modal-content">
                         <div class="modal-close" data-dismiss="dialog">X</div>
                         <div class="modal-header">
-                            <p>Se connecter</p>
+                            <h3>CONNECTEZ-VOUS</h3>
                         </div>
                         <div class="modal-body">
-                            <h1>ibrahim</h1>
+                            <img src="images/IMG-1168.png" alt="">
+                            <form action="connexion.php" method="post">
+                                    <label>EMAIL :</label>
+                                    <input type="text" name="email" placeholder="email" autocomplete="off">
+                                    <label>Mot de passe :</label>
+                                    <input type="mot" name="mot_de_passe" placeholder="Mot de passe" />
+                                <button type="submit" name="connection">Connexion</button>
+                                <p>Vous n'avez pas de compte ? <br><a href="inscription.php">Creez un compte</a></p>
+                                <?= $erreur; ?>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </form>
         </main>
-        <?php 
+        <?php
             //require('footer.php');
         ?>
     </body>
