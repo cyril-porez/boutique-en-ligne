@@ -116,3 +116,10 @@ input{
     margin-bottom: 3%;
     width: 80%;
 }
+a{
+    text-decoration: none;
+    color: rgb(161, 156, 156);
+}
+a:hover{
+    color: red;
+}
