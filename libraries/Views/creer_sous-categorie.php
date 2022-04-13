@@ -1,26 +1,13 @@
 <?php
-    require_once('modelSousCategorie.php');
+    require_once('../Controllers/sousCategorie.php');
 
-    $sous_categorie = new SousCategorie;
-
+    $sous_categorie = new \Models\SousCategorie();
     $fetch = $sous_categorie->recuperation_de_donnee();
 
-
-if(!empty($_POST['nom']) && !empty($_POST['categorie'])){
-    $nom = htmlspecialchars($_POST['nom']);
-    $recupere = $sous_categorie->verif_si_existe_deja($nom);
-    if(count($recupere) == 0){
-        $sous_categorie->creation_sous_categorie($nom, $_POST['categorie']);
-      }
-      else{
-          echo 'sous_categorie déja existante';
-      }
-
-}
-elseif(isset($nom, $_POST['categorie']) && empty($nom) && empty($_POST['categorie'])){
-    echo 'champ vide';
-}
-
+    if(!empty($_POST['nom']) && !empty($_POST['categorie'])) {
+        $creerSousCategorie = new \Controllers\SousCategorie();
+        $creerSousCategorie->creerSousCategorie($_POST['nom'], $_POST['categorie']);
+    }
 ?>
 <html>
     <form action="creer_sous-categorie.php" method="post">

@@ -6,9 +6,8 @@
 
     class Categorie {
 
-
         public function verifCategorie($nom) {
-            $categorie = new \Models\Model;
+            $categorie = new \Models\Categorie();
             $recupere = $categorie->verif_si_existe_deja($nom);
 
             if(count($recupere) == 0){
@@ -19,6 +18,7 @@
                 echo 'categorie déja existante';
             }
         }
+
 
         public function creerCategorie($nom) {           
             $nom =  htmlspecialchars($_POST['nom']);
