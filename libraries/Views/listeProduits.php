@@ -12,6 +12,9 @@
 
     </header>
     <main>
+        <section id='filtre'>
+            <section class='filtre_header'><h3>FILTRER PAR</h3></section>
+        </section>
         <div id="container">
             <?php
                 foreach($afficheProduits as $afficheProduit) {?>

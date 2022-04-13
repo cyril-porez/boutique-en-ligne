@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="css/produit.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <?php
     require_once('../Models/Produits.php');
     require_once('../Controllers/Produits.php');
@@ -36,6 +37,15 @@
                         <button type="submit" name="jaime">j'aime</button>
                         <button type="submit" name="deteste">deteste</button>
                     </form>
+                    <div id="taille">
+                        <form action="" method="post">
+                            <input type="checkbox">S</input>
+                            <input type="checkbox">M</input>
+                            <input type="checkbox">L</input>
+                            <input type="checkbox">XL</input>
+                            <input type="checkbox">XXL</input>
+                        </form>
+                    </div>
                     <span>
                         <input type="number" name="quantité" id="input-number">
                         <button id="ajout-panier">AJOUTER AU PANIER</button>
