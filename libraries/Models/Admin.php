@@ -5,6 +5,8 @@
 
     class Admin extends Model {
 
+        
+
 
         public function modifierProduit() {
             $sql = "UPDATE UPDATE `produits` SET `id`='[value-1]',`nom`='[value-2]',`reference`='[value-3]',`classe`='[value-4]',`description`='[value-5]',`id_categorie`='[value-6]',`id_sous_categorie`='[value-7]',`prix`='[value-8]',`image1`='[value-9]' WHERE 1";
@@ -31,7 +33,7 @@
             $requete->bindValue(":code_postale", $code_postale, \PDO::PARAM_INT);
             $requete->bindValue(":pays", $pays, \PDO::PARAM_STR);
             $requete->bindValue(":ville", $ville, \PDO::PARAM_STR);
-            $requete->bindValue(":num",$num, \PDO::PARAM_INT);
+            $requete->bindValue(":num",$num, \PDO::PARAM_STR);
             $requete->bindValue(":id_droits", 1, \PDO::PARAM_INT);
             $requete->bindValue(":date", $date);
             $requete->execute();
@@ -60,7 +62,7 @@
             $sql = "DELETE FROM `utilisateurs` WHERE :id";
             $requete = $this->bdd->prepare($sql);
             $requete->bindValue(":id", $id, \PDO::PARAM_INT);
-            $requete->execute();      
+            $requete->execute();     
         } 
 
 
@@ -71,5 +73,18 @@
             $infoUtilisateurs = $requete->fetchall(\PDO::FETCH_ASSOC);
             return $infoUtilisateurs;
         }
+
+
+        public function verif_si_existe_deja($email){
+            $selection = "SELECT email FROM utilisateurs WHERE email = :email";
+            $result = $this->bdd->prepare($selection);
+            $result->bindValue(':email', $email, \PDO::PARAM_STR);
+            $result->execute();
+            $recupere = $result->fetchAll();
+            return $recupere;
+        }  
     }
+
+    /*$user = new \Models\Admin();
+    $user->creerUtilisateur('lo', 'la', '$email', '$mot_de_passe', '$mot_de_passe' ,'$adresse', 58741, '$pays', '$ville', 'num');*/
 ?>
