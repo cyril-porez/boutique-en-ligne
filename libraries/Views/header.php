@@ -10,7 +10,7 @@
     //var_dump($affiche);
 
     $afficheSousCategorie = new \Models\SousCategorie();
-    
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
     <header>
         <nav>
             <ul>
-                <li><a href="">Hommes</a> 
+                <li><a href="">Hommes</a>
                     <ul>
                         <?php
                             foreach($afficheHs as $afficheH) {
@@ -37,8 +37,8 @@
                                         <?php
                                             foreach($afficheSousCategorieHommes as $afficheSousCategorieHomme) {
                                                 echo '<li><a href=produits.php?id=' . $afficheSousCategorieHomme['id'] . '>' . $afficheSousCategorieHomme['nom'] . '</a>';?>                                                
-                                                </li> 
-                                                <?php                                           
+                                                </li>
+                                                <?php
                                             }
                                             ?>
                                     </ul>
@@ -60,7 +60,7 @@
                                                 echo '<li><a href=produits.php?id=' . $afficheSousCategorieFemme['id'] . '>' . $afficheSousCategorieFemme['nom'] . '</a></li>';
                                             }
                                         ?>
-                                    </ul>                                
+                                    </ul>
                                 </li>
                                 <?php
                             }
@@ -110,11 +110,11 @@
     </header>
     <main>
         <?php
-           
+
         ?>
     </main>
     <footer>
 
-    </footer>    
+    </footer>
 </body>
 </html>

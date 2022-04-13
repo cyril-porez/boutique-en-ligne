@@ -2,9 +2,9 @@
     require_once('../Models/Categorie.php');
 
     $id = $_GET['id'];
-
     $produits = new \Models\Categorie();
     $afficheProduits = $produits->choix_produit_par_categorie($id);
+
 ?>
 <link rel="stylesheet" href="css/produits.css">
 <body>

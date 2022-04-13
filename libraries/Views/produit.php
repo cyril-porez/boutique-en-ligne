@@ -17,6 +17,10 @@
     else if (isset($_POST["deteste"])) {
         $jaimeDeteste->deteste($recup_produit);
     }
+
+    $chaine =  $produit[0]['nom'];
+    $gant   = 'Gant';
+    $kimono = 'Kimono';
 ?>
 
 <html>
@@ -38,13 +42,43 @@
                         <button type="submit" name="deteste">deteste</button>
                     </form>
                     <div id="taille">
-                        <form action="" method="post">
-                            <input type="checkbox">S</input>
-                            <input type="checkbox">M</input>
-                            <input type="checkbox">L</input>
-                            <input type="checkbox">XL</input>
-                            <input type="checkbox">XXL</input>
-                        </form>
+                                    <?php
+                            $verifieGants = strripos($chaine, $gant);
+                            $verifieKimono = strripos($chaine, $kimono);
+
+                            if($verifieGants === false) {?>
+                                <form action="" method="post">
+                                    <input type="checkbox">10oz</input>
+                                    <input type="checkbox">12oz</input>
+                                    <input type="checkbox">14oz</input>
+                                    <input type="checkbox">16oz</input>
+                                </form>
+                        <?php }
+                            elseif($verifieKimono === false) {?>
+                                <form action="" method="post">
+                                    <input type="checkbox">A0</input>
+                                    <input type="checkbox">A1</input>
+                                    <input type="checkbox">A2</input>
+                                    <input type="checkbox">A3</input>
+                                    <input type="checkbox">A4</input>
+                                    <input type="checkbox">A5</input>
+                                    <input type="checkbox">C0</input>
+                                    <input type="checkbox">C00</input>
+                                    <input type="checkbox">C1</input>
+                                    <input type="checkbox">C2</input>
+                                    <input type="checkbox">C3</input>
+                                    <input type="checkbox">C4</input>
+                                </form>
+                        <?php }
+                            elseif ($verifieKimono === false && $verifieGants === false) {?>
+                                <form action="" method="post">
+                                    <input type="checkbox">S</input>
+                                    <input type="checkbox">M</input>
+                                    <input type="checkbox">L</input>
+                                    <input type="checkbox">XL</input>
+                                    <input type="checkbox">XXL</input>
+                                </form>
+                            <?php } ?>
                     </div>
                     <span>
                         <input type="number" name="quantité" id="input-number">
