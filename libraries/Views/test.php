@@ -9,5 +9,6 @@ if ($pos === false) {
 } else {
     echo "Félicitations !\n";
     echo "Nous avons trouvé le dernier ($needle) dans ($haystack) à la position ($pos)";
+    var_dump($pos);
 }
 ?>

@@ -42,11 +42,11 @@
                         <button type="submit" name="deteste">deteste</button>
                     </form>
                     <div id="taille">
-                                    <?php
-                            $verifieGants = strripos($chaine, $gant);
+                            <?php
+                            $verifieGants = strripos($chaine,$gant);
                             $verifieKimono = strripos($chaine, $kimono);
 
-                            if($verifieGants === false) {?>
+                            if( $verifieGants === 0 || $verifieGants === true ) {?>
                                 <form action="" method="post">
                                     <input type="checkbox">10oz</input>
                                     <input type="checkbox">12oz</input>
@@ -54,7 +54,7 @@
                                     <input type="checkbox">16oz</input>
                                 </form>
                         <?php }
-                            elseif($verifieKimono === false) {?>
+                            elseif($verifieKimono === 0 || $verifieKimono === true) {?>
                                 <form action="" method="post">
                                     <input type="checkbox">A0</input>
                                     <input type="checkbox">A1</input>
@@ -70,7 +70,7 @@
                                     <input type="checkbox">C4</input>
                                 </form>
                         <?php }
-                            elseif ($verifieKimono === false && $verifieGants === false) {?>
+                            else{?>
                                 <form action="" method="post">
                                     <input type="checkbox">S</input>
                                     <input type="checkbox">M</input>
@@ -78,7 +78,8 @@
                                     <input type="checkbox">XL</input>
                                     <input type="checkbox">XXL</input>
                                 </form>
-                            <?php } ?>
+                            <?php }
+                            ?>
                     </div>
                     <span>
                         <input type="number" name="quantité" id="input-number">
