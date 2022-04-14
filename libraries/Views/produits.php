@@ -77,18 +77,20 @@ $chaine =  $affiche_sous_categories[0]['nom'];
                 <?php }
                     else{?>
                         <form action="" method="post">
-                            <div>
-                                <label for="checkbox">S</label>
-                                <input type="checkbox">
-                                <label for="checkbox">M</label>
-                                <input type="checkbox">
-                                <label for="checkbox">L</label>
-                                <input type="checkbox">
-                                <label for="checkbox">XL</label>
-                                <input type="checkbox">
-                                <label for="checkbox">XXL</label>
-                                <input type="checkbox">
-                            </div>
+                                <div>
+                                    <label for="checkbox">S</label>
+                                    <input type="checkbox">
+                                    <label for="checkbox">M</label>
+                                    <input type="checkbox">
+                                    <label for="checkbox">L</label>
+                                    <input type="checkbox">
+                                </div>
+                                <div>
+                                    <label for="checkbox">XL</label>
+                                    <input type="checkbox">
+                                    <label for="checkbox">XXL</label>
+                                    <input type="checkbox">
+                                </div>
                         </form>
                     <?php }
                     ?>
