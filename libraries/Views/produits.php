@@ -17,6 +17,7 @@ $chaine =  $affiche_sous_categories[0]['nom'];
 <html>
     <body>
         <link rel="stylesheet" href="css/produits.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
         <header>
 
         </header>
@@ -30,35 +31,64 @@ $chaine =  $affiche_sous_categories[0]['nom'];
 
                     if( $verifieGants === 0 || $verifieGants === true ) {?>
                         <form action="" method="post">
-                            <input type="checkbox">10oz</input>
-                            <input type="checkbox">12oz</input>
-                            <input type="checkbox">14oz</input>
-                            <input type="checkbox">16oz</input>
+                            <label for="checkbox">10oz</label>
+                            <input type="checkbox">
+                            <label for="checkbox">12oz</label>
+                            <input type="checkbox">
+                            <label for="checkbox">14oz</label>
+                            <input type="checkbox">
+                            <label for="checkbox">16oz</label>
+                            <input type="checkbox">
                         </form>
                 <?php }
                     elseif($verifieKimono === 0 || $verifieKimono === true) {?>
                         <form action="" method="post">
-                            <input type="checkbox">A0</input>
-                            <input type="checkbox">A1</input>
-                            <input type="checkbox">A2</input>
-                            <input type="checkbox">A3</input>
-                            <input type="checkbox">A4</input>
-                            <input type="checkbox">A5</input>
-                            <input type="checkbox">C0</input>
-                            <input type="checkbox">C00</input>
-                            <input type="checkbox">C1</input>
-                            <input type="checkbox">C2</input>
-                            <input type="checkbox">C3</input>
-                            <input type="checkbox">C4</input>
+                            <div>
+                                <label for="checkbox">A0</label>
+                                <input type="checkbox">
+                                <label for="checkbox">A1</label>
+                                <input type="checkbox">
+                                <label for="checkbox">A2</label>
+                                <input type="checkbox">
+                                <label for="checkbox">A3</label>
+                                <input type="checkbox">
+                            </div>
+                            <div>
+                                <label for="checkbox">A4</label>
+                                <input type="checkbox">
+                                <label for="checkbox">A5</label>
+                                <input type="checkbox">
+                                <label for="checkbox">C0</label>
+                                <input type="checkbox">
+                                <label for="checkbox">C00</label>
+                                <input type="checkbox">
+                            </div>
+                            <div>
+                                <label for="checkbox">C1</label>
+                                <input type="checkbox">
+                                <label for="checkbox">C2</label>
+                                <input type="checkbox">
+                                <label for="checkbox">C3</label>
+                                <input type="checkbox">
+                                <label for="checkbox">C4</label>
+                                <input type="checkbox">
+                            </div>
                         </form>
                 <?php }
                     else{?>
                         <form action="" method="post">
-                            <input type="checkbox">S</input>
-                            <input type="checkbox">M</input>
-                            <input type="checkbox">L</input>
-                            <input type="checkbox">XL</input>
-                            <input type="checkbox">XXL</input>
+                            <div>
+                                <label for="checkbox">S</label>
+                                <input type="checkbox">
+                                <label for="checkbox">M</label>
+                                <input type="checkbox">
+                                <label for="checkbox">L</label>
+                                <input type="checkbox">
+                                <label for="checkbox">XL</label>
+                                <input type="checkbox">
+                                <label for="checkbox">XXL</label>
+                                <input type="checkbox">
+                            </div>
                         </form>
                     <?php }
                     ?>

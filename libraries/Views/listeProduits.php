@@ -6,7 +6,7 @@
     $afficheProduits = $produits->choix_produit_par_categorie($id);
 
 ?>
-<link rel="stylesheet" href="css/produits.css">
+<link rel="stylesheet" href="css/listeProduits.css">
 <body>
     <header>
 
