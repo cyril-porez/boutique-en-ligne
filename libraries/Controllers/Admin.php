@@ -57,11 +57,11 @@
                     $erreur = "les mot de passe ne sont pas identique";
                 }                
             }
-            /*else if (isset($nom) || isset($prenom) || isset($email) || isset($mot_de_passe) || isset($adresse) ||
+            else if (isset($nom) || isset($prenom) || isset($email) || isset($mot_de_passe) || isset($adresse) ||
                 isset($codePostale) || isset($pays) || isset($ville) || isset($numero) ) {
                 $erreur = "champs vide";
             }
-            return $erreur;*/
+            return $erreur;
         }
 
 

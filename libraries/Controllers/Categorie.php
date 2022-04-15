@@ -20,10 +20,15 @@
         }
 
 
+        public function selectCategorie () {
+            $afficheProduit = new \Models\Categorie();
+            return $afficheProduit->selectCategorie();
+        }
+
         public function creerCategorie($nom) {           
             $nom =  htmlspecialchars($_POST['nom']);
             $verif = new \Controllers\Categorie();
             $verif->verifCategorie($nom);            
-        }           
+        }          
     }
 ?>

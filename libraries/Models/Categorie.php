@@ -18,6 +18,14 @@
             $result->execute();
         }
 
+        public function selectCategorie() {
+            $sql = "SELECT * from categories";
+            $categorie = $this->bdd->prepare($sql);
+            $categorie->execute();
+            $categories = $categorie->fetchall(\PDO::FETCH_ASSOC);
+            return $categories;
+        }
+
         public function selectCategorieH() {
             $sql = "SELECT * from categories where genre = 'Homme'";
             $categorie = $this->bdd->prepare($sql);

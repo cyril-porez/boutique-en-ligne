@@ -29,6 +29,11 @@
             }
 
             return $erreur;
-        }        
+        }
+        
+        public function selectSousCategorie() {
+            $afficheProduit = new \Models\SousCategorie();
+            return $afficheProduit->selectSousCategories();
+        }
     }   
 ?>

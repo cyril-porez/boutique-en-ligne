@@ -13,7 +13,7 @@
         }
 
         public function selectionneProduits() {
-            $sql = "SELECT * FROM produits";
+            $sql = "SELECT produits.id, produits.nom, produits.reference, produits.classe, produits.description, categories.nom as categorie, sous_categories.nom as sous_categorie, produits.prix, produits.image1 from produits inner join categories ON produits.id_categorie = categories.id inner join sous_categories ON produits.id_sous_categorie = sous_categories.id";
             $requete = $this->bdd->prepare($sql);
             $requete->execute();
             $infoUtilisateurs = $requete->fetchall(\PDO::FETCH_ASSOC);
@@ -59,10 +59,11 @@
 
 
         public function supprimerUtilsateur($id) {
-            $sql = "DELETE FROM `utilisateurs` WHERE :id";
+            $sql = "DELETE FROM `utilisateurs` WHERE id = :id";
             $requete = $this->bdd->prepare($sql);
             $requete->bindValue(":id", $id, \PDO::PARAM_INT);
-            $requete->execute();     
+            $requete->execute();    
+            header("Refresh: 0"); 
         } 
 
 
@@ -84,7 +85,4 @@
             return $recupere;
         }  
     }
-
-    /*$user = new \Models\Admin();
-    $user->creerUtilisateur('lo', 'la', '$email', '$mot_de_passe', '$mot_de_passe' ,'$adresse', 58741, '$pays', '$ville', 'num');*/
 ?>

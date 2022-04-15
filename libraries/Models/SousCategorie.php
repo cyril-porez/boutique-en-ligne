@@ -64,5 +64,13 @@
             $produits = $produitSousCategorie->fetchall(\PDO::FETCH_ASSOC);
             return $produits;
         }
+
+        public function selectSousCategories() {
+            $sql = "SELECT sous_categories.id, sous_categories.nom as sous_categorie, categories.nom as categorie from sous_categories inner join categories on sous_categories.id_categorie = categories.id";
+            $categorie = $this->bdd->prepare($sql);
+            $categorie->execute();
+            $categories = $categorie->fetchall(\PDO::FETCH_ASSOC);
+            return $categories;
+        }
     }
 ?>

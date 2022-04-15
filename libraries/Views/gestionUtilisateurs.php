@@ -1,9 +1,23 @@
 <?php
 
     require_once('../Controllers/Admin.php');
-
+    $_SESSION['test'] = 0;
     $utilsateurs = new \Controllers\Admin();
     $afficheUtilisateurs = $utilsateurs->selectionneUtilisateurs();
+
+    if(!empty($_POST['nomCreer']) && !empty($_POST['prenomCreer'])  && !empty($_POST['emailCreer']) && !empty($_POST['mot_de_passeCreer']) && !empty($_POST['CmdpCreer']) && !empty($_POST['adresseCreer']) && !empty($_POST['code_postaleCreer']) && !empty($_POST['paysCreer']) && !empty($_POST['villeCreer']) && !empty($_POST['numeroCreer'])) {    
+        $creerUtilisateur = new \Controllers\Admin();
+        $creerUtilisateur->creerUtilisateur($_POST['nomCreer'], $_POST['prenomCreer'], $_POST['emailCreer'], $_POST['mot_de_passeCreer'], $_POST['CmdpCreer'], $_POST['adresseCreer'], $_POST['code_postaleCreer'], $_POST['paysCreer'], $_POST['villeCreer'], $_POST['numeroCreer']);
+        header("Refresh: 0"); 
+    }
+
+    if (isset($_POST['supprimer']) ) {                                            
+        if(isset($_POST['deleteUser'])){
+            $supprime = new \Controllers\Admin();
+            $supprime->supprimerUtilsateur($_POST['deleteUser']); 
+            header("Refresh: 0");                                                           
+        }                
+    }   
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +37,7 @@
     </header>
     <main>
         <div>
-            <button role='button' data-target='#modalCreer' data-toggle='modal' id='connexion-link'>Creer</button>
+            <button role='button' data-target='#modalCreer' data-toggle='modal' id='connexion-link'>Creer un utilisateur</button>
             <div class="modal" id="modalCreer" role="dialog">
                 <div class="modal-content">
                     <div class="modal-close" data-dismiss="dialog">X</div>
@@ -67,12 +81,6 @@
                                     <!-- </fieldset> -->                                                            
                                 </form>
                             </fieldset>
-                            <?php
-                                if(!empty($_POST['nomCreer']) && !empty($_POST['prenomCreer'])  && !empty($_POST['emailCreer']) && !empty($_POST['mot_de_passeCreer']) && !empty($_POST['CmdpCreer']) && !empty($_POST['adresseCreer']) && !empty($_POST['code_postaleCreer']) && !empty($_POST['paysCreer']) && !empty($_POST['villeCreer']) && !empty($_POST['numeroCreer'])) {    
-                                    $creerUtilisateur = new \Controllers\Admin();
-                                    $creerUtilisateur->creerUtilisateur($_POST['nomCreer'], $_POST['prenomCreer'], $_POST['emailCreer'], $_POST['mot_de_passeCreer'], $_POST['CmdpCreer'], $_POST['adresseCreer'], $_POST['code_postaleCreer'], $_POST['paysCreer'], $_POST['villeCreer'], $_POST['numeroCreer']);
-                                }
-                            ?>
                         </div>
                     </div>
                 </div>
@@ -186,26 +194,21 @@
                                     </div>
                             </td>
                             <td>
-                                <button role='button' data-target='#modalSuppr<?= $afficheUtilisateur ?>' data-toggle='modal' id='connexion-link'>Supprimer</button>
-                               
+                                    <button role='button' data-target='#modalSuppr<?= $afficheUtilisateur ?>' data-toggle='modal' id='connexion-link'>
+                                        
+                                
+                                Supprimer</button>
+
                                 <div class="modal" id="modalSuppr<?= $afficheUtilisateur ?>" role="dialog">
                                     <div class="modal-content">
                                         <div class="modal-close" data-dismiss="dialog">X</div>
                                             <div class="modal-body">
                                                 <h3>Supprimer l'utilisateur!</h3>
                                                 <p>Voulez-vous supprimer cet utilisateur nom:<?= ' ' . $value["nom"] ?> prenom:<?= ' ' . $value["prenom"] ?> id:<?= ' ' . $value["id"] . '?' ?></p>
-                                                <?php
-                                                    echo "pfpfpffpfp";
-                                                    if (isset($_POST['supprimer']) ) {
-                                                        echo "bob";
-                                                        $supprime = new \Controllers\Admin();
-                                                        $supprime->supprimerUtilsateur($value['id']);                                                       
-                                                        //break;
-                                                    }
-                                                    
-                                                ?>                                                
+                                                                                         
                                                 <form action="" method="post">
                                                     <input type="Submit" name="supprimer" value="supprimer">
+                                                    <input type='hidden' name='deleteUser' value='<?= $value['id']?>'>
                                                 </form>
                                                 
                                             </div>
