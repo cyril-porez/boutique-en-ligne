@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="css/produit.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <?php
     require_once('../Models/Produits.php');
     require_once('../Controllers/Produits.php');
@@ -16,6 +17,10 @@
     else if (isset($_POST["deteste"])) {
         $jaimeDeteste->deteste($recup_produit);
     }
+
+    $chaine =  $produit[0]['nom'];
+    $gant   = 'Gant';
+    $kimono = 'Kimono';
 ?>
 
 <html>
@@ -36,6 +41,75 @@
                         <button type="submit" name="jaime">j'aime</button>
                         <button type="submit" name="deteste">deteste</button>
                     </form>
+                    <div id="taille">
+                            <?php
+                            $verifieGants = strripos($chaine,$gant);
+                            $verifieKimono = strripos($chaine, $kimono);
+
+                            if( $verifieGants === 0 || $verifieGants === true ) {?>
+                                <form action="" method="post">
+                                    <label for="checkbox">10oz</label>
+                                    <input type="checkbox">
+                                    <label for="checkbox">12oz</label>
+                                    <input type="checkbox">
+                                    <label for="checkbox">14oz</label>
+                                    <input type="checkbox">
+                                    <label for="checkbox">16oz</label>
+                                    <input type="checkbox">
+                                </form>
+                        <?php }
+                            elseif($verifieKimono === 0 || $verifieKimono === true) {?>
+                                <form action="" method="post">
+                                    <div>
+                                        <label for="checkbox">A0</label>
+                                        <input type="checkbox">
+                                        <label for="checkbox">A1</label>
+                                        <input type="checkbox">
+                                        <label for="checkbox">A2</label>
+                                        <input type="checkbox">
+                                        <label for="checkbox">A3</label>
+                                        <input type="checkbox">
+                                    </div>
+                                    <div>
+                                        <label for="checkbox">A4</label>
+                                        <input type="checkbox">
+                                        <label for="checkbox">A5</label>
+                                        <input type="checkbox">
+                                        <label for="checkbox">C0</label>
+                                        <input type="checkbox">
+                                        <label for="checkbox">C00</label>
+                                        <input type="checkbox">
+                                    </div>
+                                    <div>
+                                        <label for="checkbox">C1</label>
+                                        <input type="checkbox">
+                                        <label for="checkbox">C2</label>
+                                        <input type="checkbox">
+                                        <label for="checkbox">C3</label>
+                                        <input type="checkbox">
+                                        <label for="checkbox">C4</label>
+                                        <input type="checkbox">
+                                    </div>
+                                </form>
+                        <?php }
+                            else{?>
+                                <form action="" method="post">
+                                    <div>
+                                        <label for="checkbox">S</label>
+                                        <input type="checkbox">
+                                        <label for="checkbox">M</label>
+                                        <input type="checkbox">
+                                        <label for="checkbox">L</label>
+                                        <input type="checkbox">
+                                        <label for="checkbox">XL</label>
+                                        <input type="checkbox">
+                                        <label for="checkbox">XXL</label>
+                                        <input type="checkbox">
+                                    </div>
+                                </form>
+                            <?php }
+                            ?>
+                    </div>
                     <span>
                         <input type="number" name="quantité" id="input-number">
                         <button id="ajout-panier">AJOUTER AU PANIER</button>

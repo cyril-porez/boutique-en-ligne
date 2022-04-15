@@ -45,3 +45,45 @@ button:hover {
 #description {
     font-size: 14px;
 }
+input[type=checkbox]{
+ appearance: none;
+ -webkit-appearance: none;
+ height: 20px;
+ width: 20px;
+ background-color: white;
+ border-radius: 5px;
+ cursor: pointer;
+ display: flex;
+ /* place-items: center; */
+ align-items: center;
+ justify-content: center;
+ border: 1px solid black
+}
+ input[type=checkbox]:after {
+     font-family: "Font Awesome 5 Free";
+     font-weight: 900;
+     content: "\f00c";
+     font-size: 10px;
+     color: white;
+     display: none;
+ }
+ input[type=checkbox]:hover{
+     background-color: red;
+ }
+ input[type=checkbox]:checked{
+     background-color: black;
+ }
+ input[type=checkbox]:checked:after{
+     display: block;
+ }
+ #taille form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#taille form div{
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    
+}

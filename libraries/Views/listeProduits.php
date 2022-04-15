@@ -2,16 +2,19 @@
     require_once('../Models/Categorie.php');
 
     $id = $_GET['id'];
-
     $produits = new \Models\Categorie();
     $afficheProduits = $produits->choix_produit_par_categorie($id);
+
 ?>
-<link rel="stylesheet" href="css/produits.css">
+<link rel="stylesheet" href="css/listeProduits.css">
 <body>
     <header>
 
     </header>
     <main>
+        <section id='filtre'>
+            <section class='filtre_header'><h3>FILTRER PAR</h3></section>
+        </section>
         <div id="container">
             <?php
                 foreach($afficheProduits as $afficheProduit) {?>
