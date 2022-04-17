@@ -12,8 +12,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="gestionUtilisateurs.css">
-    <link rel="stylesheet" href="modal.css">
+    <link rel="stylesheet" href="css/gestionUtilisateurs.css">
+    <link rel="stylesheet" href="css/modal.css">
     <script src="js/script.js" defer></script>
     <title>Document</title>
 </head>
@@ -21,7 +21,7 @@
     <header>
 
     </header>
-    <main>     
+    <main>
         <table>
             <thead>
                 <tr>
@@ -49,37 +49,35 @@
                                         <div class="modal-content">
                                             <div class="modal-close" data-dismiss="dialog">X</div>
                                                 <div class="modal-body">
-                                                    <fieldset>
-                                                        <form action="" method="post">                                            
+                                                        <form action="" method="post">
                                                             <label for ="nom">NOM :</label>
                                                             <input id="nom" type="text" name="nom" value=<?=$value["nom"] ?> readonly  />
-                                                
+
                                                             <label for ="prenom">Prénom :</label>
                                                             <input id="prenom" type="text" name="prenom" value=<?=$value["prenom"] ?> autocomplete="off" readonly >
-                                                
+
                                                             <label for ="adresse">Adresse :</label>
                                                             <input id="adresse" type="text" name="adresse" value=<?=$value["adresse"] ?> autocomplete="off" readonly >
-                                                
+
                                                             <label for ="codePostale">CODE POSTALE:</label>
                                                             <input id="code_postale" type="text" value=<?=$value["code_postale"] ?>  readonly  />
-                                                
+
                                                             <label for ="pays">Pays :</label>
                                                             <input id="pays" type="text" name="pays" value=<?=$value["pays"] ?> readonly />
-                                                
+
                                                             <label for ="ville">Ville:</label>
                                                             <input id="ville" type="text" name="ville" value=<?=$value["ville"] ?> readonly  />
-                                                
+
                                                             <label for ="numero">N°:</label>
                                                             <input id="numero" type="text" name="numero" value=<?=$value["num"] ?> readonly  />
-                                                
+
                                                             <label for ="email">Email :</label>
                                                             <input id="email" type="text" name="email" value=<?=$value["email"] ?> autocomplete="off" readonly > 
                                                         </form>
-                                                    </fieldset>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>            
+                                    </div>
                                 </td>
                             <td>
                             <button role='button' data-target='#modalModif<?= $afficheUtilisateur ?>' data-toggle='modal' id='connexion-link'>Modifier</button>
@@ -88,36 +86,33 @@
                                         <div class="modal-content">
                                             <div class="modal-close" data-dismiss="dialog">X</div>
                                                 <div class="modal-body">
-                                                    <fieldset>
-                                                        <form action="" method="post">                                            
+                                                        <form action="" method="post">
                                                             <label for ="nom">NOM :</label>
                                                             <input id="nom" type="text" name="nom" value=<?=$value["nom"] ?> />
-                                                
+
                                                             <label for ="prenom">Prénom :</label>
                                                             <input id="prenom" type="text" name="prenom" value=<?=$value["prenom"] ?> autocomplete="off">
-                                                
+
                                                             <label for ="adresse">Adresse :</label>
                                                             <input id="adresse" type="text" name="adresse" value=<?=$value["adresse"] ?> autocomplete="off">
-                                                
+
                                                             <label for ="codePostale">CODE POSTALE:</label>
                                                             <input id="code_postale" type="text" value=<?=$value["code_postale"] ?> />
-                                                
+
                                                             <label for ="pays">Pays :</label>
                                                             <input id="pays" type="text" name="pays" value=<?=$value["pays"] ?> />
-                                                
+
                                                             <label for ="ville">Ville:</label>
                                                             <input id="ville" type="text" name="ville" value=<?=$value["ville"] ?> />
-                                                
+
                                                             <label for ="numero">N°:</label>
                                                             <input id="numero" type="text" name="numero" value=<?=$value["num"] ?> />
-                                                
+
                                                             <label for ="email">Email :</label>
                                                             <input id="email" type="text" name="email" value=<?=$value["email"] ?> autocomplete="off"> 
 
                                                             <button>Modifier</button>
-                                                            
                                                         </form>
-                                                    </fieldset>
                                                 </div>
                                             </div>
                                         </div>
@@ -141,7 +136,7 @@
                                                         header('Refresh: 0');
                                                         break;
                                                     }
-                                                ?>                                                
+                                                ?>
                                                 <form action="" method="post">
                                                     <button name='supprimer'>Supprimer</button>
                                                 </form>
@@ -149,7 +144,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>      
+                                </div>
                             </td>
                         </tr>
                         <?php
@@ -161,6 +156,6 @@
     </main>
     <footer>
 
-    </footer>    
+    </footer>
 </body>
 </html>

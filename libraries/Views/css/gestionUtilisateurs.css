@@ -1,0 +1,30 @@
+table{
+    height: 80vh;
+    /* background-color: red; */
+    /* border: 3px solid; */
+    width: 90vw;
+    border-collapse: collapse;
+    font-size: 1.3em;
+}
+th, td{
+    border: 2px solid black;
+    text-align: center;
+  }
+tr:hover{
+    background-color: rgb(175, 169, 169);
+    /* color: white; */
+}
+button {
+	background-color:black;
+	display:inline-block;
+	cursor:pointer;
+	color:white;
+	font-family:Arial;
+	font-size:15px;
+	padding:6px 15px;
+	text-decoration:none;
+    border: none;
+}
+button:hover {
+	background-color:red;
+}

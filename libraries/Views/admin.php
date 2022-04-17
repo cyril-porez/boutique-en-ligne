@@ -10,34 +10,26 @@
     <main>
         <img src="images/admin.png" alt="">
         <div class="container">
-            <button>
                 <a href="gestionUtilisateurs.php">
-                    Gestion des Utilisateurs<br>
-                    Créer, supprimer ou<br>modifier un utilisateurs
+                    <img src="images/utilisateurs.png" alt="" class="icone">
+                    Gestion des Utilisateurs
                 </a>
-            </button>
 
-            <button>
                 <a href="gestionCategories.php">
-                    Gestion de Catégories <br>
-                    Créer, supprimer ou <br> modifier une catégories
+                    <img src="images/categorie.png" alt="" class="icone">
+                    Gestion de Catégories
                 </a>
-            </button>
         </div>
         <div class="container">
-            <button>
                 <a href="gestionProduits.php">
-                    Gestion des Produits <br>
-                    Créer, supprimer ou <br> modifier les produits
+                    <img src="images/produits.png" alt="" class="icone">
+                    Gestion des Produits
                 </a>
-            </button>
 
-            <button>
                 <a href="gestionCommentaires.php">
-                    Gestion des Commentaires <br>
-                    Créer, supprimer ou <br> modifier un commentaires
+                    <img src="images/commentaires.png" alt="" class="icone">
+                    Gestion des Commentaires
                 </a>
-            </button>
         </div>
     </main>
     <footer>
