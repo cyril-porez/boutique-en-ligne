@@ -11,10 +11,11 @@
         protected $table_par_id = 'categories';
         protected $table_verif = 'categories';
 
-        public function creer_categorie($nom){
-            $creation = "INSERT INTO `categories`(`nom`) VALUES (:nom)";
+        public function creer_categorie($nom, $genre){
+            $creation = "INSERT INTO categories (nom, genre) VALUES (:nom, :genre)";
             $result = $this->bdd->prepare($creation);
             $result->bindValue(':nom', $nom, \PDO::PARAM_STR);
+            $result->bindValue(':genre', $genre, \PDO::PARAM_STR);
             $result->execute();
         }
 

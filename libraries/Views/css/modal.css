@@ -88,8 +88,8 @@ button:focus + .modal{
 
 .modal-content{
     background-color: white;
-    max-width: 50%;
-    height: 60%;
+    max-width: 30%;
+    height: 95%;
     margin: auto;
     flex: 1;
     position: relative;
@@ -146,4 +146,25 @@ button:focus + .modal{
     background-color: red;
     border-radius: 3px;
 }
+<<<<<<< HEAD
 >>>>>>> c1b887430f32f11f842b4950b23c4df0393d4681
+=======
+.modal-content button{
+    width: 50%;
+    margin-bottom: 10px;
+}
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+input{
+    margin-bottom: 10px;
+    height: 25px;
+    border: 0.3px solid rgb(212, 210, 210);
+    margin-bottom: 3%;
+    width: 80%;
+}
+>>>>>>> 3a2472042f47ab93c0c06b0a4d71c82d1c8b835c

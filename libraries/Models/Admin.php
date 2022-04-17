@@ -68,7 +68,7 @@
 
 
         public function selectionneUtilisateurs() {
-            $sql = "SELECT * FROM utilisateurs";
+            $sql = "SELECT * FROM utilisateurs order by id asc";
             $requete = $this->bdd->prepare($sql);
             $requete->execute();
             $infoUtilisateurs = $requete->fetchall(\PDO::FETCH_ASSOC);
