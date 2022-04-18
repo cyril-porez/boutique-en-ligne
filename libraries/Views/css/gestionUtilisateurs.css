@@ -7,9 +7,9 @@ table{
     font-size: 1.3em;
 }
 th, td{
-    border: 2px solid black;
+    /* border: 2px solid black; */
     text-align: center;
-  }
+}
 tr:hover{
     background-color: rgb(175, 169, 169);
     /* color: white; */
