@@ -2,23 +2,23 @@
     require_once('../Controllers/admin.php');
     require_once('../Controllers/Produits.php');
     require_once('../Models/Produits.php');
-    
+
     $produits = new \Models\Produits;
     $fetchCategories = $produits->recuperation_de_donnee();
     //var_dump($fetchCategories);
     $fetchSousCategories = $produits->recuperation_de_donnee2();
-    
+
     $produits = new \Models\Utilisateurs();
     $afficheProduits = $produits->selectionneProduits();
     //var_dump($afficheProduits);
 
-    if (isset($_POST['supprimer']) ) {                                         
+    if (isset($_POST['supprimer']) ) {
         if(isset($_POST['supprimerProduit'])){
             $supprime = new \Controllers\Utilisateurs();
-            $supprime->supprimerProduit($_POST['supprimerProduit']); 
-            header("Refresh: 0");                                                           
-        }                
-    }   
+            $supprime->supprimerProduit($_POST['supprimerProduit']);
+            header("Refresh: 0");
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/gestionProduits.css">
+    <link rel="stylesheet" href="css/gestionUtilisateurs.css">
     <link rel="stylesheet" href="css/modal.css">
     <script src="js/script.js" defer></script>
     <title>Document</title>

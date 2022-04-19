@@ -2,68 +2,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
-    /* background-image: url(/images/IMG-1168.PNG); */
-}
-button{
-    background-color:black;
-	display:inline-block;
-	cursor:pointer;
-	color:white;
-	font-size:15px;
-	padding:6px 15px;
-	text-decoration:none;
-    border: none;
-}
-.modal{
-    width: 50%;
-    height: 70vh;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    background-color: whitesmoke;
-    border-radius: 3px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
-}
-span{
-    position: relative;
-    top: 150px;
-    left: 130px;
-    font-size: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    color: blue;
-}
-span:hover{
-    color: red;
-}
-.box{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-     
-}
-.modal{
-    position: fixed;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.4s;
-}
-button:focus + .modal{
-    opacity: 1;
-    visibility: visible;
-}
-/* button + body {
-    -webkit-filter: blur(1px);
-    -moz-filter: blur(1px);
-    -o-filter: blur(1px);
-    -ms-filter: blur(1px);
-    filter: blur(1px);
-} */
-=======
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .modal{
@@ -88,8 +26,8 @@ button:focus + .modal{
 
 .modal-content{
     background-color: white;
-    max-width: 30%;
-    height: 95%;
+    max-width: 50%;
+    height: 60%;
     margin: auto;
     flex: 1;
     position: relative;
@@ -104,8 +42,6 @@ button:focus + .modal{
     top: 10px;
     right: 10px;
     cursor: pointer;
-    font-size: 2em;
-    border: 1px solid black;
 }
 
 .modal-header{
@@ -146,25 +82,5 @@ button:focus + .modal{
     background-color: red;
     border-radius: 3px;
 }
-<<<<<<< HEAD
->>>>>>> c1b887430f32f11f842b4950b23c4df0393d4681
-=======
-.modal-content button{
-    width: 50%;
-    margin-bottom: 10px;
-}
-form{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-}
-input{
-    margin-bottom: 10px;
-    height: 25px;
-    border: 0.3px solid rgb(212, 210, 210);
-    margin-bottom: 3%;
-    width: 80%;
-}
->>>>>>> 3a2472042f47ab93c0c06b0a4d71c82d1c8b835c
+
+/*  */
