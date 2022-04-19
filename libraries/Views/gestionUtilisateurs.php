@@ -1,9 +1,14 @@
 <?php
 
     require_once('../Controllers/Admin.php');
+
     $_SESSION['test'] = 0;
-    $utilsateurs = new \Controllers\Admin();
-    $afficheUtilisateurs = $utilsateurs->selectionneUtilisateurs();
+
+    $utilisateurs = new \Controllers\Admin();
+    $afficheUtilisateurs = $utilisateurs->selectionneUtilisateurs();
+    $droitsUtilisateur =$utilisateurs->selectDroitUtilisateur();
+    //var_dump($droitsUtilisateur);
+    
 
     if(!empty($_POST['nomCreer']) && !empty($_POST['prenomCreer'])  && !empty($_POST['emailCreer']) && !empty($_POST['mot_de_passeCreer']) && !empty($_POST['CmdpCreer']) && !empty($_POST['adresseCreer']) && !empty($_POST['code_postaleCreer']) && !empty($_POST['paysCreer']) && !empty($_POST['villeCreer']) && !empty($_POST['numeroCreer'])) {    
         $creerUtilisateur = new \Controllers\Admin();
@@ -19,10 +24,11 @@
         }                
     }   
 
-    if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['mot_de_passe']) && !empty($_POST['Cmdp']) && !empty($_POST['adresse']) && !empty($_POST['code_postale']) && !empty($_POST['pays']) && !empty($_POST['ville']) && !empty($_POST['droit']) && !empty($_POST['numero'])) {
+
+    if(!empty($_POST['nomModifier']) && !empty($_POST['prenomModifier']) && !empty($_POST['emailModifier']) && !empty($_POST['droitModifier'])) {
        echo "bob";
         $inscription = new \Controllers\Admin();
-        $inscription->modifierUtilisateur($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mot_de_passe'], $_POST['adresse'], $_POST['code_postale'], $_POST['pays'], $_POST['ville'], $_POST['droit'], $_POST['numero']);
+        $inscription->modifierUtilisateur($_POST['nomModifier'], $_POST['prenomModifier'], $_POST['emailModifier'], $_POST['droitModifier'], $_POST['modifierUtilisateur']);
     }
 ?>
 
@@ -160,38 +166,32 @@
                                                        
                                                        <form action="" method="post">
                                                             <label for ="nom">NOM :</label>                                                                
-                                                            <input id="nom" type="text" name="nom" value=<?= $value["nom"] ?> placeholder="nom" />
+                                                            <input id="nom" type="text" name="nomModifier" value=<?= $value["nom"] ?> placeholder="nom" />
                                                             
                                                             <label for ="prenom">Prénom :</label>
-                                                            <input id="prenom" type="text" name="prenom" value=<?= $value["prenom"] ?> placeholder="Prenom" autocomplete="off">
+                                                            <input id="prenom" type="text" name="prenomModifier" value=<?= $value["prenom"] ?> placeholder="Prenom" autocomplete="off">
                         
-                                                            <label for ="adresse">Adresse :</label>
-                                                            <input id="adresse" type="text" name="adresse" value=<?= $value["adresse"] ?> placeholder="adresse" autocomplete="off">
-                        
-                                                            <label for ="codePostale">CODE POSTALE:</label>                        
-                                                            <input id="code_postale" type="text" name="code_postale" value=<?= $value["code_postale"] ?> placeholder="codePostale" />
-                        
-                                                            <label for ="pays">Pays :</label>                        
-                                                            <input id="pays" type="text" name="pays" value=<?= $value["pays"] ?> placeholder="pays" />
-                        
-                                                            <label for ="ville">Ville:</label>
-                                                            <input id="ville" type="text" name="ville" name="ville" value=<?= $value["ville"] ?> placeholder="ville" />
                                                             
-                                                            <label for ="numero">N°:</label>
-                                                            <input id="numero" type="text" name="numero" value=<?= $value["num"] ?> placeholder="numero" />
-                        
                                                             <label for ="email">Email :</label>                        
-                                                            <input id="email" type="text" name="email" value=<?= $value["email"] ?> placeholder="Email" autocomplete="off">
+                                                            <input id="email" type="text" name="emailModifier" value=<?= $value["email"] ?> placeholder="Email" autocomplete="off">
 
-                                                            <label for ="email">Droit :</label>                        
-                                                            <input id="email" type="text" name="droit" value=<?= $value["id_droits"] ?> placeholder="droit" autocomplete="off">
+                                                            <label for ="droit">Droit :</label>                        
+                                                            <!--<input id="droit" type="text" name="droitModifier" value=<?= $value["id_droits"] ?> placeholder="droit" autocomplete="off">-->
+
+                                                            <select name="droitModifier" id="droit">
+                                                                <option value=<?= $value['id_droits'] ?>><?= $value['droit'] ?></option>
+                                                                <?php
+                                                                    foreach($droitsUtilisateur as $droitUtilisateur) {
+                                                                        echo "<option value=".$droitUtilisateur["id"].">" .$droitUtilisateur["nom"]. "</option>";
+                                                                    }
+                                                                ?>
                         
-                                                            <label for ="motdepasse">  Mot de passe :</label>                        
-                                                            <input id="motdepasse" type="password" name="mot_de_passe" placeholder="Mot de passe" />
+                                                            <!--<label for ="motdepasse">  Mot de passe :</label>                        
+                                                            <input id="motdepasse" type="password" name="mot_de_passeModifier" placeholder="Mot de passe" />
                         
                                                             <label for ="conf-mdp">Confirmez le mot de passe :</label>                        
-                                                            <input id="conf-mdp" type="password" name="Cmdp" placeholder="Confirmez le mot de passe" />
-                                                            <!-- </fieldset> -->  
+                                                            <input id="conf-mdp" type="password" name="CmdpModifier" placeholder="Confirmez le mot de passe" />
+                                                            </fieldset> -->  
                                                             
                                                             <input type="submit"  value="modifier">
                                                             <input type='hidden' name='modifierUtilisateur' value='<?= $value['id']?>'>
