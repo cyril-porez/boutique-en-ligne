@@ -1,27 +1,86 @@
 <?php
     namespace Controllers;
     
-    require_once('../Models/Admin.php');
-
+    require_once('../Models/Utilisateurs.php');
+    require_once('../Models/SousCategorie.php');
+    require_once('../Models/Categorie.php');
+    require_once('../Models/SousCategorie.php');
+    require_once('../Models/Produits.php');
+    
     class Admin {
 
         public function selectionneUtilisateurs() {
-            $utilisateurs = new \Models\Admin();
+            $utilisateurs = new \Models\Utilisateurs();
             $infoUtilisateurs = $utilisateurs->selectionneUtilisateurs();
             return $infoUtilisateurs;
         }
 
 
-        public function modifierUtilisateur($id) {
-
+        public function modifierUtilisateur($nom, $prenom, $email, $mot_de_passe, $adresse, $codePostale, $pays, $ville, $droit, $numero) {
+            if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['mot_de_passe']) && !empty($_POST['adresse']) && !empty($_POST['code_postale']) && !empty($_POST['pays']) && !empty($_POST['ville']) && !empty($_POST['droit']) && !empty($_POST['numero'])) {
+                echo "blabla";
+                $nom = htmlspecialchars($_POST['nom']);
+                $prenom = htmlspecialchars($_POST['prenom']);
+                $email = htmlspecialchars($_POST['email']);
+                $mot_de_passe = htmlspecialchars($_POST['mot_de_passe']);
+                $confMotDePasse = htmlspecialchars($_POST['Cmdp']);
+                $adresse = htmlspecialchars($_POST['adresse']);
+                $codePostale = htmlspecialchars($_POST['code_postale']);
+                $pays = htmlspecialchars($_POST['pays']);
+                $ville = htmlspecialchars($_POST['ville']);
+                $numero = htmlspecialchars($_POST['numero']);
+                $droit = htmlspecialchars($_POST['droit']);
+        
+                $utilisateur = new \Models\Utilisateurs();
+                $recupere = $utilisateur->verif_si_existe_deja($email);
+                $erreur = '';
+                        
+                if($mot_de_passe == $confMotDePasse) {
+                    $mot_de_passe = password_hash($mot_de_passe, PASSWORD_BCRYPT);
+                    if(count($recupere) == 0) {
+                        $utilisateur->modifierUtilisateur($nom, $prenom, $email, $mot_de_passe, $adresse, $codePostale, $pays, $ville, $droit, $numero);
+                        header("Location: connexion.php");
+                    }
+                    else {
+                        $erreur = "compte deja existant avec cette email";
+                    }
+                }
+                else {
+                    $erreur = "les mot de passe ne sont pas identique";
+                }                
+            }
+            elseif (isset($nom) || isset($prenom) || isset($email) || isset($mot_de_passe) || isset($adresse) ||
+            isset($codePostale) || isset($pays) || isset($ville) || isset($numero) ) {
+                $erreur = "champs vide";
+            }
+            return $erreur;
         }
 
 
         public function supprimerUtilsateur($id) {
-            $supprimer = new \Models\Admin();
-            $supprimerUtilisateurs = $supprimer->supprimerUtilsateur($id);
-            return $supprimerUtilisateurs;
+            $supprimer = new \Models\Utilisateurs();
+            $supprimerUtilisateur = $supprimer->supprimerUtilsateur($id);
+            return $supprimerUtilisateur;
         }
+
+        public function supprimerProduit($id) {
+            $supprimer = new \Models\Produits();
+            $supprimerProduit = $supprimer->supprimerProduit($id);
+            return $supprimerProduit;
+        }
+
+        public function supprimerCategorie($id) {
+            $supprimer = new \Models\Categorie();
+            $supprimerCategorie = $supprimer->supprimerCategorie($id);
+            return $supprimerCategorie;
+        }
+
+        public function supprimerSousCategorie($id) {
+            $supprimer = new \Models\SousCategorie();
+            $supprimerSousCategorie = $supprimer->supprimerSousCategorie($id);
+            return $supprimerSousCategorie;
+        }
+
 
         public function creerUtilisateur($nom, $prenom, $email, $mot_de_passe, $confMotDePasse,  $adresse, $codePostale, $pays, $ville, $numero) {
             if(!empty($_POST['nomCreer']) && !empty($_POST['prenomCreer']) && !empty($_POST['emailCreer']) && !empty($_POST['mot_de_passeCreer']) && !empty($_POST['CmdpCreer']) && !empty($_POST['adresseCreer']) && !empty($_POST['code_postaleCreer']) && !empty($_POST['paysCreer']) && !empty($_POST['villeCreer']) && !empty($_POST['numeroCreer'])) {
@@ -37,7 +96,7 @@
                 $ville = htmlspecialchars($_POST['villeCreer']);
                 $numero = htmlspecialchars($_POST['numeroCreer']);
             
-                $utilisateur = new \Models\Admin();
+                $utilisateur = new \Models\Utilisateurs();
                 $recupere = $utilisateur->verif_si_existe_deja($email);
                 $erreur = '';
                
@@ -66,12 +125,9 @@
 
 
         public function selectionneProduits() {
-            $utilisateurs = new \Models\Admin();
+            $utilisateurs = new \Models\Utilisateurs();
             $infoUtilisateurs = $utilisateurs->selectionneProduits();
             return $infoUtilisateurs;
         }
     }
-
-    /*$user = new \Controllers\Admin();*
-    $user->creerUtilisateur('yo', 'ya', 'q@gmail.com', '$mot_de_passe', '$mot_de_passe' ,'$adresse', 58471, '$pays', '$ville', 'num');*/
 ?>

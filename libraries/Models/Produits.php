@@ -90,8 +90,6 @@
         }
 
 
-        
-
          // determination du nombre totale de produits avec la fonction ci-dessous
          public function determination_nombre_total_de_produits(){
 
@@ -101,5 +99,13 @@
             $nombre_produits = $result->fetch();
             return $nombre_produits;
         }
+
+
+        public function supprimerProduit($id) {
+            $sql = "DELETE FROM produits WHERE id = :id";
+            $requete = $this->bdd->prepare($sql);
+            $requete->bindValue(":id", $id, \PDO::PARAM_INT);
+            $requete->execute();    
+        } 
     }
 ?>

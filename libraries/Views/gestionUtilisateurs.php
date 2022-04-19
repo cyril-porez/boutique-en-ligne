@@ -18,6 +18,12 @@
             header("Refresh: 0");                                                           
         }                
     }   
+
+    if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['mot_de_passe']) && !empty($_POST['Cmdp']) && !empty($_POST['adresse']) && !empty($_POST['code_postale']) && !empty($_POST['pays']) && !empty($_POST['ville']) && !empty($_POST['droit']) && !empty($_POST['numero'])) {
+       echo "bob";
+        $inscription = new \Controllers\Admin();
+        $inscription->modifierUtilisateur($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mot_de_passe'], $_POST['adresse'], $_POST['code_postale'], $_POST['pays'], $_POST['ville'], $_POST['droit'], $_POST['numero']);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -100,7 +106,7 @@
                 <?php
                     $j = 0;
                     foreach($afficheUtilisateurs as  $afficheUtilisateur => $value){?>
-                        <tr>
+                        <tr>                        
                             <td><?= $value['id']; ?></td>
                             <td><?= $value['nom']; ?></td>
                             <td><?= $value['prenom']; ?></td>
@@ -111,9 +117,8 @@
                                     <div class="modal" id="modal<?= $afficheUtilisateur ?>" role="dialog">
                                         <div class="modal-content">
                                             <div class="modal-close" data-dismiss="dialog">X</div>
-                                                <div class="modal-body">
-                                                    <fieldset>
-                                                        <legend>Saisir toutes vos informations</legend>
+                                                <div class="modal-body">                                                    
+                                                    <form action="" method="post">
                                                         <label for ="nom">NOM :</label>                                                                
                                                         <input id="nom" type="text" name="nom" value=<?= $value["nom"] ?> placeholder="nom" />
                                                             
@@ -152,38 +157,44 @@
                                                 <div class="modal-body">
                                                     
                                                     <!--<fieldset>-->
-                                                       <legend>Saisir toutes vos informations</legend>
-                                                        <form>
+                                                       
+                                                       <form action="" method="post">
                                                             <label for ="nom">NOM :</label>                                                                
-                                                            <input id="nom" type="text" name="nom" placeholder="nom" />
+                                                            <input id="nom" type="text" name="nom" value=<?= $value["nom"] ?> placeholder="nom" />
                                                             
                                                             <label for ="prenom">Prénom :</label>
-                                                            <input id="prenom" type="text" name="prenom" placeholder="Prenom" autocomplete="off">
+                                                            <input id="prenom" type="text" name="prenom" value=<?= $value["prenom"] ?> placeholder="Prenom" autocomplete="off">
                         
                                                             <label for ="adresse">Adresse :</label>
-                                                            <input id="adresse" type="text" name="adresse" placeholder="adresse" autocomplete="off">
+                                                            <input id="adresse" type="text" name="adresse" value=<?= $value["adresse"] ?> placeholder="adresse" autocomplete="off">
                         
                                                             <label for ="codePostale">CODE POSTALE:</label>                        
-                                                            <input id="code_postale" type="text" name="code_postale" placeholder="codePostale" />
+                                                            <input id="code_postale" type="text" name="code_postale" value=<?= $value["code_postale"] ?> placeholder="codePostale" />
                         
                                                             <label for ="pays">Pays :</label>                        
-                                                            <input id="pays" type="text" name="pays" placeholder="pays" />
+                                                            <input id="pays" type="text" name="pays" value=<?= $value["pays"] ?> placeholder="pays" />
                         
                                                             <label for ="ville">Ville:</label>
-                                                            <input id="ville" type="text" name="ville" placeholder="ville" />
+                                                            <input id="ville" type="text" name="ville" name="ville" value=<?= $value["ville"] ?> placeholder="ville" />
                                                             
                                                             <label for ="numero">N°:</label>
-                                                            <input id="numero" type="text" name="numero" placeholder="numero" />
+                                                            <input id="numero" type="text" name="numero" value=<?= $value["num"] ?> placeholder="numero" />
                         
                                                             <label for ="email">Email :</label>                        
-                                                            <input id="email" type="text" name="email" placeholder="Email" autocomplete="off">
+                                                            <input id="email" type="text" name="email" value=<?= $value["email"] ?> placeholder="Email" autocomplete="off">
+
+                                                            <label for ="email">Droit :</label>                        
+                                                            <input id="email" type="text" name="droit" value=<?= $value["id_droits"] ?> placeholder="droit" autocomplete="off">
                         
                                                             <label for ="motdepasse">  Mot de passe :</label>                        
                                                             <input id="motdepasse" type="password" name="mot_de_passe" placeholder="Mot de passe" />
                         
                                                             <label for ="conf-mdp">Confirmez le mot de passe :</label>                        
                                                             <input id="conf-mdp" type="password" name="Cmdp" placeholder="Confirmez le mot de passe" />
-                                                            <!-- </fieldset> -->                                                          
+                                                            <!-- </fieldset> -->  
+                                                            
+                                                            <input type="submit"  value="modifier">
+                                                            <input type='hidden' name='modifierUtilisateur' value='<?= $value['id']?>'>
                                                         </form>
                                                 </div>
                                             </div>
@@ -191,11 +202,7 @@
                                     </div>
                             </td>
                             <td>
-                                    <button role='button' data-target='#modalSuppr<?= $afficheUtilisateur ?>' data-toggle='modal' id='connexion-link'>
-                                        
-                                
-                                Supprimer</button>
-
+                                <button role='button' data-target='#modalSuppr<?= $afficheUtilisateur ?>' data-toggle='modal' id='connexion-link'>Supprimer</button>
                                 <div class="modal" id="modalSuppr<?= $afficheUtilisateur ?>" role="dialog">
                                     <div class="modal-content">
                                         <div class="modal-close" data-dismiss="dialog">X</div>

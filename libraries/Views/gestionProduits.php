@@ -8,9 +8,17 @@
     //var_dump($fetchCategories);
     $fetchSousCategories = $produits->recuperation_de_donnee2();
     
-    $produits = new \Models\Admin();
+    $produits = new \Models\Utilisateurs();
     $afficheProduits = $produits->selectionneProduits();
     //var_dump($afficheProduits);
+
+    if (isset($_POST['supprimer']) ) {                                         
+        if(isset($_POST['supprimerProduit'])){
+            $supprime = new \Controllers\Utilisateurs();
+            $supprime->supprimerProduit($_POST['supprimerProduit']); 
+            header("Refresh: 0");                                                           
+        }                
+    }   
 ?>
 
 <!DOCTYPE html>
@@ -19,8 +27,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="gestionProduits.css">
-    <link rel="stylesheet" href="modal.css">
+    <link rel="stylesheet" href="css/gestionProduits.css">
+    <link rel="stylesheet" href="css/modal.css">
     <script src="js/script.js" defer></script>
     <title>Document</title>
 </head>
@@ -89,7 +97,7 @@
                            
                             <?php
                                 if(!empty($_POST['nomCreer']) && !empty($_POST['prenomCreer'])  && !empty($_POST['emailCreer']) && !empty($_POST['mot_de_passeCreer']) && !empty($_POST['CmdpCreer']) && !empty($_POST['adresseCreer']) && !empty($_POST['code_postaleCreer']) && !empty($_POST['paysCreer']) && !empty($_POST['villeCreer']) && !empty($_POST['numeroCreer'])) {    
-                                    $creerUtilisateur = new \Controllers\Admin();
+                                    $creerUtilisateur = new \Controllers\utilisateurs();
                                     $creerUtilisateur->creerUtilisateur($_POST['nomCreer'], $_POST['prenomCreer'], $_POST['emailCreer'], $_POST['mot_de_passeCreer'], $_POST['CmdpCreer'], $_POST['adresseCreer'], $_POST['code_postaleCreer'], $_POST['paysCreer'], $_POST['villeCreer'], $_POST['numeroCreer']);
                                 }
                             ?>
@@ -227,18 +235,11 @@
                                             <div class="modal-body">
                                                 <h3>Supprimer le produits!</h3>
                                                 <p>Voulez-vous supprimer cet utilisateur nom:<?= ' ' . $value["nom"] ?> reference:<?= ' ' . $value['reference'] ?> id:<?= ' ' . $value["id"] . '?' ?></p>
-                                                <?php
-                                                    
-                                                    if (isset($_POST['supprimer']) ) {
-                                                        
-                                                        $supprime = new \Controllers\Admin();
-                                                        $supprime->supprimerUtilsateur($value['id']);                                                       
-                                                        //break;
-                                                    }
-                                                    
-                                                ?>                                                
+                                                                                            
                                                 <form action="" method="post">
                                                     <input type="Submit" name="supprimer" value="supprimer">
+                                                    <input type='hidden' name='supprimerProduit' value='<?= $value['id']?>'>
+
                                                 </form>
                                                 
                                             </div>

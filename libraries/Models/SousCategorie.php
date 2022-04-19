@@ -72,5 +72,24 @@
             $categories = $categorie->fetchall(\PDO::FETCH_ASSOC);
             return $categories;
         }
+
+
+        public function supprimerSousCategorie($id) {
+            $sql = "DELETE FROM sous_categories WHERE id = :id";
+            $requete = $this->bdd->prepare($sql);
+            $requete->bindValue(":id", $id, \PDO::PARAM_INT);
+            $requete->execute();    
+        } 
+
+
+        public function modifierSousCategorie($nom, $idCategorie, $id) {
+            $sql = "UPDATE sous_categories SET nom = :nom, id_categorie = :idCategorie WHERE id = :id";
+            $requete = $this->bdd->prepare($sql);
+            var_dump($nom);
+            $requete->bindValue(":id", $id, \PDO::PARAM_INT);
+            $requete->bindValue(":idCategorie", $idCategorie, \PDO::PARAM_INT);
+            $requete->bindValue(":nom", $nom, \PDO::PARAM_STR);
+            return $requete->execute();            
+        }
     }
 ?>

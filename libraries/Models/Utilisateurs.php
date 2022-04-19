@@ -3,7 +3,7 @@
 
     require_once('Model.php');
 
-    class Admin extends Model {
+    class Utilisateurs extends Model {
 
         
 
@@ -40,7 +40,7 @@
         }
 
 
-        public function modifierUtilisateur($id) {
+        public function modifierUtilisateur($nom, $prenom, $email, $mot_de_passe, $adresse, $codePostale, $pays, $ville, $id_droit, $numero) {
             $sql = "UPDATE utilisateurs SET nom = :nom , prenom = :prenom, email = :email, mot_de_passe = :motDEPasse, adresse = :adresse, code_postale = :codePostale, pays = :pays, ville = :ville, id_droits = :idDroits, num = :num  WHERE id = :id";         
             $date  = date('Y-m-d H:i:s');
             $requete = $this->bdd->prepare($sql);
@@ -52,8 +52,8 @@
             $requete->bindValue(":code_postale", $code_postale, \PDO::PARAM_INT);
             $requete->bindValue(":pays", $pays, \PDO::PARAM_STR);
             $requete->bindValue(":ville", $ville, \PDO::PARAM_STR);
-            $requete->bindValue(":num",$num, \PDO::PARAM_INT);
-            $requete->bindValue(":id_droits", 1, \PDO::PARAM_INT);
+            $requete->bindValue(":numero",$numero, \PDO::PARAM_INT);
+            $requete->bindValue(":id_droits", $idDroit, \PDO::PARAM_INT);
             $requete->execute();
         }
 
@@ -63,7 +63,6 @@
             $requete = $this->bdd->prepare($sql);
             $requete->bindValue(":id", $id, \PDO::PARAM_INT);
             $requete->execute();    
-            header("Refresh: 0"); 
         } 
 
 

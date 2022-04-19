@@ -20,7 +20,7 @@
         }
 
         public function selectCategorie() {
-            $sql = "SELECT * from categories";
+            $sql = "SELECT * from categories order by id asc";
             $categorie = $this->bdd->prepare($sql);
             $categorie->execute();
             $categories = $categorie->fetchall(\PDO::FETCH_ASSOC);
@@ -77,6 +77,24 @@
             $result->execute();
             $recupere = $result->fetchAll();
             return $recupere;
-        }   
+        }
+        
+        public function supprimerCategorie($id) {
+            $sql = "DELETE FROM categories WHERE id = :id";
+            $requete = $this->bdd->prepare($sql);
+            $requete->bindValue(":id", $id, \PDO::PARAM_INT);
+            $requete->execute();    
+        } 
+
+
+        public function modifierCategorie($nom, $genre, $id) {
+            $sql = "UPDATE categories SET nom = :nom, genre = :genre WHERE id = :id";
+            $requete = $this->bdd->prepare($sql);
+            var_dump($nom);
+            $requete->bindValue(":id", $id, \PDO::PARAM_INT);
+            $requete->bindValue(":genre", $genre, \PDO::PARAM_STR);
+            $requete->bindValue(":nom", $nom, \PDO::PARAM_STR);
+            return $requete->execute();            
+        }
     }
 ?>
