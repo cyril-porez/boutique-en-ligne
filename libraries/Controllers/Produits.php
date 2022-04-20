@@ -43,11 +43,10 @@
 
     $maxsize = 50000;
             $validExt = array('.jpg', '.jpeg', '.png', '.gif');
-            if(isset($_FILES['telecharger_image']))
-            {
-                $image = $_FILES['telecharger_image'];
+        if(isset($_FILES['telecharger_image']))
+        {
+            $image = $_FILES['telecharger_image'];
 
-            }
 
             if($image['error'] > 0){
                 echo "erreu lors du transfert";
@@ -74,5 +73,6 @@
             if($resultat){
                 echo "Uploaded successfully";
             }
+        }
 
 ?>
