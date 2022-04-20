@@ -40,20 +40,14 @@
         }
 
 
-        public function modifierUtilisateur($nom, $prenom, $email, $mot_de_passe, $adresse, $codePostale, $pays, $ville, $id_droit, $numero) {
-            $sql = "UPDATE utilisateurs SET nom = :nom , prenom = :prenom, email = :email, mot_de_passe = :motDEPasse, adresse = :adresse, code_postale = :codePostale, pays = :pays, ville = :ville, id_droits = :idDroits, num = :num  WHERE id = :id";         
-            $date  = date('Y-m-d H:i:s');
+        public function modifierUtilisateur($nom, $prenom, $email, $idDroit, $id) {
+            $sql = "UPDATE utilisateurs SET nom = :nom , prenom = :prenom, email = :email, id_droits = :idDroits  WHERE id = :idUtilisateur";
             $requete = $this->bdd->prepare($sql);
             $requete->bindValue(":prenom", $prenom, \PDO::PARAM_STR);
             $requete->bindValue(":nom", $nom, \PDO::PARAM_STR);
             $requete->bindValue(":email", $email, \PDO::PARAM_STR);
-            $requete->bindValue(":adresse", $adresse, \PDO::PARAM_STR);
-            $requete->bindValue(":mot_de_passe", $mot_de_passe, \PDO::PARAM_STR);
-            $requete->bindValue(":code_postale", $code_postale, \PDO::PARAM_INT);
-            $requete->bindValue(":pays", $pays, \PDO::PARAM_STR);
-            $requete->bindValue(":ville", $ville, \PDO::PARAM_STR);
-            $requete->bindValue(":numero",$numero, \PDO::PARAM_INT);
-            $requete->bindValue(":id_droits", $idDroit, \PDO::PARAM_INT);
+            $requete->bindValue(":idDroits", $idDroit, \PDO::PARAM_INT);
+            $requete->bindValue(":idUtilisateur", $id, \PDO::PARAM_INT);
             $requete->execute();
         }
 
@@ -67,11 +61,19 @@
 
 
         public function selectionneUtilisateurs() {
-            $sql = "SELECT * FROM utilisateurs order by id asc";
+            $sql = "SELECT utilisateurs.id, utilisateurs.nom , droits.nom as droit, utilisateurs.prenom, utilisateurs.email, utilisateurs.mot_de_passe, utilisateurs.adresse, utilisateurs.code_postale, utilisateurs.pays, utilisateurs.ville, utilisateurs.num, utilisateurs.id_droits, date, token FROM utilisateurs inner join droits on droits.id = utilisateurs.id_droits order by utilisateurs.id asc";
             $requete = $this->bdd->prepare($sql);
             $requete->execute();
             $infoUtilisateurs = $requete->fetchall(\PDO::FETCH_ASSOC);
             return $infoUtilisateurs;
+        }
+
+        public function selectDroitUtilisateur() {
+            $sql = "SELECT * from droits";
+            $requete = $this->bdd->prepare($sql);
+            $requete->execute();
+            $droitUtilisateur = $requete->fetchall(\PDO::FETCH_ASSOC);
+            return $droitUtilisateur; 
         }
 
 
@@ -84,4 +86,7 @@
             return $recupere;
         }  
     }
+
+    /*$modif = new Utilisateurs();
+    $modif->modifierUtilisateur('yam', 'cha', 'yacha@gmail.com', 2, 5);*/
 ?>
