@@ -93,8 +93,6 @@
 
                                 <input type="submit" value="creer">
                             </form>
-                                    
-                           
                             <?php
                                 if(!empty($_POST['nomCreer']) && !empty($_POST['prenomCreer'])  && !empty($_POST['emailCreer']) && !empty($_POST['mot_de_passeCreer']) && !empty($_POST['CmdpCreer']) && !empty($_POST['adresseCreer']) && !empty($_POST['code_postaleCreer']) && !empty($_POST['paysCreer']) && !empty($_POST['villeCreer']) && !empty($_POST['numeroCreer'])) {    
                                     $creerUtilisateur = new \Controllers\utilisateurs();
@@ -105,7 +103,7 @@
                     </div>
                 </div>
             </div>
-        </div>  
+        </div> 
         <table>
             <thead>
                 <tr>
