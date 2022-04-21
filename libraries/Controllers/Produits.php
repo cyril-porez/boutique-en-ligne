@@ -11,7 +11,38 @@
         private $etat_deteste;
 
 
-        public function creerProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $image) {
+        public function verifProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $image) {
+            
+            $verif = new \Models\Produits();
+            $recupere = $verif->verif_si_existe_deja($nom);
+            $recupere_ref = $verif->verif_ref($reference);
+            $error ='';
+
+            if(count($recupere) == 0){
+                $produits = new \Models\Produits();
+                $produits->inserer_produit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $image);
+            }
+            else{
+                $error = 'produit déja existant';
+            }
+            return $error;
+        }
+
+
+        public function creerProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $filename) {            $nom = htmlspecialchars($_POST['nomCreer']);
+            $reference = htmlspecialchars($_POST['referenceCreer']);
+            $description = htmlspecialchars($_POST['descriptionCreer']);
+            $classe = htmlspecialchars($_POST["classeCreer"]);
+            $categorie = htmlspecialchars($_POST['categorieCreer']);
+            $sousCategorie = htmlspecialchars($_POST['sous-categorieCreer']);
+            $prix = htmlspecialchars($_POST['prixCreer']);
+            // $image = htmlspecialchars($_FILES['image']);
+            $produits = new Produits();
+            $produit = $produits->verifProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $filename);
+        }
+
+
+       /* public function creerProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $image) {
             $produits = new \Models\Produits();
            
             $erreur = '';
@@ -37,10 +68,30 @@
             }
 
             return $erreur;
-        }
+        }*/
 
-        
-        
+        public function modifierProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $filename, $id) {
+            $reference = htmlspecialchars($_POST['referenceModifier']);
+            $description = htmlspecialchars($_POST['descriptionModifier']);
+            $classe = htmlspecialchars($_POST["classeModifier"]);
+            $categorie = htmlspecialchars($_POST['categorieModifier']);
+            $sousCategorie = htmlspecialchars($_POST['sous-categorieModifier']);
+            $prix = htmlspecialchars($_POST['prixModifier']);
+
+            $verif = new \Models\Produits();
+            $recupere = $verif->verif_si_existe_deja($nom);
+            $recupere_ref = $verif->verif_ref($reference);
+            $error ='';
+
+            if(count($recupere) == 0){
+                $produits = new \Models\Produits();
+                $produits->modifierProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $filename, $id);
+            }
+            else{
+                $error = 'produit déja existant';
+            }
+            return $error;
+        }
 
 
         public function jaime($recup_produit) {
@@ -107,4 +158,45 @@
             }
         }
     }
+
+    $maxsize = 50000;
+
+            $validExt = array('.jpg', '.jpeg', '.png', '.gif', '.webp');
+
+        if(isset($_FILES['telechargerImage'])) {
+
+            $image = $_FILES['telechargerImage'];
+
+            if($image['error'] > 0){
+                echo "erreur lors du transfert";
+            }
+
+            $filesize = $image['size'];
+
+            if ($filesize > $maxsize) {
+                echo "fichier trop lourd";
+            }
+
+            $filename = $image['name'];
+
+            //  strtolower au cas ou si on a une extension 'PNG'
+            $fileExt = '.'.strtolower(substr(strrchr($filename, '.'), 1));
+
+            //  on verifie si notre extension et dans l'array
+            if(!in_array($fileExt, $validExt)){
+                echo "le fichier n'est pas une image";
+            }
+
+            $tmpname = $image['tmp_name'];
+
+            $uniquename = md5(uniqid(rand(), true));
+
+            $filename = "../images/".$uniquename.$fileExt;
+
+            $resultat = move_uploaded_file($tmpname, $filename);
+
+            if($resultat) {
+                echo "Uploaded successfully";
+            }
+        }
 ?>

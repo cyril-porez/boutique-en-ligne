@@ -56,13 +56,24 @@
             $recupere = $result->fetchAll();
             return $recupere;
         }
+
+
+        public function verif_ref($reference){
+            $selection = "SELECT nom FROM {$this->table_verif} WHERE nom = :reference";
+            $result = $this->bdd->prepare($selection);
+            $result->bindValue(':reference', $reference, \PDO::PARAM_STR);
+            $result->execute();
+            $recupere_ref = $result->fetchAll();
+            return $recupere_ref;
+        }
         
         public function inserer_produit($nom, $reference, $classe, $description, $id_categorie, $id_sous_categorie, $prix, $image){
-
+                
             try {
+
                 // $id_categorie = intval($id_categorie);
-                $insertion = "INSERT INTO produits (nom, reference, classe, description, id_categorie, id_sous_categorie, prix, image1) VALUES (:nom, :reference, :classe, :description, :id_categorie, :id_sous_categorie, :prix, :image)";
-                $result = $this->bdd->prepare($insertion);
+                $sql = "INSERT INTO produits (nom, reference, classe, description, id_categorie, id_sous_categorie, prix, image1) VALUES (:nom, :reference, :classe, :description, :id_categorie, :id_sous_categorie, :prix, :image)";
+                $result = $this->bdd->prepare($sql);
                 $result->bindValue(':nom', $nom, \PDO::PARAM_STR);
                 $result->bindValue(':reference', $reference, \PDO::PARAM_STR);
                 $result->bindValue(':classe', $classe, \PDO::PARAM_STR);
@@ -75,8 +86,24 @@
             }
             catch( \PDOException $Exception ) {
                 // Note The Typecast To An Integer!
-                var_dump($Exception);
+                //var_dump($Exception);
             }
+        }
+
+
+        public function modifierProduit($nom, $reference, $classe, $description, $id_categorie, $id_sous_categorie, $prix, $image, $id) {
+            $sql = "UPDATE produits SET nom = :nom, reference = :reference, classe = :classe, description = :description, id_categorie = :idCategorie, id_sous_categorie = :idSousCategorie, prix = :prix, image1 = :image1 WHERE id = :id";
+            $result = $this->bdd->prepare($sql);
+                $result->bindValue(':nom', $nom, \PDO::PARAM_STR);
+                $result->bindValue(':reference', $reference, \PDO::PARAM_STR);
+                $result->bindValue(':classe', $classe, \PDO::PARAM_STR);
+                $result->bindValue(':description', $description, \PDO::PARAM_STR);
+                $result->bindValue(':idCategorie', $id_categorie, \PDO::PARAM_INT);
+                $result->bindValue(':idSousCategorie', $id_sous_categorie, \PDO::PARAM_INT);
+                $result->bindValue(':prix', $prix, \PDO::PARAM_STR);
+                $result->bindValue(':image1', $image, \PDO::PARAM_STR);
+                $result->bindValue(':id', $id, \PDO::PARAM_INT);
+                $result->execute();
         }
 
 
