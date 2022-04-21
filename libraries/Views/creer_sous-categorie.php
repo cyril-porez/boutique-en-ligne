@@ -5,10 +5,9 @@
 
     $Categorie = new \Controllers\Categorie();
     $afficheCategories = $Categorie->selectCategorie();
-    //var_dump($afficheCategories);
+
     $sousCategorie = new \Controllers\SousCategorie();
-    $afficheSousCategories = $sousCategorie->selectSousCategorie();    
-    //var_dump($afficheSousCategories);
+    $afficheSousCategories = $sousCategorie->selectSousCategorie();
 
     $sous_categorie = new \Models\SousCategorie();
     $fetch = $sous_categorie->recuperation_de_donnee();
@@ -19,14 +18,14 @@
         header("Refresh: 0");
     }
 
-    if (isset($_POST['supprimer']) ) {                                          
+    if (isset($_POST['supprimer']) ) {
         if(isset($_POST['supprimerSousCategorie'])){
             $supprime = new \Controllers\Admin();
-            $supprime->supprimerSOUSCategorie($_POST['supprimerSousCategorie']); 
-            header("Refresh: 0");                                                           
-        }                
+            $supprime->supprimerSOUSCategorie($_POST['supprimerSousCategorie']);
+            header("Refresh: 0");
+        }
     }
-    
+
     if (!empty($_POST['nomModifier']) && !empty($_POST['categorieModifier'])) {
         echo "boxe";
         $modifier = new \Controllers\SousCategorie();
@@ -40,7 +39,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/gestion.css">
     <script src="js/script.js" defer></script>
     <title>Document</title>
 </head>
@@ -49,6 +48,7 @@
 
     </header>
     <main>
+        <a href="gestionCategories.php"><button>retour</button></a>
         <button role='button' data-target='#modalCreer' data-toggle='modal' id='connexion-link'>Creer une Sous-Categorie</button>
         <div class="modal" id="modalCreer" role="dialog">
             <div class="modal-content">
@@ -66,7 +66,6 @@
                                         }
                                     ?>
                                 </select>
-                            
                             <input type="submit" value="creer">
                         </form>
                         </div>
@@ -78,8 +77,8 @@
             <thead>
                 <tr>
                     <th>id</th>
-                    <th>Sous-Categorie</th>                   
-                    <th>Categorie</th>                    
+                    <th>Sous-Categorie</th>
+                    <th>Categorie</th>
                 </tr>
             </thead>
             <tbody>
@@ -91,11 +90,11 @@
                             <td><?= $sousCategorie['sous_categorie'] ?></td>
                             <td><?= $sousCategorie['categorie'] ?></td>
                             <td>
-                                <button role='button' data-target='#modalModif<?= $afficheSousCategorie ?>' data-toggle='modal' id='connexion-link'>Modifier</button>
+                                <button class="bouton-modif"role='button' data-target='#modalModif<?= $afficheSousCategorie ?>' data-toggle='modal' id='connexion-link'>Modifier</button>
                                 <div class="modal" id="modalModif<?= $afficheSousCategorie ?>" role="dialog">
                                     <div class="modal-content">
                                         <div class="modal-close" data-dismiss="dialog">X</div>
-                                            <div class="modal-body">                                                
+                                            <div class="modal-body">
                                                 <form action="" method="post">
                                                     <label for="nom">nom</label>
                                                     <input type="text"  name="nomModifier" value=<?= $sousCategorie['sous_categorie'] ?>>
@@ -107,33 +106,32 @@
                                                                 echo "<option value=".$afficheCategorie["id"].">" .$afficheCategorie["nom"]. "</option>";
                                                             }
                                                         ?>
-                                                    </select>       
-                                                    <input type="submit"  value="modifier">
+                                                    </select>
+                                                    <button class="bouton-modif" type="submit">modifier</button>
                                                     <input type='hidden' name='modifierSousCategorie' value='<?= $sousCategorie['id']?>'>
-                                                </form>                                            
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <button role='button' data-target='#modalSuppr<?= $afficheSousCategorie ?>' data-toggle='modal' id='connexion-link'>Supprimer</button>
+                                <button class="bouton-suprr" role='button' data-target='#modalSuppr<?= $afficheSousCategorie ?>' data-toggle='modal' id='connexion-link'>Supprimer</button>
                                 <div class="modal" id="modalSuppr<?= $afficheSousCategorie ?>" role="dialog">
                                     <div class="modal-content">
                                         <div class="modal-close" data-dismiss="dialog">X</div>
                                             <div class="modal-body">
                                                 <h3>Supprimer la sous-catégorie !</h3>
                                                 <p>Voulez-vous supprimer la sous-categorie:<?= ' ' . $sousCategorie["sous_categorie"] ?> appartenant à la categorie:<?= ' ' . $sousCategorie['categorie'] ?> id:<?= ' ' . $sousCategorie["id"] . '?' ?></p>                                       
-                                                
+
                                                 <form action="" method="post">
-                                                    <input type="Submit" name="supprimer" value="supprimer">
+                                                    <button class="bouton-suprr" type="submit" name="Submit" name="supprimer">supprimer</button>
                                                     <input type='hidden' name='supprimerSousCategorie' value='<?= $sousCategorie['id']?>'>
-                                                </form>   
-                                                
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
-                                </div>      
+                                </div>
                             </td>
                         </tr>
                         <?php

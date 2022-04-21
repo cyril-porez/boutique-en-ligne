@@ -50,13 +50,13 @@ button:hover {
 .modal-content{
     background-color: white;
     max-width: 40%;
-    height: 80%;
+    height: 85%;
     margin: auto;
     flex: 1;
     position: relative;
     border-radius: 5px;
-    /* display: flex;
-    justify-content: center;
+    display: flex;
+    /* justify-content: center;
     flex-direction: column;
     align-items: center; */
 }
@@ -79,9 +79,21 @@ button:hover {
     height: 90%;
     width: 100%;
     display: flex;
-    /* flex-direction: column; */
-    /* align-items: center; */
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+}
+.modal-body-descritpion{
+    display: flex;
+}
+.modal-body-descritpion img{
+    height: 200px;
+    width: 200px;
+    margin-top: 50%;
+    margin-left: 10%;
+}
+.modal-body-descritpion form{
+    margin-left: 15%;
 }
 .modal-body img{
     height: 150px;
@@ -156,6 +168,7 @@ input[type="submit"]:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 5%;
 }
 form input, select{
     margin-bottom: 10px;
@@ -165,5 +178,23 @@ form input, select{
     /* width: 80%; */
 }
 .modal-form td{
-    padding-right: 10px;
+    padding-right: 27px;
+}
+.bouton-suprr{
+    background-color: red;
+}
+.bouton-modif{
+    background-color: blue;
+}
+.bouton-lire{
+    background-color: green;
+}
+.bouton-lire:hover{
+    background-color: green;
+}
+.bouton-suprr:hover{
+    background-color: red;
+}
+.bouton-modif:hover{
+    background-color: blue;
 }

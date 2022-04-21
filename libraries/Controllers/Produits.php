@@ -163,7 +163,7 @@
 
             $validExt = array('.jpg', '.jpeg', '.png', '.gif', '.webp');
 
-        if(isset($_FILES['telechargerImage'])) {
+        if(!empty($_FILES['telechargerImage'])) {
 
             $image = $_FILES['telechargerImage'];
 
