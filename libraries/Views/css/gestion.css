@@ -1,0 +1,188 @@
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+table{
+    height: 80vh;
+    /* background-color: red; */
+    /* border: 3px solid; */
+    width: 90vw;
+    border-collapse: collapse;
+    /* font-size: 1.3em; */
+}
+table th, td{
+    /* border: 2px solid black; */
+    text-align: center;
+}
+button {
+	background-color:black;
+	display:inline-block;
+	cursor:pointer;
+	color:white;
+	font-family:Arial;
+	font-size:15px;
+	padding:6px 15px;
+	text-decoration:none;
+    border: none;
+}
+button:hover {
+	background-color:red;
+}
+.modal{
+    background-color: rgba(0, 0, 0, 0.75);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.2s;
+
+}
+
+.modal.show{
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-content{
+    background-color: white;
+    max-width: 40%;
+    height: 85%;
+    margin: auto;
+    flex: 1;
+    position: relative;
+    border-radius: 5px;
+    display: flex;
+    /* justify-content: center;
+    flex-direction: column;
+    align-items: center; */
+}
+
+.modal-close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 2em;
+}
+
+.modal-header{
+    padding-left: 10px;
+    height: 5%;
+}
+
+.modal-body{
+    padding: 10px;
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.modal-body img{
+    height: 150px;
+    width: 150px;
+}
+
+.modal-footer{
+    padding: 10px;
+    border-top: 1px;
+    text-align: right;
+    border-radius: 5px;
+}
+
+.btn{
+    padding: 5px;
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.btn-close{
+    background-color: red;
+    border-radius: 3px;
+}
+
+/*------------form-------------------------*/
+.modal-content button{
+    width: 50%;
+    margin-bottom: 10px;
+}
+/* form{
+    display: flex;
+    /* justify-content: center; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* width: 80%;
+} */
+form div{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+a{
+    text-decoration: none;
+    color: rgb(161, 156, 156);
+}
+a:hover{
+    color: red;
+}
+input[type="submit"]{
+    background-color:black;
+	display:inline-block;
+	cursor:pointer;
+	color:white;
+	font-family:Arial;
+	font-size:15px;
+	padding:6px 15px;
+	text-decoration:none;
+    border: none;
+}
+input[type="submit"]:hover {
+	background-color:red;
+}
+.modal-form{
+    width:100%;
+    height:100%;
+}
+ form{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+form input, select{
+    margin-bottom: 10px;
+    height: 25px;
+    border: 0.3px solid rgb(212, 210, 210);
+    margin-bottom: 3%;
+    /* width: 80%; */
+}
+.modal-form td{
+    padding-right: 27px;
+}
+.bouton-suprr{
+    background-color: red;
+}
+.bouton-modif{
+    background-color: blue;
+}
+.bouton-lire{
+    background-color: green;
+}
+.bouton-lire:hover{
+    background-color: green;
+}
+.bouton-suprr:hover{
+    background-color: red;
+}
+.bouton-modif:hover{
+    background-color: blue;
+}
