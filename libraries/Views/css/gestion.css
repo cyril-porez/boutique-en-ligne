@@ -83,6 +83,18 @@ button:hover {
     align-items: center;
     justify-content: center;
 }
+.modal-body-descritpion{
+    display: flex;
+}
+.modal-body-descritpion img{
+    height: 200px;
+    width: 200px;
+    margin-top: 50%;
+    margin-left: 10%;
+}
+.modal-body-descritpion form{
+    margin-left: 15%;
+}
 .modal-body img{
     height: 150px;
     width: 150px;

@@ -28,7 +28,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/gestion.css">
-    <!-- <link rel="stylesheet" href="css/modal.css"> -->
     <script src="js/script.js" defer></script>
     <title>Document</title>
 </head>
@@ -38,12 +37,12 @@
     </header>
     <main>
         <div>
+            <a href="admin.php"><button>retour</button></a>
             <button role='button' data-target='#modalCreer' data-toggle='modal' id='connexion-link'>Creer un Produit</button>
             <div class="modal" id="modalCreer" role="dialog">
                 <div class="modal-content">
                     <div class="modal-close" data-dismiss="dialog">X</div>
                         <div class="modal-body">
-                            <!-- </fieldset> -->
                             <form action="" method="post" enctype="multipart/form-data">
                                 <label for="nom">nom</label>
                                 <input type="text"  name="nom">
@@ -103,7 +102,7 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
         <table>
             <thead>
                 <tr>
@@ -125,14 +124,14 @@
                             <td><?=$value['classe'] ?></td>
                             <td><?=$value['prix'] ?></td>
                             <td>
-                                <button class="boutonModal" role='button' data-target='#modal<?= $afficheProduit ?>' data-toggle='modal' id='connexion-link'>Lire</button>
+                                <button class="bouton-lire" role='button' data-target='#modal<?= $afficheProduit ?>' data-toggle='modal' id='connexion-link'>Lire</button>
                                     <div class="modal" id="modal<?= $afficheProduit ?>" role="dialog">
                                         <div class="modal-content">
                                             <div class="modal-close" data-dismiss="dialog">X</div>
-                                                <div class="modal-body">                                                   
+                                                <div class="modal-body-descritpion">
+                                                    <img src=<?= $value['image1'] ?> alt="image">
                                                     <form action="" method="post" enctype="multipart/form-data">
-                                                        <img src=<?= $value['image1'] ?> alt="image">
-                                                        
+
                                                         <label for="nom">nom</label>
                                                         <input type="text"  name="nom" value=<?= $value['nom'] ?> readonly>
 
@@ -152,24 +151,22 @@
                                                         <input type="text" name="categorie" value=<?= $value['sous_categorie'] ?> readonly>
 
                                                         <label for="prix">prix</label>
-                                                        <input type="text" name="prix" value=<?= $value['prix'] . "€" ?> readonly>                                                            
-                                                    </form>                                                   
+                                                        <input type="text" name="prix" value=<?= $value['prix'] . "€" ?> readonly>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>            
+                                    </div>
                                 </td>
                             <td>
-                            <button role='button' data-target='#modalModif<?= $afficheProduit ?>' data-toggle='modal' id='connexion-link'>Modifier</button>
+                            <button class="bouton-modif" role='button' data-target='#modalModif<?= $afficheProduit ?>' data-toggle='modal' id='connexion-link'>Modifier</button>
                                 <div class="modal" id="modalModif<?= $afficheProduit ?>" role="dialog">
                                     <div class="modal-content">
                                         <div class="modal-close" data-dismiss="dialog">X</div>
-                                            <div class="modal-body">                                                    
-                                                <!--<fieldset>-->
-                                                <fieldset>
+                                            <div class="modal-body">
                                                     <legend>Saisir toutes vos informations</legend>
                                                     <form action="" method="post" enctype="multipart/form-data">
-                                                        
+
                                                         <label for="nom">nom</label>
                                                         <input type="text"  name="nom" value=<?= $value['nom'] ?>>
 
@@ -216,34 +213,30 @@
                                                         <label for="prix">prix</label>
                                                         <input type="text" name="prix">
 
-                                                        <input type="submit" value="creer">
+                                                        <button class="bouton-modif" type="submit">modifier</button>
                                                     </form>
-                                                </fieldset>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <button role='button' data-target='#modalSuppr<?= $afficheProduit ?>' data-toggle='modal' id='connexion-link'>Supprimer</button>
-                               
+                                <button class="bouton-suprr" role='button' data-target='#modalSuppr<?= $afficheProduit ?>' data-toggle='modal' id='connexion-link'>Supprimer</button>
                                 <div class="modal" id="modalSuppr<?= $afficheProduit ?>" role="dialog">
                                     <div class="modal-content">
                                         <div class="modal-close" data-dismiss="dialog">X</div>
                                             <div class="modal-body">
                                                 <h3>Supprimer le produits!</h3>
                                                 <p>Voulez-vous supprimer cet utilisateur nom:<?= ' ' . $value["nom"] ?> reference:<?= ' ' . $value['reference'] ?> id:<?= ' ' . $value["id"] . '?' ?></p>
-                                                                                            
                                                 <form action="" method="post">
-                                                    <input type="Submit" name="supprimer" value="supprimer">
+                                                    <button class="bouton-suprr"type="Submit" name="supprimer">supprimer</button>
                                                     <input type='hidden' name='supprimerProduit' value='<?= $value['id']?>'>
 
                                                 </form>
-                                                
                                             </div>
                                         </div>
                                     </div>
-                                </div>      
+                                </div>
                             </td>
                         </tr>
                         <?php
@@ -255,6 +248,6 @@
     </main>
     <footer>
 
-    </footer>    
+    </footer>
 </body>
 </html>
