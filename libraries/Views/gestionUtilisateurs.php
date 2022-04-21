@@ -57,41 +57,53 @@
                             <!-- </fieldset> -->
                             <!-- <fieldset> -->
                                 <form action="" method="post">
-                                <legend>Saisir toutes vos informations</legend>
-                                <div>
-                                    <label for ="nom">NOM :</label>
-                                    <input id="nom" type="text" name="nomCreer" placeholder="nom" />
-                                <div>
-                                    <label for ="prenom">Prénom :</label>
-                                    <input id="prenom" type="text" name="prenomCreer" placeholder="Prenom" autocomplete="off">
-                                <div>
-                                    <label for ="adresse">Adresse :</label>
-                                    <input id="adresse" type="text" name="adresseCreer" placeholder="adresse" autocomplete="off">
-                                <div>
-                                    <label for ="codePostale">CODE POSTALE:</label>
-                                    <input id="code_postale" type="text" name="code_postaleCreer" placeholder="codePostale" />
-                                <div>
-                                    <label for ="pays">Pays :</label>
-                                    <input id="pays" type="text" name="paysCreer" placeholder="pays" />
-                                <div>
-                                    <label for ="ville">Ville:</label>
-                                    <input id="ville" type="text" name="villeCreer" placeholder="ville" />
-                                <div>
-                                    <label for ="numero">N°:</label>
-                                    <input id="numero" type="text" name="numeroCreer" placeholder="numero" />
-                                <div>
-                                    <label for ="email">Email :</label>
-                                    <input id="email" type="text" name="emailCreer" placeholder="Email" autocomplete="off">
-                                <div>
-                                    <label for ="motdepasse">  Mot de passe :</label>
-                                    <input id="motdepasse" type="password" name="mot_de_passeCreer" placeholder="Mot de passe" />
-                                <div>
-                                    <label for ="conf-mdp">Confirmez le mot de passe :</label>
-                                    <input id="conf-mdp" type="password" name="CmdpCreer" placeholder="Confirmez le mot de passe" />
+                                <!-- <legend>Saisir toutes vos informations</legend> -->
+                                <table class = "modal-form">
+                                    <tbody>
+                                        <tr>
+                                            <td><label for ="nom">NOM :</label></td>
+                                            <td><input id="nom" type="text" name="nomCreer" placeholder="nom" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for ="prenom">Prénom :</label></td>
+                                            <td><input id="prenom" type="text" name="prenomCreer" placeholder="Prenom" autocomplete="off"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for ="adresse">Adresse :</label></td>
+                                            <td><input id="adresse" type="text" name="adresseCreer" placeholder="adresse" autocomplete="off"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for ="codePostale">CODE POSTALE:</label></td>
+                                            <td><input id="code_postale" type="text" name="code_postaleCreer" placeholder="codePostale" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for ="pays">Pays :</label></td>
+                                            <td><input id="pays" type="text" name="paysCreer" placeholder="pays" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for ="ville">Ville:</label></td>
+                                            <td><input id="ville" type="text" name="villeCreer" placeholder="ville" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for ="numero">N°:</label></td>
+                                            <td><input id="numero" type="text" name="numeroCreer" placeholder="numero" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for ="email">Email :</label></td>
+                                            <td><input id="email" type="text" name="emailCreer" placeholder="Email" autocomplete="off"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for ="motdepasse">  Mot de passe :</label></td>
+                                            <td><input id="motdepasse" type="password" name="mot_de_passeCreer" placeholder="Mot de passe" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for ="conf-mdp">Confirmez le mot de passe :</label></td>
+                                            <td><input id="conf-mdp" type="password" name="CmdpCreer" placeholder="Confirmez le mot de passe" /></td>
+                                        </tr>
 
-                                    <input type="submit" name="button" value="Creer">
-
-                                    <!-- </fieldset> -->
+                                        </tbody>
+                                    </table>
+                                    <button type="submit" name="button">Creer</button>
                                 </form>
                             <!-- </fieldset> -->
                         </div>
@@ -126,32 +138,30 @@
                                             <div class="modal-close" data-dismiss="dialog">X</div>
                                                 <div class="modal-body">
                                                     <form action="" method="post">
-                                                    <div>
-                                                        <label for ="nom">NOM :</label>
-                                                        <input id="nom" type="text" name="nom" value=<?= $value["nom"] ?> placeholder="nom" />
-                                                    <div>
-                                                        <label for ="prenom">Prénom :</label>
-                                                        <input id="prenom" type="text" name="prenom" value=<?= $value["prenom"] ?> placeholder="Prenom" autocomplete="off">
-                                                    <div>
-                                                        <label for ="adresse">Adresse :</label>
-                                                        <input id="adresse" type="text" name="adresse" value=<?= $value["adresse"] ?> placeholder="adresse" autocomplete="off">
-                                                    <div>
-                                                        <label for ="codePostale">CODE POSTALE:</label>
-                                                        <input id="code_postale" type="text" name="code_postale" value=<?= $value["code_postale"] ?> placeholder="codePostale" />
-                                                    <div>
-                                                        <label for ="pays">Pays :</label>
-                                                        <input id="pays" type="text" name="pays" value=<?= $value["pays"] ?>   />
-                                                    <div>
-                                                        <label for ="ville">Ville:</label>
-                                                        <input id="ville" type="text" name="ville" value=<?= $value["ville"] ?> placeholder="ville" />
-                                                    <div>
-                                                        <label for ="numero">N°:</label>
-                                                        <input id="numero" type="text" name="numero" value=<?= $value["num"] ?> placeholder="numero" />
-                                                    <div>
-                                                        <label for ="email">Email :</label>
-                                                        <input id="email" type="text" name="email" value=<?= $value["email"] ?> placeholder="Email" autocomplete="off">
-                                                        <!--</fieldset>-->
-                                                    </form>
+                                                                    <label for ="nom">NOM :</label>
+                                                                    <input id="nom" type="text" name="nom" value=<?= $value["nom"] ?> placeholder="nom" />
+
+                                                                    <label for ="prenom">Prénom :</label>
+                                                                    <input id="prenom" type="text" name="prenom" value=<?= $value["prenom"] ?> placeholder="Prenom" autocomplete="off">
+
+                                                                    <label for ="adresse">Adresse :</label>
+                                                                    <input id="adresse" type="text" name="adresse" value=<?= $value["adresse"] ?> placeholder="adresse" autocomplete="off">
+
+                                                                    <label for ="codePostale">CODE POSTALE:</label>
+                                                                    <input id="code_postale" type="text" name="code_postale" value=<?= $value["code_postale"] ?> placeholder="codePostale" />
+
+                                                                    <label for ="pays">Pays :</label>
+                                                                    <input id="pays" type="text" name="pays" value=<?= $value["pays"] ?>   />
+
+                                                                    <label for ="ville">Ville:</label>
+                                                                    <input id="ville" type="text" name="ville" value=<?= $value["ville"] ?> placeholder="ville" />
+
+                                                                    <label for ="numero">N°:</label>
+                                                                    <input id="numero" type="text" name="numero" value=<?= $value["num"] ?> placeholder="numero" />
+
+                                                                    <label for ="email">Email :</label>
+                                                                    <input id="email" type="text" name="email" value=<?= $value["email"] ?> placeholder="Email" autocomplete="off">
+                                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -163,21 +173,18 @@
                                         <div class="modal-content">
                                             <div class="modal-close" data-dismiss="dialog">X</div>
                                                 <div class="modal-body">
-                                                    
-                                                    <!--<fieldset>-->
-                                                       
                                                        <form action="" method="post">
-                                                            <label for ="nom">NOM :</label>                                                                
+                                                            <label for ="nom">NOM :</label>
                                                             <input id="nom" type="text" name="nomModifier" value=<?= $value["nom"] ?> placeholder="nom" />
-                                                            
+
                                                             <label for ="prenom">Prénom :</label>
                                                             <input id="prenom" type="text" name="prenomModifier" value=<?= $value["prenom"] ?> placeholder="Prenom" autocomplete="off">
-                        
-                                                            
-                                                            <label for ="email">Email :</label>                        
+
+
+                                                            <label for ="email">Email :</label>
                                                             <input id="email" type="text" name="emailModifier" value=<?= $value["email"] ?> placeholder="Email" autocomplete="off">
 
-                                                            <label for ="droit">Droit :</label>                        
+                                                            <label for ="droit">Droit :</label>
                                                             <!--<input id="droit" type="text" name="droitModifier" value=<?= $value["id_droits"] ?> placeholder="droit" autocomplete="off">-->
 
                                                             <select name="droitModifier" id="droit">
@@ -187,14 +194,7 @@
                                                                         echo "<option value=".$droitUtilisateur["id"].">" .$droitUtilisateur["nom"]. "</option>";
                                                                     }
                                                                 ?>
-                        
-                                                            <!--<label for ="motdepasse">  Mot de passe :</label>                        
-                                                            <input id="motdepasse" type="password" name="mot_de_passeModifier" placeholder="Mot de passe" />
-                        
-                                                            <label for ="conf-mdp">Confirmez le mot de passe :</label>                        
-                                                            <input id="conf-mdp" type="password" name="CmdpModifier" placeholder="Confirmez le mot de passe" />
-                                                            </fieldset> -->  
-                                                            
+                                                            </select>
                                                             <input type="submit"  value="modifier">
                                                             <input type='hidden' name='modifierUtilisateur' value='<?= $value['id']?>'>
                                                         </form>
