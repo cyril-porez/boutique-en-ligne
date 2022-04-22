@@ -4,16 +4,16 @@ body{
 }
 .img-presentation img{
     width: 100%;
-    height: 450px;
+    height: 500px;
 }
 .titre{
     height: 10%;
 }
 .parent {
     display: grid;
-    grid-template-columns: repeat(2, 350px);
-    grid-template-rows: 450px;
-    grid-column-gap: 14px;
+    grid-template-columns: repeat(2, 550px);
+    grid-template-rows: 550px;
+    grid-column-gap: 15px;
     grid-row-gap: 0px;
 }
 .div1 {
@@ -28,12 +28,16 @@ body{
     background-color: black;
 }
 .parent img{
-    height: 450px;
-    width: 350px;
+    height: 550px;
+    width: 550px;
     opacity: 1;
     transition: opacity .3s ease;
 }
 
 .parent img:hover {
     opacity: 0.2;
+}
+.img-grid{
+    display: flex;
+    justify-content: center;
 }
