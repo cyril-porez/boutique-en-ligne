@@ -16,7 +16,7 @@ $chaine =  $affiche_sous_categories[0]['nom'];
 
 <html>
     <body>
-        <link rel="stylesheet" href="css/produits.css">
+        <link rel="stylesheet" href="css/listeProduits.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
         <header>
 
@@ -96,7 +96,7 @@ $chaine =  $affiche_sous_categories[0]['nom'];
                     ?>
             </div>
         </section>
-            <div class="container">
+            <div id="container">
                 <?php
                     foreach($affiche_sous_categories as $affiche_sous_categorie) {?>
                         <div>
