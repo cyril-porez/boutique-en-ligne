@@ -1,6 +1,6 @@
 <?php
         namespace Controllers;
-        require_once("../Models/Utilisateur.php");
+        require_once("../Models/Utilisateurs.php");
     
         class Inscription {
         
@@ -17,7 +17,7 @@
                                 $ville = htmlspecialchars($_POST['ville']);
                                 $numero = htmlspecialchars($_POST['numero']);
                 
-                                $utilisateur = new \Models\Utilisateur();
+                                $utilisateur = new \Models\Utilisateurs();
                                 $recupere = $utilisateur->verif_si_existe_deja($email);
                                 $erreur = '';
                                 

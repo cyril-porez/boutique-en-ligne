@@ -1,11 +1,17 @@
 <?php
 session_start();
+require_once('../Controllers/Clients.php');
+
+$id = $_SESSION['utilisateurs'];
 
 var_dump($_SESSION);
 if (isset($_POST['deconnexion'])){
     session_destroy();
-    header('Location:connexion.php');
+    header('Location: connexion.php');
 }
+
+$adresse = new \Controllers\Clients();
+$adresse->Adresse($id[0]['id'])
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,8 +22,13 @@ if (isset($_POST['deconnexion'])){
     <title>Document</title>
 </head>
 <body>
-    <a href="insciption.php">Inscription</a><br>
-    <a href="connexion.php">connexion</a>
-    <button type="submit" name="deconnexion">deConnexion</button>
+    
+    <a href="inscription.php">Inscription</a><br>
+    <a href="connexion.php">connexion</a><br>
+    <a href="modifierMotDePasse.php">changer mot de passe</a><br>
+    <a href="profil.php">profil</a>
+    <form action="" method="post">
+        <button type="submit" name="deconnexion">deConnexion</button>
+    </form>
 </body>
 </html>
