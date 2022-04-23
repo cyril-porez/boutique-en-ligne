@@ -1,5 +1,8 @@
 <?php
 
+    session_start();
+
+    $utilisateur = $_SESSION['utilisateurs'];
 ?>
 
 <!DOCTYPE html>
@@ -22,10 +25,13 @@
         <form action="" method="post">
 
             <label for="prenom">Prénom :</label>
-            <input type="text" name="prenom" placeholder="prenom">
+            <input type="text" name="prenom" value="<?= $utilisateur[0]['prenom'] ?>">
 
             <label for="nom">nom :</label>
-            <input type="text" name="nom" placeholder="nom">
+            <input type="text" name="nom" value="<?= $utilisateur[0]['nom'] ?>" >
+
+            <label for="email">Email :</label>
+            <input type="text" name="email" value="<?= $utilisateur[0]['email'] ?>" >
         </form>
         
         <h2>CHANGER DE MOT DE PASSE </h2>

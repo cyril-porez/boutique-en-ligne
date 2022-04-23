@@ -5,6 +5,8 @@
     
     class Utilisateurs extends Model {
         //propriétés
+
+        protected $mdp;
         
         //constructeurs
         /*public function __construct(){
@@ -146,5 +148,16 @@
             $result->bindValue(':id', $id, \PDO::PARAM_INT);
             return $result->execute();
         } 
+
+
+        public function modifierMotDePasse($mdp) {
+            $idUtilisateur = $_SESSION["user"]["id"];
+            $this->mdp = $mdp;
+            $sql = "UPDATE utilisateurs SET password = :password where id = :id";
+            $requete = $this->connex->prepare($sql);
+            $requete->bindValue(':password', $this->password, \PDO::PARAM_STR);
+            $requete->bindValue(':id', $user, \PDO::PARAM_STR);
+            $requete->execute(); 
+        }
     }
 ?>
