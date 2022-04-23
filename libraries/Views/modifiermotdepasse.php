@@ -2,7 +2,17 @@
 
     session_start();
 
+    require_once('../Controllers/Utilisateurs.php');
+
     $utilisateur = $_SESSION['utilisateurs'];
+    var_dump($utilisateur);
+    
+
+    if(!empty($_POST['nouveauMotDePasse']) && !empty($_POST['confirmeMotDePasse'])) {
+        echo 'bob';
+        $modifMdp = new \Controllers\Utilisateurs();
+        $modifMdp->modifierMotDePasse($_POST['nouveauMotDePasse'], $_POST['confirmeMotDePasse']);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +48,7 @@
 
         <form action="" method="post">
 
-            <label for="motDePasse">Mot de passe:</label>
+            <label for="motDePasse">Mot de passe :</label>
             <input type="text" name="motDePasse">
     
             <label for="nouveauMotDePasse">Nouveau mot de passe :</label>
@@ -46,6 +56,7 @@
     
             <label for="confirmeMotDePasse">Confirmer Mot de passe :</label>
             <input type="text" name="confirmeMotDePasse">
+
             <input type="submit" value="enregistrer">
         </form>
     </main>

@@ -151,12 +151,12 @@
 
 
         public function modifierMotDePasse($mdp) {
-            $idUtilisateur = $_SESSION["user"]["id"];
+            $idUtilisateur = $_SESSION["utilisateurs"][0]["id"];
             $this->mdp = $mdp;
-            $sql = "UPDATE utilisateurs SET password = :password where id = :id";
-            $requete = $this->connex->prepare($sql);
-            $requete->bindValue(':password', $this->password, \PDO::PARAM_STR);
-            $requete->bindValue(':id', $user, \PDO::PARAM_STR);
+            $sql = "UPDATE utilisateurs SET mot_de_passe = :password where id = :id";
+            $requete = $this->bdd->prepare($sql);
+            $requete->bindValue(':password', $this->mdp, \PDO::PARAM_STR);
+            $requete->bindValue(':id', $idUtilisateur, \PDO::PARAM_STR);
             $requete->execute(); 
         }
     }
