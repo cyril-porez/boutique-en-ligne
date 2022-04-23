@@ -53,3 +53,7 @@ button:hover {
     height: 5% ;
     background-color: rgb(214, 214, 214);
 }
+select{
+    height: 30px;
+    border: 0.3px solid rgb(212, 210, 210);
+}
