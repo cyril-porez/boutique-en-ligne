@@ -5,13 +5,11 @@
     require_once('../Controllers/Utilisateurs.php');
 
     $utilisateur = $_SESSION['utilisateurs'];
-    var_dump($utilisateur);
-    
+    var_dump($_SESSION['utilisateurs']);    
 
-    if(!empty($_POST['nouveauMotDePasse']) && !empty($_POST['confirmeMotDePasse'])) {
-        echo 'bob';
+    if(!empty($_POST['motDePasse']) && !empty($_POST['nouveauMotDePasse']) && !empty($_POST['confirmeMotDePasse'])) {
         $modifMdp = new \Controllers\Utilisateurs();
-        $modifMdp->modifierMotDePasse($_POST['nouveauMotDePasse'], $_POST['confirmeMotDePasse']);
+        $modifMdp->modifierMotDePasse();
     }
 ?>
 

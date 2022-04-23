@@ -43,11 +43,7 @@
             return $recuperer;
         }
 
-
-        public function modifierProduit() {
-            $sql = "UPDATE UPDATE `produits` SET `id`='[value-1]',`nom`='[value-2]',`reference`='[value-3]',`classe`='[value-4]',`description`='[value-5]',`id_categorie`='[value-6]',`id_sous_categorie`='[value-7]',`prix`='[value-8]',`image1`='[value-9]' WHERE 1";
-        }
-
+        
         public function selectionneProduits() {
             $sql = "SELECT produits.id, produits.nom, produits.reference, produits.classe, produits.description, produits.id_categorie, categories.nom as categorie, produits.id_sous_categorie, sous_categories.nom as sous_categorie, produits.prix, produits.image1 from produits inner join categories ON produits.id_categorie = categories.id inner join sous_categories ON produits.id_sous_categorie = sous_categories.id";
             $requete = $this->bdd->prepare($sql);

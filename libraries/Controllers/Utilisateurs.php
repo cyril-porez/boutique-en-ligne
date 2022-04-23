@@ -9,17 +9,48 @@
         protected $mdp;
         protected $nmdp;
         protected $cmdp;
+        protected $nom;
+        protected $prenom;
+        protected $email;
 
-        public function modifierMotDePasse($mdp, $nmdp, $cmdp) {
-            if (!empty($_POST['nouveauMotDePasse']) && !empty($_POST['confirmeMotDePasse'])) {
+
+        public function modifierUtilisateurs($nom, $prenom, $email) {
+            $error = '';            
+            $this->login = $login;
+            $selectLogin = new \Models\RegisterAuth();
+            $count = $selectLogin->selectCountLogin($this->login);
+               
+            if ($count == 0) {
+                $updateLogin = new \Models\User();
+                $updateLogin->updateLogin($this->login);
+                $infoUser = $updateLogin->infoUser($this->login);
+                $_SESSION["user"] = [
+                                        'id' => $infoUser['id'], 
+                                        'login' => $this->login, 
+                                        'password' => $infoUser['password'],
+                                    ];  
+            }
+            else {
+                $error = "* Ce login existe déjà !";
+            }
+            return $error;
+        }
+
+
+        public function modifierMotDePasse() {
+            if (!empty($_POST['motDePasse']) && !empty($_POST['nouveauMotDePasse']) && !empty($_POST['confirmeMotDePasse'])) {
+                $mdp = htmlspecialchars($_POST['motDePasse']);
+                $nmdp = htmlspecialchars($_POST['nouveauMotDePasse']);
+                $cmdp = htmlspecialchars($_POST['confirmeMotDePasse']);
+                
                 $this->mdp = $mdp;
                 $this->cmdp = $cmdp;
                 $erreur = "";
-                             
-                if(password_verify($mdp, $_SESSION['utilisateurs']['mot_de_passe'])) {
+                        
+                if(password_verify($mdp, $_SESSION['utilisateurs'][0]['mot_de_passe'])) {
                     
-                    if ($mdp == $cmdp) {
-                        $hash = password_hash($mdp, PASSWORD_DEFAULT);
+                    if ($nmdp == $cmdp) {
+                        $hash = password_hash($nmdp, PASSWORD_DEFAULT);
                         $modifMdp = new \Models\Utilisateurs();
                         $modifMdp->modifierMotDePasse($hash);
                     }
