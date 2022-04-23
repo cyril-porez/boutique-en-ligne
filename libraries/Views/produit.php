@@ -55,6 +55,7 @@
                                         <option value="oz">14oz</option>
                                         <option value="oz">16oz</option>
                                     </select>
+                                    <button type="submit" name="taille">valider</button>
                                 </form>
                         <?php }
                             elseif($verifieKimono === 0 || $verifieKimono === true) {?>
@@ -75,6 +76,7 @@
                                             <option value="taille_kimono">C3</option>
                                             <option value="taille_kimono">C4</option>
                                         </select>
+                                        <button type="submit" name="taille">valider</button>
                                     </div>
                                 </form>
                         <?php }
@@ -89,6 +91,7 @@
                                                 <option value="taille_basic">XL</option>
                                                 <option value="taille_basic">XXL</option>
                                             </select>
+                                            <button type="submit" name="taille">valider</button>
                                         </div>
                                 </form>
                             <?php }
