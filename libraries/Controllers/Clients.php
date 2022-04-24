@@ -13,12 +13,5 @@
             $infoUtilisateurs = $utilisateurs->selectUtilisateursId($id);
             return $infoUtilisateurs;
         }
-
-
-        public function Adresse($id) {
-            $adresse = new \Models\Adresses();
-            $addresseUtilisateur = $adresse->Adresse($id);
-            return $addresseUtilisateur;
-        }
     }
 ?>

@@ -9,9 +9,16 @@
         protected $mdp;
         protected $nmdp;
         protected $cmdp;
+
         protected $nom;
         protected $prenom;
         protected $email;
+
+        protected $adresse;
+        protected $codePostal;
+        protected $ville;
+        protected $pays;
+        protected $idUtilisateur;
 
 
         public function modifierUtilisateurs($nom, $prenom, $email) {
@@ -86,8 +93,33 @@
                 else {
                     $erreur = "* votre mot de passe ne correspond pas";
                 }                
+            }            
+            return $erreur;
+        }
+
+
+        public function modifierAdresseLivraison($adresse, $ville, $codePostal, $pays, $idUtilisateur) {
+
+            $erreur = '';
+
+            if (!empty($_POST['adresse']) && !empty($_POST['ville']) && !empty($_POST['codePostal']) && !empty($_POST['pays'])) {
+                $adresse = htmlspecialchars($_POST['adresse']);
+                $codePostal = htmlspecialchars($_POST['codePostal']);
+                $ville = htmlspecialchars($_POST['ville']);
+                $pays = htmlspecialchars($_POST['pays']);
+
+                $this->adresse = $adresse;
+                $this->codePostal = $codePostal;
+                $this->ville = $ville;
+                $this->pays = $pays;
+                $this->idUtilisateur = $idUtilisateur;
+
+                $modifierAdresseLivraison = new \Models\Adresses();
+                $modifier = $modifierAdresseLivraison->modifierAdresseLivraison($this->adresse, $this->ville, $this->codePostal, $this->pays, $this->idUtilisateur);
             }
-            
+            else if (!empty($_POST['adresse']) || !empty($_POST['ville']) || !empty($_POST['code_postal']) || !empty($_POST['pays'])) {
+                $erreur = '* Les champs sont vides';
+            }            
             return $erreur;
         }
     }

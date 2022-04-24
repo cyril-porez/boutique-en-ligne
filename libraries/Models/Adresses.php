@@ -7,6 +7,10 @@
     class Adresses extends Model {
 
         protected $idUtilisateur;
+        protected $adresse;
+        protected $codePostal;
+        protected $ville;
+        protected $pays;
 
 
         public function selectAdresse($id) {
@@ -37,5 +41,23 @@
             $result->bindValue(':id', $id, \PDO::PARAM_INT);
             return $result->execute();
         } 
+
+
+        public function modifierAdresseLivraison($adresse, $ville, $codePostal, $pays, $idUtilisateur) {
+            $this->adresse = $adresse;
+            $this->codePostal = $codePostal;
+            $this->ville = $ville;
+            $this->pays = $pays;
+            $this->idUtilisateur = $idUtilisateur;
+            
+            $sql = "UPDATE adresses SET adresse = :adresse, code_postal = :codePostal, ville = :ville, pays = :pays WHERE id_utilisateur = :idUtilisateur";
+            $result = $this->bdd->prepare($sql);
+            $result->bindValue(':adresse', $this->adresse, \PDO::PARAM_STR);
+            $result->bindValue(':codePostal', $this->codePostal, \PDO::PARAM_STR);
+            $result->bindValue(':ville', $this->ville, \PDO::PARAM_STR);
+            $result->bindValue(':pays', $this->pays, \PDO::PARAM_STR);
+            $result->bindValue(':idUtilisateur', $this->idUtilisateur, \PDO::PARAM_STR);            
+            return $result->execute();
+        }
     }
 ?>
