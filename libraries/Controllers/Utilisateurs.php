@@ -15,25 +15,48 @@
 
 
         public function modifierUtilisateurs($nom, $prenom, $email) {
-            $error = '';            
-            $this->login = $login;
-            $selectLogin = new \Models\RegisterAuth();
-            $count = $selectLogin->selectCountLogin($this->login);
-               
-            if ($count == 0) {
-                $updateLogin = new \Models\User();
-                $updateLogin->updateLogin($this->login);
-                $infoUser = $updateLogin->infoUser($this->login);
-                $_SESSION["user"] = [
-                                        'id' => $infoUser['id'], 
-                                        'login' => $this->login, 
-                                        'password' => $infoUser['password'],
-                                    ];  
+            if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['email'])) {
+
+                $nom = htmlspecialchars($_POST['nom']);
+                $prenom = htmlspecialchars($_POST['prenom']);
+                $email = htmlspecialchars($_POST['email']);
+
+                $erreur = '';     
+    
+                $this->nom = $nom;
+                $this->prenom = $prenom;
+                $this->email = $email;
+
+                $id = $_SESSION['utilisateurs'][0]['id'];
+                
+                $verifEmail = new \Models\Utilisateurs();
+                $countEmail = $verifEmail->verifEmail($this->email);
+                   
+                if (count($countEmail) == 0 || count($countEmail) == 1) {
+                    $updateLogin = new \Models\Utilisateurs();
+                    $updateLogin->modifierUtilisateurs($this->nom, $this->prenom, $this->email);
+                    $infoUser = $updateLogin->selectUtilisateursId($id);
+                    $_SESSION["utilisateurs"][0] =  [
+                                            'id' => $infoUser[0]['id'],
+                                            'nom' => $this->nom, 
+                                            'prenom' => $this->prenom, 
+                                            'email' => $this->email,
+                                            'mot_de_passe' => $infoUser[0]['mot_de_passe'],
+                                            'adresse' => $infoUser[0]['adresse'],
+                                            'code_postale' => $infoUser[0]['code_postale'],
+                                            'pays' => $infoUser[0]['pays'],
+                                            'ville' => $infoUser[0]['ville'],
+                                            'id_droits' => $infoUser[0]['id_droits'],
+                                            'num' => $infoUser[0]['num'],
+                                            'token' => $infoUser[0]['token'],
+                                            'date' => $infoUser[0]['date'],
+                                        ];  
+                }
+                else {
+                    $erreurr = "* Ce login existe déjà !";
+                }
+                return $erreur;
             }
-            else {
-                $error = "* Ce login existe déjà !";
-            }
-            return $error;
         }
 
 
@@ -44,7 +67,9 @@
                 $cmdp = htmlspecialchars($_POST['confirmeMotDePasse']);
                 
                 $this->mdp = $mdp;
+                $this->nmdp = $nmdp;
                 $this->cmdp = $cmdp;
+
                 $erreur = "";
                         
                 if(password_verify($mdp, $_SESSION['utilisateurs'][0]['mot_de_passe'])) {
@@ -62,6 +87,7 @@
                     $erreur = "* votre mot de passe ne correspond pas";
                 }                
             }
+            
             return $erreur;
         }
     }

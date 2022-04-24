@@ -7,6 +7,9 @@
         //propriétés
 
         protected $mdp;
+        protected $nom;
+        protected $prenom;
+        protected $email;
         
         //constructeurs
         /*public function __construct(){
@@ -35,7 +38,7 @@
         
         //connecter utilisateur
     
-        public function connexion($email){
+        public function verifEmail($email){
             $requete2 = $this->bdd->prepare("SELECT * FROM utilisateurs WHERE email = :email");
             $requete2->bindValue(":email", $email, \PDO::PARAM_STR);
             $requete2 ->execute();
@@ -43,7 +46,7 @@
             return $recuperer;
         }
 
-        
+
         public function selectionneProduits() {
             $sql = "SELECT produits.id, produits.nom, produits.reference, produits.classe, produits.description, produits.id_categorie, categories.nom as categorie, produits.id_sous_categorie, sous_categories.nom as sous_categorie, produits.prix, produits.image1 from produits inner join categories ON produits.id_categorie = categories.id inner join sous_categories ON produits.id_sous_categorie = sous_categories.id";
             $requete = $this->bdd->prepare($sql);
@@ -79,7 +82,7 @@
             $requete->bindValue(":nom", $nom, \PDO::PARAM_STR);
             $requete->bindValue(":email", $email, \PDO::PARAM_STR);
             $requete->bindValue(":idDroits", $idDroit, \PDO::PARAM_INT);
-            $requete->bindValue(":idUtilisateur", $id, \PDO::PARAM_INT);
+            $requete->bindValue(":idUtilisateur", $id, \PDO::PARAM_STR);
             $requete->execute();
         }
 
@@ -152,7 +155,24 @@
             $sql = "UPDATE utilisateurs SET mot_de_passe = :password where id = :id";
             $requete = $this->bdd->prepare($sql);
             $requete->bindValue(':password', $this->mdp, \PDO::PARAM_STR);
-            $requete->bindValue(':id', $idUtilisateur, \PDO::PARAM_STR);
+            $requete->bindValue(':id', $idUtilisateur, \PDO::PARAM_INT);
+            $requete->execute();
+        }
+
+
+        public function modifierUtilisateurs($nom, $prenom, $email) {
+            $idUtilisateur = $_SESSION["utilisateurs"][0]["id"];
+            
+            $this->nom = $nom;
+            $this->prenom = $prenom;
+            $this->email = $email;
+
+            $sql = "UPDATE utilisateurs SET nom = :nom, prenom = :prenom, email = :email where id = :id"; 
+            $requete = $this->bdd->prepare($sql);
+            $requete->bindValue(':nom', $this->nom, \PDO::PARAM_STR);
+            $requete->bindValue(':prenom', $this->prenom, \PDO::PARAM_STR);
+            $requete->bindValue(':email', $this->email, \PDO::PARAM_STR);
+            $requete->bindValue(':id', $idUtilisateur, \PDO::PARAM_INT);
             $requete->execute(); 
         }
     }

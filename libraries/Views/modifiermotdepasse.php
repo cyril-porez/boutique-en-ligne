@@ -11,6 +11,12 @@
         $modifMdp = new \Controllers\Utilisateurs();
         $modifMdp->modifierMotDePasse();
     }
+
+    if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['email'])) {
+        $modifInfo = new \Controllers\Utilisateurs();
+        $modifInfo->modifierUtilisateurs($_POST['nom'], $_POST['prenom'], $_POST['email']);
+        header("Refresh: 0");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -40,11 +46,11 @@
 
             <label for="email">Email :</label>
             <input type="text" name="email" value="<?= $utilisateur[0]['email'] ?>" >
-        </form>
         
-        <h2>CHANGER DE MOT DE PASSE </h2>
+        
+            <h2>CHANGER DE MOT DE PASSE </h2>
 
-        <form action="" method="post">
+        
 
             <label for="motDePasse">Mot de passe :</label>
             <input type="text" name="motDePasse">

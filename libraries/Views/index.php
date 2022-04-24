@@ -1,17 +1,30 @@
 <?php
-session_start();
-require_once('../Controllers/Clients.php');
+    session_start();
+    
+    require_once('../Controllers/Clients.php');
+    require_once('../Controllers/Adresses.php');
 
-$id = $_SESSION['utilisateurs'];
+    if (!empty($_SESSION['utilisateurs'])) {
+        $id = $_SESSION['utilisateurs'];
 
-var_dump($_SESSION);
-if (isset($_POST['deconnexion'])){
-    session_destroy();
-    header('Location: connexion.php');
-}
+        $verif = new \Controllers\Adresses();
+        $verifId = $verif->verifieAdresseLivraison($id[0]['id']);
+        var_dump($verifId);
+        if ($verifId == 0) {
+            $adresse = new \Controllers\Clients();
+            $adresse->Adresse($id[0]['id']);
+            //header('Refresh: 0');
+        }        
+    }
 
-$adresse = new \Controllers\Clients();
-$adresse->Adresse($id[0]['id'])
+
+    var_dump($_SESSION);
+    if (isset($_POST['deconnexion'])){
+        session_destroy();
+        header('Location: connexion.php');
+    }
+
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
