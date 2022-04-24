@@ -16,7 +16,7 @@
 
 
         public function Adresse($id) {
-            $adresse = new \Models\Utilisateurs();
+            $adresse = new \Models\Adresses();
             $addresseUtilisateur = $adresse->Adresse($id);
             return $addresseUtilisateur;
         }

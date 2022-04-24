@@ -11,7 +11,7 @@
         $verifId = $verif->verifieAdresseLivraison($id[0]['id']);
         var_dump($verifId);
         if ($verifId == 0) {
-            $adresse = new \Controllers\Clients();
+            $adresse = new \Controllers\Adresses();
             $adresse->Adresse($id[0]['id']);
             //header('Refresh: 0');
         }        

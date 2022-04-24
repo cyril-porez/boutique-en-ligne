@@ -4,7 +4,6 @@
     require_once('../Controllers/Adresses.php');
 
     $info = $_SESSION['utilisateurs'];
-    //var_dump($info);
 
     $adresse = new \Controllers\Adresses();
     $adresseUtilisateurs = $adresse->selectAdresses($info[0]['id']);

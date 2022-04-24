@@ -29,5 +29,13 @@
             $this->count = $result->rowCount();
             return $this->count;
         }
+
+
+        public function Adresse($id) {
+            $sql = "INSERT into adresses (adresse, code_postal, ville, pays, num_tel, id_utilisateur) SELECT adresse, code_postale, ville, pays, num, id from utilisateurs WHERE utilisateurs.id = :id";
+            $result = $this->bdd->prepare($sql);
+            $result->bindValue(':id', $id, \PDO::PARAM_INT);
+            return $result->execute();
+        } 
     }
 ?>

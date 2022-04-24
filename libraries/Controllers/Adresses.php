@@ -17,8 +17,12 @@
             $infoUtilisateurs = $utilisateurs->selectAdresse($id);
             return $infoUtilisateurs;
         }
-    }
 
-    $adresse = new \Controllers\Adresses();
-    var_dump($adresse->selectAdresses(1));
+
+        public function Adresse($id) {
+            $adresse = new \Models\Adresses();
+            $addresseUtilisateur = $adresse->Adresse($id);
+            return $addresseUtilisateur;
+        }
+    }
 ?>
