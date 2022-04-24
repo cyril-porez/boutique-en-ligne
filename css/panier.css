@@ -7,7 +7,6 @@ body{
 }
 #grand-container{
     display: flex;
-    /* justify-content: space-between; */
 }
 .article{
     display: flex;
@@ -25,7 +24,6 @@ th{
     min-height: 50vh;
 }
 h2{
-    /* text-align: center; */
     margin-left: 10px;
 }
 hr{
@@ -58,4 +56,21 @@ button:hover{
 .articles-panier button{
     width: 20%;
     height: 10%;
+    margin-left: 75%;
+}
+i{
+    font-size: 1em;
+    margin-left: 5%;
+    cursor: pointer;
+}
+.btn-mdc{
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #007185;
+    border-right: 0.5px solid #858383;
+}
+.btn-group{
+    display: flex;
+    margin-left: 83%;
 }
