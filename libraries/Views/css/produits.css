@@ -68,33 +68,20 @@ input[type=checkbox]{
     justify-content: center;
     border: 1px solid black
    }
-    input[type=checkbox]:after {
-        font-family: "Font Awesome 5 Free";
-        font-weight: 900;
-        content: "\f00c";
-        font-size: 10px;
-        color: white;
-        display: none;
-    }
-    input[type=checkbox]:hover{
-        background-color: red;
-    }
-    input[type=checkbox]:checked{
-        background-color: black;
-    }
-    input[type=checkbox]:checked:after{
-        display: block;
-    }
-    #taille form{
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
-   #taille form div{
-        display: flex;
-        margin-bottom: 20px;
-        align-items: center;
-    }
-    #taille{
-        margin-top: 20%
-    }
+#taille form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#taille form div{
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+}
+#taille{
+    margin-top: 20%
+}
+select{
+    height: 30px;
+    border: 0.3px solid rgb(212, 210, 210);
+}
