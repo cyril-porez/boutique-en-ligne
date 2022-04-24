@@ -131,14 +131,7 @@
         } 
 
         
-        public function selectAdresse($id) {
-            $selection = "SELECT * FROM adresses WHERE id = :id";
-            $result = $this->bdd->prepare($selection);
-            $result->bindValue(':id', $id, \PDO::PARAM_INT);
-            $result->execute();
-            $recuperer_tout = $result->fetch(\PDO::FETCH_ASSOC);
-            return $recuperer_tout;
-        }
+        
 
 
         public function Adresse($id) {

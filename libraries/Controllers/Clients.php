@@ -15,13 +15,6 @@
         }
 
 
-        public function selectAdresses($id) {
-            $utilisateurs = new \Models\Utilisateurs();
-            $infoUtilisateurs = $utilisateurs->selectAdresse($id);
-            return $infoUtilisateurs;
-        }
-
-
         public function Adresse($id) {
             $adresse = new \Models\Utilisateurs();
             $addresseUtilisateur = $adresse->Adresse($id);
