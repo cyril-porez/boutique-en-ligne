@@ -20,8 +20,4 @@
             return $this->count;
         }
     }
-
-    $adresse = new \Models\Adresses();
-    $adresses = $adresse->selectCountLogin(8);
-    var_dump($adresses);
 ?>
