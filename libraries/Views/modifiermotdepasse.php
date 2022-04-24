@@ -5,12 +5,17 @@
     require_once('../Controllers/Utilisateurs.php');
 
     $utilisateur = $_SESSION['utilisateurs'];
+    var_dump($_SESSION['utilisateurs']);    
 
-
-    if(!empty($_POST['nouveauMotDePasse']) && !empty($_POST['confirmeMotDePasse'])) {
-        echo 'bob';
+    if(!empty($_POST['motDePasse']) && !empty($_POST['nouveauMotDePasse']) && !empty($_POST['confirmeMotDePasse'])) {
         $modifMdp = new \Controllers\Utilisateurs();
-        $modifMdp->modifierMotDePasse($_POST['nouveauMotDePasse'], $_POST['confirmeMotDePasse']);
+        $modifMdp->modifierMotDePasse();
+    }
+
+    if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['email'])) {
+        $modifInfo = new \Controllers\Utilisateurs();
+        $modifInfo->modifierUtilisateurs($_POST['nom'], $_POST['prenom'], $_POST['email']);
+        header("Refresh: 0");
     }
 ?>
 
@@ -52,10 +57,10 @@
 
                     <label for="email">Email :</label>
                     <input type="text" name="email" value="<?= $utilisateur[0]['email'] ?>" >
-                </form>
-                <h2>CHANGER DE MOT DE PASSE </h2>
+              
+                    <h2>CHANGER DE MOT DE PASSE </h2>
 
-                <form action="" method="post">
+                
 
                     <label for="motDePasse">Mot de passe :</label>
                     <input type="text" name="motDePasse">

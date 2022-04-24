@@ -14,8 +14,8 @@
                 $mot_de_passe = htmlspecialchars($_POST['mot_de_passe']);
                 $erreur = '';
                 $utilisateur = new \Models\Utilisateurs();
-                $recuperer = $utilisateur->connexion($email);
-                
+                $recuperer = $utilisateur->verifEmail($email);
+
                 if(count($recuperer) > 0) {
                     
                     if(password_verify($mot_de_passe, $recuperer[0]['mot_de_passe'])) {

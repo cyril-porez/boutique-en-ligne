@@ -1,10 +1,11 @@
 <?php
     session_start();
 
-    require_once('../Controllers/Clients.php');
+    require_once('../Controllers/Adresses.php');
+
     $info = $_SESSION['utilisateurs'];
 
-    $adresse = new \Controllers\Clients();
+    $adresse = new \Controllers\Adresses();
     $adresseUtilisateurs = $adresse->selectAdresses($info[0]['id']);
 ?>
 
