@@ -4,8 +4,7 @@
 
     require_once('../Controllers/Utilisateurs.php');
 
-    $utilisateur = $_SESSION['utilisateurs'];
-    var_dump($_SESSION['utilisateurs']);    
+    $utilisateur = $_SESSION['utilisateurs'];   
 
     if(!empty($_POST['motDePasse']) && !empty($_POST['nouveauMotDePasse']) && !empty($_POST['confirmeMotDePasse'])) {
         $modifMdp = new \Controllers\Utilisateurs();

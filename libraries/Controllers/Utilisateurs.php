@@ -122,5 +122,48 @@
             }            
             return $erreur;
         }
+
+
+        public function modifierAdresseFacturation($adresse, $ville, $codePostal, $pays, $idUtilisateur) { 
+            
+            $erreur = '';
+
+            if (!empty($_POST['adresse']) && !empty($_POST['ville']) && !empty($_POST['codePostal']) && !empty($_POST['pays'])) {
+                $adresse = htmlspecialchars($_POST['adresse']);
+                $codePostal = htmlspecialchars($_POST['codePostal']);
+                $ville = htmlspecialchars($_POST['ville']);
+                $pays = htmlspecialchars($_POST['pays']);
+
+                $this->adresse = $adresse;
+                $this->codePostal = $codePostal;
+                $this->ville = $ville;
+                $this->pays = $pays;
+                $this->idUtilisateur = $idUtilisateur;
+
+                $modifierAdresseLivraison = new \Models\Utilisateurs();
+                $modifier = $modifierAdresseLivraison->modifierAdresseFacturation($this->adresse, $this->ville, $this->codePostal, $this->pays, $this->idUtilisateur);
+                $infoUtilisateur = $modifierAdresseLivraison->selectUtilisateursId($this->idUtilisateur);
+
+                $_SESSION["utilisateurs"][0] =  [
+                    'id' => $infoUtilisateur[0]['id'],
+                    'nom' => $infoUtilisateur[0]['nom'], 
+                    'prenom' => $infoUtilisateur[0]['prenom'], 
+                    'email' => $infoUtilisateur[0]['email'],
+                    'mot_de_passe' => $infoUtilisateur[0]['mot_de_passe'],
+                    'adresse' => $this->adresse,
+                    'code_postale' => $this->adresse,
+                    'pays' => $this->pays,
+                    'ville' => $this->ville,
+                    'id_droits' => $infoUtilisateur[0]['id_droits'],
+                    'num' => $infoUtilisateur[0]['num'],
+                    'token' => $infoUtilisateur[0]['token'],
+                    'date' => $infoUtilisateur[0]['date'],
+                ]; 
+            }
+            else if (!empty($_POST['adresse']) || !empty($_POST['ville']) || !empty($_POST['code_postal']) || !empty($_POST['pays'])) {
+                $erreur = '* Les champs sont vides';
+            }            
+            return $erreur;
+        }
     }
 ?>

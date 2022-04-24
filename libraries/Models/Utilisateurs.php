@@ -10,6 +10,12 @@
         protected $nom;
         protected $prenom;
         protected $email;
+
+        protected $idUtilisateur;
+        protected $adresse;
+        protected $codePostal;
+        protected $ville;
+        protected $pays;
         
         //constructeurs
         /*public function __construct(){
@@ -156,6 +162,24 @@
             $requete->bindValue(':email', $this->email, \PDO::PARAM_STR);
             $requete->bindValue(':id', $idUtilisateur, \PDO::PARAM_INT);
             $requete->execute(); 
+        }
+
+
+        public function modifierAdresseFacturation($adresse, $ville, $codePostal, $pays, $idUtilisateur) {
+            $this->adresse = $adresse;
+            $this->codePostal = $codePostal;
+            $this->ville = $ville;
+            $this->pays = $pays;
+            $this->idUtilisateur = $idUtilisateur;
+
+            $sql = "UPDATE utilisateurs SET adresse = :adresse, code_postale = :codePostal, pays = :pays, ville = :ville WHERE id = :idUtilisateur";
+            $result = $this->bdd->prepare($sql);
+            $result->bindValue(':adresse', $this->adresse, \PDO::PARAM_STR);
+            $result->bindValue(':codePostal', $this->codePostal, \PDO::PARAM_STR);
+            $result->bindValue(':ville', $this->ville, \PDO::PARAM_STR);
+            $result->bindValue(':pays', $this->pays, \PDO::PARAM_STR);
+            $result->bindValue(':idUtilisateur', $this->idUtilisateur, \PDO::PARAM_STR);            
+            return $result->execute();
         }
     }
 ?>
