@@ -17,17 +17,7 @@
     </header>
     <main>
     <section id="grand-container">
-        <section id="nav">
-            <ul>
-                <li><a href="profil.php">Mon profil</a></li>
-                <li><a href="modifierMotDePasse.php">Modifier changer de mot de passe</a></li>
-                <li><a href="modifierAdresseFacturation.php">Modifier l'adresse de facturation</a></li>
-                <li><a href="modifierAdresseLivraison.php">Modifier l'adresse de livraison</a></li>
-                <li><a href="#">Mes commandes</a></li>
-                <li><a href="#">Ma liste d'envies</a></li>
-                <li><a href="">deconnexion</a></li>
-            </ul>
-        </section>
+        <?php require_once('navbarPanelUtilisateur.php') ?>
         <div id="container">
             <h1>MODIFIER L'ADRESSE</h1>
             <form action="" method="post">
