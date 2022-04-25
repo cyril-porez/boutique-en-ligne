@@ -19,12 +19,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="produits.css">
     <title>Document</title>
 </head>
 <body>
     <header>
+        <div>
+            <div id="icons">
+            <!-- <img src="images/IMG-1168.PNG" alt=""> -->
+                <i class="fa-solid fa-user"></i>
+                <i class="fa-solid fa-envelope"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+        </div>
+        <div id="header-body">
+            dcfvgbhfvgbh
+        </div>
         <nav>
             <ul>
                 <li><a href="">Hommes</a>
