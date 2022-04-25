@@ -40,6 +40,7 @@
                     <form action="" method="post">
                         <button type="submit" name="jaime">j'aime</button>
                         <button type="submit" name="deteste">deteste</button>
+                        <button type="submit" name="favoris">enregistrer</button>
                     </form>
                         <div id="taille">
                             <?php
