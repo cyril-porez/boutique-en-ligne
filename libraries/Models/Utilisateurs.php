@@ -13,7 +13,7 @@
         }
 
         public function selectionneProduits() {
-            $sql = "SELECT produits.id, produits.nom, produits.reference, produits.classe, produits.description, categories.nom as categorie, sous_categories.nom as sous_categorie, produits.prix, produits.image1 from produits inner join categories ON produits.id_categorie = categories.id inner join sous_categories ON produits.id_sous_categorie = sous_categories.id";
+            $sql = "SELECT produits.id, produits.nom, produits.reference, produits.classe, produits.description, produits.id_categorie, categories.nom as categorie, produits.id_sous_categorie, sous_categories.nom as sous_categorie, produits.prix, produits.image1 from produits inner join categories ON produits.id_categorie = categories.id inner join sous_categories ON produits.id_sous_categorie = sous_categories.id";
             $requete = $this->bdd->prepare($sql);
             $requete->execute();
             $infoUtilisateurs = $requete->fetchall(\PDO::FETCH_ASSOC);

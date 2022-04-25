@@ -16,7 +16,7 @@ $chaine =  $affiche_sous_categories[0]['nom'];
 
 <html>
     <body>
-        <link rel="stylesheet" href="css/produits.css">
+        <link rel="stylesheet" href="css/listeProduits.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
         <header>
 
@@ -31,72 +31,57 @@ $chaine =  $affiche_sous_categories[0]['nom'];
 
                     if( $verifieGants === 0 || $verifieGants === true ) {?>
                         <form action="" method="post">
-                            <label for="checkbox">10oz</label>
-                            <input type="checkbox">
-                            <label for="checkbox">12oz</label>
-                            <input type="checkbox">
-                            <label for="checkbox">14oz</label>
-                            <input type="checkbox">
-                            <label for="checkbox">16oz</label>
-                            <input type="checkbox">
+                            <select name="taille_produits" id="">
+                                <option value="oz">choisissez une taille de gant</option>
+                                <option value="oz">10oz</option>
+                                <option value="oz">12oz</option>
+                                <option value="oz">14oz</option>
+                                <option value="oz">16oz</option>
+                            </select>
+                            <button type="submit" name="taille">valider</button>
                         </form>
                 <?php }
                     elseif($verifieKimono === 0 || $verifieKimono === true) {?>
                         <form action="" method="post">
                             <div>
-                                <label for="checkbox">A0</label>
-                                <input type="checkbox">
-                                <label for="checkbox">A1</label>
-                                <input type="checkbox">
-                                <label for="checkbox">A2</label>
-                                <input type="checkbox">
-                                <label for="checkbox">A3</label>
-                                <input type="checkbox">
-                            </div>
-                            <div>
-                                <label for="checkbox">A4</label>
-                                <input type="checkbox">
-                                <label for="checkbox">A5</label>
-                                <input type="checkbox">
-                                <label for="checkbox">C0</label>
-                                <input type="checkbox">
-                                <label for="checkbox">C00</label>
-                                <input type="checkbox">
-                            </div>
-                            <div>
-                                <label for="checkbox">C1</label>
-                                <input type="checkbox">
-                                <label for="checkbox">C2</label>
-                                <input type="checkbox">
-                                <label for="checkbox">C3</label>
-                                <input type="checkbox">
-                                <label for="checkbox">C4</label>
-                                <input type="checkbox">
+                                <select name="taille_produits" id="">
+                                    <option value="taille_kimono">choisissez une taille de Kimono</option>
+                                    <option value="taille_kimono">A0</option>
+                                    <option value="taille_kimono">A1</option>
+                                    <option value="taille_kimono">A2</option>
+                                    <option value="taille_kimono">A3</option>
+                                    <option value="taille_kimono">A4</option>
+                                    <option value="taille_kimono">A5</option>
+                                    <option value="taille_kimono">C00</option>
+                                    <option value="taille_kimono">C0</option>
+                                    <option value="taille_kimono">C1</option>
+                                    <option value="taille_kimono">C2</option>
+                                    <option value="taille_kimono">C3</option>
+                                    <option value="taille_kimono">C4</option>
+                                </select>
+                                <button type="submit" name="taille">valider</button>
                             </div>
                         </form>
                 <?php }
                     else{?>
                         <form action="" method="post">
                                 <div>
-                                    <label for="checkbox">S</label>
-                                    <input type="checkbox">
-                                    <label for="checkbox">M</label>
-                                    <input type="checkbox">
-                                    <label for="checkbox">L</label>
-                                    <input type="checkbox">
-                                </div>
-                                <div>
-                                    <label for="checkbox">XL</label>
-                                    <input type="checkbox">
-                                    <label for="checkbox">XXL</label>
-                                    <input type="checkbox">
+                                    <select name="taille_produits" id="">
+                                        <option value="taille_basic">choisissez une taille</option>
+                                        <option value="taille_basic">S</option>
+                                        <option value="taille_basic">M</option>
+                                        <option value="taille_basic">L</option>
+                                        <option value="taille_basic">XL</option>
+                                        <option value="taille_basic">XXL</option>
+                                    </select>
+                                    <button type="submit" name="taille">valider</button>
                                 </div>
                         </form>
                     <?php }
                     ?>
             </div>
         </section>
-            <div class="container">
+            <div id="container">
                 <?php
                     foreach($affiche_sous_categories as $affiche_sous_categorie) {?>
                         <div>

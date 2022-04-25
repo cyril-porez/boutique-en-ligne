@@ -20,7 +20,7 @@ img {
     flex-direction: column;
     align-items: center;
     padding-bottom: 5%;
-    /* margin-right: calc(100% / 12); */
+    margin-right: calc(100% / 50);
 }
 #container div:nth-child(4n){
     margin-right: 0px;
@@ -46,10 +46,14 @@ button:hover {
 }
 #filtre{
     background-color: #eeeded;
-    width: 40%;
+    width: 450px;
     height: 80vh;
 }
 .filtre_header{
     height: 5% ;
     background-color: rgb(214, 214, 214);
+}
+select{
+    height: 30px;
+    border: 0.3px solid rgb(212, 210, 210);
 }

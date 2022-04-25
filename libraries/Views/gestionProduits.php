@@ -5,16 +5,28 @@
 
     $produits = new \Models\Produits;
     $fetchCategories = $produits->recuperation_de_donnee();
-    //var_dump($fetchCategories);
+   
     $fetchSousCategories = $produits->recuperation_de_donnee2();
 
     $produits = new \Models\Utilisateurs();
     $afficheProduits = $produits->selectionneProduits();
-    //var_dump($afficheProduits);
+    
+    if(!empty($_POST['nomCreer']) && !empty($_POST['referenceCreer']) && !empty($_POST['classeCreer']) && !empty($_POST['descriptionCreer']) && !empty($_POST['categorieCreer']) && !empty($_POST['sous-categorieCreer']) && !empty($_POST['prixCreer'])){
+        $creerProduit = new \Controllers\Produits();
+        $creerProduit->creerProduit($_POST['nomCreer'], $_POST['referenceCreer'], $_POST['classeCreer'], $_POST['descriptionCreer'], $_POST['categorieCreer'], $_POST['sous-categorieCreer'], $_POST['prixCreer'], $filename);
+        header("Refresh: 0");
+    }  
+
+    if(!empty($_POST['nomModifier']) && !empty($_POST['referenceModifier']) && !empty($_POST['classeModifier']) && !empty($_POST['descriptionModifier']) && !empty($_POST['categorieModifier']) && !empty($_POST['sous-categorieModifier']) && !empty($_POST['prixModifier'])){
+        var_dump($_POST['nomModifier']);
+        $creerProduit = new \Controllers\Produits();
+        $creerProduit->modifierProduit($_POST['nomModifier'], $_POST['referenceModifier'], $_POST['classeModifier'], $_POST['descriptionModifier'], $_POST['categorieModifier'], $_POST['sous-categorieModifier'], $_POST['prixModifier'], $filename, $_POST["modifierProduits"]);
+       // header("Refresh: 0");
+    }  
 
     if (isset($_POST['supprimer']) ) {
         if(isset($_POST['supprimerProduit'])){
-            $supprime = new \Controllers\Utilisateurs();
+            $supprime = new \Controllers\Admin();
             $supprime->supprimerProduit($_POST['supprimerProduit']);
             header("Refresh: 0");
         }
@@ -44,25 +56,24 @@
                     <div class="modal-close" data-dismiss="dialog">X</div>
                         <div class="modal-body">
                             <form action="" method="post" enctype="multipart/form-data">
-                                <label for="nom">nom</label>
-                                <input type="text"  name="nom">
+                                <label for="nomCreer">nom</label>
+                                <input type="text"  name="nomCreer">
 
-                                <label for="reference">reference</label>
-                                <input  name="reference">
+                                <label for="referenceCreer">reference</label>
+                                <input  name="referenceCreer">
 
-                                <label for="classe">classe</label>
-                                <select name="classe">
-                                    <option >Choisissez une option</option>
-                                    <option value="homme">Homme</option>
-                                    <option value="femme">Femme</option>
-                                    <option value="enfant">Enfant</option>
+                                <label for="description">description</label>
+                                <input type="text" name="descriptionCreer">
+
+                                <label for="classeCreer">classe:</label>
+                                <select name="classeCreer">
+                                    <option value="Homme">Homme</option>
+                                    <option value="Femme">Femme</option>
+                                    <option value="Enfant">Enfant</option>
                                     <option value="Sport">Sport</option>
                                 </select>
 
-                                <label for="description">description</label>
-                                <input type="text" name="description">
-
-                                <select name="categorie">
+                                <select name="categorieCreer">
                                     <option value="choose" name="choose">Choisir une catégorie d'article</option>
                                     <option>
                                         <?php
@@ -73,7 +84,7 @@
                                     </option>
                                 </select>
 
-                                <select name="sous-categorie">
+                                <select name="sous-categorieCreer">
                                     <option value="choose" name="choose">Choisir une sous-catégorie d'article</option>
                                     <option>
                                         <?php
@@ -85,19 +96,13 @@
                                 </select>
 
                                 <label for="image">image</label>
-                                 <input type="file" name="telecharger_image">
+                                 <input type="file" name="telechargerImage">
 
                                 <label for="prix">prix</label>
-                                <input type="text" name="prix">
+                                <input type="text" name="prixCreer">
 
                                 <input type="submit" value="creer">
-                            </form>
-                            <?php
-                                if(!empty($_POST['nomCreer']) && !empty($_POST['prenomCreer'])  && !empty($_POST['emailCreer']) && !empty($_POST['mot_de_passeCreer']) && !empty($_POST['CmdpCreer']) && !empty($_POST['adresseCreer']) && !empty($_POST['code_postaleCreer']) && !empty($_POST['paysCreer']) && !empty($_POST['villeCreer']) && !empty($_POST['numeroCreer'])) {    
-                                    $creerUtilisateur = new \Controllers\utilisateurs();
-                                    $creerUtilisateur->creerUtilisateur($_POST['nomCreer'], $_POST['prenomCreer'], $_POST['emailCreer'], $_POST['mot_de_passeCreer'], $_POST['CmdpCreer'], $_POST['adresseCreer'], $_POST['code_postaleCreer'], $_POST['paysCreer'], $_POST['villeCreer'], $_POST['numeroCreer']);
-                                }
-                            ?>
+                            </form>                            
                         </div>
                     </div>
                 </div>
@@ -164,57 +169,57 @@
                                     <div class="modal-content">
                                         <div class="modal-close" data-dismiss="dialog">X</div>
                                             <div class="modal-body">
-                                                    <legend>Saisir toutes vos informations</legend>
-                                                    <form action="" method="post" enctype="multipart/form-data">
+                                                <form action="" method="post" enctype="multipart/form-data">                                                        
+                                                    <label for="nomModifier">nom</label>
+                                                    <input type="text"  name="nomModifier" value=<?= $value['nom'] ?>>
 
-                                                        <label for="nom">nom</label>
-                                                        <input type="text"  name="nom" value=<?= $value['nom'] ?>>
+                                                    <label for="referenceModifier">reference</label>
+                                                    <input  name="referenceModifier" value=<?= $value['reference'] ?> >
 
-                                                        <label for="reference">reference</label>
-                                                        <input  name="reference">
+                                                    <label for="descriptionModifier">description</label>
+                                                    <input type="text" name="descriptionModifier" value=<?= $value['description'] ?>>
 
-                                                        <label for="classe">classe</label>
-                                                        <select name="classe">
-                                                            <option>Choisissez une option</option>
-                                                            <option value="homme">Homme</option>
-                                                            <option value="femme">Femme</option>
-                                                            <option value="enfant">Enfant</option>
-                                                            <option value="Sport">Sport</option>
-                                                        </select>
+                                                    <label for="classeModifier">classe:</label>
+                                                    <select name="classeModifier"> 
+                                                    <option value="<?= $value['classe'] ?>"><?= $value['classe'] ?></option>
+                                                        <option value="Homme">Homme</option>
+                                                        <option value="Femme">Femme</option>
+                                                        <option value="Enfant">Enfant</option>
+                                                        <option value="Sport">Sport</option>
+                                                    </select>
 
-                                                        <label for="description">description</label>
-                                                        <input type="text" name="description">
+                                                    <label for="categorieModifier">categorie:</label>
+                                                    <select name="categorieModifier"> 
+                                                        <option value=<?= $value['id_categorie'] ?>><?= $value['categorie'] ?></option>                                                       
+                                                        <option>
+                                                            <?php
+                                                                foreach($fetchCategories as $fetchCategorie) {
+                                                                    echo "<option value=".$fetchCategorie["id"]. ">" . $fetchCategorie["nom"]. "</option>";
+                                                                }
+                                                            ?>
+                                                        </option>
+                                                    </select>
 
-                                                        <select name="categorie">
-                                                            <option value="choose" name="choose">Choisir une catégorie d'article</option>
-                                                            <option>
-                                                                <?php
-                                                                    foreach($fetchCategories as $fetchCategorie) {
-                                                                        echo "<option value=".$fetchCategorie["id"].">" .$fetchCategorie["nom"]. "</option>";
-                                                                    }
-                                                                ?>
-                                                            </option>
-                                                        </select>
+                                                    <select name="sous-categorieModifier">
+                                                        <option value="<?= $value['id_sous_categorie'] ?>"><?= $value['sous_categorie'] ?></option>                                                        
+                                                        <option>
+                                                            <?php
+                                                                foreach($fetchSousCategories as $fetchSousCategorie) {
+                                                                    echo "<option value=".$fetchSousCategorie["id"].">" . $fetchSousCategorie["nom"] . "</option>";
+                                                                }
+                                                            ?>
+                                                        </option>
+                                                    </select>
 
-                                                        <select name="sous-categorie">
-                                                            <option value="choose" name="choose">Choisir une sous-catégorie d'article</option>
-                                                            <option>
-                                                                <?php
-                                                                    foreach($fetchSousCategories as $fetchSousCategorie) {
-                                                                        echo "<option value=".$fetchSousCategorie["id"].">" . $fetchSousCategorie["nom"] . "</option>";
-                                                                    }
-                                                                ?>
-                                                            </option>
-                                                        </select>
+                                                    <label for="telechargerImage">image</label>
+                                                    <input type="file" name="telechargerImage" value=<?= $value['image1'] ?>>
 
-                                                        <label for="image">image</label>
-                                                        <input type="file" name="telecharger_image">
+                                                    <label for="prixModifier">prix</label>
+                                                    <input type="text" name="prixModifier" value=<?= $value['prix'] ?>>
 
-                                                        <label for="prix">prix</label>
-                                                        <input type="text" name="prix">
-
-                                                        <button class="bouton-modif" type="submit">modifier</button>
-                                                    </form>
+                                                    <input type="submit" value="Modifier">
+                                                    <input type='hidden' name='modifierProduits' value='<?= $value['id']?>'>
+                                                </form>                                                
                                             </div>
                                         </div>
                                     </div>
