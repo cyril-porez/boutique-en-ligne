@@ -115,6 +115,11 @@
                     <span><h3>Ref: <?= $produit[0]['reference'] . '<br>'; ?></h3></span>
                 </div>
             </div>
+            <section>
+                <?php
+                    require_once('commentaire.php');
+                ?>
+            </section>
         </main>
         <footer>
 
