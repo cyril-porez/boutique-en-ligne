@@ -1,21 +1,30 @@
 <link rel="stylesheet" href="css/produit.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <?php
+
+    session_start();
+
     require_once('../Models/Produits.php');
     require_once('../Controllers/Produits.php');
+    require_once('../Controllers/Utilisateurs.php');
 
-    $recup_produit = $_GET['produit'];
+    $idProduit = $_GET['produit'];
+    $idUtilisateur = $_SESSION['utilisateurs'][0]['id'];
 
-    $produits = new \Models\Produits;
-    $jaimeDeteste = new \Controllers\Produits;
+    //Modifier et appeler le controlleur
+    $produits = new \Models\Produits();
 
-    $produit = $produits->selection_produits($recup_produit);
+    $jaimeDeteste = new \Controllers\Produits();
+    $produitFavoris = new \Controllers\Utilisateurs();
+
+    $produit = $produits->selection_produits($idProduit);
+    $produitFavoris->mettreProduitFavoris($idUtilisateur, $idProduit);
 
     if(isset($_POST["jaime"])) {
-        $jaimeDeteste->jaime($recup_produit);
+        $jaimeDeteste->jaime($idProduit);
     }
     else if (isset($_POST["deteste"])) {
-        $jaimeDeteste->deteste($recup_produit);
+        $jaimeDeteste->deteste($idProduit);
     }
 
     $chaine =  $produit[0]['nom'];

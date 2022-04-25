@@ -4,6 +4,7 @@
    
     require_once('..\Models\Produits.php');
     require_once('..\Models\AimeDeteste.php');
+    require_once('..\Models\Favoris.php');
 
     class Produits {
 
@@ -156,6 +157,13 @@
                     header("Refresh: 0");
                 }        
             }
+        }
+
+
+        public function afficherProduitsFavoris($idUtilisateur) {
+            $favoris = new \Models\Favoris();
+            $afficherProduitFavoris = $favoris-> afficherProduitFavoris($idUtilisateur);
+            return $afficherProduitFavoris;
         }
     }
 
