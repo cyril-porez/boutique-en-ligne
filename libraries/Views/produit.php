@@ -117,7 +117,7 @@
             </div>
             <section>
                 <?php
-                    require_once('commentaire.php');
+                    include_once('commentaire.php');
                 ?>
             </section>
         </main>
