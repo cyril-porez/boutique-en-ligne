@@ -1,4 +1,4 @@
-<?php 
+<?php
 
     require_once('../Controllers/Commentaires.php');
 
@@ -27,66 +27,68 @@
     </header>
     <main>
         <h2>Commentaire:</h2>
-    
+
         <form action="" method="POST">
-    
+
             <textarea name="commentaire" placeholder="Votre commentaire"></textarea>
-            <input type="submit" value="poster mon commentaire">
-    
+            <button id="submit-commentaire" type="submit">poster mon commentaire</button>
+
         </form><?php
 
         $j = 0;
         foreach ($affiches as $affiche) {?>
             <div id="containercomment">
-                <div id="entête">
+                <!-- <div id="entête"> -->
                     <div class="login">
-                        <?php echo "<div id ='poster'>Posté le :"." ".date_format(date_create($affiche['date']), 'd/m/Y H:i:s').' '.'</div><div id="par">Posté par :'.' '.$affiche['nom'].'</div>';?>
+                        <?php echo "<div id ='poster-comment'>Posté le :"." ".date_format(date_create($affiche['date']), 'd/m/Y H:i:s').'<br>'.'Posté par :'.' '.$affiche['nom'].'</div>';?>
                     </div>
-                    <textarea name="" id="commentaire" cols="30" rows="10" readonly><?php echo $affiche['commentaire']?></textarea>
-                    <form action="" method="post">
-                        <button name="repondre<?=$j?>" >Répondre</button>   
+                    <div class="reponse">
+                        <p><?php echo $affiche['commentaire']?></p>
+                    </div>
+                    <form id="form-rep" action="" method="post">
+                        <input type="hidden" name="idafficherplus" value="<?= $affiche['id']; ?>">
+                        <button type="submit" name="afficher_plus<?=$j?>">afficher les réponse</button>
+                        <button class="repondre"name="repondre<?=$j?>">Répondre</button>
                     </form>
+
                         <?php
-            
-                            $idCom = $affiche['id'];                            
+
+                $idCom = $affiche['id'];
 
                             $affichesReponses = $commentaire->affichReponse($idCom);
-                                                        
+
                             if (!empty($_POST['reponse'])) {
                                 $reponseCom = new \Controllers\Commentaires();
                                 $reponseCom->reponseCommentaire($_POST['reponse'], $_POST['idReponse']);
                                 header("Refresh: 0");
                                 break;
-                               
+
                             }
 
                             if (isset($_POST["repondre".$j])) {?>
                                 <form action="" method="post">
                                     <input type="text" name='reponse'>
-                                    <input type="submit" name='rep' value='Envoyer'>
+                                    <button type="submit" name='rep'>envoyer</button>
                                     <input type="hidden" name="idReponse" value="<?= $affiche['id']; ?>">
-                                    <input type="submit" value="Annuler">
+                                    <button type="submit">Annuler</button>
                                 </form>
-                                <?php                                    
+                                <?php
                             }
-
-                            foreach ($affichesReponses as $afficheReponse) {
-                                if ($afficheReponse['id_commentaire'] == $affiche['id']  ) { ?>
-                                    <div id="containercomment">
-                                        <div id="entête">
-                                            <div class="login">
-                                                <?php echo "<div id ='poster'>Posté le :"." ".date_format(date_create($afficheReponse['date']), 'd/m/Y H:i:s').' '.'</div><div id="par">Posté par :'.' '.$afficheReponse['nom'].'</div>';?>
-                                            </div>
-                                            <textarea name="" id="commentaire" cols="30" rows="10" readonly><?php echo $afficheReponse['reponse']?></textarea>
-                                        </div>
-                                    </div><?php
+                            if(isset($_POST["afficher_plus".$j])){
+                                foreach ($affichesReponses as $afficheReponse) {
+                                    if ($afficheReponse['id_commentaire'] == $affiche['id']  ) { ?>
+                                        <div id="container-reponse">
+                                                        <?php echo "<div id ='poster-reponse'>Posté le :"." ".date_format(date_create($afficheReponse['date']), 'd/m/Y H:i:s').'<br>Posté par :'.' '.$afficheReponse['nom'].'</div>';?>
+                                                    <div class="reponse">
+                                                        <p><?php echo $afficheReponse['reponse']?></p>
+                                                    </div>
+                                        </div><?php
+                                    }
                                 }
                             }
                         ?>
-                    
-                </div>
             </div><?php
-        $j++;    
+        $j++;
     }
         ?>
     </main>
