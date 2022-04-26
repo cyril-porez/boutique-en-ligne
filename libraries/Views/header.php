@@ -27,97 +27,98 @@
 <body>
     <header>
         <div>
+            <!-- <div>
+                 <img src="../images/IMG-1168.PNG" alt="">
+            </div> -->
             <div id="icons">
-            <!-- <img src="images/IMG-1168.PNG" alt=""> -->
                 <i class="fa-solid fa-user"></i>
                 <i class="fa-solid fa-envelope"></i>
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
         </div>
-        <div id="header-body">
-            dcfvgbhfvgbh
-        </div>
         <nav>
-            <ul>
-                <li><a href="">Hommes</a>
-                    <ul>
-                        <?php
-                            foreach($afficheHs as $afficheH) {
-                                echo '<li><a href=listeProduits.php?id='. $afficheH['id'] . '>' . $afficheH['nom'] . '</a>';
-                                $afficheSousCategorieHommes = $afficheSousCategorie->selectSousCategorie($afficheH['id']);?>
-                                    <ul>
-                                        <?php
-                                            foreach($afficheSousCategorieHommes as $afficheSousCategorieHomme) {
-                                                echo '<li><a href=produits.php?id=' . $afficheSousCategorieHomme['id'] . '>' . $afficheSousCategorieHomme['nom'] . '</a>';?>                                                
-                                                </li>
+            <div class="conteneur-nav">
+                <ul id="container">
+                        <li class="deroulant"><a href="">Hommes</a>
+                            <ul class="sous">
+                                <?php
+                                    foreach($afficheHs as $afficheH) {
+                                        echo '<li><a href=listeProduits.php?id='. $afficheH['id'] . '>' . $afficheH['nom'] . '</a>';
+                                        $afficheSousCategorieHommes = $afficheSousCategorie->selectSousCategorie($afficheH['id']);?>
+                                            <ul>
                                                 <?php
-                                            }
+                                                    foreach($afficheSousCategorieHommes as $afficheSousCategorieHomme) {
+                                                        echo '<li><a href=produits.php?id=' . $afficheSousCategorieHomme['id'] . '>' . $afficheSousCategorieHomme['nom'] . '</a>';?>                                                
+                                                        </li>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                            </ul>
+                                        </li>
+                                        <?php
+                                    }
+                                ?>
+                            </ul>
+                        </li>
+                    <li class="deroulant"><a href="">Femmes</a>
+                        <ul class="sous">
+                            <?php
+                                foreach($afficheFs as $afficheF) {
+                                    echo '<li><a href=listeProduits.php?id='. $afficheF['id'] . '>' . $afficheF['nom'] . '</a>';
+                                    $afficheSousCategorieFemmes = $afficheSousCategorie->selectSousCategorie($afficheF['id']);?>
+                                        <ul>
+                                            <?php
+                                                foreach($afficheSousCategorieFemmes as $afficheSousCategorieFemme) {
+                                                    echo '<li><a href=produits.php?id=' . $afficheSousCategorieFemme['id'] . '>' . $afficheSousCategorieFemme['nom'] . '</a></li>';
+                                                }
                                             ?>
-                                    </ul>
-                                </li>
-                                <?php
-                            }
-                        ?>
-                    </ul>
-                </li>
-                <li><a href="">Femmes</a>
-                    <ul>
-                        <?php
-                            foreach($afficheFs as $afficheF) {
-                                echo '<li><a href=listeProduits.php?id='. $afficheF['id'] . '>' . $afficheF['nom'] . '</a>';
-                                $afficheSousCategorieFemmes = $afficheSousCategorie->selectSousCategorie($afficheF['id']);?>
-                                    <ul>
-                                        <?php
-                                            foreach($afficheSousCategorieFemmes as $afficheSousCategorieFemme) {
-                                                echo '<li><a href=produits.php?id=' . $afficheSousCategorieFemme['id'] . '>' . $afficheSousCategorieFemme['nom'] . '</a></li>';
-                                            }
-                                        ?>
-                                    </ul>
-                                </li>
-                                <?php
-                            }
-                        ?>
-                    </ul>
-                </li>
-                <li><a href="">Enfants</a>
-                    <ul>
-                        <?php
-                            foreach($afficheEs as $afficheE) {
-                                echo '<li><a href=listeProduits.php?id=' . $afficheE['id'] . '>' . $afficheE['nom'] . '</a>';
-                                $afficheSousCategorieEnfants = $afficheSousCategorie->selectSousCategorie($afficheE['id']);?>
-                                    <ul>
-                                        <?php
-                                            foreach($afficheSousCategorieEnfants as $afficheSousCategorieEnfant) {
-                                                echo '<li><a href=produits.php?id=' . $afficheSousCategorieEnfant['id'] . '>' . $afficheSousCategorieEnfant['nom'] . '</a></li>';                                              
-                                            }
-                                        ?>
-                                    </ul>
-                                </li>
-                                <?php
-                            }
-                        ?>
-                    </ul>
-                </li>
-                <li><a href="">Sports</a>
-                    <ul>
-                        <?php
-                            foreach($afficheSs as $afficheS) {
-                                echo '<li><a href=listeProduits.php?id='. $afficheS['id'] . '>' . $afficheS['nom'] . '</a>';
-                                $afficheSousCategorieSports = $afficheSousCategorie->selectSousCategorie($afficheS['id']);?>
-                                    <ul>
-                                        <?php
-                                            foreach($afficheSousCategorieSports as $afficheSousCategorieSport) {
-                                                echo '<li><a href=produits.php?id=' . $afficheSousCategorieSport['id'] . '>' . $afficheSousCategorieSport['nom'] . '</a></li>';                                              
-                                            }
-                                        ?>
-                                    </ul>
-                                </li>
-                                <?php
-                            }
-                        ?>
-                    </ul>
-                </li>
-            </ul>
+                                        </ul>
+                                    </li>
+                                    <?php
+                                }
+                            ?>
+                        </ul>
+                    </li>
+                    <li class="deroulant"><a href="">Enfants</a>
+                        <ul class="sous">
+                            <?php
+                                foreach($afficheEs as $afficheE) {
+                                    echo '<li><a href=listeProduits.php?id=' . $afficheE['id'] . '>' . $afficheE['nom'] . '</a>';
+                                    $afficheSousCategorieEnfants = $afficheSousCategorie->selectSousCategorie($afficheE['id']);?>
+                                        <ul>
+                                            <?php
+                                                foreach($afficheSousCategorieEnfants as $afficheSousCategorieEnfant) {
+                                                    echo '<li><a href=produits.php?id=' . $afficheSousCategorieEnfant['id'] . '>' . $afficheSousCategorieEnfant['nom'] . '</a></li>';                                              
+                                                }
+                                            ?>
+                                        </ul>
+                                    </li>
+                                    <?php
+                                }
+                            ?>
+                        </ul>
+                    </li>
+                    <li class="deroulant"><a href="">Sports</a>
+                        <ul class="sous">
+                            <?php
+                                foreach($afficheSs as $afficheS) {
+                                    echo '<li><a href=listeProduits.php?id='. $afficheS['id'] . '>' . $afficheS['nom'] . '</a>';
+                                    $afficheSousCategorieSports = $afficheSousCategorie->selectSousCategorie($afficheS['id']);?>
+                                        <ul>
+                                            <?php
+                                                foreach($afficheSousCategorieSports as $afficheSousCategorieSport) {
+                                                    echo '<li><a href=produits.php?id=' . $afficheSousCategorieSport['id'] . '>' . $afficheSousCategorieSport['nom'] . '</a></li>';                                              
+                                                }
+                                            ?>
+                                        </ul>
+                                    </li>
+                                    <?php
+                                }
+                            ?>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </header>
     <main>

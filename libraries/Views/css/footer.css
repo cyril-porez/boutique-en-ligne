@@ -1,0 +1,76 @@
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.footer{
+    padding: 10px 0;
+    background: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+}
+.footer .social{
+    text-align: center;
+    /* padding-bottom: 20px; */
+    color: white;
+}
+.footer .social a {
+    font-size: 24px;
+    color: inherit;
+    border: 2px solid rgb(255, 246, 246);
+    width: 40px;
+    height: 40px;
+    display: inline-grid;
+    place-items: center;
+    text-decoration: none;
+    border-radius: 50%;
+    margin: 0 8px;
+    opacity: 0.75;
+}
+.footer .social a:hover{
+    opacity: 1 ;
+}
+/* .footer ul{
+    margin-top: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
+    text-align: center;
+} */
+/* .footer ul a{
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.9;
+}
+.footer ul li{
+    display: inline-block;
+    padding: 0 15px;
+    color: white;
+}
+.footer ul li a:hover{
+    opacity: 1;
+} */
+.footer .copyright{
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    color: white;
+}
+#footer-body{
+    display: flex;
+    justify-content: space-around;
+}
+#footer-body #contact{
+    width: 40%;
+    border-right: 1px solid rgb(204, 201, 201);
+}
+#copyright{
+    background-color: black;
+    color: white;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
