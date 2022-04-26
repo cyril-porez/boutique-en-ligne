@@ -171,9 +171,9 @@
         public function mettreProduitFavoris($idUtilisateur, $idProduit) {
             $this->idUtilisateur = $idUtilisateur;
             $this->idProduit = $idProduit;
-            echo 'bob';
+        
             if(isset($_POST['favoris'])) {
-                echo 'bobo';
+               
                 $favoris = new \Models\Favoris();
                 $nbrFavoris = $favoris->verifProduitFavoris($this->idUtilisateur, $this->idProduit);
 

@@ -7,18 +7,24 @@
     require_once('../Models/Produits.php');
     require_once('../Controllers/Produits.php');
     require_once('../Controllers/Utilisateurs.php');
+    require_once('../Controllers/Stock.php');
 
     $idProduit = $_GET['produit'];
     $idUtilisateur = $_SESSION['utilisateurs'][0]['id'];
 
     //Modifier et appeler le controlleur
     $produits = new \Models\Produits();
+    $produit = $produits->selection_produits($idProduit);
 
     $jaimeDeteste = new \Controllers\Produits();
+    
     $produitFavoris = new \Controllers\Utilisateurs();
-
-    $produit = $produits->selection_produits($idProduit);
     $produitFavoris->mettreProduitFavoris($idUtilisateur, $idProduit);
+    
+    $verifQuantiteKimono = new \Controllers\Stock();
+    $quantiteKimonos = $verifQuantiteKimono->verifStockQuantiteKimono($idProduit);
+
+   
 
     if(isset($_POST["jaime"])) {
         $jaimeDeteste->jaime($idProduit);
@@ -46,13 +52,15 @@
 
                     <span><h3><?= $produit[0]['nom'] . '<br>'; ?></h3></span>
                     <span><h2><?= $produit[0]['prix'] . ' €' . '<br>'; ?></h2></span>
+
                     <form action="" method="post">
                         <button type="submit" name="jaime">j'aime</button>
                         <button type="submit" name="deteste">deteste</button>
                         <button type="submit" name="favoris">enregistrer</button>
                     </form>
-                        <div id="taille">
-                            <?php
+
+                    <div id="taille">
+                        <?php
                             $verifieGants = strripos($chaine,$gant);
                             $verifieKimono = strripos($chaine, $kimono);
 
@@ -65,7 +73,7 @@
                                         <option value="oz">14oz</option>
                                         <option value="oz">16oz</option>
                                     </select>
-                                    <button type="submit" name="taille">valider</button>
+                                    
                                 </form>
                         <?php }
                             elseif($verifieKimono === 0 || $verifieKimono === true) {?>
@@ -73,44 +81,43 @@
                                     <div>
                                         <select name="taille_produits" id="">
                                             <option value="taille_kimono">choisissez une taille de Kimono</option>
-                                            <option value="taille_kimono">A0</option>
-                                            <option value="taille_kimono">A1</option>
-                                            <option value="taille_kimono">A2</option>
-                                            <option value="taille_kimono">A3</option>
-                                            <option value="taille_kimono">A4</option>
-                                            <option value="taille_kimono">A5</option>
-                                            <option value="taille_kimono">C00</option>
-                                            <option value="taille_kimono">C0</option>
-                                            <option value="taille_kimono">C1</option>
-                                            <option value="taille_kimono">C2</option>
-                                            <option value="taille_kimono">C3</option>
-                                            <option value="taille_kimono">C4</option>
-                                        </select>
-                                        <button type="submit" name="taille">valider</button>
+                                            <?php
+                                                 foreach($quantiteKimonos as $quantiteKimono => $value) {                                                    
+                                                    $nbrStock = $value['stock_kimono'];
+                                                    if ($nbrStock > 0) {
+                                                        echo "<option value=>" . $value["nom"] . "</option>";
+                                                    }
+                                                }                                            
+                                            ?>
+                                        </select>                                        
                                     </div>
+                                    <span>
+                                        <input type="number" name="quantité" min = 0 id="input-number" value='0'>
+                                        <button name="ajout" id="ajout-panier">AJOUTER AU PANIER</button>
+                                    </span>
                                 </form>
                         <?php }
                             else{?>
                                 <form action="" method="post">
-                                        <div>
-                                            <select name="taille_produits" id="">
-                                                <option value="taille_basic">choisissez une taille</option>
-                                                <option value="taille_basic">S</option>
-                                                <option value="taille_basic">M</option>
-                                                <option value="taille_basic">L</option>
-                                                <option value="taille_basic">XL</option>
-                                                <option value="taille_basic">XXL</option>
-                                            </select>
-                                            <button type="submit" name="taille">valider</button>
-                                        </div>
+                                    <div>
+                                        <select name="taille_produits" id="">
+                                            <option value="taille_basic">choisissez une taille</option>
+                                            <option value="taille_basic">S</option>
+                                            <option value="taille_basic">M</option>
+                                            <option value="taille_basic">L</option>
+                                            <option value="taille_basic">XL</option>
+                                            <option value="taille_basic">XXL</option>
+                                        </select>                                            
+                                    </div>
+                                    <span>
+                                        <input type="number" name="quantité" min = 0 id="input-number" value='0'>
+                                        <button name="ajout" id="ajout-panier">AJOUTER AU PANIER</button>
+                                    </span>
                                 </form>
                             <?php }
                             ?>
                     </div>
-                    <span>
-                        <input type="number" name="quantité" id="input-number">
-                        <button id="ajout-panier">AJOUTER AU PANIER</button>
-                    </span>
+                    
                     <span id="description"><?= $produit[0]['description'] . '<br>'; ?></span>
                     <span><h3>Ref: <?= $produit[0]['reference'] . '<br>'; ?></h3></span>
                 </div>
