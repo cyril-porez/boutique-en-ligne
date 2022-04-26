@@ -20,11 +20,12 @@
     
     $produitFavoris = new \Controllers\Utilisateurs();
     $produitFavoris->mettreProduitFavoris($idUtilisateur, $idProduit);
+    $produitFavoris->ajoutPanier($idUtilisateur, $idProduit, isset($_Post['quantite']), isset($_POST['ajout']));
+
     
     $verifQuantiteKimono = new \Controllers\Stock();
     $quantiteKimonos = $verifQuantiteKimono->verifStockQuantiteKimono($idProduit);
-
-   
+    //var_dump($quantiteKimonos);   
 
     if(isset($_POST["jaime"])) {
         $jaimeDeteste->jaime($idProduit);
@@ -85,7 +86,7 @@
                                                  foreach($quantiteKimonos as $quantiteKimono => $value) {                                                    
                                                     $nbrStock = $value['stock_kimono'];
                                                     if ($nbrStock > 0) {
-                                                        echo "<option value=>" . $value["nom"] . "</option>";
+                                                        echo "<option value=" .  $value['id'] . ">" . $value["nom"] . "</option>";
                                                     }
                                                 }                                            
                                             ?>

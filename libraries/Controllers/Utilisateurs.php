@@ -4,6 +4,7 @@
 
     require_once('../Models/Utilisateurs.php');
     require_once('../Models/Favoris.php');
+    require_once('../Models/Panier.php');
     
     class Utilisateurs {
 
@@ -183,6 +184,26 @@
                 else if ($nbrFavoris[0]['nbr_favoris'] > 0) {
                     $favoris->supprimerProduitFavoris($idUtilisateur, $idProduit);
                 }
+            }
+        }
+
+        public function ajoutPanier($idUtilisateur, $idProduit, $quantite, $idNomTailleKimono) {
+            if (isset($_POST['ajout'])) {                
+                if (!empty($_POST['taille_produits']) && !empty($_POST['quantité']) > 0) {                    
+                    $idNomTailleKimono = $_POST['taille_produits'];
+                    $quantite = intval($_POST['quantité']);
+                    $panier = new \Models\Panier();
+                    $verifProduit = $panier->verifProduitPanier($idUtilisateur, $idProduit, $idNomTailleKimono);
+                    var_dump($verifProduit);
+                    if (count($verifProduit) == 0) {                       
+                        $panier->ajoutPanier($idUtilisateur, $idProduit, $quantite, $idNomTailleKimono);
+                    }
+                    else if (count($verifProduit) == 1) {
+                        $quantiteBdd = $verifProduit[0]['quantite'];
+                        $somme = $quantite + $quantiteBdd;
+                        $panier->modifQuantite($idUtilisateur, $idProduit, $somme,  $idNomTailleKimono);
+                    }
+                }                
             }
         }
     }
