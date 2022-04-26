@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    overflow-x: hidden;
 }
 /* header div{
     height: 30px;
@@ -8,10 +9,22 @@ body{
     margin-right: 30px;
     display: flex;
     justify-content: space-between;
-    width: 10%;
-    margin-left: 85%;
+    align-items: center;
+    width: 25%;
+    margin-left: 70%;
     margin-top: 20px;
     margin-bottom: 5px;
+}
+i{
+    margin-left: 5px;
+}
+input{
+    margin-bottom: 10px;
+    height: 25px;
+    border: 0.3px solid rgb(212, 210, 210);
+    margin-bottom: 3%;
+    width: 200px;
+    background-color: #f7f7f7;
 }
 img{
     height: 50px;
@@ -38,6 +51,22 @@ nav{
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+#icons ul li{
+    list-style: none;
+}
+#icons ul{
+    display: none;
+    box-shadow: 0px 1px 2px #CCC;
+    background-color: white;
+    width: 200px;
+    margin-top: 20px;
+    position: absolute;
+    top: 50px;
+    left: 0;
+}
+#icons > i :hover ul{
+    display: block;
 }
 nav ul li{
     list-style: none;
@@ -84,4 +113,9 @@ nav > div > ul li:hover .sous{
 }
 .sous li ul li a{
     color: gray;
+}
+header button{
+    border: none;
+    background: none;
+    cursor: pointer;
 }

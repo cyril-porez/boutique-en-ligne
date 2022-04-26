@@ -1,4 +1,5 @@
 <?php
+session_start();
     require_once('../Models/Categorie.php');
     require_once('../Models/SousCategorie.php');
 
@@ -10,6 +11,7 @@
     //var_dump($affiche);
 
     $afficheSousCategorie = new \Models\SousCategorie();
+    // var_dump($_SESSION);
 
 ?>
 
@@ -20,22 +22,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/modalConnexion.css">
+    <script src="js/script.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="produits.css">
+    <!-- <link rel="stylesheet" href="produits.css"> -->
     <title>Document</title>
 </head>
 <body>
     <header>
         <div>
-            <!-- <div>
-                 <img src="../images/IMG-1168.PNG" alt="">
-            </div> -->
             <div id="icons">
-                <i class="fa-solid fa-user"></i>
+                <form action="" method="get">
+                    <input type="search" name="recherche" placeholder="rechercher article">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+                <?php if(!empty($_SESSION)){ ?>
+                <button role='button' data-target='#modal' data-toggle='modal' id='connexion-link'><i class="fa-solid fa-user"></i></button>
+                <?php }
+                    else{ ?>
+                        <i class="fa-solid fa-user"></i>
+                        <ul>
+                            <li><a href="profil.php">Mon compte</a></li>
+                            <li><a href="commandes.php">Mes commandes</a></li>
+                            <li><a href="listedenvie.php">Ma liste d'envie</a></li>
+                            <!-- <li><a href=""></a></li> -->
+                        </ul>
+                <?php } ?>
                 <i class="fa-solid fa-envelope"></i>
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
         </div>
+        <!-- Modal -->
+                <div class="modal" id="modal" role="dialog">
+                    <div class="modal-content">
+                        <div class="modal-close" data-dismiss="dialog">X</div>
+                        <div class="modal-header">
+                            <h3>CONNECTEZ-VOUS</h3>
+                        </div>
+                        <div class="modal-body">
+                            <img src="../images/IMG-1168.PNG" alt="">
+                            <form action="" method="post">
+                                    <label>EMAIL :</label>
+                                    <input type="text" name="email" placeholder="email" autocomplete="off">
+                                    <label>Mot de passe :</label>
+                                    <input type="mot" name="mot_de_passe" placeholder="Mot de passe" />
+                                <button type="submit" name="connection">Connexion</button>
+                                <p>Vous n'avez pas de compte ? <br><a href="inscription.php">Creez un compte</a></p>
+                                <a href="#">Mot de passe oublié ?</a></p>
+                                 <!-- $erreur; -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!---------------------------------------------------------------------------------------------->
         <nav>
             <div class="conteneur-nav">
                 <ul id="container">
