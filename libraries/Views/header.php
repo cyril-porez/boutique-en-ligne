@@ -50,7 +50,7 @@ session_start();
                     </div>
                 <?php } ?>
                 <i class="fa-solid fa-envelope"></i>
-                <i class="fa-solid fa-cart-shopping"></i>
+                <button role='button' data-target='#modal2' data-toggle='modal' id='connexion-link'><i class="fa-solid fa-cart-shopping"></i></button>
             </div>
         </div>
         <!-- Modal -->
@@ -72,6 +72,16 @@ session_start();
                                 <a href="#">Mot de passe oublié ?</a></p>
                                  <!-- $erreur; -->
                             </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- ------------------modal2-------------------------------->
+                <div class="modal" id="modal2" role="dialog">
+                    <div class="modal-content">
+                        <div class="modal-close" data-dismiss="dialog">X</div>
+                            <p></p>
+                        <div class="modal-body">
+
                         </div>
                     </div>
                 </div>
