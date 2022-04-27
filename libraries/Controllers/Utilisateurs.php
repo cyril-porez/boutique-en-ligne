@@ -208,9 +208,29 @@
         }
 
 
-        public function supprimePanierUtilisateur($idUtilisateur) {
-            $supprimer = new \Models\Panier();
-            $supprimer->supprimerPanierUtilisateur($idUtilisateur);
+        public function supprimePanierUtilisateur() {
+            if (isset($_POST['vider'])) {
+                $idUtilisateur = $_SESSION['utilisateurs']['0']['id'];
+                $supprimer = new \Models\Panier();
+                $supprimer->supprimerPanierUtilisateur($idUtilisateur);
+                header('Refresh: 0');
+                return 0;
+            } 
+        }
+
+
+        public function supprimerProduitPanier($idUtilisateur, $idProduit, $idTaille) {
+            echo 'passe';
+            if (isset($_POST['supprimer'])) {
+                echo 'passe';
+                
+                var_dump($idUtilisateur);
+                var_dump($idProduit);
+                var_dump($idTaille);
+
+                $supprimerProduit = new \Models\Panier();
+                $supprimerProduit->supprimerProduitPanier($idUtilisateur, $idProduit, $idTaille);
+            }
         }
     }
 ?>

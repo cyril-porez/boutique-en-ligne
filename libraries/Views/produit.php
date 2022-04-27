@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="css/produit.css">
+<link rel="stylesheet" href="css/commentaire.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <?php
 
@@ -8,6 +9,7 @@
     require_once('../Controllers/Produits.php');
     require_once('../Controllers/Utilisateurs.php');
     require_once('../Controllers/Stock.php');
+    require_once('../Controllers/Commentaires.php');
 
     $idProduit = $_GET['produit'];
     $idUtilisateur = $_SESSION['utilisateurs'][0]['id'];
@@ -37,6 +39,22 @@
     $chaine =  $produit[0]['nom'];
     $gant   = 'Gant';
     $kimono = 'Kimono';
+
+    $commentaire = new \Controllers\Commentaires();
+    $affiches = $commentaire->AfficheCommentaire();
+
+    if (!empty($_POST['commentaire'])) {
+        $commentaire = new \Controllers\Commentaires();
+        $commentaire->posterCommentaire($_POST['commentaire']);
+        header("Refresh: 0");
+    }
+
+    if (!empty($_POST['reponse'])) {
+        $reponseCom = new \Controllers\Commentaires();
+        $reponseCom->reponseCommentaire($_POST['reponse'], $_POST['idReponse']);
+       // header("Refresh: 0");
+       // break;
+    }
 ?>
 
 <html>
@@ -124,9 +142,64 @@
                 </div>
             </div>
             <section>
-                <?php
-                    include_once('commentaire.php');
-                ?>
+                <h2>Commentaire:</h2>
+
+                <form action="" method="POST">
+
+                <textarea name="commentaire" placeholder="Votre commentaire"></textarea>
+                <button id="submit-commentaire" type="submit">poster mon commentaire</button>
+
+                </form><?php
+
+                $j = 0;
+                foreach ($affiches as $affiche) {?>
+                    <div id="containercomment">
+                    <!-- <div id="entête"> -->
+                        <div class="login">
+                            <?php echo "<div id ='poster-comment'>Posté le :"." ".date_format(date_create($affiche['date']), 'd/m/Y H:i:s').'<br>'.'Posté par :'.' '.$affiche['nom'].'</div>';?>
+                        </div>
+                        <div class="reponse">
+                            <p><?php echo $affiche['commentaire']?></p>
+                        </div>
+                        <form id="form-rep<?=$affiche['id']?>" action="#form-rep<?=$affiche['id']?>" method="post">
+                            <input type="hidden" name="idafficherplus" value="<?= $affiche['id']; ?>">
+                            <button type="submit" name="afficher_plus<?=$j?>">afficher les réponse</button>
+                            <button class="repondre"name="repondre<?=$j?>">Répondre</button>
+                        </form>
+                        <?php
+
+                            $idCom = $affiche['id'];
+
+                            $affichesReponses = $commentaire->affichReponse($idCom);
+
+                    
+
+                        if (isset($_POST["repondre".$j])) {?>
+                            <form action="" method="post">
+                                <input type="text" name='reponse'>
+                                <button type="submit" name='rep'>envoyer</button>
+                                <input type="hidden" name="idReponse" value="<?= $affiche['id']; ?>">
+                                <button type="submit">Annuler</button>
+                            </form>
+                            <?php
+                        }
+                        if(isset($_POST["afficher_plus".$j])){
+                            foreach ($affichesReponses as $afficheReponse) {
+                                if ($afficheReponse['id_commentaire'] == $affiche['id']  ) { ?>
+                                    <div id="container-reponse">
+                                        <?php echo "<div id ='poster-reponse'>Posté le :"." ".date_format(date_create($afficheReponse['date']), 'd/m/Y H:i:s').'<br>Posté par :'.' '.$afficheReponse['nom'].'</div>';?>
+                                            <div class="reponse">
+                                                <p><?php echo $afficheReponse['reponse']?></p>
+                                            </div>
+                                    </div><?php
+                                }
+                            }
+                        }
+                        ?>
+                    </div><?php     
+                    $j++;
+                }
+?>
             </section>
         </main>
         <footer>

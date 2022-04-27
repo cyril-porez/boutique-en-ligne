@@ -14,4 +14,7 @@
             return $panierUtilisateur;
         }
     }
+
+    /*$panier = new \Controllers\Panier();
+    $panier->panierUtilisateur(5    );*/
 ?>

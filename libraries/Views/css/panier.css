@@ -38,7 +38,7 @@ hr{
 }
 button{
     width: 80%;
-    height: 15%;
+    height: 30px;
     background-color:black;
 	display:inline-block;
 	cursor:pointer;
