@@ -11,7 +11,7 @@ session_start();
     //var_dump($affiche);
 
     $afficheSousCategorie = new \Models\SousCategorie();
-    // var_dump($_SESSION);
+    var_dump($_SESSION);
 
 ?>
 
@@ -22,7 +22,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/modalConnexion.css">
+    <link rel="stylesheet" href="css/connexion.css">
     <script src="js/script.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- <link rel="stylesheet" href="produits.css"> -->
@@ -36,7 +36,7 @@ session_start();
                     <input type="search" name="recherche" placeholder="rechercher article">
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
-                <?php if(!empty($_SESSION)){ ?>
+                <?php if(empty($_SESSION)){ ?>
                 <button role='button' data-target='#modal' data-toggle='modal' id='connexion-link'><i class="fa-solid fa-user"></i></button>
                 <?php }
                     else{ ?>
