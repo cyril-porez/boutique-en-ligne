@@ -28,12 +28,12 @@
             <div id="container">
                 <h1>MON COMPTE</h1>
                 <h2>INFORMATION DU COMPTE</h2>
-                <div class="parent">
+                <div id="parent">
                     <div class="div1">
                         <h3>INFORMATION DE CONTACT</h3>
                         <p><?= $info[0]['prenom'] . ' ' . $info[0]['nom']  ?></p>
                         <p><?= $info[0]['email'] ?></p>
-                        <a href="modifierMotDePasse.php">Modifier mes informations ou mon mot de passe</a>
+                        <a class="lien-parent"href="modifierMotDePasse.php">Modifier mes informations ou mon mot de passe</a>
                     </div>
                     <div class="div2">
                         <h2>CARNET D'ADRESSES</h2>
@@ -46,7 +46,7 @@
                         <p><?= $info[0]['ville'] . ',' . ' ' . $info[0]['code_postale']  ?></p>
                         <p><?= $info[0]['pays']  ?></p>
                         <p><?= 'Tel : ' . $info[0]['num']  ?></p>
-                        <a href="modifierAdresseFacturation.php">Modifier l'adresse de facturation</a>
+                        <a class="lien-parent"href="modifierAdresseFacturation.php">Modifier l'adresse de facturation</a>
                     </div>
 
                     <div class="div4">
@@ -56,7 +56,7 @@
                         <p><?= $adresseUtilisateurs['ville'] . ',' . ' ' . $adresseUtilisateurs['code_postal']  ?></p>
                         <p><?= $adresseUtilisateurs['pays'] ?></p>
                         <p><?= $adresseUtilisateurs['num_tel'] ?></p>
-                        <a href="modifierAdresseLivraison.php">Modifier l'adresse de livraison</a>
+                        <a class="lien-parent"href="modifierAdresseLivraison.php">Modifier l'adresse de livraison</a>
                     </div>
                 </div>
             </div>

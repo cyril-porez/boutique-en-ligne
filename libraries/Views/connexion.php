@@ -10,7 +10,6 @@
         $connex = new \Controllers\Connexion();
         $erreur = $connex->connexion();
     }
-    var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>

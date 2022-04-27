@@ -1,9 +1,8 @@
 body{
     overflow-x: hidden;
-    /* margin: 10px; */
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.parent {
+#parent {
     display: grid;
     grid-template-columns: repeat(2, 55%);
     grid-template-rows: 40% 15% 60% repeat(2, 1fr);
@@ -26,7 +25,7 @@ body{
 .div1, .div3, .div4 {
     background-color: #f0f0f0;
 }
-p, h3, a{
+ p, h3, .lien-parent{
     margin-left: 20px;
 }
 #container h2{
@@ -36,7 +35,7 @@ p, h3, a{
 h1{
     text-align: center;
 }
-a{
+#parent a{
     text-decoration: none;
     color: red;
 }
@@ -47,33 +46,6 @@ hr{
 }
 #grand-container{
     display: flex;
-}
-#nav{
-    background: linear-gradient(#f0f0f0, white );
-    height: 100vh;
-    width: 20%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    margin-top: 5%;
-}
-#nav ul, #nav a{
-    list-style: none;
-    text-decoration: none;
-    color: black;
-    padding-left: 0%;
-}
-#nav ul li{
-    padding-top: 5%;
-    padding-bottom: 5%;
-    box-sizing: border-box;
-    transition: 0.3s;
-}
-#nav li:hover {
-    padding-left: 5%;
-}
-#nav a:hover{
-    color: red;
 }
 img{
     height: 200px;

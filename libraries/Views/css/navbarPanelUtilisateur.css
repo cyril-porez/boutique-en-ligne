@@ -7,11 +7,11 @@
     margin-top: 5%;
     margin-left: 0;
 }
-#nav ul, #nav a{
+#nav ul, #nav{
     list-style: none;
     text-decoration: none;
     color: black;
-    padding-left: 0%;
+    padding-left: 5%;
 }
 #nav ul li{
     padding-top: 5%;
@@ -21,6 +21,10 @@
 }
 #nav li:hover {
     padding-left: 5%;
+}
+#nav a{
+    text-decoration: none;
+    color: black;
 }
 #nav a:hover{
     color: red;
