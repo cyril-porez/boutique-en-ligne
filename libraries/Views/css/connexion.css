@@ -102,24 +102,24 @@ body{
     width: 50%;
     margin-bottom: 10px;
 }
-form{
+.modal-content form{
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     width: 80%;
 }
-input{
+.modal-content input{
     margin-bottom: 10px;
     height: 25px;
     border: 0.3px solid rgb(212, 210, 210);
     margin-bottom: 3%;
     width: 80%;
 }
-a{
+.modal-content a{
     text-decoration: none;
     color: rgb(161, 156, 156);
 }
-a:hover{
+.modal-content a:hover{
     color: red;
 }

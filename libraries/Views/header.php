@@ -11,7 +11,7 @@ session_start();
     //var_dump($affiche);
 
     $afficheSousCategorie = new \Models\SousCategorie();
-    var_dump($_SESSION);
+    // var_dump($_SESSION);
 
 ?>
 
@@ -40,13 +40,14 @@ session_start();
                 <button role='button' data-target='#modal' data-toggle='modal' id='connexion-link'><i class="fa-solid fa-user"></i></button>
                 <?php }
                     else{ ?>
-                        <i class="fa-solid fa-user"></i>
-                        <ul>
-                            <li><a href="profil.php">Mon compte</a></li>
-                            <li><a href="commandes.php">Mes commandes</a></li>
-                            <li><a href="listedenvie.php">Ma liste d'envie</a></li>
-                            <!-- <li><a href=""></a></li> -->
-                        </ul>
+                    <div class="dropdown" style="float:left;">
+                        <button class="dropbtn"><i class="fa-solid fa-user"></i></button>
+                        <div class="dropdown-content" style="left:0;">
+                        <a href="profil.php">Mon compte</a>
+                        <a href="commandes.php">Mes commandes</a>
+                        <a href="listedenvie.php">Ma liste d'envie</a>
+                        </div>
+                    </div>
                 <?php } ?>
                 <i class="fa-solid fa-envelope"></i>
                 <i class="fa-solid fa-cart-shopping"></i>
