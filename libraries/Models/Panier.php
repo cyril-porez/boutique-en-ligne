@@ -40,5 +40,14 @@
             $infoProduit = $selectInfoProduit->fetchall(\PDO::FETCH_ASSOC);
             return $infoProduit;
         }
+
+        public function supprimerPanierUtilisateur($idUtilisateur) {
+            $sql = 'DELETE FROM `panier` WHERE id_utilisateur = :idUtilisateur';
+            $selectInfoProduit = $this->bdd->prepare($sql);
+            $selectInfoProduit->execute(array(':idUtilisateur' => $idUtilisateur));
+        }
     }
+
+    $panier = new \Models\Panier();
+    $panier->supprimerPanierUtilisateur(5);
 ?>

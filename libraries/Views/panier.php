@@ -61,7 +61,8 @@
                         <tr>
                             <td>
                                 <div class="btn-group">
-                                    <input class="btn-mdc"type="submit" value="mettre de coté">
+                                    <input class='btn-mdc' type="submit" value="modifier">
+                                    <input class="btn-mdc"type="submit" value="mettre de coté">                                    
                                     <i class="fa-solid fa-trash-can"></i>
                                 </div>
                             </td>

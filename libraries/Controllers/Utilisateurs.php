@@ -194,7 +194,7 @@
                     $quantite = intval($_POST['quantité']);
                     $panier = new \Models\Panier();
                     $verifProduit = $panier->verifProduitPanier($idUtilisateur, $idProduit, $idNomTailleKimono);
-                    var_dump($verifProduit);
+                    
                     if (count($verifProduit) == 0) {                       
                         $panier->ajoutPanier($idUtilisateur, $idProduit, $quantite, $idNomTailleKimono);
                     }
@@ -205,6 +205,12 @@
                     }
                 }                
             }
+        }
+
+
+        public function supprimePanierUtilisateur($idUtilisateur) {
+            $supprimer = new \Models\Panier();
+            $supprimer->supprimerPanierUtilisateur($idUtilisateur);
         }
     }
 ?>
