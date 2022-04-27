@@ -3,6 +3,7 @@
 
 <body>
     <footer>
+        <img src="../images/IMG-1168.PNG" alt="">
         <section class="footer">
             <div class="social">
                 <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>

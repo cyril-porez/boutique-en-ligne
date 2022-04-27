@@ -1,5 +1,6 @@
 body{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    overflow-x: hidden;
 }
 .footer{
     padding: 10px 0;
@@ -29,28 +30,6 @@ body{
 .footer .social a:hover{
     opacity: 1 ;
 }
-/* .footer ul{
-    margin-top: 0;
-    padding: 0;
-    list-style: none;
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 0;
-    text-align: center;
-} */
-/* .footer ul a{
-    color: inherit;
-    text-decoration: none;
-    opacity: 0.9;
-}
-.footer ul li{
-    display: inline-block;
-    padding: 0 15px;
-    color: white;
-}
-.footer ul li a:hover{
-    opacity: 1;
-} */
 .footer .copyright{
     margin-top: 15px;
     text-align: center;
@@ -73,4 +52,10 @@ body{
     justify-content: center;
     align-items: center;
     width: 100vw;
+}
+img{
+    height: 150px;
+    width: 150px;
+    margin-left: 46%;
+    margin-bottom: 3%;
 }
