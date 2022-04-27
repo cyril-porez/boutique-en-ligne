@@ -232,5 +232,30 @@
                 $supprimerProduit->supprimerProduitPanier($idUtilisateur, $idProduit, $idTaille);
             }
         }
+
+
+        public function modifierQuantitePanier($idUtilisateur, $idProduit, $quantite, $idNomTailleKimono) {
+            //echo 'boo';
+            //var_dump($quantite);
+            $idNomTailleKimono = $_POST['id_nom_taille_kimono'];
+            $idProduit = $_POST['modifierIdProduit'];
+            $quantite = intval($_POST['modifQuantite']);
+            if (isset($_POST['quantite']) > 0) { 
+                //echo 'passe';                   
+                
+                //var_dump($quantite);
+                $panier = new \Models\Panier();
+                $verifProduit = $panier->verifProduitPanier($idUtilisateur, $idProduit, $idNomTailleKimono);
+                    
+                if (count($verifProduit) == 0) {                       
+                    $panier->ajoutPanier($idUtilisateur, $idProduit, $quantite, $idNomTailleKimono);
+                }
+                else if (count($verifProduit) == 1) {
+                    $quantiteBdd = $verifProduit[0]['quantite'];
+                    $somme = $quantite + $quantiteBdd;
+                    $panier->modifQuantite($idUtilisateur, $idProduit, $somme,  $idNomTailleKimono);
+                }
+            }  
+        }
     }
 ?>

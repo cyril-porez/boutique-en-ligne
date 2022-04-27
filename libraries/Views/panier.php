@@ -6,24 +6,22 @@
 
     $idUtilisateur = $_SESSION['utilisateurs'][0]['id'];
     $panier = new \Controllers\Panier();
-    $supprimerPanier = new \Controllers\Utilisateurs();
-    
+    $utilisateurPanier = new \Controllers\Utilisateurs();
+
     if (isset($_POST['supprimer'])) {
-        $supprimerPanier->supprimerProduitPanier($idUtilisateur, $_POST['supprimeProduit'], $_POST['id_nom_taille_kimono']);
+        $utilisateurPanier->supprimerProduitPanier($idUtilisateur, $_POST['supprimeProduit'], $_POST['id_nom_taille_kimono']);
+    }
+
+    if (isset($_POST['modifier'])) {
+        $utilisateurPanier->modifierQuantitePanier($idUtilisateur, $_POST['modifierIdProduit'], $_POST['modifQuantite'], $_POST['id_nom_taille_kimono']);
+        
     }
    
     $panierUtilisateurs = $panier->panierUtilisateur();
     var_dump($panierUtilisateurs);
 
     $sousTotal = 0;
-    $supprimerPanier->supprimePanierUtilisateur();
-
-
-    
-
-    
-
-
+    $utilisateurPanier->supprimePanierUtilisateur();   
 ?>
 
 
@@ -71,6 +69,7 @@
                                             <p><?= $value['prix'] . ' ' . '€' ?></p>
                                         </td>
                                         <td>
+                                            
                                             <input type="number" name="quantite" min=0 value='<?= $value['quantite'] ?>'>
                                         </td>
                                         <td>
@@ -83,13 +82,14 @@
                                                
                                                 <form action="" method="post">
                                                     <input class='btn-mdc' type="submit" name="modifier" value="modifier">                                                
-                                                    <input type='hidden' name="modifierQuantite" value='<?= $value['id_produit'] ?>'>
+                                                    <input type='hidden' name="modifierIdProduit" value='<?= $value['id_produit'] ?>'>
+                                                    <input type="hidden" name='id_nom_taille_kimono' value="<?=$value['id_nom_taille_kimono']?>">
+                                                    <input type="hidden" name='modifQuantite' value = <?= $value['quantite'] ?>>                                                    
                                                     
                                                     <input class="btn-mdc"type="submit" value="mettre de coté">                                    
                                                     
                                                     <button name='supprimer'><i class="fa-solid fa-trash-can" ></i></button>
                                                     <input type="hidden" name='supprimeProduit' value='<?= $value['id_produit'] ?>'>
-
                                                     <input type="hidden" name='id_nom_taille_kimono' value="<?=$value['id_nom_taille_kimono']?>">
                                                 </form>
                                             </div>
@@ -114,7 +114,7 @@
                                 <button type="submit" name="vider">Vider le panier</button>
                             </form>
                     </div>
-                    <div id="resume">
+                   <!-- <div id="resume">
                         <h2>Résumé</h2>
                         <hr>
                         <table>
@@ -134,7 +134,7 @@
                             </tbody>
                     </table>
                     <button type="submit">Finaliser la commande</button>
-                </div>
+                </div>-->
                 <?php
                 }
                 else {?>
