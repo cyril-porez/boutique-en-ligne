@@ -31,5 +31,14 @@
             $verifProduitPanier = $verif->fetchall(\PDO::FETCH_ASSOC);
             return $verifProduitPanier;
         }
+
+
+        public function panierUtilisateur($idUtilisateur) {
+            $sql = "SELECT utilisateurs.id, quantite, produits.nom, produits.image1, produits.prix, nom_taille_kimono.nom as taille from panier inner join produits on produits.id = panier.id_produit inner join utilisateurs on panier.id_utilisateur = utilisateurs.id inner join nom_taille_kimono on panier.id_nom_taille_kimono = nom_taille_kimono.id  where utilisateurs.id = :idUtilisateur";
+            $selectInfoProduit = $this->bdd->prepare($sql);
+            $selectInfoProduit->execute(array(':idUtilisateur' => $idUtilisateur));
+            $infoProduit = $selectInfoProduit->fetchall(\PDO::FETCH_ASSOC);
+            return $infoProduit;
+        }
     }
 ?>
