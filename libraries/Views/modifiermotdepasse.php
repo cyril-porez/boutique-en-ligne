@@ -4,7 +4,7 @@
 
     require_once('../Controllers/Utilisateurs.php');
 
-    $utilisateur = $_SESSION['utilisateurs'];   
+    $utilisateur = $_SESSION['utilisateurs'];
 
     if(!empty($_POST['motDePasse']) && !empty($_POST['nouveauMotDePasse']) && !empty($_POST['confirmeMotDePasse'])) {
         $modifMdp = new \Controllers\Utilisateurs();
@@ -27,10 +27,7 @@
     <link rel="stylesheet" href="css/modificationDonnee.css">
     <title>Document</title>
 </head>
-<body>
-    <header>
-
-    </header>
+<?php require_once('header.php'); ?>
     <main>
         <section id="grand-container">
             <?php require_once('navbarPanelUtilisateur.php') ?>
@@ -66,8 +63,6 @@
             </div>
         </section>
     </main>
-    <footer>
-
-    </footer>
+    <?php require_once('footer.php'); ?>
 </body>
 </html>

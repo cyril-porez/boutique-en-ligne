@@ -7,10 +7,7 @@
 
 ?>
 <link rel="stylesheet" href="css/listeProduits.css">
-<body>
-    <header>
-
-    </header>
+    <?php require_once('header.php'); ?>
     <main>
         <section id='filtre'>
             <section class='filtre_header'>
@@ -32,8 +29,4 @@
             ?>
         </div>
     </main>
-    <footer>
-
-    </footer>
-</body>
-</html>
+    <?php require_once('footer.php'); ?>

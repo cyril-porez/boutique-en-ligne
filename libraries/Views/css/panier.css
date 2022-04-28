@@ -1,6 +1,10 @@
 body{
     overflow-x: hidden;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+}
+h1 {
+    text-align: center;
 }
 .articles-panier table{
     width: 65vw;
@@ -9,7 +13,8 @@ body{
     display: flex;
 }
 .article{
-    display: flex;
+    align-items: center;
+    text-align: center;
 }
 input[type="number"]{
     width: 30px;
@@ -36,7 +41,7 @@ hr{
     width: 35vw;
     margin-left: 10px;
 }
-button{
+.bouton-noir{
     width: 80%;
     height: 30px;
     background-color:black;
@@ -50,10 +55,10 @@ button{
     border: none;
     margin-left: 40px;
 }
-button:hover{
+.bouton-noir:hover{
     background-color: red;
 }
-.articles-panier button{
+.articles-panier .bouton-noir{
     width: 20%;
     height: 10%;
     margin-left: 75%;
@@ -70,7 +75,16 @@ i{
     color: #007185;
     border-right: 0.5px solid #858383;
 }
-.btn-group{
+.btn-group form{
     display: flex;
-    margin-left: 83%;
+    /* width: 100%; */
+    /* margin-left: 100px; */
+}
+.btn-group{
+    margin-left: 50%;
+}
+img{
+    width: 150px;
+    height: 150px;
+    margin-left: 10px;
 }

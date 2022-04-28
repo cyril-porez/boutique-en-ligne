@@ -2,11 +2,8 @@
 
 ?>
 
-<body>
-    <link rel="stylesheet" href="css/admin.css">
-    <header>
-
-    </header>
+<?php require_once('header.php'); ?>
+        <link rel="stylesheet" href="css/admin.css">
     <main>
         <img src="../images/admin.png" alt="">
         <div class="container">
@@ -32,9 +29,4 @@
                 </a>
         </div>
     </main>
-    <footer>
-
-    </footer>
-</body>
-
-</html>
+    <?php require_once('footer.php'); ?>

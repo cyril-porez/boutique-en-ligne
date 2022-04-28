@@ -1,7 +1,7 @@
 #nav{
     background: linear-gradient(#f0f0f0, white );
     height: 100vh;
-    width: 20%;
+    width: 250px;
     display: flex;
     flex-direction: column;
     margin-top: 5%;
@@ -11,7 +11,7 @@
     list-style: none;
     text-decoration: none;
     color: black;
-    padding-left: 0%;
+    padding-left: 3px;
 }
 #nav ul li{
     padding-top: 5%;

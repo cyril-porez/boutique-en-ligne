@@ -24,7 +24,7 @@
 
 
     if(!empty($_POST['nomModifier']) && !empty($_POST['prenomModifier']) && !empty($_POST['emailModifier']) && !empty($_POST['droitModifier'])) {
-       
+
         $inscription = new \Controllers\Admin();
         $inscription->modifierUtilisateur($_POST['nomModifier'], $_POST['prenomModifier'], $_POST['emailModifier'], $_POST['droitModifier'], $_POST['modifierUtilisateur']);
     }
@@ -41,10 +41,7 @@
     <script src="js/script.js" defer></script>
     <title>Document</title>
 </head>
-<body>
-    <header>
-
-    </header>
+<?php require_once('header.php'); ?>
     <main>
         <div>
             <a href="admin.php"><button>retour</button></a>
@@ -227,8 +224,4 @@
             </tbody>
         </table>
     </main>
-    <footer>
-
-    </footer>
-</body>
-</html>
+    <?php require_once('footer.php'); ?>

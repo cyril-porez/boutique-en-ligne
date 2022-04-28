@@ -2,10 +2,6 @@ body{
     overflow-x: hidden;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-/* main{
-    display: flex;
-    align-items: center;
-} */
 img{
     height: 80vh;
     width: 40vw;
@@ -23,7 +19,7 @@ img{
     gap: 10px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
 }
-button {
+#container-description button {
 	background-color:black;
 	display:inline-block;
 	cursor:pointer;
@@ -34,7 +30,7 @@ button {
 	text-decoration:none;
     border: none;
 }
-button:hover {
+#container-description button:hover {
 	background-color:red;
 }
 #input-number {
@@ -58,4 +54,64 @@ button:hover {
 select{
     height: 30px;
     border: 0.3px solid rgb(212, 210, 210);
+}
+#containercomment {
+    margin-left: 50px;
+   width: 50%;
+   margin-bottom: 50px;
+}
+#poster-reponse  {
+   margin-left: 30px;
+}
+#container-reponse .reponse{
+   margin-left: 30px;
+}
+.reponse{
+   background-color: #f5f5f5;
+   height: 50px;
+   padding-top: 10px;
+   padding-left: 10px;
+}
+input{
+   width: 50%;
+   height: 25px;
+   border: 0.3px solid rgb(212, 210, 210);
+   margin-bottom: 3%;
+}
+#containercomment button{
+   width: 40%;
+   cursor:pointer;
+   background:none;
+   border: none;
+   color:#007185;
+}
+#containercomment button:hover{
+   text-decoration: underline;
+}
+#submit-commentaire{
+   width: 20%;
+   height: 40px;
+   background-color:black;
+   display:inline-block;
+   cursor:pointer;
+   color:white;
+   font-family:Arial;
+   font-size:15px;
+   padding:6px 15px;
+   text-decoration:none;
+   border: none;
+   margin-left: 40px;
+}
+#submit-commentaire:hover{
+   background-color: red;
+}
+textarea{
+   width: 30%;
+   border: 0.3px solid rgb(212, 210, 210);
+   margin-bottom: 3%;
+}
+#form-rep{
+   display: flex;
+   margin-left: 40px;
+   justify-content: space-between;
 }

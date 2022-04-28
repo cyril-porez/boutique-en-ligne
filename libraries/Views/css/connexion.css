@@ -2,7 +2,7 @@ body{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 /* ----------Modal--------------------------- */
-button{
+.modal-content button{
     width: 10%;
     background-color:black;
 	display:inline-block;
@@ -14,7 +14,7 @@ button{
 	text-decoration:none;
     border: none;
 }
-button:hover{
+.modal-content button:hover{
     background-color: red;
 }
 .modal{
@@ -102,7 +102,7 @@ button:hover{
     width: 50%;
     margin-bottom: 10px;
 }
-form{
+.modal-content form{
     display: flex;
     justify-content: center;
     flex-direction: column;

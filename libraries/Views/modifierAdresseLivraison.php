@@ -3,7 +3,7 @@
     session_start();
 
     $id = $_SESSION['utilisateurs'][0]['id'];
-    
+
 
     require_once('../Controllers/Adresses.php');
     require_once('../Controllers/Utilisateurs.php');
@@ -12,7 +12,7 @@
     $adressLivraison = $adresse->selectAdresses($id);
 
     if (!empty($_POST['adresse']) && !empty($_POST['ville']) && !empty($_POST['codePostal']) && !empty($_POST['pays'])) {
-        
+
         $modifAdresse = new \Controllers\Utilisateurs();
         $modifAdresse->modifierAdresseLivraison($_POST['adresse'], $_POST['ville'], $_POST['codePostal'], $_POST['pays'], $id);
         header('Refresh: 0');
@@ -29,10 +29,7 @@
     <link rel="stylesheet" href="css/modificationDonnee.css">
     <title>Modifier Adresse Livraison</title>
 </head>
-<body>
-    <header>
-
-    </header>
+<?php require_once('header.php'); ?>
     <main>
     <section id="grand-container">
         <?php require_once('navbarPanelUtilisateur.php') ?>
@@ -60,8 +57,4 @@
         </div>
     </section>
     </main>
-    <footer>
-
-    </footer>
-</body>
-</html>
+    <?php require_once('footer.php'); ?>

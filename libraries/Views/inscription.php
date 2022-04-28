@@ -17,13 +17,11 @@
         <meta charset="UTF-8">
         <title>Inscription</title>
     </head>
-    <body>
-        <?php //require('header.php') ?>
+    <?php require_once('header.php'); ?>
         <main>
             <img src="images/IMG-1168.png" alt="">
             <h1>DEVENEZ MEMBRE CARNAGE</h1>
                 <form action="" method="post">
-                    <!-- <fieldset> -->
                         <legend>Saisir toutes vos informations</legend>
                         <label for ="nom">NOM :</label>
                         <input id="nom" type="text" name="nom" placeholder="nom" />
@@ -45,12 +43,11 @@
                         <input id="motdepasse" type="password" name="mot_de_passe" placeholder="Mot de passe" />
                         <label for ="conf-mdp">Confirmez le mot de passe :</label>
                         <input id="conf-mdp" type="password" name="Cmdp" placeholder="Confirmez le mot de passe" />
-                    <!-- </fieldset> -->
-                    <button type="submit" name="register">Creer un compte</button>
+                    <button id="iscription-bouton" type="submit" name="register">Creer un compte</button>
                     <p>Vous avez déjà un compte ? <br><a href="connexion.php">Connectez vous</a></p>
                 </form>
         </main>
-        <?php //require('footer.php') ?>
+        <?php require('footer.php') ?>
     </body>
 </html>
 
