@@ -1,0 +1,32 @@
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+input{
+    width: 80%;
+    height: 25px;
+    border: 0.3px solid rgb(212, 210, 210);
+    margin-bottom: 3%;
+}
+input[type="submit"]{
+    background-color:black;
+	display:inline-block;
+	cursor:pointer;
+	color:white;
+	font-family:Arial;
+	font-size:15px;
+	padding:6px 15px;
+	text-decoration:none;
+    border: none;
+}
+input[type="submit"]:hover{
+    background-color: red;
+}
+form{
+    width: 30%;
+}
