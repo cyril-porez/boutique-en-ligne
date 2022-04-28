@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '6b547d6a10cad344eeb7374008defb133e9dedab',
+    'reference' => 'c16592d294678441c3c1d6f6f70bb5795269ffcc',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,16 +18,16 @@
       'aliases' => 
       array (
       ),
-      'reference' => '6b547d6a10cad344eeb7374008defb133e9dedab',
+      'reference' => 'c16592d294678441c3c1d6f6f70bb5795269ffcc',
     ),
-    'phpmailer/phpmailer' => 
+    'stripe/stripe-php' => 
     array (
-      'pretty_version' => 'v6.6.0',
-      'version' => '6.6.0.0',
+      'pretty_version' => 'v7.125.0',
+      'version' => '7.125.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'e43bac82edc26ca04b36143a48bde1c051cfd5b1',
+      'reference' => '822c00aa380c10c2a3c55d105c5da72ad577b7c4',
     ),
   ),
 );
