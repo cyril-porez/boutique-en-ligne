@@ -1,50 +1,47 @@
+<?php
+    session_start();
+    
+    require_once('../Controllers/Clients.php');
+    require_once('../Controllers/Adresses.php');
+
+    if (!empty($_SESSION['utilisateurs'])) {
+        $id = $_SESSION['utilisateurs'];
+
+        $verif = new \Controllers\Adresses();
+        $verifId = $verif->verifieAdresseLivraison($id[0]['id']);
+        var_dump($verifId);
+        if ($verifId == 0) {
+            $adresse = new \Controllers\Adresses();
+            $adresse->Adresse($id[0]['id']);
+            //header('Refresh: 0');
+        }        
+    }
+
+
+    var_dump($_SESSION);
+    if (isset($_POST['deconnexion'])){
+        session_destroy();
+        header('Location: connexion.php');
+    }
+
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/index.css">
     <title>Document</title>
 </head>
 <body>
-    <header>
-        <?php
-            require_once('header.php');
-        ?>
-    </header>
-    <main>
-        <section class="titre">
-            <h2>BIENVENUE</h2>
-        </section>
-        <section class="img-presentation">
-            <img src="../images/entrer.webp" alt="">
-        </section>
-
-        <section class="titre">
-            <h2>CARNAGE / GOD OF WAR</h2>
-        </section>
-
-        <section class="img-presentation">
-            <img src="../images/legendaire.webp" alt="">
-        </section>
-
-        <section class="titre">
-            <h2>CARNAGE / ENTRE DANS L'ARENE</h2>
-        </section>
-
-        <section class="img-grid">
-            <div class="parent">
-                <div class="div1"><img src="../images/gant.jpg" alt=""></div>
-                <!-- <div class="div2"></div> -->
-                <div class="div3"><img src="../images/atlete.jpg" alt=""></div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <?php
-            require_once('footer.php');
-        ?>
-    </footer>
+    
+    <a href="inscription.php">Inscription</a><br>
+    <a href="connexion.php">connexion</a><br>
+    <a href="modifierMotDePasse.php">changer mot de passe</a><br>
+    <a href="profil.php">profil</a>
+    <form action="" method="post">
+        <button type="submit" name="deconnexion">deConnexion</button>
+    </form>
 </body>
 </html>
