@@ -9,7 +9,12 @@
     $supprimerPanier = new \Controllers\Utilisateurs();
 
     if (isset($_POST['supprimer'])) {
-        $supprimerPanier->supprimerProduitPanier($idUtilisateur, $_POST['supprimeProduit'], $_POST['id_nom_taille_kimono']);
+        $utilisateurPanier->supprimerProduitPanier($idUtilisateur, $_POST['supprimeProduit'], $_POST['id_nom_taille_kimono']);
+    }
+
+    if (isset($_POST['modifier'])) {
+        $utilisateurPanier->modifierQuantitePanier($idUtilisateur, $_POST['modifierIdProduit'], $_POST['modifQuantite'], $_POST['id_nom_taille_kimono']);
+        
     }
 
     $panierUtilisateurs = $panier->panierUtilisateur();
@@ -55,48 +60,46 @@
                             <?php
 
                                 $j = 0;
-                                foreach ($panierUtilisateurs as $panierUtilisateur => $value) {?>
-                                    <div class="produit-ajouter">
-                                        <tr>
-                                            <td class="article">
-                                                <img src="<?= $value['image1'] ?>" alt="">
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <h4><?= $value['nom'] ?></h4>
-                                                    <p><?= 'Taille :' . ' ' . $value['taille'] ?></p>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p><?= $value['prix'] . ' ' . '€' ?></p>
-                                            </td>
-                                            <td>
-                                                <input type="number" name="quantite" min=0 value='<?= $value['quantite'] ?>'>
-                                            </td>
-                                            <td>
-                                                <p><?= $value['prix'] . ' ' . '€' ?></p>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="btn-group">
-
-                                                    <form action="" method="post">
-                                                        <input class='btn-mdc' type="submit" name="modifier" value="modifier">
-                                                        <input type='hidden' name="modifierQuantite" value='<?= $value['id_produit'] ?>'>
-
-                                                        <input class="btn-mdc"type="submit" value="mettre de coté">
-
-                                                        <button class='btn-mdc' name='supprimer'><i class="fa-solid fa-trash-can" ></i></button>
-                                                        <input type="hidden" name='supprimeProduit' value='<?= $value['id_produit'] ?>'>
-
-                                                        <input type="hidden" name='id_nom_taille_kimono' value="<?=$value['id_nom_taille_kimono']?>">
-                                                    </form>
-                                                </div>
-                                            </td>
-
-                                        </tr>
-                                    </div>
+                                foreach ($panierUtilisateurs as $panierUtilisateur => $value) {?>                                   
+                                    <tr>                                            
+                                        <td class="article">
+                                            <img src="<?= $value['image1'] ?>" alt="">
+                                            <div>
+                                                <h4><?= $value['nom'] ?></h4>
+                                                <p><?= 'Taille :' . ' ' . $value['taille'] ?></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p><?= $value['prix'] . ' ' . '€' ?></p>
+                                        </td>
+                                        <td>
+                                            
+                                            <input type="number" name="quantite" min=0 value='<?= $value['quantite'] ?>'>
+                                        </td>
+                                        <td>
+                                            <p><?= $value['prix'] . ' ' . '€' ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="btn-group">
+                                               
+                                                <form action="" method="post">
+                                                    <input class='btn-mdc' type="submit" name="modifier" value="modifier">                                                
+                                                    <input type='hidden' name="modifierIdProduit" value='<?= $value['id_produit'] ?>'>
+                                                    <input type="hidden" name='id_nom_taille_kimono' value="<?=$value['id_nom_taille_kimono']?>">
+                                                    <input type="hidden" name='modifQuantite' value = <?= $value['quantite'] ?>>                                                    
+                                                    
+                                                    <input class="btn-mdc"type="submit" value="mettre de coté">                                    
+                                                    
+                                                    <button name='supprimer'><i class="fa-solid fa-trash-can" ></i></button>
+                                                    <input type="hidden" name='supprimeProduit' value='<?= $value['id_produit'] ?>'>
+                                                    <input type="hidden" name='id_nom_taille_kimono' value="<?=$value['id_nom_taille_kimono']?>">
+                                                </form>
+                                            </div>
+                                        </td>
+                                       
+                                    </tr>  
                             <?php
 
                                 $prix = floatval($value['prix']);
@@ -115,7 +118,7 @@
                                 <button class="bouton-noir" type="submit" name="vider">Vider le panier</button>
                             </form>
                     </div>
-                    <div id="resume">
+                   <!-- <div id="resume">
                         <h2>Résumé</h2>
                         <hr>
                         <table>
@@ -134,8 +137,8 @@
                                 </tr>
                             </tbody>
                     </table>
-                    <button class="bouton-noir" type="submit">Finaliser la commande</button>
-                </div>
+                    <button type="submit">Finaliser la commande</button>
+                </div>-->
                 <?php
                 }
                 else {?>

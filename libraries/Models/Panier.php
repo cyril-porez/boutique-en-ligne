@@ -24,7 +24,6 @@
         }
 
         public function verifProduitPanier($idUtilisateur, $idProduit, $idTaille) {
-            var_dump($idTaille);
             $sql = "SELECT * from panier where (id_utilisateur = :idUtilisateur and id_produit = :idProduit and id_nom_taille_kimono = :idTaille)";
             $verif = $this->bdd->prepare($sql);
             $verif->execute(array(':idUtilisateur' => $idUtilisateur, ':idProduit' => $idProduit, ':idTaille' => $idTaille));
