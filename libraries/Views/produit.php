@@ -19,15 +19,18 @@
     $produit = $produits->selection_produits($idProduit);
 
     $jaimeDeteste = new \Controllers\Produits();
-    
+
     $produitFavoris = new \Controllers\Utilisateurs();
     $produitFavoris->mettreProduitFavoris($idUtilisateur, $idProduit);
     $produitFavoris->ajoutPanier($idUtilisateur, $idProduit, isset($_Post['quantite']), isset($_POST['ajout']));
 
-    
+    $etatAimeDeteste = new \Models\AimeDeteste();
+    $etatJaime = $etatAimeDeteste->etat_du_jaime($idProduit);
+    $etatDeteste = $etatAimeDeteste->etat_du_deteste($idProduit);
+
     $verifQuantiteKimono = new \Controllers\Stock();
     $quantiteKimonos = $verifQuantiteKimono->verifStockQuantiteKimono($idProduit);
-    //var_dump($quantiteKimonos);   
+    //var_dump($quantiteKimonos);
 
     if(isset($_POST["jaime"])) {
         $jaimeDeteste->jaime($idProduit);
@@ -55,6 +58,7 @@
        // header("Refresh: 0");
        // break;
     }
+    // var_dump($_SESSION);
 ?>
 
 <html>
@@ -71,13 +75,13 @@
 
                     <span><h3><?= $produit[0]['nom'] . '<br>'; ?></h3></span>
                     <span><h2><?= $produit[0]['prix'] . ' €' . '<br>'; ?></h2></span>
-
-                    <form action="" method="post">
-                        <button type="submit" name="jaime">j'aime</button>
-                        <button type="submit" name="deteste">deteste</button>
-                        <button type="submit" name="favoris">enregistrer</button>
-                    </form>
-
+                    <?php if(!empty($_SESSION)){ ?>
+                            <form action="" method="post">
+                                <button type="submit" name="jaime"><?= $etatJaime[0]['j_aime'].' ' ?><i class="fa-solid fa-thumbs-up"></i></button>
+                                <button type="submit" name="deteste"><?= $etatDeteste[0]['deteste'].' ' ?><i class="fa-solid fa-thumbs-down"></i></button>
+                                <button type="submit" name="favoris"><i class="fa-solid fa-bookmark"></i></button>
+                            </form>
+                    <?php } ?>
                     <div id="taille">
                         <?php
                             $verifieGants = strripos($chaine,$gant);
@@ -92,7 +96,7 @@
                                         <option value="oz">14oz</option>
                                         <option value="oz">16oz</option>
                                     </select>
-                                    
+
                                 </form>
                         <?php }
                             elseif($verifieKimono === 0 || $verifieKimono === true) {?>
@@ -101,14 +105,14 @@
                                         <select name="taille_produits" id="">
                                             <option value="taille_kimono">choisissez une taille de Kimono</option>
                                             <?php
-                                                 foreach($quantiteKimonos as $quantiteKimono => $value) {                                                    
+                                                 foreach($quantiteKimonos as $quantiteKimono => $value) {
                                                     $nbrStock = $value['stock_kimono'];
                                                     if ($nbrStock > 0) {
                                                         echo "<option value=" .  $value['id'] . ">" . $value["nom"] . "</option>";
                                                     }
-                                                }                                            
+                                                }
                                             ?>
-                                        </select>                                        
+                                        </select>
                                     </div>
                                     <span>
                                         <input type="number" name="quantité" min = 0 id="input-number" value='0'>
@@ -126,31 +130,31 @@
                                             <option value="taille_basic">L</option>
                                             <option value="taille_basic">XL</option>
                                             <option value="taille_basic">XXL</option>
-                                        </select>                                            
+                                        </select>
                                     </div>
                                     <span>
                                         <input type="number" name="quantité" min = 0 id="input-number" value='0'>
-                                        <button name="ajout" id="ajout-panier">AJOUTER AU PANIER</button>
                                     </span>
                                 </form>
                             <?php }
                             ?>
+                            <button name="ajout" id="ajout-panier">AJOUTER AU PANIER</button>
                     </div>
-                    
+
                     <span id="description"><?= $produit[0]['description'] . '<br>'; ?></span>
                     <span><h3>Ref: <?= $produit[0]['reference'] . '<br>'; ?></h3></span>
                 </div>
             </div>
             <section>
                 <h2>Commentaire:</h2>
-
+                <?php if(!empty($_SESSION)){ ?>
                 <form action="" method="POST">
 
                 <textarea name="commentaire" placeholder="Votre commentaire"></textarea>
                 <button id="submit-commentaire" type="submit">poster mon commentaire</button>
 
                 </form><?php
-
+                }
                 $j = 0;
                 foreach ($affiches as $affiche) {?>
                     <div id="containercomment">
@@ -172,16 +176,17 @@
 
                             $affichesReponses = $commentaire->affichReponse($idCom);
 
-                    
 
-                        if (isset($_POST["repondre".$j])) {?>
-                            <form action="" method="post">
-                                <input type="text" name='reponse'>
-                                <button type="submit" name='rep'>envoyer</button>
-                                <input type="hidden" name="idReponse" value="<?= $affiche['id']; ?>">
-                                <button type="submit">Annuler</button>
-                            </form>
-                            <?php
+                        if(!empty($_SESSION)){
+                            if (isset($_POST["repondre".$j])) {?>
+                                <form action="" method="post">
+                                    <input type="text" name='reponse'>
+                                    <button type="submit" name='rep'>envoyer</button>
+                                    <input type="hidden" name="idReponse" value="<?= $affiche['id']; ?>">
+                                    <button type="submit">Annuler</button>
+                                </form>
+                                <?php
+                            }
                         }
                         if(isset($_POST["afficher_plus".$j])){
                             foreach ($affichesReponses as $afficheReponse) {
@@ -191,12 +196,16 @@
                                             <div class="reponse">
                                                 <p><?php echo $afficheReponse['reponse']?></p>
                                             </div>
-                                    </div><?php
+                                    </div>
+                                    <form action="" method="post">
+                                       <button type="submit" name="annuler">Fermer</button>
+                                    </form>
+                                    <?php
                                 }
                             }
                         }
                         ?>
-                    </div><?php     
+                    </div><?php
                     $j++;
                 }
 ?>

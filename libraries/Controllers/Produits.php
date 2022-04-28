@@ -98,17 +98,16 @@
         public function jaime($recup_produit) {
             $aime_deteste = new \Models\AimeDeteste();
             $produit = new \Models\Produits();
-            
+
             $fetch4 = $produit->recuperation_par_id($recup_produit);
             $id_produit = $fetch4[0]['id'];
-        
+
             $recuperer_jaime = $aime_deteste->etat_du_jaime($id_produit);
             $etat_jaime = $recuperer_jaime[0]['j_aime'];
-            echo "etat like" . $etat_jaime . "<br>" ;
+
 
             $recuperer_deteste = $aime_deteste->etat_du_deteste($id_produit);
             $etat_deteste = $recuperer_deteste[0]['deteste'];
-            echo "etat deteste" . $recuperer_deteste[0]['deteste'];
 
             if(isset($_POST['jaime'])){
                 if ($etat_jaime == 0 && $etat_deteste == 1) {
@@ -131,17 +130,17 @@
 
             $aime_deteste = new \Models\AimeDeteste;
             $produit = new \Models\Produits;
-            
+
             $fetch4 = $produit->recuperation_par_id($recup_produit);
             $id_produit = $fetch4[0]['id'];
 
             $recuperer_jaime = $aime_deteste->etat_du_jaime($id_produit);
             $etat_jaime = $recuperer_jaime[0]['j_aime'];
-            echo "etat like" . $etat_jaime . "<br>" ;
+            // echo "etat like" . $etat_jaime . "<br>" ;
 
             $recuperer_deteste = $aime_deteste->etat_du_deteste($id_produit);
             $etat_deteste = $recuperer_deteste[0]['deteste'];
-            echo "etat deteste" . $recuperer_deteste[0]['deteste'];
+            // echo "etat deteste" . $recuperer_deteste[0]['deteste'];
 
             if (isset($_POST["deteste"])) {
                 if ($etat_jaime == 1 && $etat_deteste == 0) {
@@ -155,7 +154,7 @@
                 else {
                     $aime_deteste->deteste($id_produit);
                     header("Refresh: 0");
-                }        
+                }
             }
         }
 

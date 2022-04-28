@@ -6,12 +6,12 @@
 
     $id = $_GET['id'];
 
-    $sous_categorie = new \Models\SousCategorie;
-    $affiche_sous_categories = $sous_categorie->choix_produit_sous_categorie($id);
-//    echo $id;
-$chaine =  $affiche_sous_categories[0]['nom'];
+    $sousCategorie = new \Models\SousCategorie;
+    $afficheSousCategories = $sousCategorie->choix_produit_sous_categorie($id);
+    $chaine =  $afficheSousCategories[0]['nom'];
     $gant   = 'Gant';
     $kimono = 'Kimono';
+    $short = 'Short';
 ?>
 
 <html>
@@ -28,6 +28,7 @@ $chaine =  $affiche_sous_categories[0]['nom'];
                     <?php
                     $verifieGants = strripos($chaine,$gant);
                     $verifieKimono = strripos($chaine, $kimono);
+                    $verifieShort = strripos($chaine, $short);
 
                     if( $verifieGants === 0 || $verifieGants === true ) {?>
                         <form action="" method="post">
@@ -81,21 +82,34 @@ $chaine =  $affiche_sous_categories[0]['nom'];
                     ?>
             </div>
         </section>
+        <section>
             <div id="container">
-                <?php
-                    foreach($affiche_sous_categories as $affiche_sous_categorie) {?>
-                        <div>
-                            <img src=<?= $affiche_sous_categorie['image1'];?> alt="image carnage">
-                            <?='<br>' . $affiche_sous_categorie['nom']. '<br>';?>
-                            <?=$affiche_sous_categorie['prix'] . " €" . '<br>';?>
-                            <div id="ajouter-panier">
-                                <form action="produit.php" method="get">
-                                    <button name="produit" value=<?= $affiche_sous_categorie['id'] ?>>Voir Produit</button>
-                                </form>
-                            </div>
-                        </div><?php
-                    }?>
-            </div>
+
+                <?php if( $verifieGants === 0 || $verifieGants === true ) { ?>
+                            <h1>GANTS</h1>
+                    <?php }
+                        elseif($verifieKimono === 0 || $verifieKimono === true) { ?>
+                            <h1>KIMONOS</h1>
+                        <?php }
+                        elseif($verifieShort === 0 || $verifieShort === true) { ?>
+                            <h1>SHORTS</h1>
+                        <?php }
+
+
+                        foreach($afficheSousCategories as $afficheSousCategorie) {?>
+                            <div>
+                                <img src=<?= $afficheSousCategorie['image1'];?> alt="image carnage">
+                                <?='<br>' . $afficheSousCategorie['nom']. '<br>';?>
+                                <?=$afficheSousCategorie['prix'] . " €" . '<br>';?>
+                                <div id="ajouter-panier">
+                                    <form action="produit.php" method="get">
+                                        <button name="produit" value=<?= $afficheSousCategorie['id'] ?>>Voir Produit</button>
+                                    </form>
+                                </div>
+                            </div><?php
+                        }?>
+                </div>
+                </section>
         </main>
         <footer>
 
