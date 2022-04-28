@@ -91,7 +91,7 @@
                                     <input type="mot" name="mot_de_passe" placeholder="Mot de passe" />
                                 <button type="submit" name="connection">Connexion</button>
                                 <p>Vous n'avez pas de compte ? <br><a href="inscription.php">Creez un compte</a></p>
-                                <a href="#">Mot de passe oublié ?</a></p>
+                                <a href="motdepasseoublie.php">Mot de passe oublié ?</a></p>
                                  <!-- $erreur; -->
                             </form>
                         </div>

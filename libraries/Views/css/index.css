@@ -40,4 +40,5 @@ body{
 #index .img-grid{
     display: flex;
     justify-content: center;
+    align-items: center;
 }

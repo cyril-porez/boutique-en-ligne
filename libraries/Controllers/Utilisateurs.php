@@ -220,7 +220,7 @@
 
 
         public function supprimerProduitPanier($idUtilisateur, $idProduit, $idTaille) {
-            echo 'passe';
+            
             if (isset($_POST['supprimer'])) {
                 echo 'passe';
 

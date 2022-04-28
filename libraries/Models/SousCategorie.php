@@ -5,6 +5,7 @@
     require_once('Model.php');
 
     class SousCategorie extends Model {
+        
         protected $table = 'categories';
         protected $table_par_id = 'sous_categories';
         protected $table_verif = 'sous_categories';
