@@ -11,6 +11,8 @@
         protected $quantite;
         protected $idNomTailleKimono;
 
+        
+
         public function ajoutPanier($idUtilisateur, $idProduit, $quantite, $idNomTailleKimono) {
             $sql = "INSERT INTO panier (id_utilisateur, id_produit, quantite, id_nom_taille_kimono) VALUES (:idUtilisateur, :idProduit, :quantite, :idNomTailleKimono)";
             $ajout = $this->bdd->prepare($sql);
@@ -52,6 +54,18 @@
             $sql = 'DELETE FROM panier WHERE id_utilisateur = :idUtilisateur and id_produit = :idProduit and id_nom_taille_kimono = :idTaille';
             $supprimeProduit = $this->bdd->prepare($sql);
             $supprimeProduit->execute(array(':idUtilisateur' => $idUtilisateur, ':idProduit' => $idProduit, ':idTaille' => $idTaille)); 
+        }
+
+
+        public function contenuPanier($idUtilisateur) {
+            //$this->idUtilisateur  = $idUtilisateur;
+            $sql = 'SELECT panier.id, panier.id_utilisateur, `id_produit`,produits.nom, produits.prix, produits.image1, `quantite`, `id_nom_taille_kimono`, adresses.adresse, adresses.code_postal, adresses.ville, adresses.pays, adresses.num_tel 
+            FROM `panier` INNER JOIN produits ON id_produit = produits.id 
+            inner join adresses on panier.id_utilisateur = adresses.id_utilisateur where panier.id_utilisateur = :idUtilisateur'; 
+            $panier = $this->bdd->prepare($sql);
+            $panier->execute(array(':idUtilisateur' => $idUtilisateur)); 
+            $panierUtilisateur = $panier->fetchall(\PDO::FETCH_ASSOC);
+            return $panierUtilisateur;                      
         }
     }
 

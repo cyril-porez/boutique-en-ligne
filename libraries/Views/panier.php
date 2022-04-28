@@ -7,6 +7,7 @@
     $idUtilisateur = $_SESSION['utilisateurs'][0]['id'];
     $panier = new \Controllers\Panier();
     $supprimerPanier = new \Controllers\Utilisateurs();
+    $utilisateurPanier = new \Controllers\Utilisateurs();
 
     if (isset($_POST['supprimer'])) {
         $utilisateurPanier->supprimerProduitPanier($idUtilisateur, $_POST['supprimeProduit'], $_POST['id_nom_taille_kimono']);
@@ -14,6 +15,12 @@
 
     if (isset($_POST['modifier'])) {
         $utilisateurPanier->modifierQuantitePanier($idUtilisateur, $_POST['modifierIdProduit'], $_POST['modifQuantite'], $_POST['id_nom_taille_kimono']);
+    }
+
+    if (isset($_POST['finaliser'])) {
+
+        header('Location: commandes.php');
+
     }
 
     $panierUtilisateurs = $panier->panierUtilisateur();
@@ -111,6 +118,7 @@
 
                         $tva = 13.33;
                         $total = $tva + $sousTotal;
+                        $_SESSION['prixTotal'] = $total;
 
                     ?>
                             <form action="" method="post">
@@ -136,7 +144,9 @@
                                 </tr>
                             </tbody>
                     </table>
-                    <button class="bouton-noir" type="submit">Finaliser la commande</button>
+                    <form action="paiement.php" method="post">
+                        <button name='finaliser' class="bouton-noir" type="submit">Finaliser la commande</button>                       
+                    </form>
                 </div>
                 <?php
                 }
