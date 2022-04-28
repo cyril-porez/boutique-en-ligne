@@ -14,8 +14,7 @@
     $short = 'Short';
 ?>
 
-<html>
-    <body>
+        <?php require_once('header.php'); ?>
         <link rel="stylesheet" href="css/listeProduits.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
         <header>
@@ -111,8 +110,4 @@
                 </div>
                 </section>
         </main>
-        <footer>
-
-        </footer>
-    </body>
-</html>
+        <?php require_once('footer.php'); ?>

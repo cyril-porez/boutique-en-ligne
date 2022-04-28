@@ -39,10 +39,7 @@
     <script src="js/script.js" defer></script>
     <title>Document</title>
 </head>
-<body>
-    <header>
-
-    </header>
+<?php require_once('header.php'); ?>
     <main>
         <a href="gestionCategories.php"><button>retour</button></a>
        <button role='button' data-target='#modalCreer' data-toggle='modal' id='connexion-link'>Creer une Categorie</button>
@@ -135,8 +132,4 @@
             </tbody>
         </table>
     </main>
-    <footer>
-
-    </footer>
-</body>
-</html>
+    <?php require_once('footer.php'); ?>

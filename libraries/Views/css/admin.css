@@ -4,6 +4,7 @@ body{
 img{
     height: 200px;
     width: 200px;
+    margin-top: 20px;
 }
 .icon{
     height: 100px;
@@ -23,7 +24,7 @@ main{
     align-items: center;
     text-align: center;
 }
-a{
+.container a{
 	cursor:pointer;
 	color:black;
 	text-decoration:none;
@@ -36,6 +37,6 @@ a{
     border: 2px solid black;
     border-radius: 5px;
 }
-a:hover{
+.container a:hover{
     background-color: rgb(228, 225, 225);
 }

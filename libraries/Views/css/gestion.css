@@ -3,17 +3,14 @@ body{
 }
 table{
     height: 80vh;
-    /* background-color: red; */
-    /* border: 3px solid; */
     width: 90vw;
     border-collapse: collapse;
-    /* font-size: 1.3em; */
+    margin-top: 20px;
 }
 table th, td{
-    /* border: 2px solid black; */
     text-align: center;
 }
-button {
+main button {
 	background-color:black;
 	display:inline-block;
 	cursor:pointer;
@@ -24,7 +21,10 @@ button {
 	text-decoration:none;
     border: none;
 }
-button:hover {
+main div{
+    margin-top: 20px;
+}
+main div button:hover {
 	background-color:red;
 }
 .modal{
@@ -162,7 +162,7 @@ input[type="submit"]:hover {
     width:100%;
     height:100%;
 }
- form{
+ main form{
     width:100%;
     display: flex;
     flex-direction: column;

@@ -23,10 +23,7 @@
     <link rel="stylesheet" href="css/modificationDonnee.css">
     <title>Modifier Adresse Facturation</title>
 </head>
-<body>
-    <header>
-
-    </header>
+<?php require_once('header.php'); ?>
     <main>
     <section id="grand-container">
         <?php require_once('navbarPanelUtilisateur.php') ?>
@@ -54,8 +51,5 @@
         </div>
     </section>
     </main>
-    <footer>
-
-    </footer>
-</body>
+    <?php require_once('footer.php'); ?>
 </html>

@@ -20,13 +20,12 @@
     <title>Document</title>
 </head>
 <body>
-    <header>
-
-    </header>
+    <?php require_once('header.php'); ?>
     <main>
-        <div id="grand-container">
-            <h1>MES FAVORIS</h1>
+        <!-- <div id="grand-container"> -->
+            <?php require_once('navbarPanelUtilisateur.php'); ?>
             <div id="container">
+            <h1>MES FAVORIS</h1>
                 <?php
                     foreach ($afficheProduitsFavoris as $afficheProduits) {?>
                         <div>
@@ -41,10 +40,8 @@
                     }
                 ?>
             </div>
-        </div>
+        <!-- </div> -->
     </main>
-    <footer>
-
-    </footer>
+    <?php require_once('footer.php'); ?>
 </body>
 </html>

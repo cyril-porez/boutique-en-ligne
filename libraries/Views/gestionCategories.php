@@ -21,17 +21,12 @@
     <script src="js/script.js" defer></script>
     <title>Document</title>
 </head>
-<body>
-    <header>
-
-    </header>
+<?php require_once('header.php'); ?>
     <main>
-        <a href="admin.php"><button>retour</button></a>
-        <a href="creer_categorie.php"><button>gestion des catégories</button></a>
-        <a href="creer_sous-categorie.php"><button>gestion des sous-categories</button></a>
+        <div>
+            <a href="admin.php"><button>retour</button></a>
+            <a href="creer_categorie.php"><button>gestion des catégories</button></a>
+            <a href="creer_sous-categorie.php"><button>gestion des sous-categories</button></a>
+        </div>
     </main>
-    <footer>
-
-    </footer>
-</body>
-</html>
+    <?php require_once('footer.php'); ?>

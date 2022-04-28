@@ -43,10 +43,7 @@
     <script src="js/script.js" defer></script>
     <title>Document</title>
 </head>
-<body>
-    <header>
-
-    </header>
+<?php require_once('header.php'); ?>
     <main>
         <div>
             <a href="admin.php"><button>retour</button></a>
@@ -102,7 +99,7 @@
                                 <input type="text" name="prixCreer">
 
                                 <input type="submit" value="creer">
-                            </form>                            
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -219,7 +216,7 @@
 
                                                     <input type="submit" value="Modifier">
                                                     <input type='hidden' name='modifierProduits' value='<?= $value['id']?>'>
-                                                </form>                                                
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -251,8 +248,4 @@
             </tbody>
         </table>
     </main>
-    <footer>
-
-    </footer>
-</body>
-</html>
+    <?php require_once('footer.php'); ?>

@@ -23,7 +23,7 @@
         <title>Connexion</title>
     </head>
     <body>
-        <?php //require('header.php');?>
+    <?php require_once('header.php'); ?>
         <main>
                     <!-- Modal -->
                 <button role='button' data-target='#modal' data-toggle='modal' id='connexion-link'>connexion</button>
@@ -50,7 +50,7 @@
                 </div>
         </main>
         <?php
-            //require('footer.php');
+            require('footer.php');
         ?>
     </body>
 </html>

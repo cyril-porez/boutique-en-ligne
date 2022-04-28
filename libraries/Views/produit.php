@@ -60,12 +60,7 @@
     }
     // var_dump($_SESSION);
 ?>
-
-<html>
-    <body>
-    <header>
-
-    </header>
+    <?php require_once('header.php'); ?>
         <main>
             <div id="container-produit">
                 <div id="container-img">
@@ -211,8 +206,4 @@
 ?>
             </section>
         </main>
-        <footer>
-
-        </footer>
-    </body>
-</html>
+        <?php require_once('footer.php'); ?>

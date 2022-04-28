@@ -43,13 +43,12 @@
     <script src="js/script.js" defer></script>
     <title>Document</title>
 </head>
-<body>
-    <header>
-
-    </header>
+<?php require_once('header.php'); ?>
     <main>
-        <a href="gestionCategories.php"><button>retour</button></a>
-        <button role='button' data-target='#modalCreer' data-toggle='modal' id='connexion-link'>Creer une Sous-Categorie</button>
+        <div>
+            <a href="gestionCategories.php"><button>retour</button></a>
+            <button role='button' data-target='#modalCreer' data-toggle='modal' id='connexion-link'>Creer une Sous-Categorie</button>
+        <div>
         <div class="modal" id="modalCreer" role="dialog">
             <div class="modal-content">
                 <div class="modal-close" data-dismiss="dialog">X</div>
@@ -141,8 +140,4 @@
             </tbody>
     </main>
     </main>
-    <footer>
-
-    </footer>
-</body>
-</html>
+    <?php require_once('footer.php'); ?>
