@@ -8,10 +8,9 @@
     $panier = new \Controllers\Panier();
     $contenuPaniers = $panier->contenuPanier();
     var_dump($contenuPaniers);
-    
     $numeroCommande = uniqid();
    
-
+    $total = 0;
 ?>
 
 
@@ -29,7 +28,11 @@
 
     </header>
     <main>
-        <?php foreach($contenuPaniers as $cle => $value) :?>
+        <?php foreach($contenuPaniers as $cle => $value) :
+                $quantite = $value['quantite'];
+                $total += $quantite;
+            
+            ?>
                 <div id="grand-container">
                     <div class="commande-container">
                 <div class="commande-head">
@@ -52,10 +55,13 @@
                 </div>
             </div>
         </div>
+       
         <?php endforeach ?>
+        
         <div>
             <p>Prix Total : <?= $_SESSION['prixTotal'] ?><em> €</em></p>
         </div>
+        <?= $total; ?>
     </main>
     <footer>
 
