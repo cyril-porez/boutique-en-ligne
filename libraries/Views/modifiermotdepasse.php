@@ -18,18 +18,9 @@
     }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/modificationDonnee.css">
-    <title>Document</title>
-</head>
 <?php require_once('header.php'); ?>
     <main>
-        <section id="grand-container">
+        <section id="modif">
             <?php require_once('navbarPanelUtilisateur.php') ?>
             <div id="container">
                 <h1>MODIFIER LES INFORMATIONS DU COMPTE</h1>
@@ -44,10 +35,10 @@
 
                     <label for="email">Email :</label>
                     <input type="text" name="email" value="<?= $utilisateur[0]['email'] ?>" >
-              
+
                     <h2>CHANGER DE MOT DE PASSE </h2>
 
-                
+
 
                     <label for="motDePasse">Mot de passe :</label>
                     <input type="text" name="motDePasse">
@@ -64,5 +55,3 @@
         </section>
     </main>
     <?php require_once('footer.php'); ?>
-</body>
-</html>

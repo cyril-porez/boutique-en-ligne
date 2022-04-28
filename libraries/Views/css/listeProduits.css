@@ -2,30 +2,30 @@ body{
     overflow-x: hidden;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-main {
+#produits {
     display: flex;
 }
-#container div img {
+#produits #container div img {
     width: 200px;
     height: 250px;
 }
-#container{
+#produits #container{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     /* padding-left: 10%; */
 }
-#container div{
+#produits #container div{
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-bottom: 5%;
     margin-right: calc(100% / 50);
 }
-#container div:nth-child(4n){
+#produits #container div:nth-child(4n){
     margin-right: 0px;
 }
-#container div button{
+#produits button{
 	background-color:black;
 	display:inline-block;
 	cursor:pointer;
@@ -36,24 +36,33 @@ main {
 	text-decoration:none;
     border: none;
 }
-#container div button:hover {
+#produits button:hover {
 	background-color:red;
 }
-.article_content{
+#produits .article_content{
     width:200px;
     height: 50px;
 
 }
-#filtre{
+#produits #filtre{
     background-color: #eeeded;
     width: 230px;
     height: 80vh;
+    margin-top: 20px;
 }
-.filtre_header{
+#produits .filtre_header{
     height: 5% ;
     background-color: rgb(214, 214, 214);
 }
-select{
+#produits select{
     height: 30px;
     border: 0.3px solid rgb(212, 210, 210);
+    margin-top: 50px;
+    margin-left: 10px;
+}
+#produits #filtre form button{
+    margin-left: 10px;
+}
+h1{
+    text-align: center;
 }

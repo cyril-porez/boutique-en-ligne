@@ -2,15 +2,16 @@ body{
     overflow-x: hidden;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-img{
+#produit img{
     height: 80vh;
     width: 40vw;
 }
-#container-produit{
+#produit #container-produit{
     display: flex;
     justify-content: space-evenly;
+    margin-top: 20px;
 }
-#container-description{
+#produit #container-description{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,7 +20,7 @@ img{
     gap: 10px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
 }
-#container-description button {
+#produit #container-description button {
 	background-color:black;
 	display:inline-block;
 	cursor:pointer;
@@ -30,65 +31,65 @@ img{
 	text-decoration:none;
     border: none;
 }
-#container-description button:hover {
+#produit #container-description button:hover {
 	background-color:red;
 }
-#input-number {
+#produit #input-number {
     height:30px;
     width:50px;
     border: 1px solid black;
 }
-#description {
+#produit #description {
     font-size: 14px;
 }
- #taille form{
+#produit #taille form{
     display: flex;
     align-items: center;
     flex-direction: column;
 }
-#taille form div{
+#produit #taille form div{
     display: flex;
     margin-bottom: 20px;
     align-items: center;
 }
-select{
+#produit select{
     height: 30px;
     border: 0.3px solid rgb(212, 210, 210);
 }
-#containercomment {
+#produit #containercomment {
     margin-left: 50px;
    width: 50%;
    margin-bottom: 50px;
 }
-#poster-reponse  {
+#produit #poster-reponse  {
    margin-left: 30px;
 }
-#container-reponse .reponse{
+#produit #container-reponse .reponse{
    margin-left: 30px;
 }
-.reponse{
+#produit .reponse{
    background-color: #f5f5f5;
    height: 50px;
    padding-top: 10px;
    padding-left: 10px;
 }
-input{
+#produit input{
    width: 50%;
    height: 25px;
    border: 0.3px solid rgb(212, 210, 210);
    margin-bottom: 3%;
 }
-#containercomment button{
+#produit #containercomment button{
    width: 40%;
    cursor:pointer;
    background:none;
    border: none;
    color:#007185;
 }
-#containercomment button:hover{
+#produit #containercomment button:hover{
    text-decoration: underline;
 }
-#submit-commentaire{
+#produit #submit-commentaire{
    width: 20%;
    height: 40px;
    background-color:black;
@@ -102,16 +103,20 @@ input{
    border: none;
    margin-left: 40px;
 }
-#submit-commentaire:hover{
+#produit #submit-commentaire:hover{
    background-color: red;
 }
-textarea{
+#produit textarea{
    width: 30%;
    border: 0.3px solid rgb(212, 210, 210);
    margin-bottom: 3%;
+   margin-left: 20px;
 }
-#form-rep{
+#produit #form-rep{
    display: flex;
    margin-left: 40px;
    justify-content: space-between;
+}
+h2{
+    margin-left: 20px;
 }

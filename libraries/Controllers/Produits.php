@@ -1,10 +1,11 @@
 <?php
 
     namespace Controllers;
-   
+
     require_once('..\Models\Produits.php');
     require_once('..\Models\AimeDeteste.php');
     require_once('..\Models\Favoris.php');
+    require_once('function.php');
 
     class Produits {
 
@@ -13,7 +14,7 @@
 
 
         public function verifProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $image) {
-            
+
             $verif = new \Models\Produits();
             $recupere = $verif->verif_si_existe_deja($nom);
             $recupere_ref = $verif->verif_ref($reference);
@@ -30,54 +31,25 @@
         }
 
 
-        public function creerProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $filename) {            $nom = htmlspecialchars($_POST['nomCreer']);
-            $reference = htmlspecialchars($_POST['referenceCreer']);
-            $description = htmlspecialchars($_POST['descriptionCreer']);
-            $classe = htmlspecialchars($_POST["classeCreer"]);
-            $categorie = htmlspecialchars($_POST['categorieCreer']);
-            $sousCategorie = htmlspecialchars($_POST['sous-categorieCreer']);
-            $prix = htmlspecialchars($_POST['prixCreer']);
-            // $image = htmlspecialchars($_FILES['image']);
+        public function creerProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $filename) {            $nom = protectionDonnées($_POST['nomCreer']);
+            $reference = protectionDonnées($_POST['referenceCreer']);
+            $description = protectionDonnées($_POST['descriptionCreer']);
+            $classe = protectionDonnées($_POST["classeCreer"]);
+            $categorie = protectionDonnées($_POST['categorieCreer']);
+            $sousCategorie = protectionDonnées($_POST['sous-categorieCreer']);
+            $prix = protectionDonnées($_POST['prixCreer']);
+            // $image = protectionDonnées($_FILES['image']);
             $produits = new Produits();
             $produit = $produits->verifProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $filename);
         }
 
-
-       /* public function creerProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $image) {
-            $produits = new \Models\Produits();
-           
-            $erreur = '';
-        
-            if(!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['classe']) && !empty($_POST['description']) && !empty($_POST['categorie']) && !empty($_POST['sous-categorie']) && !empty($_POST['prix']) && !empty($_POST['image'])){
-                $nom = htmlspecialchars($_POST['nom']);
-                $reference = htmlspecialchars($_POST['reference']);
-                $description = htmlspecialchars($_POST['description']);
-                $prix = htmlspecialchars($_POST['prix']);
-                $image = htmlspecialchars($_POST['image']);
-                $recupere = $produits->verif_si_existe_deja($nom);
-                //faire la verif de la reférence
-                
-                if(count($recupere) == 0){
-                    $produits->inserer_produit($nom, $reference, $_POST["classe"], $description, $_POST['categorie'], $_POST['sous-categorie'], $prix, $image);
-                }
-                else{
-                    $erreur = 'produit déja existant';
-                }
-            }
-            else if(empty($nom) && empty($reference) && empty($_POST["classe"]) && empty($description) && empty($_POST["id_utilisateur"]) && empty($_POST["categorie"]) && empty($_POST["sous-categorie"]) && empty($prix) && empty($image)){
-                        $erreur = 'champ vide';
-            }
-
-            return $erreur;
-        }*/
-
         public function modifierProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $filename, $id) {
-            $reference = htmlspecialchars($_POST['referenceModifier']);
-            $description = htmlspecialchars($_POST['descriptionModifier']);
-            $classe = htmlspecialchars($_POST["classeModifier"]);
-            $categorie = htmlspecialchars($_POST['categorieModifier']);
-            $sousCategorie = htmlspecialchars($_POST['sous-categorieModifier']);
-            $prix = htmlspecialchars($_POST['prixModifier']);
+            $reference = protectionDonnées($_POST['referenceModifier']);
+            $description = protectionDonnées($_POST['descriptionModifier']);
+            $classe = protectionDonnées($_POST["classeModifier"]);
+            $categorie = protectionDonnées($_POST['categorieModifier']);
+            $sousCategorie = protectionDonnées($_POST['sous-categorieModifier']);
+            $prix = protectionDonnées($_POST['prixModifier']);
 
             $verif = new \Models\Produits();
             $recupere = $verif->verif_si_existe_deja($nom);
@@ -124,7 +96,6 @@
                 }
             }
         }
-    
 
         public function deteste($recup_produit) {
 
@@ -168,7 +139,7 @@
 
     $maxsize = 50000;
 
-            $validExt = array('.jpg', '.jpeg', '.png', '.gif', '.webp');
+            $validExt = array('.jpg', '.jpeg', '.png','.webp');
 
         if(!empty($_FILES['telechargerImage'])) {
 
@@ -198,7 +169,7 @@
 
             $uniquename = md5(uniqid(rand(), true));
 
-            $filename = "../images/".$uniquename.$fileExt;
+            $filename = "images/".$uniquename.$fileExt;
 
             $resultat = move_uploaded_file($tmpname, $filename);
 

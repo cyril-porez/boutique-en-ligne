@@ -1,13 +1,13 @@
 body{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-#container form{
+#modif #container form{
     display: flex;
     flex-direction: column;
     width: 80%;
-    /* align-items: center; */  
+    /* align-items: center; */
 }
-input[type="submit"]{
+#modif .btn-submit{
     width: 20%;
     background-color:black;
 	display:inline-block;
@@ -20,28 +20,28 @@ input[type="submit"]{
     border: none;
     margin-left: 25%;
 }
-input[type="submit"]:hover{
+#modif .btn-submit:hover{
     background-color: red;
 }
-input{
+#modif #form-modification input{
     width: 80%;
     height: 25px;
     border: 0.3px solid rgb(212, 210, 210);
     margin-bottom: 3%;
 }
-span{
+#modif span{
     color: red;
 }
-#grand-container{
+#modif #grand-container{
     display: flex;
 }
-#container{
+#modif #container{
     margin-left: 40px;
     width: 80%;
 }
-h1{
+#modif h1{
     text-align: center;
 }
-h2{
+#modif h2{
     font-size: 1em;
 }

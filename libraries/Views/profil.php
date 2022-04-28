@@ -9,18 +9,9 @@
     $adresseUtilisateurs = $adresse->selectAdresses($info[0]['id']);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/profil.css">
-    <title>Mon compte</title>
-</head>
 <?php require_once('header.php'); ?>
     <main>
-        <section id="grand-container">
+        <section id="profil">
             <?php require_once('navbarPanelUtilisateur.php') ?>
             <div id="container">
                 <h1>MON COMPTE</h1>

@@ -1,4 +1,4 @@
-#icons{
+header #icons{
     margin-right: 30px;
     display: flex;
     justify-content: space-between;
@@ -11,7 +11,7 @@
 header i{
     margin-left: 5px;
 }
-input{
+header input{
     margin-bottom: 10px;
     height: 25px;
     border: 0.3px solid rgb(212, 210, 210);
@@ -19,17 +19,13 @@ input{
     width: 200px;
     background-color: #f7f7f7;
 }
-/* img{
-    height: 50px;
-    width: 50px;
-} */
-#header-body{
+header #header-body{
     height: 50%;
     margin-top: 2px;
     background-color: black;
     color: white;
 }
-nav{
+header nav{
     background-color: black;
     color: white;
     height: 50px;
@@ -37,18 +33,18 @@ nav{
     justify-content: space-around;
     align-items: center;
 }
-.conteneur-nav{
+header .conteneur-nav{
     width: 80%;
 }
-.conteneur-nav #container-ul{
+header .conteneur-nav #container-ul{
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-#icons ul li{
+header #icons ul li{
     list-style: none;
 }
-#icons ul{
+header #icons ul{
     display: none;
     box-shadow: 0px 1px 2px #CCC;
     background-color: white;
@@ -58,27 +54,30 @@ nav{
     top: 50px;
     left: 0;
 }
-#icons > i :hover ul{
+header #icons > i :hover ul{
     display: block;
 }
-nav ul li{
+header nav ul li{
     list-style: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-nav div ul li a{
+header nav div ul li a{
     color: white;
     text-decoration: none;
+    height: 50px;
+    display: flex;
+    align-items: center;
 }
-nav a{
+header nav a{
     text-decoration: none;
 }
-nav a:hover{
+header nav a:hover{
     color: red;
     border-bottom: 2px solid gray;
 }
-.sous{
+header .sous{
     display: none;
     box-shadow: 0px 1px 2px #CCC;
     background-color: white;
@@ -88,23 +87,23 @@ nav a:hover{
     top: 50px;
     left: 0;
 }
-nav > div > ul li:hover .sous{
+header nav > div > ul li:hover .sous{
     display: flex;
     justify-content: space-evenly;
 }
-.sous a{
+header .sous a{
     border-bottom: none;
     background-color: white;
     color: black;
 }
-.sous a:hover{
+header .sous a:hover{
     border-bottom: none;
     background-color: RGBa(200,200,200,0.1);
 }
-.deroulant > a::after{
+header .deroulant > a::after{
     font-size: 12px;
 }
-.sous li ul li a{
+header .sous li ul li a{
     color: gray;
 }
 header button{
@@ -113,12 +112,12 @@ header button{
     cursor: pointer;
 }
 /* ------liste-déroulante-navbar------------------*/
-.dropdown {
+header .dropdown {
     position: relative;
     display: inline-block;
 }
 
-.dropdown-content {
+header .dropdown-content {
     display: none;
     position: absolute;
     right: 0;
@@ -127,15 +126,17 @@ header button{
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
-.dropdown-content a {
+header .dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+header .dropdown-content a:hover {
+    background-color: #f1f1f1
+}
 
-.dropdown:hover .dropdown-content {
+header .dropdown:hover .dropdown-content {
     display: block;
 }

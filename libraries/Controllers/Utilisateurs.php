@@ -5,7 +5,7 @@
     require_once('../Models/Utilisateurs.php');
     require_once('../Models/Favoris.php');
     require_once('../Models/Panier.php');
-    
+    require_once('function.php');
     class Utilisateurs {
 
         protected $mdp;
@@ -26,11 +26,11 @@
         public function modifierUtilisateurs($nom, $prenom, $email) {
             if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['email'])) {
 
-                $nom = htmlspecialchars($_POST['nom']);
-                $prenom = htmlspecialchars($_POST['prenom']);
-                $email = htmlspecialchars($_POST['email']);
+                $nom = protectionDonnées($_POST['nom']);
+                $prenom = protectionDonnées($_POST['prenom']);;
+                $email = protectionDonnées($_POST['email']);
 
-                $erreur = '';     
+                $erreur = '';
     
                 $this->nom = $nom;
                 $this->prenom = $prenom;
@@ -47,8 +47,8 @@
                     $infoUser = $updateLogin->selectUtilisateursId($id);
                     $_SESSION["utilisateurs"][0] =  [
                                             'id' => $infoUser[0]['id'],
-                                            'nom' => $this->nom, 
-                                            'prenom' => $this->prenom, 
+                                            'nom' => $this->nom,
+                                            'prenom' => $this->prenom,
                                             'email' => $this->email,
                                             'mot_de_passe' => $infoUser[0]['mot_de_passe'],
                                             'adresse' => $infoUser[0]['adresse'],
@@ -59,7 +59,7 @@
                                             'num' => $infoUser[0]['num'],
                                             'token' => $infoUser[0]['token'],
                                             'date' => $infoUser[0]['date'],
-                                        ];  
+                                        ];
                 }
                 else {
                     $erreurr = "* Ce login existe déjà !";
@@ -71,9 +71,9 @@
 
         public function modifierMotDePasse() {
             if (!empty($_POST['motDePasse']) && !empty($_POST['nouveauMotDePasse']) && !empty($_POST['confirmeMotDePasse'])) {
-                $mdp = htmlspecialchars($_POST['motDePasse']);
-                $nmdp = htmlspecialchars($_POST['nouveauMotDePasse']);
-                $cmdp = htmlspecialchars($_POST['confirmeMotDePasse']);
+                $mdp = protectionDonnées($_POST['motDePasse']);
+                $nmdp = protectionDonnées($_POST['nouveauMotDePasse']);
+                $cmdp = protectionDonnées($_POST['confirmeMotDePasse']);
                 
                 $this->mdp = $mdp;
                 $this->nmdp = $nmdp;
@@ -105,10 +105,10 @@
             $erreur = '';
 
             if (!empty($_POST['adresse']) && !empty($_POST['ville']) && !empty($_POST['codePostal']) && !empty($_POST['pays'])) {
-                $adresse = htmlspecialchars($_POST['adresse']);
-                $codePostal = htmlspecialchars($_POST['codePostal']);
-                $ville = htmlspecialchars($_POST['ville']);
-                $pays = htmlspecialchars($_POST['pays']);
+                $adresse = protectionDonnées($_POST['adresse']);
+                $codePostal = protectionDonnées($_POST['codePostal']);
+                $ville = protectionDonnées($_POST['ville']);
+                $pays = protectionDonnées($_POST['pays']);
 
                 $this->adresse = $adresse;
                 $this->codePostal = $codePostal;
@@ -131,10 +131,10 @@
             $erreur = '';
 
             if (!empty($_POST['adresse']) && !empty($_POST['ville']) && !empty($_POST['codePostal']) && !empty($_POST['pays'])) {
-                $adresse = htmlspecialchars($_POST['adresse']);
-                $codePostal = htmlspecialchars($_POST['codePostal']);
-                $ville = htmlspecialchars($_POST['ville']);
-                $pays = htmlspecialchars($_POST['pays']);
+                $adresse = protectionDonnées($_POST['adresse']);
+                $codePostal = protectionDonnées($_POST['codePostal']);
+                $ville = protectionDonnées($_POST['ville']);
+                $pays = protectionDonnées($_POST['pays']);
 
                 $this->adresse = $adresse;
                 $this->codePostal = $codePostal;
@@ -215,7 +215,7 @@
                 $supprimer->supprimerPanierUtilisateur($idUtilisateur);
                 header('Refresh: 0');
                 return 0;
-            } 
+            }
         }
 
 
@@ -223,7 +223,7 @@
             echo 'passe';
             if (isset($_POST['supprimer'])) {
                 echo 'passe';
-                
+
                 var_dump($idUtilisateur);
                 var_dump($idProduit);
                 var_dump($idTaille);
