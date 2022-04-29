@@ -14,18 +14,9 @@
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/modificationDonnee.css">
-    <title>Modifier Adresse Facturation</title>
-</head>
 <?php require_once('header.php'); ?>
     <main>
-    <section id="grand-container">
+    <section id="modif">
         <?php require_once('navbarPanelUtilisateur.php') ?>
         <div id="container">
 
@@ -52,4 +43,3 @@
     </section>
     </main>
     <?php require_once('footer.php'); ?>
-</html>

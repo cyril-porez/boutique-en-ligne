@@ -6,7 +6,8 @@
     require_once('../Models/Categorie.php');
     require_once('../Models/SousCategorie.php');
     require_once('../Models/Produits.php');
-    
+    require_once('function.php');
+
     class Admin {
 
         public function selectionneUtilisateurs() {
@@ -19,12 +20,12 @@
         public function modifierUtilisateur($nom, $prenom, $email, $droit, $id) {
             if(!empty($_POST['nomModifier']) && !empty($_POST['prenomModifier']) && !empty($_POST['emailModifier']) && !empty($_POST['droitModifier'])) {
                 echo "blabla";
-                $nom = htmlspecialchars($_POST['nomModifier']);
-                $prenom = htmlspecialchars($_POST['prenomModifier']);
-                $email = htmlspecialchars($_POST['emailModifier']);
-                /*$mot_de_passe = htmlspecialchars($_POST['mot_de_passeModifier']);
-                $confMotDePasse = htmlspecialchars($_POST['CmdpModifier']);*/
-                $droit = htmlspecialchars($_POST['droitModifier']);
+                $nom = protectionDonnées($_POST['nomModifier']);
+                $prenom = protectionDonnées($_POST['prenomModifier']);
+                $email = protectionDonnées($_POST['emailModifier']);
+                /*$mot_de_passe = protectionDonnées($_POST['mot_de_passeModifier']);
+                $confMotDePasse = protectionDonnées($_POST['CmdpModifier']);*/
+                $droit = protectionDonnées($_POST['droitModifier']);
                 
         
                 $utilisateur = new \Models\Utilisateurs();
@@ -82,21 +83,21 @@
         public function creerUtilisateur($nom, $prenom, $email, $mot_de_passe, $confMotDePasse,  $adresse, $codePostale, $pays, $ville, $numero) {
             if(!empty($_POST['nomCreer']) && !empty($_POST['prenomCreer']) && !empty($_POST['emailCreer']) && !empty($_POST['mot_de_passeCreer']) && !empty($_POST['CmdpCreer']) && !empty($_POST['adresseCreer']) && !empty($_POST['code_postaleCreer']) && !empty($_POST['paysCreer']) && !empty($_POST['villeCreer']) && !empty($_POST['numeroCreer'])) {
                 echo "passe";
-                $nom = htmlspecialchars($_POST['nomCreer']);
-                $prenom = htmlspecialchars($_POST['prenomCreer']);
-                $email = htmlspecialchars($_POST['emailCreer']);
-                $mot_de_passe = htmlspecialchars($_POST['mot_de_passeCreer']);
-                $confMotDePasse = htmlspecialchars($_POST['CmdpCreer']);
-                $adresse = htmlspecialchars($_POST['adresseCreer']);
-                $codePostale = htmlspecialchars($_POST['code_postaleCreer']);
-                $pays = htmlspecialchars($_POST['paysCreer']);
-                $ville = htmlspecialchars($_POST['villeCreer']);
-                $numero = htmlspecialchars($_POST['numeroCreer']);
-            
+                $nom = protectionDonnées($_POST['nomCreer']);
+                $prenom = protectionDonnées($_POST['prenomCreer']);
+                $email = protectionDonnées($_POST['emailCreer']);
+                $mot_de_passe = protectionDonnées($_POST['mot_de_passeCreer']);
+                $confMotDePasse = protectionDonnées($_POST['CmdpCreer']);
+                $adresse = protectionDonnées($_POST['adresseCreer']);
+                $codePostale = protectionDonnées($_POST['code_postaleCreer']);
+                $pays = protectionDonnées($_POST['paysCreer']);
+                $ville = protectionDonnées($_POST['villeCreer']);
+                $numero = protectionDonnées($_POST['numeroCreer']);
+
                 $utilisateur = new \Models\Utilisateurs();
                 $recupere = $utilisateur->verif_si_existe_deja($email);
                 $erreur = '';
-               
+
                 if($mot_de_passe == $confMotDePasse) {
                     echo "passe2";
                     $mot_de_passe = password_hash($mot_de_passe, PASSWORD_BCRYPT);

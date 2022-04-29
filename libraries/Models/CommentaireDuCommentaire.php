@@ -6,17 +6,17 @@
 
     class CommentaireDuCommentaire extends Model{
 
-        public function insertCommentaireCommentaire($commentaire, $idCommentaire) {
-
+        public function insertCommentaireCommentaire($commentaire, $idCommentaire, $idUtilisateur, $idProduit) {
+            echo 'fegeuhjdgk';
             $date = date('Y-m-d H:i:s');
             //$sql = "INSERT INTO `commentaires`(commentaire, date, id_utilisateur, id_produit) VALUES (:commentaire, :date, 3, 1)";
-            $sql = "INSERT INTO `commentaire_du_commentaire`(reponse, date, id_utilisateur, id_commentaire, id_produit) VALUES (:commentaire, :date, 2, :idCommentaire, 1)";
+            $sql = "INSERT INTO `commentaire_du_commentaire`(reponse, date, id_utilisateur, id_commentaire, id_produit) VALUES (:commentaire, :date, :idUtilisateur, :idCommentaire, :idProduit)";
             $commentaires = $this->bdd->prepare($sql);
             $commentaires->bindValue(':commentaire', $commentaire, \PDO::PARAM_STR);
             $commentaires->bindValue(':date', $date, \PDO::PARAM_STR);
-            //$commentaires->bindValue(':id_utilisateur', $idUtilisateur, \PDO::PARAM_INT);
+            $commentaires->bindValue(':idUtilisateur', $idUtilisateur, \PDO::PARAM_INT);
             $commentaires->bindValue(':idCommentaire', $idCommentaire, \PDO::PARAM_INT);
-            //$commentaires->bindValue('id_produit', $idProduit, \PDO::PARAM_INT);
+            $commentaires->bindValue(':idProduit', $idProduit, \PDO::PARAM_INT);
             $commentaires->execute();
         }
 

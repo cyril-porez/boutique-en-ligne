@@ -20,18 +20,9 @@
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/modificationDonnee.css">
-    <title>Modifier Adresse Livraison</title>
-</head>
 <?php require_once('header.php'); ?>
     <main>
-    <section id="grand-container">
+    <section id="modif">
         <?php require_once('navbarPanelUtilisateur.php') ?>
         <div id="container">
 
@@ -52,7 +43,7 @@
                 <label for="pays">Pays :</label>
                 <input type="text" name="pays" value="<?= $adressLivraison['pays'] ?>">
 
-                <input type="submit" value="Enregistrer l'adresse">
+                <button class="btn-submit" type="submit">Enregistrer l'adresse</button>
             </form>
         </div>
     </section>

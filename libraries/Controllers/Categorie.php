@@ -3,7 +3,7 @@
     namespace Controllers;
     
     require_once('../Models/Categorie.php');
-
+    require_once('function.php');
     class Categorie {
 
         public function verifCategorie($nom, $genre) {
@@ -45,16 +45,16 @@
         }
 
         public function creerCategorie($nom, $genre) {           
-            $nom =  htmlspecialchars($_POST['nom']);
-            $genre = htmlspecialchars($_POST['genre']);
+            $nom =  protectionDonnées($_POST['nom']);
+            $genre = protectionDonnées($_POST['genre']);
             $verif = new \Controllers\Categorie();
             $verif->verifCategorie($nom, $genre);            
         } 
         
         
         public function modifierCategorie($nom, $genre, $id) {
-            $nom =  htmlspecialchars($_POST['nomModifier']);
-            $genre = htmlspecialchars($_POST['genreModifier']);
+            $nom =  protectionDonnées($_POST['nomModifier']);
+            $genre = protectionDonnées($_POST['genreModifier']);
             $verif = new \Controllers\Categorie();
             return $verif->verifCategorieModifier($nom, $genre, $id);
         }

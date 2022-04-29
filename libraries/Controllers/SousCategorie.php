@@ -1,8 +1,9 @@
 <?php
 
     namespace Controllers;
-    
+
     require_once('../Models/SousCategorie.php');
+    require_once('function.php');
 
     class SousCategorie {
 
@@ -11,11 +12,11 @@
             $erreur = '';
 
             if(!empty($_POST['nom']) && !empty($_POST['categorie'])) {
-                $nom = htmlspecialchars($_POST['nom']);
-                $idCategorie = htmlspecialchars($_POST['categorie']);
-                $verifSousCategorie = new \Models\SousCategorie(); 
+                $nom = protectionDonnées($_POST['nom']);
+                $idCategorie = protectionDonnées($_POST['categorie']);
+                $verifSousCategorie = new \Models\SousCategorie();
                 $recupere = $verifSousCategorie->verif_si_existe_deja($nom);
-            
+
                 if(count($recupere) == 0) {
                     $sousCategorie = new \Models\SousCategorie();
                     $sousCategorie->creation_sous_categorie($nom, $idCategorie);
@@ -41,8 +42,8 @@
             $erreur = '';
 
             if(!empty($_POST['nomModifier']) && !empty($_POST['categorieModifier'])) {
-                $nom = htmlspecialchars($_POST['nomModifier']);
-                $idCategorie = htmlspecialchars($_POST['categorieModifier']);
+                $nom = protectionDonnées($_POST['nomModifier']);
+                $idCategorie = protectionDonnées($_POST['categorieModifier']);
                 $verifSousCategorie = new \Models\SousCategorie(); 
                 $recupere = $verifSousCategorie->verif_si_existe_deja($nom);
             
