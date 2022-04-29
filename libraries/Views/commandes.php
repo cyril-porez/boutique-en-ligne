@@ -61,14 +61,13 @@
         </div>
             <?php $listeCommande->insererCommandes($numeroCommande, $value['prix'], $_SESSION['prixTotal'], $value['id_produit'], $value['id_utilisateur'], $value['id_adresse']); ?>
         <?php endforeach ?>
-        
+
         <div>
             <p>Prix Total : <?= isset($_SESSION['prixTotal']) ? $_SESSION['prixTotal'] : '' ?><em> €</em></p>
         </div>
-        
+
         <?php
-        
-             
+
              $liste = $listeCommande-> verifCommandeExiste($numeroCommande);
             
              if (!empty($liste)) {

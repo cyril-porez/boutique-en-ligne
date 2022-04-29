@@ -42,3 +42,9 @@ body{
     justify-content: center;
     align-items: center;
 }
+#grand-container{
+    margin-top: 60px;
+}
+#grand-container h1{
+    font-size: 1.5em;
+}

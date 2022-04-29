@@ -60,6 +60,7 @@
                             <a href="profil.php">Mon compte</a>
                             <a href="commandes.php">Mes commandes</a>
                             <a href="listedenvie.php">Ma liste d'envie</a>
+                            <a href="panier.php">Mon Panier</a>
                             <a href="deconnexion.php">Me deconnecter</a>
                             <?php if(!empty($_SESSION['utilisateurs']) && $_SESSION['utilisateurs'][0]['id_droits'] != 1 || 3){ ?>
                                 <a href="admin.php">Panel administrateur</a>

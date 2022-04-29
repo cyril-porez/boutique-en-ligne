@@ -142,7 +142,16 @@
             $select = new \Models\Produits();
             $selectProduit = $select->selection_produits($id);
             return $selectProduit;
-        } 
+        }
+
+
+        public function afficheProduitAccueil(){
+           $produit = new \Models\Produits();
+            $afficheProduitsAccueil = $produit->selectProduitParOrdreCreation();
+            return $afficheProduitsAccueil;
+
+        }
+
     }
 
     $maxsize = 50000;

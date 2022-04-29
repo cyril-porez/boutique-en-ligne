@@ -1,7 +1,12 @@
-<?php session_start(); ?>
+<?php session_start();
+require_once('../Controllers/Produits.php');
+    $produit = new \Controllers\Produits();
+    $afficheProduits = $produit->afficheProduitAccueil();
+?>
 
 <?php require_once('header.php'); ?>
     <main>
+        <?php var_dump($afficheProduits); ?>
         <section id="index">
             <section class="titre">
                 <h2>BIENVENUE</h2>
@@ -28,6 +33,25 @@
                     <!-- <div class="div2"></div> -->
                     <div class="div3"><img src="images/atlete.jpg" alt=""></div>
                 </div>
+            </section>
+            <section id="produits">
+                <div id="grand-container">
+                    <h1>NOS DERNIER ARTICLES</h1>
+                    <div id="container">
+                        <?php   foreach($afficheProduits as $afficheProduit) {?>
+                            <div>
+                                <img src=<?= $afficheProduit['image1'];?> alt="image carnage">
+                                <?='<br>' . $afficheProduit['nom']. '<br>';?>
+                                <?=$afficheProduit['prix'] . " €" . '<br>';?>
+                                <div id="ajouter-panier">
+                                    <form action="produit.php" method="get">
+                                        <button name="produit" value=<?= $afficheProduit['id'] ?>>Voir Produit</button>
+                                    </form>
+                                </div>
+                            </div><?php
+                        }?>
+                        </div>
+                    </div>
             </section>
         </section>
     </main>

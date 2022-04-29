@@ -81,7 +81,7 @@ header .sous{
     display: none;
     box-shadow: 0px 1px 2px #CCC;
     background-color: white;
-    width: 1250px;
+    width: 100%;
     margin-top: 50px;
     position: absolute;
     top: 50px;
