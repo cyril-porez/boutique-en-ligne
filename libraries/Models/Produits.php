@@ -112,7 +112,7 @@
             $result = $this->bdd->prepare($selection);
             $result->bindValue(':id', $id, \PDO::PARAM_INT);
             $result->execute();
-            $fetch3 = $result->fetchAll(\PDO::FETCH_ASSOC);
+            $fetch3 = $result->fetchall(\PDO::FETCH_ASSOC);
             return $fetch3;
         }
 
@@ -132,7 +132,14 @@
             $sql = "DELETE FROM produits WHERE id = :id";
             $requete = $this->bdd->prepare($sql);
             $requete->bindValue(":id", $id, \PDO::PARAM_INT);
-            $requete->execute();    
-        } 
+            $requete->execute();
+        }
+        public function selectProduitParOrdreCreation(){
+            $selection = "SELECT produits.id, produits.nom, produits.prix, produits.image1 from produits  order by  produits.id desc limit 5";
+            $result = $this->bdd->prepare($selection);
+            $result->execute();
+            $produitAccueil = $result->fetch();
+            return $produitAccueil;
+        }
     }
 ?>

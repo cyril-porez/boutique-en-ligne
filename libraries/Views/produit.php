@@ -12,8 +12,9 @@
     $idUtilisateur = $_SESSION['utilisateurs'][0]['id'];
 
     //Modifier et appeler le controlleur
-    $produits = new \Models\Produits();
+    $produits = new \Controllers\Produits();
     $produit = $produits->selection_produits($idProduit);
+   
 
     $jaimeDeteste = new \Controllers\Produits();
 
@@ -41,17 +42,17 @@
     $kimono = 'Kimono';
 
     $commentaire = new \Controllers\Commentaires();
-    $affiches = $commentaire->AfficheCommentaire();
+    $affiches = $commentaire->AfficheCommentaire($idProduit);
 
     if (!empty($_POST['commentaire'])) {
         $commentaire = new \Controllers\Commentaires();
-        $commentaire->posterCommentaire($_POST['commentaire']);
+        $commentaire->posterCommentaire($_POST['commentaire'], $idUtilisateur, $idProduit);
         header("Refresh: 0");
     }
 
     if (!empty($_POST['reponse'])) {
         $reponseCom = new \Controllers\Commentaires();
-        $reponseCom->reponseCommentaire($_POST['reponse'], $_POST['idReponse']);
+        $reponseCom->reponseCommentaire($_POST['reponse'], $_POST['idReponse'], $idUtilisateur, $idProduit);
        // header("Refresh: 0");
        // break;
     }

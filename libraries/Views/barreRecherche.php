@@ -1,17 +1,16 @@
 <?php
 
-   
-    
+
     require_once('../Controllers/barreRecherche.php');
     /*$bdd = new PDO("mysql:host=localhost;dbname=carnage;charset=utf8",'root','');
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $produits = $bdd->prepare("SELECT nom from produits order by id desc");*/
-    
+
     if (isset($_GET['recherche'])) {
         $recherche = $_GET['recherche'];
         $rechercheProduit = new Controllers\barreRecherche();
-        $produit = $rechercheProduit->rechercheProduits($recherche);        
-        var_dump($produit);   
+        $produit = $rechercheProduit->rechercheProduits($recherche);
+        var_dump($produit);
     }
 
 ?>

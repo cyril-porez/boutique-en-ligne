@@ -9,11 +9,11 @@
     <?php require_once('header.php'); ?>
     <main>
         <section id="produits">
-            <section id='filtre'>
+            <!-- <section id='filtre'>
                 <section class='filtre_header'>
                     <h3>FILTRER PAR</h3>
                 </section>
-            </section>
+            </section> -->
             <div id="container">
                 <?php
                     foreach($afficheProduits as $afficheProduit) {?>

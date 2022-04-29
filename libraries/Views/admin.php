@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!empty($_SESSION['utilisateurs']) && $_SESSION['utilisateurs'][0]['id_droits'] != 1 && 3){
+if(!empty($_SESSION['utilisateurs']) && $_SESSION['utilisateurs'][0]['id_droits'] == 2){
     header('Location: index.php');
 }
 ?>

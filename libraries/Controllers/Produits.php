@@ -31,7 +31,8 @@
         }
 
 
-        public function creerProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $filename) {            $nom = protectionDonnées($_POST['nomCreer']);
+        public function creerProduit($nom, $reference, $classe, $description, $categorie, $sousCategorie, $prix, $filename) {
+            $nom = protectionDonnées($_POST['nomCreer']);
             $reference = protectionDonnées($_POST['referenceCreer']);
             $description = protectionDonnées($_POST['descriptionCreer']);
             $classe = protectionDonnées($_POST["classeCreer"]);
@@ -135,6 +136,13 @@
             $afficherProduitFavoris = $favoris-> afficherProduitFavoris($idUtilisateur);
             return $afficherProduitFavoris;
         }
+
+
+        public function selection_produits($id) {
+            $select = new \Models\Produits();
+            $selectProduit = $select->selection_produits($id);
+            return $selectProduit;
+        } 
     }
 
     $maxsize = 50000;

@@ -3,7 +3,7 @@
     require_once('../Models/Categorie.php');
     require_once('../Models/SousCategorie.php');
     require_once("../Controllers/Connexion.php");
-
+    require_once('../Controllers/barreRecherche.php');
     $erreur = "";
     if (!empty($_POST['email']) && !empty($_POST['mot_de_passe'])) {
         $connex = new \Controllers\Connexion();
@@ -14,11 +14,8 @@
     $afficheSs = $afficheCategorie->selectCategorieS();
     $afficheFs = $afficheCategorie->selectCategorieF();
     $afficheEs = $afficheCategorie->selectCategorieE();
-    //var_dump($affiche);
 
     $afficheSousCategorie = new \Models\SousCategorie();
-    // var_dump($_SESSION);
-
 ?>
 
 <!DOCTYPE html>
@@ -42,15 +39,14 @@
     <link rel="stylesheet" href="css/profil.css">
     <script src="js/script.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- <link rel="stylesheet" href="produits.css"> -->
-    <title>Document</title>
+    <title>CARNAGE</title>
 </head>
 <body>
     <header>
         <!-- <div> -->
             <!-- <a href="index.php"><h1>CARNAGE</h1></a> -->
             <div id="icons">
-                <form action="" method="get">
+                <form action="rechercheProduits.php" method="get">
                     <input type="search" name="recherche" placeholder="rechercher article">
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
@@ -61,14 +57,14 @@
                     <div class="dropdown" style="float:left;">
                         <button class="dropbtn"><i class="fa-solid fa-user"></i></button>
                         <div class="dropdown-content" style="left:0;">
-                        <a href="profil.php">Mon compte</a>
-                        <a href="commandes.php">Mes commandes</a>
-                        <a href="listedenvie.php">Ma liste d'envie</a>
-                        <a href="deconnexion.php">Me deconnecter</a>
-                        <?php if(!empty($_SESSION['utilisateurs']) && $_SESSION['utilisateurs'][0]['id_droits'] != 1 || 3){ ?>
-                            <a href="admin.php">Panel administrateur</a>
-                            <?php }
-                        }?>
+                            <a href="profil.php">Mon compte</a>
+                            <a href="commandes.php">Mes commandes</a>
+                            <a href="listedenvie.php">Ma liste d'envie</a>
+                            <a href="deconnexion.php">Me deconnecter</a>
+                            <?php if(!empty($_SESSION['utilisateurs']) && $_SESSION['utilisateurs'][0]['id_droits'] != 1 || 3){ ?>
+                                <a href="admin.php">Panel administrateur</a>
+                                <?php }
+                            }?>
                         </div>
                     </div>
                 <i class="fa-solid fa-envelope"></i>

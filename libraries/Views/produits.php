@@ -87,10 +87,9 @@
                                 elseif($verifieShort === 0 || $verifieShort === true) { ?>
                                     <h1>SHORTS</h1>
                                 <?php } ?>
-                    <div id="container">
-
-
-                              <?php  foreach($afficheSousCategories as $afficheSousCategorie) {?>
+                        <div id="container">
+                            <?php
+                                foreach($afficheSousCategories as $afficheSousCategorie) {?>
                                     <div>
                                         <img src=<?= $afficheSousCategorie['image1'];?> alt="image carnage">
                                         <?='<br>' . $afficheSousCategorie['nom']. '<br>';?>
