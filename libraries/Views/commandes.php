@@ -78,7 +78,6 @@
                 unset($_SESSION['prixTotal']);
                 
              }
-             var_dump($liste);
         ?>
         
     </main>
