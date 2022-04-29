@@ -138,7 +138,7 @@
             $selection = "SELECT produits.id, produits.nom, produits.prix, produits.image1 from produits  order by  produits.id desc limit 5";
             $result = $this->bdd->prepare($selection);
             $result->execute();
-            $produitAccueil = $result->fetch();
+            $produitAccueil = $result->fetchAll(\PDO::FETCH_ASSOC);
             return $produitAccueil;
         }
     }
