@@ -7,6 +7,7 @@
     $utilisateurs = new \Controllers\Admin();
     $afficheUtilisateurs = $utilisateurs->selectionneUtilisateurs();
     $droitsUtilisateur =$utilisateurs->selectDroitUtilisateur();
+    
 
     if(!empty($_POST['nomCreer']) && !empty($_POST['prenomCreer'])  && !empty($_POST['emailCreer']) && !empty($_POST['mot_de_passeCreer']) && !empty($_POST['CmdpCreer']) && !empty($_POST['adresseCreer']) && !empty($_POST['code_postaleCreer']) && !empty($_POST['paysCreer']) && !empty($_POST['villeCreer']) && !empty($_POST['numeroCreer'])) {
         $creerUtilisateur = new \Controllers\Admin();
@@ -27,7 +28,11 @@
 
         $inscription = new \Controllers\Admin();
         $inscription->modifierUtilisateur($_POST['nomModifier'], $_POST['prenomModifier'], $_POST['emailModifier'], $_POST['droitModifier'], $_POST['modifierUtilisateur']);
+        header("Refresh: 0");
     }
+    
+
+    
 ?>
 
 <!DOCTYPE html>

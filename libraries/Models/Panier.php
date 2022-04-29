@@ -59,14 +59,13 @@
 
         public function contenuPanier($idUtilisateur) {
             //$this->idUtilisateur  = $idUtilisateur;
-            $sql = 'SELECT panier.id, panier.id_utilisateur, `id_produit`,produits.nom, produits.prix, produits.image1, `quantite`, `id_nom_taille_kimono`, adresses.adresse, adresses.code_postal, adresses.ville, adresses.pays, adresses.num_tel 
+            $sql = 'SELECT panier.id, panier.id_utilisateur, `id_produit`,produits.nom, produits.prix, produits.image1, `quantite`, `id_nom_taille_kimono`, adresses.id as id_adresse, adresses.adresse, adresses.code_postal, adresses.ville, adresses.pays, adresses.num_tel 
             FROM `panier` INNER JOIN produits ON id_produit = produits.id 
             inner join adresses on panier.id_utilisateur = adresses.id_utilisateur where panier.id_utilisateur = :idUtilisateur'; 
             $panier = $this->bdd->prepare($sql);
             $panier->execute(array(':idUtilisateur' => $idUtilisateur)); 
             $panierUtilisateur = $panier->fetchall(\PDO::FETCH_ASSOC);
             return $panierUtilisateur;                      
-        }
+        } 
     }
-
 ?>

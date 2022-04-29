@@ -1,5 +1,6 @@
 <?php
     require_once('../Controllers/Panier.php');
+    require_once('../Controllers/Commandes.php');
 
     session_start();
     setlocale(LC_TIME, 'fr');
@@ -7,8 +8,11 @@
     $date = date('Y-m-d a H:i:s');
     $panier = new \Controllers\Panier();
     $contenuPaniers = $panier->contenuPanier();
-    var_dump($contenuPaniers);
+    $contenu =  $contenuPaniers;
+    
     $numeroCommande = uniqid();
+
+    $listeCommande = new \Controllers\Commandes();
    
     $total = 0;
 ?>
@@ -28,7 +32,7 @@
 
     </header>
     <main>
-        <?php foreach($contenuPaniers as $cle => $value) :
+        <?php foreach($contenu as $cle => $value) :
                 $quantite = $value['quantite'];
                 $total += $quantite;
             
@@ -55,13 +59,28 @@
                 </div>
             </div>
         </div>
-       
+            <?php $listeCommande->insererCommandes($numeroCommande, $value['prix'], $_SESSION['prixTotal'], $value['id_produit'], $value['id_utilisateur'], $value['id_adresse']); ?>
         <?php endforeach ?>
         
         <div>
-            <p>Prix Total : <?= $_SESSION['prixTotal'] ?><em> €</em></p>
+            <p>Prix Total : <?= isset($_SESSION['prixTotal']) ? $_SESSION['prixTotal'] : '' ?><em> €</em></p>
         </div>
-        <?= $total; ?>
+        
+        <?php
+        
+             
+             $liste = $listeCommande-> verifCommandeExiste($numeroCommande);
+            
+             if (!empty($liste)) {
+
+                $supprPanier = new \Controllers\Commandes();
+                $supprPanier->supprimerPanier($_SESSION['utilisateurs'][0]['id']);
+                unset($_SESSION['prixTotal']);
+                
+             }
+             var_dump($liste);
+        ?>
+        
     </main>
     <footer>
 
