@@ -22,7 +22,8 @@ body{
     align-items: center;
     padding-bottom: 5%;
     padding-right: 20px;
-    margin-right: calc(100% / 10);
+    /* margin-right: calc(100% / 10); */
+    margin-left: 20px;
 }
 #produits #container div:nth-child(4n){
     margin-right: 0px;

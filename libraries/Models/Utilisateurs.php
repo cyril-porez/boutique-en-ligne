@@ -81,12 +81,12 @@
         }
 
 
-        public function modifierUtilisateur($nom, $prenom, $email, $idDroit, $id) {
-            $sql = "UPDATE utilisateurs SET nom = :nom , prenom = :prenom, email = :email, id_droits = :idDroits  WHERE id = :idUtilisateur";
+        public function modifierUtilisateur($nom, $prenom, $idDroit, $id) {
+            $sql = "UPDATE utilisateurs SET nom = :nom , prenom = :prenom, id_droits = :idDroits  WHERE id = :idUtilisateur";
             $requete = $this->bdd->prepare($sql);
             $requete->bindValue(":prenom", $prenom, \PDO::PARAM_STR);
             $requete->bindValue(":nom", $nom, \PDO::PARAM_STR);
-            $requete->bindValue(":email", $email, \PDO::PARAM_STR);
+            // $requete->bindValue(":email", $email, \PDO::PARAM_STR);
             $requete->bindValue(":idDroits", $idDroit, \PDO::PARAM_INT);
             $requete->bindValue(":idUtilisateur", $id, \PDO::PARAM_STR);
             $requete->execute();

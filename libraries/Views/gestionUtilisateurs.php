@@ -26,15 +26,12 @@
     }
 
 
-    if(!empty($_POST['nomModifier']) && !empty($_POST['prenomModifier']) && !empty($_POST['emailModifier']) && !empty($_POST['droitModifier'])) {
+    if(!empty($_POST['nomModifier']) && !empty($_POST['prenomModifier'])  && !empty($_POST['droitModifier'])) {
 
         $inscription = new \Controllers\Admin();
-        $inscription->modifierUtilisateur($_POST['nomModifier'], $_POST['prenomModifier'], $_POST['emailModifier'], $_POST['droitModifier'], $_POST['modifierUtilisateur']);
+        $inscription->modifierUtilisateur($_POST['nomModifier'], $_POST['prenomModifier'], $_POST['droitModifier'], $_POST['modifierUtilisateur']);
         header("Refresh: 0");
     }
-    
-
-    
 ?>
 
 <?php require_once('header.php'); ?>
@@ -47,8 +44,6 @@
                     <div class="modal-content">
                         <div class="modal-close" data-dismiss="dialog">X</div>
                             <div class="modal-body">
-                                <!-- </fieldset> -->
-                                <!-- <fieldset> -->
                                     <form action="" method="post">
                                     <!-- <legend>Saisir toutes vos informations</legend> -->
                                     <table class = "modal-form">

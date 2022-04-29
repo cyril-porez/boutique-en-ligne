@@ -26,9 +26,9 @@ if(!empty($_SESSION['utilisateurs']) && $_SESSION['utilisateurs'][0]['id_droits'
                         Gestion des Produits
                     </a>
 
-                    <a href="gestionCommentaires.php">
-                        <img class="icon" src="images/commentaires.png" alt="" class="icone">
-                        Gestion des Commentaires
+                    <a href="stock.php">
+                        <!-- <img class="icon" src="images/commentaires.png" alt="" class="icone"> -->
+                        <h1>Gestion des Stock</h1>
                     </a>
             </div>
         </section>

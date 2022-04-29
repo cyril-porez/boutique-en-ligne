@@ -9,19 +9,19 @@
     require_once('../Controllers/Commentaires.php');
 
     $idProduit = $_GET['produit'];
-    $idUtilisateur = $_SESSION['utilisateurs'][0]['id'];
-
     //Modifier et appeler le controlleur
     $produits = new \Controllers\Produits();
     $produit = $produits->selection_produits($idProduit);
-   
-
+    
+    
     $jaimeDeteste = new \Controllers\Produits();
-
+    
     $produitFavoris = new \Controllers\Utilisateurs();
-    $produitFavoris->mettreProduitFavoris($idUtilisateur, $idProduit);
-    $produitFavoris->ajoutPanier($idUtilisateur, $idProduit, isset($_Post['quantite']), isset($_POST['ajout']));
-
+    if(isset($_SESSION['utilisateurs'])){
+        $idUtilisateur = $_SESSION['utilisateurs'][0]['id'];
+        $produitFavoris->mettreProduitFavoris($idUtilisateur, $idProduit);
+        $produitFavoris->ajoutPanier($idUtilisateur, $idProduit, isset($_Post['quantite']), isset($_POST['ajout']));
+    }
     $etatAimeDeteste = new \Models\AimeDeteste();
     $etatJaime = $etatAimeDeteste->etat_du_jaime($idProduit);
     $etatDeteste = $etatAimeDeteste->etat_du_deteste($idProduit);
@@ -106,14 +106,19 @@
                                                         }
                                                     }
                                                 ?>
+                                            <?php if(!empty($_SESSION)){ ?>
+                                            <form action="" method="post">
+                                                <span>
+                                                    <input type="number" name="quantité" min = 0 id="input-number" value='0'>
+                                                    <button name="ajout" id="ajout-panier">AJOUTER AU PANIER</button>
+                                                </span>
+                                                <!-- <button name="ajout" id="ajout-panier">AJOUTER AU PANIER</button> -->
+                                            </form>
+                                            <?php } ?>
                                             </select>
                                         </div>
-                                        <span>
-                                            <input type="number" name="quantité" min = 0 id="input-number" value='0'>
-                                            <button name="ajout" id="ajout-panier">AJOUTER AU PANIER</button>
-                                        </span>
                                     </form>
-                            <?php }
+                                    <?php }
                                 else{?>
                                     <form action="" method="post">
                                         <div>
@@ -126,13 +131,9 @@
                                                 <option value="taille_basic">XXL</option>
                                             </select>
                                         </div>
-                                        <span>
-                                            <input type="number" name="quantité" min = 0 id="input-number" value='0'>
-                                        </span>
                                     </form>
-                                <?php }
+                                    <?php }
                                 ?>
-                                <!-- <button name="ajout" id="ajout-panier">AJOUTER AU PANIER</button> -->
                         </div>
 
                         <span id="description"><?= $produit[0]['description'] . '<br>'; ?></span>

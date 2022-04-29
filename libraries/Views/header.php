@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="css/produit.css">
     <link rel="stylesheet" href="css/commentaire.css">
     <link rel="stylesheet" href="css/profil.css">
+    <link rel="stylesheet" href="css/commandes.css">
     <script src="js/script.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>CARNAGE</title>
@@ -62,7 +63,7 @@
                             <a href="listedenvie.php">Ma liste d'envie</a>
                             <a href="panier.php">Mon Panier</a>
                             <a href="deconnexion.php">Me deconnecter</a>
-                            <?php if(!empty($_SESSION['utilisateurs']) && $_SESSION['utilisateurs'][0]['id_droits'] != 1 || 3){ ?>
+                            <?php if(!empty($_SESSION['utilisateurs']) && $_SESSION['utilisateurs'][0]['id_droits'] != 2){ ?>
                                 <a href="admin.php">Panel administrateur</a>
                                 <?php }
                             }?>

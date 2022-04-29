@@ -17,31 +17,31 @@
         }
 
 
-        public function modifierUtilisateur($nom, $prenom, $email, $droit, $id) {
-            if(!empty($_POST['nomModifier']) && !empty($_POST['prenomModifier']) && !empty($_POST['emailModifier']) && !empty($_POST['droitModifier'])) {
-                echo "blabla";
+        public function modifierUtilisateur($nom, $prenom, $droit, $id) {
+            if(!empty($_POST['nomModifier']) && !empty($_POST['prenomModifier']) && !empty($_POST['droitModifier'])) {
+                
                 $nom = protectionDonnées($_POST['nomModifier']);
                 $prenom = protectionDonnées($_POST['prenomModifier']);
-                $email = protectionDonnées($_POST['emailModifier']);
+                // $email = protectionDonnées($_POST['emailModifier']);
                 /*$mot_de_passe = protectionDonnées($_POST['mot_de_passeModifier']);
                 $confMotDePasse = protectionDonnées($_POST['CmdpModifier']);*/
                 $droit = protectionDonnées($_POST['droitModifier']);
                 
         
                 $utilisateur = new \Models\Utilisateurs();
-                $recupere = $utilisateur->verif_si_existe_deja($email);
+                // $recupere = $utilisateur->verif_si_existe_deja($email);
                 $erreur = '';
                         
-                //if($mot_de_passe == $confMotDePasse) {
+                // if($mot_de_passe == $confMotDePasse) {
                   
-                   //$mot_de_passe = password_hash($mot_de_passe, PASSWORD_BCRYPT);
-                    if(count($recupere) == 0) {
-                        echo "passe";
-                        $utilisateur->modifierUtilisateur($nom, $prenom, $email, $droit, $id);
-                    }
-                    else {
-                        $erreur = "compte deja existant avec cette email";
-                    }
+                //    $mot_de_passe = password_hash($mot_de_passe, PASSWORD_BCRYPT);
+                    // if(count($recupere) == 0) {
+                        // echo "passe";
+                        $utilisateur->modifierUtilisateur($nom, $prenom, $droit, $id);
+                    // }
+                    // else {
+                    //     $erreur = "compte deja existant avec cette email";
+                    // }
                 /*}
                 else {
                     $erreur = "les mot de passe ne sont pas identique";
@@ -53,8 +53,8 @@
             }
             return $erreur;
         }
-
-
+       
+    
         public function supprimerUtilsateur($id) {
             $supprimer = new \Models\Utilisateurs();
             $supprimerUtilisateur = $supprimer->supprimerUtilsateur($id);

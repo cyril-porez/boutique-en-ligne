@@ -29,7 +29,7 @@ body{
     gap: 10px;
     margin-top: 20px;
 }
-button{
+#commande button{
     width: 80%;
     background-color:black;
 	display:inline-block;
@@ -41,9 +41,10 @@ button{
 	text-decoration:none;
     border: none;
 }
-button:hover{
+#commande button:hover{
     background-color: red;
 }
-img{
-    padding: 10px;
+#commande img{
+    height: 200px;
+    width: 200px;
 }
