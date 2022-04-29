@@ -6,7 +6,7 @@ require_once('../Controllers/Produits.php');
 
 <?php require_once('header.php'); ?>
     <main>
-        <?php var_dump($afficheProduits); ?>
+        <?php //var_dump($afficheProduits); ?>
         <section id="index">
             <section class="titre">
                 <h2>BIENVENUE</h2>

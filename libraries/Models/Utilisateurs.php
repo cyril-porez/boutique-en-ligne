@@ -37,7 +37,7 @@
             $requete->bindValue(":pays", $pays, \PDO::PARAM_STR);
             $requete->bindValue(":ville", $ville, \PDO::PARAM_STR);
             $requete->bindValue(":num",$num, \PDO::PARAM_INT);
-            $requete->bindValue(":id_droits", 1, \PDO::PARAM_INT);
+            $requete->bindValue(":id_droits", 2, \PDO::PARAM_INT);
             $requete->bindValue(":date", $date);
             $requete->execute();
         }
