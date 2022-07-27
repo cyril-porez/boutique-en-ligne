@@ -59,8 +59,8 @@
                         <button class="dropbtn"><i class="fa-solid fa-user"></i></button>
                         <div class="dropdown-content" style="left:0;">
                             <a href="profil.php">Mon compte</a>
-                            <a href="commandes.php">Mes commandes</a>
-                            <a href="listedenvie.php">Ma liste d'envie</a>
+                            <a href="listeCommandes.php">Mes commandes</a>
+                            <a href="mesFavoris.php">Ma liste d'envie</a>
                             <a href="panier.php">Mon Panier</a>
                             <a href="deconnexion.php">Me deconnecter</a>
                             <?php if(!empty($_SESSION['utilisateurs']) && $_SESSION['utilisateurs'][0]['id_droits'] != 2){ ?>

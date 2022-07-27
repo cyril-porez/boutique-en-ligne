@@ -64,8 +64,7 @@
         public function choix_produit_par_categorie($id){
             $selection = "SELECT produits.id, produits.nom, produits.reference, produits.classe, produits.description, produits.id_categorie, produits.id_sous_categorie, produits.prix, produits.image1 from produits inner join categories on produits.id_categorie = categories.id where categories.id = :id";
             $result = $this->bdd->prepare($selection);
-            $result->bindValue(':id', $id, \PDO::PARAM_INT);
-            $result->execute();
+            $result->execute(array(':id' => $id));
             $fetch7 = $result->fetchAll(\PDO::FETCH_ASSOC);
             return $fetch7;
         }
@@ -73,8 +72,7 @@
         public function verif_si_existe_deja($nom){
             $selection = "SELECT nom FROM {$this->table_verif} WHERE nom = :nom";
             $result = $this->bdd->prepare($selection);
-            $result->bindValue(':nom', $nom, \PDO::PARAM_STR);
-            $result->execute();
+            $result->execute(array(':nom' => $nom));
             $recupere = $result->fetchAll();
             return $recupere;
         }
@@ -82,8 +80,7 @@
         public function supprimerCategorie($id) {
             $sql = "DELETE FROM categories WHERE id = :id";
             $requete = $this->bdd->prepare($sql);
-            $requete->bindValue(":id", $id, \PDO::PARAM_INT);
-            $requete->execute();    
+            $requete->execute(array(':id' => $id));    
         } 
 
 
@@ -91,10 +88,7 @@
             $sql = "UPDATE categories SET nom = :nom, genre = :genre WHERE id = :id";
             $requete = $this->bdd->prepare($sql);
             var_dump($nom);
-            $requete->bindValue(":id", $id, \PDO::PARAM_INT);
-            $requete->bindValue(":genre", $genre, \PDO::PARAM_STR);
-            $requete->bindValue(":nom", $nom, \PDO::PARAM_STR);
-            return $requete->execute();            
+            return $requete->execute(array(':id' => $id, ':genre' => $genre, ':nom' => $nom));            
         }
     }
 ?>

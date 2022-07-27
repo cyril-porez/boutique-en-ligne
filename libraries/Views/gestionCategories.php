@@ -2,6 +2,7 @@
 
     require_once('../Controllers/Categorie.php');
     require_once('../Controllers/SousCategorie.php');
+    session_start();
 
     $Categorie = new \Controllers\Categorie();
     $afficheCategories = $Categorie->selectCategorie();

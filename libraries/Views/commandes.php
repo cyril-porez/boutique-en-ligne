@@ -20,7 +20,8 @@
     <main>
         <section id="commande">
             <h1>Récapitulatif Commande</h1>
-            <?php foreach($contenu as $cle => $value) :
+            <?php   foreach($contenu as $cle => $value) :
+                    $valeur = (float) $value['prix'];
                     $quantite = $value['quantite'];
                     $total += $quantite;
                 ?>
@@ -44,7 +45,7 @@
                     </div>
                 </div>
             </div>
-                <?php $listeCommande->insererCommandes($numeroCommande, $value['prix'], $_SESSION['prixTotal'], $value['id_produit'], $value['id_utilisateur'], $value['id_adresse'], $value['nom'], $value['adresse'], $value['code_postal'], $value['image1']); ?>
+                <?php $listeCommande->insererCommandes($numeroCommande, $valeur, $_SESSION['prixTotal'], $value['id_produit'], $value['id_utilisateur'], $value['id_adresse'], $value['nom'], $value['adresse'], $value['code_postal'], $value['image1']); ?>
             <?php endforeach ?>
 
             <div>

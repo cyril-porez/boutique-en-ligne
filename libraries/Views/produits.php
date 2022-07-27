@@ -4,6 +4,8 @@
     require_once('../Models/SousCategorie.php');
     require_once('../Models/Categorie.php');
 
+    session_start();
+
     $id = $_GET['id'];
 
     $sousCategorie = new \Models\SousCategorie;

@@ -3,25 +3,24 @@
     require_once('../Controllers/Categorie.php');
     require_once('../Controllers/Admin.php');
 
+    session_start();
+
     $Categorie = new \Controllers\Categorie();
     $afficheCategories = $Categorie->selectCategorie();
 
     $sousCategorie = new \Controllers\SousCategorie();
     $afficheSousCategories = $sousCategorie->selectSousCategorie();
 
-    $sous_categorie = new \Models\SousCategorie();
-    $fetch = $sous_categorie->recuperation_de_donnee();
-
     if(!empty($_POST['nom']) && !empty($_POST['categorie'])) {
         $creerSousCategorie = new \Controllers\SousCategorie();
         $creerSousCategorie->creerSousCategorie($_POST['nom'], $_POST['categorie']);
         header("Refresh: 0");
     }
-
+    
     if (isset($_POST['supprimer']) ) {
         if(isset($_POST['supprimerSousCategorie'])){
             $supprime = new \Controllers\Admin();
-            $supprime->supprimerSOUSCategorie($_POST['supprimerSousCategorie']);
+            $supprime->supprimerSousCategorie($_POST['supprimerSousCategorie']);
             header("Refresh: 0");
         }
     }
@@ -116,7 +115,7 @@
                                                     <p>Voulez-vous supprimer la sous-categorie:<?= ' ' . $sousCategorie["sous_categorie"] ?> appartenant à la categorie:<?= ' ' . $sousCategorie['categorie'] ?> id:<?= ' ' . $sousCategorie["id"] . '?' ?></p>                                       
 
                                                     <form action="" method="post">
-                                                        <button class="bouton-suprr" type="submit" name="Submit" name="supprimer">supprimer</button>
+                                                        <button class="bouton-suprr" type="submit" name="supprimer">supprimer</button>
                                                         <input type='hidden' name='supprimerSousCategorie' value='<?= $sousCategorie['id']?>'>
                                                     </form>
                                                 </div>
@@ -130,6 +129,7 @@
                         }
                     ?>
                 </tbody>
+            </table>
         </section>
     </main>
     <?php require_once('footer.php'); ?>

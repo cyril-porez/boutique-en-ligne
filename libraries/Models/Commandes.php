@@ -6,9 +6,9 @@
 
     class Commandes extends Model{
 
-        public function inserCommandes( $reference, $prix, $prixTotal, $idProduit, $idUtilisateur, $idAdresse, $nom, $adresse, $code_postal, $image) {
-            $sql = 'INSERT into commandes (numero, `prix_produit`, `prix_total`, `id_produit`, `id_utilisateur`, `id_adresse`, `nom`, `adresse`, `code_postal`, `image`)
-            VALUES (:reference, :prix, :prixTotal, :idProduit, :idUtilisateur, :idAdresse, :nom, :adresse, :code_postal, :image)';
+        public function inserCommandes( $reference, $prix, $prixTotal, $idProduit, $idUtilisateur, $idAdresse) {
+            $sql = 'INSERT into commandes (numero, `prix_produit`, `prix_total`, `id_produit`, `id_utilisateur`, `id_adresse`)
+            VALUES (:reference, :prix, :prixTotal, :idProduit, :idUtilisateur, :idAdresse)';
             $inserer = $this->bdd->prepare($sql);
             $inserer->execute(array(':reference' => $reference,
                                     ':prix' => $prix,
@@ -16,10 +16,6 @@
                                     ':idProduit' => $idProduit,
                                     ':idUtilisateur' => $idUtilisateur,
                                     ':idAdresse' => $idAdresse,
-                                     ':nom' => $nom,
-                                     ':adresse' => $adresse,
-                                     ':code_postal' => $code_postal,
-                                     ':image' => $image,
                                 ));
         }
 
@@ -31,10 +27,10 @@
             $verifCommande = $verif->fetchall(\PDO::FETCH_ASSOC);
             return $verifCommande;
         }
-        public function historiqueCommandes($idUtilisateur){
-            $sql = "SELECT * from commandes where id_utilisateur = :idUtilisateur order by id desc";
+        public function historiqueCommandes($idUtilisateur) {
+            $sql = "SELECT *, adresses.adresse, produits.nom, produits.reference, produits.description, produits.image1 from commandes inner join adresses on commandes.id_adresse = adresses.id inner join produits on commandes.id_produit = produits.id where commandes.id_utilisateur = :id_utilisateur order by commandes.id desc";
             $resultat = $this->bdd->prepare($sql);
-            $resultat->execute(array(':idUtilisateur' => $idUtilisateur));
+            $resultat->execute(array(':id_utilisateur' => $idUtilisateur));
             $historique = $resultat->fetchall(\PDO::FETCH_ASSOC);
             return $historique;
         }

@@ -1,5 +1,6 @@
 <?php
     require_once('../Models/Categorie.php');
+    session_start();
 
     $id = $_GET['id'];
     $produits = new \Models\Categorie();

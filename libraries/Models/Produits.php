@@ -92,26 +92,16 @@
 
 
         public function modifierProduit($nom, $reference, $classe, $description, $id_categorie, $id_sous_categorie, $prix, $image, $id) {
-            $sql = "UPDATE produits SET nom = :nom, reference = :reference, classe = :classe, description = :description, id_categorie = :idCategorie, id_sous_categorie = :idSousCategorie, prix = :prix, image1 = :image1 WHERE id = :id";
+            $sql = "UPDATE produits SET nom = :nom, reference = :reference, classe = :classe, description = :description, id_categorie = :id_Categorie, id_sous_categorie = :idSousCategorie, prix = :prix, image1 = :image1 WHERE id = :id";
             $result = $this->bdd->prepare($sql);
-                $result->bindValue(':nom', $nom, \PDO::PARAM_STR);
-                $result->bindValue(':reference', $reference, \PDO::PARAM_STR);
-                $result->bindValue(':classe', $classe, \PDO::PARAM_STR);
-                $result->bindValue(':description', $description, \PDO::PARAM_STR);
-                $result->bindValue(':idCategorie', $id_categorie, \PDO::PARAM_INT);
-                $result->bindValue(':idSousCategorie', $id_sous_categorie, \PDO::PARAM_INT);
-                $result->bindValue(':prix', $prix, \PDO::PARAM_STR);
-                $result->bindValue(':image1', $image, \PDO::PARAM_STR);
-                $result->bindValue(':id', $id, \PDO::PARAM_INT);
-                $result->execute();
+            $result->execute(array(':nom' => $nom, ':reference' => $reference, ':classe' => $classe, ':description' => $description, ':id_Categorie' => $id_categorie, ':id_sous_categorie' => $id_sous_categorie, ':prix' => $prix, ':image1' => $image, ':id' => $id));
         }
 
 
         public function selection_produits($id){
             $selection = "SELECT * FROM produits where id = :id";
             $result = $this->bdd->prepare($selection);
-            $result->bindValue(':id', $id, \PDO::PARAM_INT);
-            $result->execute();
+            $result->execute(array(':id' => $id));
             $fetch3 = $result->fetchall(\PDO::FETCH_ASSOC);
             return $fetch3;
         }
@@ -119,7 +109,6 @@
 
          // determination du nombre totale de produits avec la fonction ci-dessous
          public function determination_nombre_total_de_produits(){
-
             $selection = "SELECT count(*) as nombre_produits from produits";
             $result = $this->bdd->prepare($selection);
             $result->execute();
@@ -131,9 +120,9 @@
         public function supprimerProduit($id) {
             $sql = "DELETE FROM produits WHERE id = :id";
             $requete = $this->bdd->prepare($sql);
-            $requete->bindValue(":id", $id, \PDO::PARAM_INT);
-            $requete->execute();
+            $requete->execute(array(':id' => $id));
         }
+
         public function selectProduitParOrdreCreation(){
             $selection = "SELECT produits.id, produits.nom, produits.prix, produits.image1 from produits  order by  produits.id desc limit 5";
             $result = $this->bdd->prepare($selection);

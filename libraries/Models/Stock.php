@@ -15,6 +15,22 @@
             return $tailleQuantiteProduit;
         }
 
+        public function verifQuantiteProduitTailleVetement($referenceProduit) {
+            $sql = "SELECT stock_vetements, nom_taille_vetements.nom, nom_taille_vetements.id, reference_produit from stock_taille_vetements inner join nom_taille_vetements on nom_taille_vetements.id = id_nom_taille_vetement where id_produit = :idProduit";
+            $verif = $this->bdd->prepare($sql);
+            $verif->execute(array(':idProduit' => $referenceProduit));
+            $tailleQuantiteProduit = $verif->fetchall(\PDO::FETCH_ASSOC);
+            return $tailleQuantiteProduit;
+        }
+
+        public function verifQuantiteProduitTailleGant($referenceProduit) {
+            $sql = "SELECT stock_gant, nom_taille_gants.nom, nom_taille_gants.id, reference_produit from stock_taille_gants inner join nom_taille_gants on nom_taille_gants.id = id_nom_taille_gant where id_produit = :idProduit";
+            $verif = $this->bdd->prepare($sql);
+            $verif->execute(array(':idProduit' => $referenceProduit));
+            $tailleQuantiteProduit = $verif->fetchall(\PDO::FETCH_ASSOC);
+            return $tailleQuantiteProduit;
+        }
+
 
 
         public function verifReferenceProduit ($ref) {
@@ -43,4 +59,6 @@
             return $stockGants->execute(array(':reference' => $reference , ':stockGant' => $stock, ':nomTailleGant' => $id, ':idProduit' => $idProduit));
         }
     }
+
+    
 ?>

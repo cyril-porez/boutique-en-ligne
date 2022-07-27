@@ -37,8 +37,7 @@
         public function recuperation_par_id($id){
             $selection = "SELECT * FROM {$this->table_par_id} WHERE id = :id";
             $result = $this->bdd->prepare($selection);
-            $result->bindValue(':id', $id, \PDO::PARAM_INT);
-            $result->execute();
+            $result->execute(array(':id' => $id));
             $recuperer_tout = $result->fetchAll();
             return $recuperer_tout;
         }
@@ -46,8 +45,7 @@
         public function verif_si_existe_deja($nom){
             $selection = "SELECT nom FROM {$this->table_verif} WHERE nom = :nom";
             $result = $this->bdd->prepare($selection);
-            $result->bindValue(':nom', $nom, \PDO::PARAM_STR);
-            $result->execute();
+            $result->execute(array(':nom' => $nom));
             $recupere = $result->fetchAll();
             return $recupere;
         }   

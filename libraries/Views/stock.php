@@ -2,13 +2,15 @@
     require_once('../Controllers/Stock.php');
     require_once('../Controllers/nomTaille.php');
 
+    session_start();
+
     $nom = new \Controllers\nomTaille();
     $Gants = $nom->nomTailleGant();
     $kims = $nom->nomTailleKimono();
     $vetements = $nom->nomTailleVet();
 
     $creerStock = new \Controllers\Stock();
-    $creerStock->creerStockKim();
+    //$creerStock->creerStockKim();
     $creerStock->creerStockVetement();
     $creerStock->creerStockGant();
 
@@ -18,21 +20,14 @@
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="css/gestion.css">
     <script src="js/script.js" defer></script>
-    <title>Document</title>
-</head>
-<body>
+    <?php require_once('header.php'); ?>
     <main>
 
-    <a href="Admin.php"><button>retour</button></a>
-        <button role='button' data-target='#modalCreer' data-toggle='modal' id='connexion-link'>Creer stock vêtements</button>
+        <a href="Admin.php"><button>retour</button></a>
+       <!-- <button role='button' data-target='#modalCreer' data-toggle='modal' id='connexion-link'>Creer stock vêtements</button>
         <div class="modal" id="modalCreer" role="dialog">
             <div class="modal-content">
                 <div class="modal-close" data-dismiss="dialog">X</div>
@@ -67,7 +62,7 @@
         
         
         
-        <button role='button' data-target='#modalCreer' data-toggle='modal' id='connexion-link'>Creer stock vêtements</button>
+        <button role='button' data-target='#modalCreer' data-toggle='modal' id='connexion-link'>Creer stock Kimono</button>
         <div class="modal" id="modalCreer" role="dialog">
             <div class="modal-content">
                 <div class="modal-close" data-dismiss="dialog">X</div>
@@ -97,8 +92,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <button role='button' data-target='#modalCreer' data-toggle='modal' id='connexion-link'>Creer stock vêtements</button>
+        </div>-->
+        <button role='button' data-target='#modalCreer' data-toggle='modal' id='connexion-link'>Creer stock Gants</button>
         <div class="modal" id="modalCreer" role="dialog">
             <div class="modal-content">
                 <div class="modal-close" data-dismiss="dialog">X</div>

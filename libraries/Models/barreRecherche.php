@@ -13,8 +13,8 @@
 
         public function selectProduitRecherche($recherche) {
             $this->recherche = $recherche;
-            $produits = $this->bdd->prepare('SELECT id, nom, prix, image1 from produits where nom like "%'.$this->recherche.'%" order by id desc');
-            $produits->execute();
+            $produits = $this->bdd->prepare('SELECT id, nom, prix, image1 from produits where nom like :recherche order by id desc');
+            $produits->execute(array(':recherche' => '%' . $this->recherche . '%'));
             $produit = $produits->fetchall(\PDO::FETCH_ASSOC);
             return $produit;
         }

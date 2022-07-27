@@ -22,7 +22,7 @@
                     if(password_verify($mot_de_passe, $recuperer[0]['mot_de_passe'])) {
 
                         $_SESSION['utilisateurs'] = $recuperer;
-                        header('Location: ../Views/index.php');
+                        //header('Location: ../Views/index.php');
                     }
                 }
                 else{

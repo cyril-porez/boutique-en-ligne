@@ -22,8 +22,7 @@
         public function selectSousCategorie($idCategorie) {
             $sql = "SELECT sous_categories.nom, sous_categories.id from sous_categories inner join categories on id_categorie = categories.id where id_categorie = :idCategorie";
             $categorie = $this->bdd->prepare($sql);
-            $categorie->bindValue(':idCategorie', $idCategorie, \PDO::PARAM_INT);
-            $categorie->execute();
+            $categorie->execute(array(':idCategorie' => $idCategorie));
             $categorieHomme = $categorie->fetchall(\PDO::FETCH_ASSOC);
             return $categorieHomme;
         }
@@ -31,8 +30,7 @@
         public function verif_si_existe_deja($nom){
             $selection = "SELECT nom FROM {$this->table_verif} WHERE nom = :nom";
             $result = $this->bdd->prepare($selection);
-            $result->bindValue(':nom', $nom, \PDO::PARAM_STR);
-            $result->execute();
+            $result->execute(array(':nom' => $nom));
             $recupere = $result->fetchAll();
             return $recupere;
         }
@@ -41,17 +39,14 @@
         public function creation_sous_categorie($nom, $id_categorie) {
             $creation = "INSERT INTO `sous_categories`(`nom`, `id_categorie`) VALUES (:nom, :id_categorie)";
             $result = $this->bdd->prepare($creation);
-            $result->bindValue(':nom', $nom, \PDO::PARAM_STR);
-            $result->bindValue(':id_categorie', $id_categorie, \PDO::PARAM_STR);
-            $result->execute();
+            $result->execute(array(':nom' => $nom, ':id_categorie' => $id_categorie));
         }
 
 
         public function choix_produit_par_sous_categorie($nom) {
             $selection = "SELECT produits.id, produits.nom, `id_sous_categorie` from `produits` inner join `sous_categories` on produits.id_sous_categorie = sous_categories.id WHERE sous_categories.nom = :nom";
             $result = $this->bdd->prepare($selection);
-            $result->bindValue(':nom', $nom, \PDO::PARAM_STR);
-            $result->execute();
+            $result->execute(array(':nom' => $nom));
             $fetch5 = $result->fetchAll();
             return $fetch5;
         }
@@ -60,8 +55,7 @@
         public function choix_produit_sous_categorie($id) {            
             $sql = "SELECT produits.id, produits.nom, produits.reference, produits.classe, produits.description, produits.id_categorie, produits.id_sous_categorie, produits.prix, produits.image1 from produits inner join sous_categories ON produits.id_sous_categorie = sous_categories.id where sous_categories.id = :id";
             $produitSousCategorie = $this->bdd->prepare($sql);
-            $produitSousCategorie->bindValue(':id', $id, \PDO::PARAM_INT);
-            $produitSousCategorie->execute();
+            $produitSousCategorie->execute(array(':id' => $id));
             $produits = $produitSousCategorie->fetchall(\PDO::FETCH_ASSOC);
             return $produits;
         }
@@ -78,19 +72,14 @@
         public function supprimerSousCategorie($id) {
             $sql = "DELETE FROM sous_categories WHERE id = :id";
             $requete = $this->bdd->prepare($sql);
-            $requete->bindValue(":id", $id, \PDO::PARAM_INT);
-            $requete->execute();    
+            $requete->execute(array(':id' => $id));    
         } 
 
 
         public function modifierSousCategorie($nom, $idCategorie, $id) {
-            $sql = "UPDATE sous_categories SET nom = :nom, id_categorie = :idCategorie WHERE id = :id";
+            $sql = "UPDATE sous_categories SET nom = :nom, id_categorie = :id_categorie WHERE id = :id";
             $requete = $this->bdd->prepare($sql);
-            var_dump($nom);
-            $requete->bindValue(":id", $id, \PDO::PARAM_INT);
-            $requete->bindValue(":idCategorie", $idCategorie, \PDO::PARAM_INT);
-            $requete->bindValue(":nom", $nom, \PDO::PARAM_STR);
-            return $requete->execute();            
+            return $requete->execute(array(':id' => $id, ':id_categorie' => $idCategorie, ':nom' => $nom));            
         }
     }
 ?>

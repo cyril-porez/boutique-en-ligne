@@ -82,7 +82,6 @@
 
         public function creerUtilisateur($nom, $prenom, $email, $mot_de_passe, $confMotDePasse,  $adresse, $codePostale, $pays, $ville, $numero) {
             if(!empty($_POST['nomCreer']) && !empty($_POST['prenomCreer']) && !empty($_POST['emailCreer']) && !empty($_POST['mot_de_passeCreer']) && !empty($_POST['CmdpCreer']) && !empty($_POST['adresseCreer']) && !empty($_POST['code_postaleCreer']) && !empty($_POST['paysCreer']) && !empty($_POST['villeCreer']) && !empty($_POST['numeroCreer'])) {
-                echo "passe";
                 $nom = protectionDonnées($_POST['nomCreer']);
                 $prenom = protectionDonnées($_POST['prenomCreer']);
                 $email = protectionDonnées($_POST['emailCreer']);
@@ -99,12 +98,9 @@
                 $erreur = '';
 
                 if($mot_de_passe == $confMotDePasse) {
-                    echo "passe2";
                     $mot_de_passe = password_hash($mot_de_passe, PASSWORD_BCRYPT);
                     if(count($recupere) == 0) {
-                        echo "passe3";
-                        $utilisateur->creerUtilisateur($nom, $prenom, $email, $mot_de_passe, $adresse, $codePostale, $pays, $ville, $numero);
-                        
+                        $utilisateur->creer_utilisateur($nom, $prenom, $email, $mot_de_passe, $adresse, $codePostale, $pays, $ville, $numero);                        
                     }
                     else {
                         $erreur = "compte deja existant avec cette email";

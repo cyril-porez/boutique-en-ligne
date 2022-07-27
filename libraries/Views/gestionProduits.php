@@ -3,6 +3,8 @@
     require_once('../Controllers/Produits.php');
     require_once('../Models/Produits.php');
 
+    session_start();
+
     $produits = new \Models\Produits;
     $fetchCategories = $produits->recuperation_de_donnee();
    

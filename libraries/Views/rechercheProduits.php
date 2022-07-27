@@ -2,6 +2,8 @@
 
 require_once('../Controllers/barreRecherche.php');
 
+session_start();
+
 if (isset($_GET['recherche'])) {
     $recherche = $_GET['recherche'];
     $rechercheProduit = new Controllers\barreRecherche();

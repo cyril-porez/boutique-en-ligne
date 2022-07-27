@@ -11,8 +11,20 @@
 
 
         public function verifStockQuantiteKimono($referenceProduit) {
+           $verifQuantite = new \Models\Stock();
+           $verifQuantiteKimono = $verifQuantite->verifQuantiteProduitTaille($referenceProduit);
+           return $verifQuantiteKimono;
+        }
+
+        public function verif_stock_quantite_vetement($referenceProduit) {
             $verifQuantite = new \Models\Stock();
-            $verifQuantiteKimono = $verifQuantite->verifQuantiteProduitTaille($referenceProduit);
+            $verifQuantiteKimono = $verifQuantite->verifQuantiteProduitTailleVetement($referenceProduit);
+            return $verifQuantiteKimono;
+        }
+
+        public function verif_stock_quantite_gant($referenceProduit) {
+            $verifQuantite = new \Models\Stock();
+            $verifQuantiteKimono = $verifQuantite->verifQuantiteProduitTailleGant($referenceProduit);
             return $verifQuantiteKimono;
         }
 
@@ -29,7 +41,6 @@
 
                     $refProduit = new \Models\stock;
                     $ref = $refProduit->verifReferenceProduit($referenceKim);
-                    var_dump($ref);
                     $idProduit = $ref[0]['id'];
         
                     if (count($ref) == 1) {     

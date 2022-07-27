@@ -8,10 +8,10 @@
     require_once('../Controllers/Stock.php');
     require_once('../Controllers/Commentaires.php');
 
-    $idProduit = $_GET['produit'];
+    $id_produit = $_GET['produit'];
     //Modifier et appeler le controlleur
     $produits = new \Controllers\Produits();
-    $produit = $produits->selection_produits($idProduit);
+    $produit = $produits->selection_produits($id_produit);
     
     
     $jaimeDeteste = new \Controllers\Produits();
@@ -19,16 +19,17 @@
     $produitFavoris = new \Controllers\Utilisateurs();
     if(isset($_SESSION['utilisateurs'])){
         $idUtilisateur = $_SESSION['utilisateurs'][0]['id'];
-        $produitFavoris->mettreProduitFavoris($idUtilisateur, $idProduit);
-        $produitFavoris->ajoutPanier($idUtilisateur, $idProduit, isset($_Post['quantite']), isset($_POST['ajout']));
+        $produitFavoris->mettreProduitFavoris($idUtilisateur, $id_produit);
+        $produitFavoris->ajoutPanier($idUtilisateur, $id_produit, isset($_Post['quantite']), isset($_POST['ajout']));
     }
     $etatAimeDeteste = new \Models\AimeDeteste();
-    $etatJaime = $etatAimeDeteste->etat_du_jaime($idProduit);
-    $etatDeteste = $etatAimeDeteste->etat_du_deteste($idProduit);
+    $etatJaime = $etatAimeDeteste->etat_du_jaime($id_produit);
+    $etatDeteste = $etatAimeDeteste->etat_du_deteste($id_produit);
 
-    $verifQuantiteKimono = new \Controllers\Stock();
-    $quantiteKimonos = $verifQuantiteKimono->verifStockQuantiteKimono($idProduit);
-    //var_dump($quantiteKimonos);
+    $verifQuantite = new \Controllers\Stock();
+    $quantiteKimonos = $verifQuantite->verifStockQuantiteKimono($id_produit);
+    $quantite_vetements = $verifQuantite->verif_stock_quantite_vetement($id_produit);
+    $quantite_gants = $verifQuantite->verif_stock_quantite_gant($id_produit);
 
     if(isset($_POST["jaime"])) {
         $jaimeDeteste->jaime($idProduit);
@@ -42,7 +43,7 @@
     $kimono = 'Kimono';
 
     $commentaire = new \Controllers\Commentaires();
-    $affiches = $commentaire->AfficheCommentaire($idProduit);
+    $affiches = $commentaire->AfficheCommentaire($id_produit);
 
     if (!empty($_POST['commentaire'])) {
         $commentaire = new \Controllers\Commentaires();
@@ -83,24 +84,12 @@
 
                                 if( $verifieGants === 0 || $verifieGants === true ) {?>
                                     <form action="" method="post">
-                                        <select name="taille_produits" id="">
-                                            <option value="oz">choisissez une taille de gant</option>
-                                            <option value="oz">10oz</option>
-                                            <option value="oz">12oz</option>
-                                            <option value="oz">14oz</option>
-                                            <option value="oz">16oz</option>
-                                        </select>
-
-                                    </form>
-                            <?php }
-                                elseif($verifieKimono === 0 || $verifieKimono === true) {?>
-                                    <form action="" method="post">
                                         <div>
                                             <select name="taille_produits" id="">
-                                                <option value="taille_kimono">choisissez une taille de Kimono</option>
+                                                <option value="taille_kimono">choisissez une taille de gant</option>
                                                 <?php
-                                                    foreach($quantiteKimonos as $quantiteKimono => $value) {
-                                                        $nbrStock = $value['stock_kimono'];
+                                                    foreach($quantite_gants as $quantite_gant => $value) {
+                                                        $nbrStock = $value['stock_gant'];
                                                         if ($nbrStock > 0) {
                                                             echo "<option value=" .  $value['id'] . ">" . $value["nom"] . "</option>";
                                                         }
@@ -117,18 +106,61 @@
                                             <?php } ?>
                                             </select>
                                         </div>
+
+                                    </form>
+                            <?php }
+                                elseif($verifieKimono === 0 || $verifieKimono === true) {?>
+                                    <form action="" method="post">
+                                        <div>
+                                            <select name="taille_produits" id="">
+                                                <option value="taille_kimono">choisissez une taille de Kimono</option>
+                                                <?php
+                                                    echo "test";
+                                                    foreach($quantiteKimonos as $quantiteKimono => $value) {
+                                                        echo $value;
+                                                        $nbrStock = $value['stock_kimono'];
+                                                        echo $nbrStock;
+                                                        if ($nbrStock > 0) {
+                                                            echo "<option value=" .  $value['id'] . ">" . $value["nom"] . "</option>";
+                                                        }
+                                                    }
+                                                ?>
+                                            <?php if(!empty($_SESSION)) { ?>
+                                            <form action="" method="post">
+                                                <span>
+                                                    <input type="number" name="quantité" min = 0 id="input-number" value='0'>
+                                                    <button name="ajout" id="ajout-panier">AJOUTER AU PANIER</button>
+                                                </span>
+                                                <!-- <button name="ajout" id="ajout-panier">AJOUTER AU PANIER</button> -->
+                                            </form>
+                                            <?php } ?>
+                                            </select>
+                                        </div>
                                     </form>
                                     <?php }
                                 else{?>
                                     <form action="" method="post">
                                         <div>
                                             <select name="taille_produits" id="">
-                                                <option value="taille_basic">choisissez une taille</option>
-                                                <option value="taille_basic">S</option>
-                                                <option value="taille_basic">M</option>
-                                                <option value="taille_basic">L</option>
-                                                <option value="taille_basic">XL</option>
-                                                <option value="taille_basic">XXL</option>
+                                                <option value="taille_kimono">choisissez une taille de Vêtement</option>
+                                                <?php
+                                                    echo "test";
+                                                    foreach($quantite_vetements as $quantite_vetement => $value) {
+                                                        $nbrStock = $value['stock_vetements'];
+                                                        if ($nbrStock > 0) {
+                                                            echo "<option value=" .  $value['id'] . ">" . $value["nom"] . "</option>";
+                                                        }
+                                                    }
+                                                ?>
+                                            <?php if(!empty($_SESSION)) { ?>
+                                            <form action="" method="post">
+                                                <span>
+                                                    <input type="number" name="quantité" min = 0 id="input-number" value='0'>
+                                                    <button name="ajout" id="ajout-panier">AJOUTER AU PANIER</button>
+                                                </span>
+                                                <!-- <button name="ajout" id="ajout-panier">AJOUTER AU PANIER</button> -->
+                                            </form>
+                                            <?php } ?>
                                             </select>
                                         </div>
                                     </form>

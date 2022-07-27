@@ -2,6 +2,8 @@
     require_once('../Controllers/Categorie.php');
     require_once('../Controllers/Admin.php');
 
+    session_start();
+
     $Categorie = new \Controllers\Categorie();
     $afficheCategories = $Categorie->selectCategorie();
 
@@ -14,10 +16,12 @@
     }
 
     if (isset($_POST['supprimer'])) {
+        echo'test';
         if(isset($_POST['supprimerCategorie'])){
+            echo 'test';
             $supprime = new \Controllers\Admin();
             $supprime->supprimerCategorie($_POST['supprimerCategorie']);
-            header("Refresh: 0");
+            //header("Refresh: 0");
         }
     }
 
