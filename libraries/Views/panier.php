@@ -1,6 +1,5 @@
 <?php
-    require_once('../Controllers/Panier.php');
-    require_once('../Controllers/Utilisateurs.php');
+    require_once('../autoload.php');
 
     session_start();
 

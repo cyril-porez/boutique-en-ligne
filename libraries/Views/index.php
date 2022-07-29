@@ -1,5 +1,7 @@
 <?php session_start();
-require_once('../Controllers/Produits.php');
+
+    require_once('../autoload.php');
+
     $produit = new \Controllers\Produits();
     $afficheProduits = $produit->afficheProduitAccueil();
 ?>

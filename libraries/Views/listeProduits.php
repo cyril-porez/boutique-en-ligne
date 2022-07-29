@@ -1,5 +1,5 @@
 <?php
-    require_once('../Models/Categorie.php');
+    require_once('../autoload.php');
     session_start();
 
     $id = $_GET['id'];

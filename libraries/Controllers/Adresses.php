@@ -2,7 +2,7 @@
 
     namespace Controllers;
 
-    require_once('../Models/Adresses.php');
+    require_once('../autoload.php');
 
     class Adresses {
 

@@ -1,6 +1,5 @@
 <?php
-    require_once('../Controllers/Stock.php');
-    require_once('../Controllers/nomTaille.php');
+   require_once('../autoload.php');
 
     session_start();
 

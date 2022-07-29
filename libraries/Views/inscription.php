@@ -1,5 +1,5 @@
 <?php
-require_once("../Controllers/Inscritpion.php");
+require_once('../autoload.php');
 
 
 $inscription = new \Controllers\Inscription();

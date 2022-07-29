@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once('../Controllers/Admin.php');
+    require_once('../autoload.php');
 
     $_SESSION['test'] = 0;
 
@@ -112,7 +112,8 @@
                 <tbody>
                     <?php
                         $j = 0;
-                        foreach($afficheUtilisateurs as  $afficheUtilisateur => $value){?>
+                        foreach($afficheUtilisateurs as  $afficheUtilisateur => $value){ 
+                            if ($value['id_droits'] != '3') {?>
                             <tr>
                                 <td><?= $value['id']; ?></td>
                                 <td><?= $value['nom']; ?></td>
@@ -210,6 +211,7 @@
                                 </td>
                             </tr>
                             <?php
+                            }
                         $j++;
                         }
                     ?>

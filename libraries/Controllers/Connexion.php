@@ -2,7 +2,7 @@
 
     namespace Controllers;
 
-    require_once('../Models/Utilisateurs.php');
+    require_once('../autoload.php');
     require_once('function.php');
 
     class Connexion {
@@ -22,7 +22,7 @@
                     if(password_verify($mot_de_passe, $recuperer[0]['mot_de_passe'])) {
 
                         $_SESSION['utilisateurs'] = $recuperer;
-                        //header('Location: ../Views/index.php');
+                        header('Location: ../Views/index.php');
                     }
                 }
                 else{

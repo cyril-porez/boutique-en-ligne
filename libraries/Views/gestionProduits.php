@@ -1,7 +1,5 @@
 <?php
-    require_once('../Controllers/admin.php');
-    require_once('../Controllers/Produits.php');
-    require_once('../Models/Produits.php');
+    require_once('../autoload.php');
 
     session_start();
 

@@ -1,6 +1,7 @@
 <?php
         namespace Controllers;
-        require_once("../Models/Utilisateurs.php");
+        
+        require_once('../autoload.php');
         require_once("function.php");
 
         class Inscription {
@@ -19,26 +20,30 @@
                                 $pays = protectionDonnées($_POST['pays']);
                                 $ville = protectionDonnées($_POST['ville']);
                                 $numero = protectionDonnées($_POST['numero']);
+                                $regex_email = "/^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/";
+                                $regex_password = "/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/";
+
                                 
-
                                 $utilisateur = new \Models\Utilisateurs();
-                                $recupere = $utilisateur->verif_si_existe_deja($email);
-                               var_dump($recupere);
+                                $verif_email = $utilisateur->verif_si_existe_deja($email);                                
 
-                                if($mot_de_passe == $confMotDePasse) {
-                                        echo "droit ";
-                                        $mot_de_passe = password_hash($mot_de_passe, PASSWORD_BCRYPT);
-                                        if(count($recupere) == 0) {
-                                                echo "test";
-                                                $utilisateur->creer_utilisateur($nom, $prenom, $email, $mot_de_passe, $adresse, $codePostale, $pays, $ville, $numero);
-                                                header("Location: connexion.php");
+                                if(preg_match($regex_email, $email)) {
+                                        if($mot_de_passe == $confMotDePasse && preg_match($regex_password, $mot_de_passe)) {
+                                                $mot_de_passe = password_hash($mot_de_passe, PASSWORD_BCRYPT);
+                                                if(count($verif_email) == 0) {
+                                                        $utilisateur->creer_utilisateur($nom, $prenom, $email, $mot_de_passe, $adresse, $codePostale, $pays, $ville, $numero);
+                                                        header("Location: connexion.php");
+                                                }
+                                                else {
+                                                        $erreur = "compte deja existant avec cette email";
+                                                }
                                         }
                                         else {
-                                                $erreur = "compte deja existant avec cette email";
+                                                $erreur = "les mot de passe ne sont pas identique";
                                         }
                                 }
                                 else {
-                                        $erreur = "les mot de passe ne sont pas identique";
+                                        echo "Ce mail n'est pas valide";
                                 }
                         }
                         elseif (isset($nom) || isset($prenom) || isset($email) || isset($mot_de_passe) || isset($adresse) ||

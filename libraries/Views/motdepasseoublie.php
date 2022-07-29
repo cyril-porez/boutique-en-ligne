@@ -47,7 +47,7 @@
         <?php
             if (!empty($_POST['recupEmail'])) {
                 $token = uniqid();
-                $url = "http://localhost/boutique-en-ligne/libraries/nouveauMotdepasse?token=$token";
+                $url = "http://localhost/boutique-en-ligne/libraries/Views/nouveauMotdepasse?token=$token";
                 $email = $_POST['recupEmail'];
                 $recupEmail = $bdd->prepare("SELECT email from utilisateurs WHERE email = '$email'");
                 $recupEmail->execute();
@@ -68,8 +68,8 @@
                         $mail->isSMTP();
                         $mail->Host = "smtp.gmail.com";
                         $mail->SMTPAuth = "true";
-                        $mail->Username = 'cyrilporez@gmail.com';   //SMTP username
-                        $mail->Password = 'Hokuto1989@';            //SMTP mot de passe
+                        $mail->Username = 'cyril.porez@laplateforme.io';   //SMTP username
+                        $mail->Password = 'Hokuto1989';            //SMTP mot de passe
                         $mail->SMTPSecure = 'tls';
                         $mail->Port = 587;
 

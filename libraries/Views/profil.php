@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    require_once('../Controllers/Adresses.php');
+    require_once('../autoload.php');
 
     $info = $_SESSION['utilisateurs'];
 

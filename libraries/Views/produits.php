@@ -1,8 +1,6 @@
 <?php
     //require_once('header.php');
-    require_once('../Models/Produits.php');
-    require_once('../Models/SousCategorie.php');
-    require_once('../Models/Categorie.php');
+    require_once('../autoload.php');
 
     session_start();
 

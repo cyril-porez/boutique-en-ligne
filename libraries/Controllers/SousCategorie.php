@@ -2,7 +2,7 @@
 
     namespace Controllers;
 
-    require_once('../Models/SousCategorie.php');
+    require_once('../autoload.php');
     require_once('function.php');
 
     class SousCategorie {

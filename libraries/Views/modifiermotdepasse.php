@@ -2,7 +2,7 @@
 
     session_start();
 
-    require_once('../Controllers/Utilisateurs.php');
+    require_once('../autoload.php');
 
     $utilisateur = $_SESSION['utilisateurs'];
 

@@ -1,8 +1,5 @@
 <?php
-    require_once('../Controllers/sousCategorie.php');
-    require_once('../Controllers/Categorie.php');
-    require_once('../Controllers/Admin.php');
-
+    require_once('../autoload.php');
     session_start();
 
     $Categorie = new \Controllers\Categorie();

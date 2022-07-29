@@ -2,7 +2,7 @@
 
     namespace Controllers;
 
-    require_once('../Models/Commandes.php');
+    require_once('../autoload.php');
 
 
     class Commandes {
@@ -23,6 +23,7 @@
             $supprPanier = new \Models\Panier();
             $supprPanier->supprimerPanierUtilisateur($idUtilisateur);
         }
+        
         public function afficheHistorique($idUtilisateur) {
             $afficheHistorique = new \Models\Commandes();
             $historique = $afficheHistorique->historiqueCommandes($idUtilisateur);

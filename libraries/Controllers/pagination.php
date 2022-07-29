@@ -2,10 +2,8 @@
 
     namespace Controllers;
 
-    require_once('../Models/class_Produits.php');
-    require_once('../Models/modelCategorie.php');
-    require_once('../Models/modelSousCategorie.php');
-
+    require_once('../autoload.php');
+    
     class Pagination {
 
         public function pagination() {

@@ -1,6 +1,6 @@
 <?php
 
-require_once('../Controllers/barreRecherche.php');
+require_once('../autoload.php');
 
 session_start();
 

@@ -1,6 +1,6 @@
 <?php
 
-    require_once('../Controllers/paiement.php');
+    require_once('../autoload.php');
    
 ?>
 

@@ -1,15 +1,16 @@
 <?php
-session_start();
-require_once('../Controllers/Commandes.php');
- require_once('header.php');
- $historique = new \Controllers\Commandes();
- $afficheHistorique = $historique->afficheHistorique($_SESSION['utilisateurs'][0]['id']); 
+    session_start();
+    require_once('../autoload.php');
+    require_once('header.php');
+    $historique = new \Controllers\Commandes();
+    $afficheHistorique = $historique->afficheHistorique($_SESSION['utilisateurs'][0]['id']); 
+    var_dump($afficheHistorique);
  ?>
 
 
     <section id="commande">
         <h1>Mes Commandes</h1>
-        <?php foreach($afficheHistorique as $cle => $value){ var_dump($value)?>
+        <?php foreach($afficheHistorique as $cle => $value){ ?>
             <div id="grand-container">
                 <div class="commande-container">
                     <div class="commande-head">

@@ -1,6 +1,5 @@
 <?php
-    require_once('../Controllers/Panier.php');
-    require_once('../Controllers/Commandes.php');
+   require_once('../autoload.php');
 
     session_start();
     setlocale(LC_TIME, 'fr');

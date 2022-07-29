@@ -2,8 +2,7 @@
 
     namespace Controllers;
 
-    require_once('../Models/Commentaires.php');
-    require_once('../Models/CommentaireDuCommentaire.php');
+    require_once('../autoload.php');
     require_once('function.php');
 
     class Commentaires {

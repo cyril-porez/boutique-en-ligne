@@ -2,7 +2,7 @@
 
     namespace Controllers;
 
-    require_once('../Models/nomTaille.php');
+    require_once('../autoload.php');
 
     class nomTaille {
 

@@ -3,7 +3,7 @@
    
     namespace Controllers;
 
-    require_once('../Models/barreRecherche.php');
+    require_once('../autoload.php');
 
 
     class barreRecherche {

@@ -2,9 +2,7 @@
 
     namespace Controllers;
 
-    require_once('..\Models\Produits.php');
-    require_once('..\Models\AimeDeteste.php');
-    require_once('..\Models\Favoris.php');
+    require_once('../autoload.php');
     require_once('function.php');
 
     class Produits {

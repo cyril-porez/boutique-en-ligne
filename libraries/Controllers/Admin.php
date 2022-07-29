@@ -1,11 +1,7 @@
 <?php
     namespace Controllers;
     
-    require_once('../Models/Utilisateurs.php');
-    require_once('../Models/SousCategorie.php');
-    require_once('../Models/Categorie.php');
-    require_once('../Models/SousCategorie.php');
-    require_once('../Models/Produits.php');
+    require_once('../autoload.php');
     require_once('function.php');
 
     class Admin {

@@ -2,9 +2,7 @@
 
     namespace Controllers;
 
-    require_once('../Models/Utilisateurs.php');
-    require_once('../Models/Favoris.php');
-    require_once('../Models/Panier.php');
+    require_once('../autoload.php');
     require_once('function.php');
     class Utilisateurs {
 

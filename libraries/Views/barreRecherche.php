@@ -1,7 +1,7 @@
 <?php
 
 
-    require_once('../Controllers/barreRecherche.php');
+    require_once('../autoload.php');
     /*$bdd = new PDO("mysql:host=localhost;dbname=carnage;charset=utf8",'root','');
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $produits = $bdd->prepare("SELECT nom from produits order by id desc");*/

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once("../Controllers/Connexion.php");
+    require_once('../autoload.php');
 
     if (isset($_POST['deconnexion'])){
         session_destroy();

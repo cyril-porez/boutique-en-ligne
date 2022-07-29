@@ -2,8 +2,7 @@
 
     namespace Controllers;
 
-    require_once('../Models/Utilisateurs.php');
-    require_once('../Controllers/Utilisateurs.php');
+    require_once('../autoload.php');
 
     class Clients extends Utilisateurs {
 

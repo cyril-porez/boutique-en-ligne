@@ -5,8 +5,7 @@
     $id = $_SESSION['utilisateurs'][0]['id'];
 
 
-    require_once('../Controllers/Adresses.php');
-    require_once('../Controllers/Utilisateurs.php');
+    require_once('../autoload.php');
 
     $adresse = new \Controllers\Adresses();
     $adressLivraison = $adresse->selectAdresses($id);

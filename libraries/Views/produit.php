@@ -2,11 +2,7 @@
 
     session_start();
 
-    require_once('../Models/Produits.php');
-    require_once('../Controllers/Produits.php');
-    require_once('../Controllers/Utilisateurs.php');
-    require_once('../Controllers/Stock.php');
-    require_once('../Controllers/Commentaires.php');
+    require_once('../autoload.php');
 
     $id_produit = $_GET['produit'];
     //Modifier et appeler le controlleur
@@ -47,7 +43,7 @@
 
     if (!empty($_POST['commentaire'])) {
         $commentaire = new \Controllers\Commentaires();
-        $commentaire->posterCommentaire($_POST['commentaire'], $idUtilisateur, $idProduit);
+        $commentaire->posterCommentaire($_POST['commentaire'], $idUtilisateur, $id_produit);
         header("Refresh: 0");
     }
 

@@ -1,7 +1,7 @@
 <?php
     namespace Controllers;
 
-    require_once('../Models/Stock.php');
+    require_once('../autoload.php');
 
     class Stock {
 

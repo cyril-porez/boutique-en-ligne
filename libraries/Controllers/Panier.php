@@ -1,7 +1,7 @@
 <?php
     namespace Controllers;
 
-    require_once('../Models/Panier.php');
+    require_once('../autoload.php');
 
     class Panier {
         protected $idUtilisateur;

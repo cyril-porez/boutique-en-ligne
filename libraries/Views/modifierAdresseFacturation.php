@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    require_once('../Controllers/Utilisateurs.php');
+    require_once('../autoload.php');
 
     $info = $_SESSION['utilisateurs'];
     $idUtilisateur = $_SESSION['utilisateurs'][0]['id'];
