@@ -14,9 +14,9 @@
         
 
         public function ajoutPanier($idUtilisateur, $idProduit, $quantite, $idNomTailleKimono) {
-            $sql = "INSERT INTO panier (id_utilisateur, id_produit, quantite, id_nom_taille_kimono) VALUES (:idUtilisateur, :idProduit, :quantite, :idNomTailleKimono)";
+            $sql = "INSERT INTO panier (id_utilisateur, id_produit, quantite, id_nom_taille_kimono, id_nom_taille_gant, id_nom_taille_vetement) VALUES (:idUtilisateur, :idProduit, :quantite, :idNomTailleKimono, :idNomTailleGant, :id_nom_taille_vetement)";
             $ajout = $this->bdd->prepare($sql);
-            $ajout->execute(array(':idUtilisateur' => $idUtilisateur, ':idProduit' => $idProduit, ':quantite' => (int) $quantite, ':idNomTailleKimono' => $idNomTailleKimono));
+            $ajout->execute(array(':idUtilisateur' => $idUtilisateur, ':idProduit' => $idProduit, ':quantite' => (int) $quantite, ':idNomTailleKimono' => $idNomTailleKimono, ':idNomTailleGant' => 0, ':id_nom_taille_vetement' => 0));
         }
 
         public function modifQuantite($idUtilisateur, $idProduit, $quantite,  $idTaille) {

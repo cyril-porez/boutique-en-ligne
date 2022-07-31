@@ -7,7 +7,6 @@
     class CommentaireDuCommentaire extends Model{
 
         public function insertCommentaireCommentaire($commentaire, $idCommentaire, $idUtilisateur, $idProduit) {
-            echo 'fegeuhjdgk';
             $date = date('Y-m-d H:i:s');
             $sql = "INSERT INTO `commentaire_du_commentaire`(reponse, date, id_utilisateur, id_commentaire, id_produit) VALUES (:commentaire, :date, :idUtilisateur, :idCommentaire, :idProduit)";
             $commentaires = $this->bdd->prepare($sql);

@@ -16,7 +16,7 @@
     if(isset($_SESSION['utilisateurs'])){
         $idUtilisateur = $_SESSION['utilisateurs'][0]['id'];
         $produitFavoris->mettreProduitFavoris($idUtilisateur, $id_produit);
-        $produitFavoris->ajoutPanier($idUtilisateur, $id_produit, isset($_Post['quantite']), isset($_POST['ajout']));
+       
     }
     $etatAimeDeteste = new \Models\AimeDeteste();
     $etatJaime = $etatAimeDeteste->etat_du_jaime($id_produit);
@@ -43,13 +43,13 @@
 
     if (!empty($_POST['commentaire'])) {
         $commentaire = new \Controllers\Commentaires();
-        $commentaire->posterCommentaire($_POST['commentaire'], $idUtilisateur, $id_produit);
+        $commentaire->posterCommentaire($_POST['commentaire'], $idUtilisateur, $idProduit);
         header("Refresh: 0");
     }
 
     if (!empty($_POST['reponse'])) {
         $reponseCom = new \Controllers\Commentaires();
-        $reponseCom->reponseCommentaire($_POST['reponse'], $_POST['idReponse'], $idUtilisateur, $idProduit);
+        $reponseCom->reponseCommentaire($_POST['reponse'], $_POST['idReponse'], $idUtilisateur, $id_produit);
        // header("Refresh: 0");
        // break;
     }
@@ -122,6 +122,11 @@
                                                     }
                                                 ?>
                                             <?php if(!empty($_SESSION)) { ?>
+                                            <?php
+                                                if (isset($_POST['ajout'])) {
+                                                    $produitFavoris->ajoutPanier($idUtilisateur, $id_produit, isset($_Post['quantite']), isset($_POST['ajout']));
+                                                }
+                                            ?>
                                             <form action="" method="post">
                                                 <span>
                                                     <input type="number" name="quantité" min = 0 id="input-number" value='0'>
@@ -149,6 +154,7 @@
                                                     }
                                                 ?>
                                             <?php if(!empty($_SESSION)) { ?>
+                                            
                                             <form action="" method="post">
                                                 <span>
                                                     <input type="number" name="quantité" min = 0 id="input-number" value='0'>

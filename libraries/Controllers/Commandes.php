@@ -7,9 +7,9 @@
 
     class Commandes {
 
-        public function insererCommandes($reference, $prix, $prixTotal, $idProduit, $idUtilisateur, $idAdresse,$nom, $adresse, $code_postal, $image) {
+        public function insererCommandes($reference, $idUtilisateur) {
             $inser = new \Models\Commandes;
-            $inser-> inserCommandes( $reference, $prix, $prixTotal, $idProduit, $idUtilisateur, $idAdresse, $nom, $adresse, $code_postal, $image);
+            $inser-> inserCommandes( $reference, $idUtilisateur);
         }
 
 
@@ -23,7 +23,7 @@
             $supprPanier = new \Models\Panier();
             $supprPanier->supprimerPanierUtilisateur($idUtilisateur);
         }
-        
+
         public function afficheHistorique($idUtilisateur) {
             $afficheHistorique = new \Models\Commandes();
             $historique = $afficheHistorique->historiqueCommandes($idUtilisateur);

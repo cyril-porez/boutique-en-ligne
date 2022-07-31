@@ -190,6 +190,7 @@
                 if (!empty($_POST['taille_produits']) && !empty($_POST['quantité']) > 0) {                    
                     $idNomTailleKimono = $_POST['taille_produits'];
                     $quantite = intval($_POST['quantité']);
+
                     $panier = new \Models\Panier();
                     $verifProduit = $panier->verifProduitPanier($idUtilisateur, $idProduit, $idNomTailleKimono);
                     
@@ -220,11 +221,6 @@
         public function supprimerProduitPanier($idUtilisateur, $idProduit, $idTaille) {
             
             if (isset($_POST['supprimer'])) {
-                echo 'passe';
-
-                var_dump($idUtilisateur);
-                var_dump($idProduit);
-                var_dump($idTaille);
 
                 $supprimerProduit = new \Models\Panier();
                 $supprimerProduit->supprimerProduitPanier($idUtilisateur, $idProduit, $idTaille);
@@ -233,15 +229,12 @@
 
 
         public function modifierQuantitePanier($idUtilisateur, $idProduit, $quantite, $idNomTailleKimono) {
-            //echo 'boo';
-            //var_dump($quantite);
             $idNomTailleKimono = $_POST['id_nom_taille_kimono'];
             $idProduit = $_POST['modifierIdProduit'];
             $quantite = intval($_POST['modifQuantite']);
+
             if (isset($_POST['quantite']) > 0) { 
-                //echo 'passe';                   
-                
-                //var_dump($quantite);
+            
                 $panier = new \Models\Panier();
                 $verifProduit = $panier->verifProduitPanier($idUtilisateur, $idProduit, $idNomTailleKimono);
                     

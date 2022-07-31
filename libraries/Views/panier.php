@@ -71,7 +71,7 @@
                                                 <input type="number" name="quantite" min=0 value='<?= $value['quantite'] ?>'>
                                             </td>
                                             <td>
-                                                <p><?= $value['prix'] . ' ' . '€' ?></p>
+                                                <p><?= floatval($value['prix']) * intval($value['quantite']) . ' ' . '€' ?></p>
                                             </td>
                                         </tr>
                                         <tr>
@@ -96,7 +96,7 @@
                                     </div>
                             <?php
 
-                                $prix = floatval($value['prix']);
+                                $prix = floatval($value['prix']) * intval($value['quantite']);
                                 $sousTotal += $prix;
                                 $j++;
                             }?>
