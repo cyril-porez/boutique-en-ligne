@@ -23,6 +23,9 @@
             <div id="card-elements" class="test"></div>
                 <div id="card-errors" role="alert"></div>
                     <button name='payer' id="card-button" type="button" data-secret="<?= $intent['client_secret'] ?>">Valider le paiement</button>
+                </div>
+            </div>
+        </div>
     </form>
 
     <script src="https://js.stripe.com/v3/"></script>

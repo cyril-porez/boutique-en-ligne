@@ -21,7 +21,4 @@
             return $panier;
         }
     }
-
-    /*$panier = new \Controllers\Panier();
-    $panier->panierUtilisateur(5    );*/
 ?>

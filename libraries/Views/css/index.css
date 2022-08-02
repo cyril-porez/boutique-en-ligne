@@ -20,9 +20,7 @@ body{
     grid-area: 1 / 1 / 2 / 2;
     background-color: black;
 }
-#index .div2 {
-    grid-area: 1 / 1 / 2 / 2;
-}
+
 #index .div3 {
     grid-area: 1 / 2 / 2 / 3;
     background-color: black;
@@ -42,9 +40,54 @@ body{
     justify-content: center;
     align-items: center;
 }
-#grand-container{
-    margin-top: 60px;
-}
+
 #grand-container h1{
     font-size: 1.5em;
+}
+
+
+
+@media screen and (max-width: 800px) {
+    body{
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin: 0;
+    }
+    #index .img-presentation img{
+        width: 100%;
+        height: 200px;
+    }
+    
+    #index .parent {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        grid-column-gap: 5px;
+        grid-row-gap: 0px;
+    }
+    #index .div1 {
+        grid-area: 2/ 3 / 3 / 4;
+        background-color: black;
+    }
+    
+    #index .div3 {
+        grid-area: 3/ 3 / 4/ 4;
+        background-color: black;
+    }
+
+    #index .parent img{
+        height: 250px;
+        width: 250px;
+        
+    }
+    
+    #index .parent img:hover {
+        opacity: 0.2;
+    }
+
+    #grand-container h1{
+        width: 100%;
+        
+        margin-top: 2%;
+        font-size: 1.5em;
+    }
 }

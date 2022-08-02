@@ -1,4 +1,8 @@
-header #icons{
+/*header div img {
+    width: 80px;
+    height: 80px;
+}*/
+/* header #icons{
     margin-right: 30px;
     display: flex;
     justify-content: space-between;
@@ -24,94 +28,105 @@ header #header-body{
     margin-top: 2px;
     background-color: black;
     color: white;
+}*/
+
+* {
+  margin: 0;
+  padding: 0;
 }
-header nav{
-    background-color: black;
-    color: white;
-    height: 50px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+
+header nav {
+  background-color: black;
+  color: white;
+  height: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-header .conteneur-nav{
-    width: 80%;
+header .conteneur-nav {
+  width: 80%;
 }
-header .conteneur-nav #container-ul{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+header .conteneur-nav #container-ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-header #icons ul li{
-    list-style: none;
+header #icons ul li {
+  list-style: none;
 }
-header #icons ul{
-    display: none;
-    box-shadow: 0px 1px 2px #CCC;
-    background-color: white;
-    width: 200px;
-    margin-top: 20px;
-    position: absolute;
-    top: 50px;
-    left: 0;
+header #icons ul {
+  display: none;
+  box-shadow: 0px 1px 2px #ccc;
+  background-color: white;
+  width: 200px;
+  margin-top: 20px;
+  position: absolute;
+  top: 50px;
+  left: 0;
 }
-header #icons > i :hover ul{
-    display: block;
+header #icons > i :hover ul {
+  display: block;
 }
-header nav ul li{
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+header nav ul li {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-header nav div ul li a{
-    color: white;
-    text-decoration: none;
-    height: 50px;
-    display: flex;
-    align-items: center;
+header nav div ul li a {
+  color: white;
+  text-decoration: none;
+  height: 50px;
+  display: flex;
+  align-items: center;
 }
-header nav a{
-    text-decoration: none;
+header nav a {
+  text-decoration: none;
 }
-header nav a:hover{
-    color: red;
-    border-bottom: 2px solid gray;
+header nav a:hover {
+  color: red;
+  border-bottom: 2px solid gray;
 }
-header .sous{
-    display: none;
-    box-shadow: 0px 1px 2px #CCC;
-    background-color: white;
-    width: 100%;
-    margin-top: 50px;
-    position: absolute;
-    top: 50px;
-    left: 0;
+header .sous {
+  display: none;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0px 1px 2px #ccc;
+  background-color: white;
+  width: 100%;
+  position: absolute;
+  top: 12vw;
+  left: 0;
 }
-header nav > div > ul li:hover .sous{
-    display: flex;
-    justify-content: space-evenly;
+header nav > div > ul li:hover .sous {
+  display: flex;
+  justify-content: space-evenly;
 }
-header .sous a{
-    border-bottom: none;
-    background-color: white;
-    color: black;
+header .sous a {
+  border-bottom: none;
+  background-color: white;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }
-header .sous a:hover{
-    border-bottom: none;
-    background-color: RGBa(200,200,200,0.1);
+header .sous a:hover {
+  border-bottom: none;
+  background-color: RGBa(200, 200, 200, 0.1);
 }
-header .deroulant > a::after{
-    font-size: 12px;
+header .deroulant > a::after {
+  font-size: 12px;
 }
-header .sous li ul li a{
-    color: gray;
+header .sous li ul li a {
+  color: gray;
 }
-header button{
-    border: none;
-    background: none;
-    cursor: pointer;
+header button {
+  border: none;
+  background: none;
+  cursor: pointer;
 }
-/* ------liste-déroulante-navbar------------------*/
+/*------liste-déroulante-navbar------------------
 header .dropdown {
     position: relative;
     display: inline-block;
@@ -139,4 +154,260 @@ header .dropdown-content a:hover {
 
 header .dropdown:hover .dropdown-content {
     display: block;
+}*/
+
+label {
+  display: none;
+}
+
+header div img {
+  width: 100px;
+  height: 100px;
+}
+
+header {
+  width: 100%;
+  height: 12vw;
+}
+
+.top-header {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  position: relative;
+  z-index: 1000;
+}
+
+.button-search-burger {
+  display: none;
+  align-items: center;
+  width: 40%;
+  height: 100%;
+}
+
+.button-burger {
+  width: 10vw;
+  font-size: 5vw;
+  height: 100%;
+  color: white;
+  background-color: black;
+}
+
+.logo-container {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-img {
+  width: auto;
+  height: 80%;
+}
+
+.icons-search {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.form-search {
+  height: 80%;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.input-search {
+  height: 50%;
+  width: 80%;
+  margin: 0;
+  padding: 0 1vw;
+}
+
+.button-search {
+  height: 50%;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  font-size: 2vw;
+  cursor: pointer;
+}
+
+.dropdown {
+  height: 50%;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-user {
+  height: 80%;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  font-size: 2vw;
+  transform: scale(1);
+  cursor: pointer;
+}
+
+.button-user:hover {
+  transform: scale(1.2);
+}
+
+.button-card {
+  height: 80%;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  font-size: 2vw;
+  cursor: pointer;
+}
+
+.button-envelope {
+  height: 80%;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  font-size: 2vw;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 5vw;
+  z-index: 100;
+  border: 1px solid black;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border: none;
+}
+
+header .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+header .dropdown-content a:hover {
+    background-color: #f1f1f1;
+    
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.droplink {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 1vw 0.5vw;
+}
+
+@media screen and (max-width: 800px) {
+  .form-search {
+    display: none;
+  }
+
+  .button-search-burger {
+    display: flex;
+  }
+
+  .button-user,
+  .button-envelope,
+  .button-card {
+    font-size: 6.5vw;
+  }
+
+  .logo-img {
+    width: auto;
+    height: 100%;
+  }
+
+  header nav {
+    position: fixed;
+    top: 0;
+    background-color: white;
+    color: black;
+    height: 100%;
+    width: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    transition: width 2s, height 4s;
+  }
+
+  nav.open {
+    transition: width 2s, height 4s;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  header .conteneur-nav {
+    height: 70%;
+    width: 80%;
+  }
+
+  header .conteneur-nav #container-ul {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  header nav ul li {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  header nav div ul li a {
+    display: none;
+}
+
+  header nav.open div ul li a {
+    color: black;
+    text-decoration: none;
+    height: 50px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

@@ -56,6 +56,32 @@ body{
 footer img{
     height: 150px;
     width: 150px;
-    margin-left: 46%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
     margin-bottom: 3%;
+}
+
+@media (max-width: 800px) {
+
+    #footer-body {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        
+    }
+
+    #footer-body div:nth-child(2){
+        text-align: center;
+    }
+
+    #footer-body #contact{
+        width: 100%;
+        text-align: center;
+    }
+
+    #copyright {
+        text-align: center;
+    }
 }

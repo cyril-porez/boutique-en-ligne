@@ -31,9 +31,8 @@
 
             <section class="img-grid">
                 <div class="parent">
-                    <div class="div1"><img src="images/gant.jpg" alt=""></div>
-                    <!-- <div class="div2"></div> -->
-                    <div class="div3"><img src="images/atlete.jpg" alt=""></div>
+                    <div class="grid-test"><img src="images/gant.jpg" alt=""></div>
+                    <div class="grid-test"><img src="images/atlete.jpg" alt=""></div>
                 </div>
             </section>
             <section id="produits">
