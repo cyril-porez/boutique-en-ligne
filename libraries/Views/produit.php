@@ -67,7 +67,7 @@
                         <span><h3><?= $produit[0]['nom'] . '<br>'; ?></h3></span>
                         <span><h2><?= $produit[0]['prix'] . ' €' . '<br>'; ?></h2></span>
                         <?php if(!empty($_SESSION)){ ?>
-                                <form action="" method="post">
+                                <form id="social-form" action="" method="post">
                                     <button type="submit" name="jaime"><?= $etatJaime[0]['j_aime'].' ' ?><i class="fa-solid fa-thumbs-up"></i></button>
                                     <button type="submit" name="deteste"><?= $etatDeteste[0]['deteste'].' ' ?><i class="fa-solid fa-thumbs-down"></i></button>
                                     <button type="submit" name="favoris"><i class="fa-solid fa-bookmark"></i></button>
@@ -130,13 +130,13 @@
                                             <form action="" method="post">
                                                 <span>
                                                     <input type="number" name="quantité" min = 0 id="input-number" value='0'>
-                                                    <button name="ajout" id="ajout-panier">AJOUTER AU PANIER</button>
                                                 </span>
                                                 <!-- <button name="ajout" id="ajout-panier">AJOUTER AU PANIER</button> -->
                                             </form>
                                             <?php } ?>
                                             </select>
                                         </div>
+                                        <button id="add-cart-button" name="ajout" id="ajout-panier">AJOUTER AU PANIER</button>
                                     </form>
                                     <?php }
                                 else{?>

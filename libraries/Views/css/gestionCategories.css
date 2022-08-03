@@ -1,0 +1,58 @@
+#button-container {
+    display: flex;
+    flex-direction: row;
+    margin: 50px 0px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#button-container a {
+    margin: 0px;
+}
+
+#button-container a button {
+    height: 60px;
+    width: 300px;
+    background-color: transparent;
+    border-radius: 10px;
+    border-width: 1px;
+    color: black;
+    border-color: black;
+    cursor: pointer;
+}
+
+#button-container a button:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+#form-container input {
+    margin-top: 10px;
+}
+
+#back-button {
+    background-color: black;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-family: Arial;
+    font-size: 15px;
+    padding: 6px 15px;
+    text-decoration: none;
+    border: none;
+}
+
+@media (max-width: 1024px) {
+    #button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #button-container a button {
+        width: 250px;
+    }
+}

@@ -36,6 +36,7 @@ $afficheSousCategorie = new \Models\SousCategorie();
     <link rel="stylesheet" href="css/modificationDonnee.css">
     <link rel="stylesheet" href="css/panier.css">
     <link rel="stylesheet" href="css/produit.css">
+    <link rel="stylesheet" href="css/gestionCategories.css">
     <link rel="stylesheet" href="css/commentaire.css">
     <link rel="stylesheet" href="css/profil.css">
     <link rel="stylesheet" href="css/commandes.css">

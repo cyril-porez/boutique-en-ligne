@@ -164,7 +164,8 @@
     margin-bottom: 10px;
     height: 25px;
     border: 0.3px solid rgb(212, 210, 210);
-    margin-bottom: 3%;
+    margin: 10px 0px;
+    /* margin-bottom: 3%; */
     /* width: 80%; */
 }
 #gestion .modal-form td{

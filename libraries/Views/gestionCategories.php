@@ -13,10 +13,10 @@
 
 <?php require_once('header.php'); ?>
     <main>
-        <div>
-            <a href="admin.php"><button>retour</button></a>
-            <a href="creer_categorie.php"><button>gestion des catégories</button></a>
-            <a href="creer_sous-categorie.php"><button>gestion des sous-categories</button></a>
+        <a id="back-button" href="admin.php">retour</a>
+        <div id="button-container">
+            <a href="creer_categorie.php"><button>Gestion des catégories</button></a>
+            <a href="creer_sous-categorie.php"><button>Gestion des sous-catégories</button></a>
         </div>
     </main>
     <?php require_once('footer.php'); ?>

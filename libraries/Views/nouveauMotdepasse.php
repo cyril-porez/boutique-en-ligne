@@ -38,6 +38,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/motdepasseoublié.css">
+    <link rel="stylesheet" href="css/nouveauMotdePasse.css">
 
     <title>Nouveau Mot de passe</title>
 </head>
@@ -45,12 +46,16 @@
     <main>
         <h1>DEFINIR MOT DE PASSE</h1>
 
-        <form action="" method="post">
-            <label for="nouveauMotdepasse">Nouveau mot de passe</label>
-            <input type="password" name="nouveauMotdepasse">
+        <form id="form-container" action="" method="post">
+            <div id="label-password-container">
+                <label for="nouveauMotdepasse">Nouveau mot de passe</label>
+                <input type="password" name="nouveauMotdepasse">
+            </div>
 
-            <label for="confirmeNouveauMotdepasse">Confirme nouveau mot de passe</label>
-            <input type="password" name="confirmeNouveauMotdepasse">
+            <div id="label-password-container">
+                <label for="confirmeNouveauMotdepasse">Confirme nouveau mot de passe</label>
+                <input type="password" name="confirmeNouveauMotdepasse">
+            </div>
 
             <input type="submit" value="Définir un nouveau mot de passe">
         </form>

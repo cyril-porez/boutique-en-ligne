@@ -1,0 +1,23 @@
+#label-password-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+#form-container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#form-container input {
+    margin-top: 10px;
+}
+
+@media (max-width: 1024px){
+    #label-password-container {
+        width: 80%;
+    }
+}

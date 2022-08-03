@@ -2,15 +2,18 @@ body{
     overflow-x: hidden;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
 #produit img{
     height: 80vh;
     width: 40vw;
 }
+
 #produit #container-produit{
     display: flex;
     justify-content: space-evenly;
     margin-top: 20px;
 }
+
 #produit #container-description{
     display: flex;
     flex-direction: column;
@@ -19,10 +22,24 @@ body{
     height: 100%;
     gap: 10px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+    padding: 20px;
 }
+
+#produit #container-description #social-form {
+    display: flex;
+    gap: 10px;
+}
+
+#produit #container-description #social-form button {
+    width: 60px;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
 #produit #container-description button {
 	background-color:black;
-	display:inline-block;
+	display:flex;
 	cursor:pointer;
 	color:white;
 	font-family:Arial;
@@ -40,16 +57,17 @@ body{
     border: 1px solid black;
 }
 #produit #description {
+    width: 90%;
     font-size: 14px;
 }
-#produit #taille form{
+#produit #taille{
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 #produit #taille form div{
     display: flex;
-    margin-bottom: 20px;
+    margin: 20px 0px;
     align-items: center;
 }
 #produit select{
@@ -77,14 +95,16 @@ body{
    width: 50%;
    height: 25px;
    border: 0.3px solid rgb(212, 210, 210);
-   margin-bottom: 3%;
+   margin-bottom: 0px;
 }
 #produit #containercomment button{
-   width: 40%;
    cursor:pointer;
    background:none;
    border: none;
    color:#007185;
+}
+#produit #container-description #add-cart-button{
+    width: auto;
 }
 #produit #containercomment button:hover{
    text-decoration: underline;
@@ -119,4 +139,30 @@ body{
 }
 h2{
     margin-left: 20px;
+}
+
+@media (max-width: 1024px){
+    #produit #container-produit {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #produit #container-produit #container-img {
+        width: 100%;
+    }
+
+    #produit #container-produit #container-description {
+        width: 100%;
+        padding: 0px;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    #produit img {
+        width: 100%;
+    }
 }
